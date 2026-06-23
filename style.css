@@ -1,1 +1,80 @@
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#FFFFFF;
+    color:#0A0A0A;
+}
 
+header{
+    background:#0A0A0A;
+    color:#FFFFFF;
+    text-align:center;
+    padding:40px 20px;
+}
+
+header h1{
+    color:#D4A622;
+    margin:0;
+    font-size:3rem;
+}
+
+header p{
+    color:#00A6D6;
+    font-size:1.2rem;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:15px;
+    background:#FFFFFF;
+    border-bottom:2px solid #D4A622;
+}
+
+nav a{
+    text-decoration:none;
+    color:#0A0A0A;
+    font-weight:bold;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:#F8F8F8;
+}
+
+.hero h2{
+    font-size:3rem;
+    color:#D4A622;
+}
+
+.hero p{
+    font-size:1.3rem;
+    color:#00A6D6;
+}
+
+.collections{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.collection-card{
+    border:2px solid #D4A622;
+    border-radius:15px;
+    padding:25px;
+    margin:20px auto;
+    max-width:500px;
+}
+
+.collection-card h3{
+    color:#D4A622;
+}
+
+footer{
+    background:#0A0A0A;
+    color:#FFFFFF;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
