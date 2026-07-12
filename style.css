@@ -78,3 +78,36 @@ footer{
     padding:30px;
     margin-top:50px;
 }
+
+.texture-card{
+    max-width:900px;
+    margin:50px auto;
+    padding:30px;
+    border:2px solid #D4A622;
+    border-radius:20px;
+    text-align:center;
+    background:#fff;
+}
+
+.model-photo{
+    width:320px;
+    max-width:100%;
+    border-radius:15px;
+    margin:20px;
+}
+
+.product-photo{
+    width:250px;
+    max-width:100%;
+    margin:20px;
+}
+
+.texture-card h2{
+    color:#D4A622;
+    font-size:36px;
+}
+
+.texture-card p{
+    font-size:20px;
+    line-height:1.8;
+}
