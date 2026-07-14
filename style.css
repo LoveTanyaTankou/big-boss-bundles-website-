@@ -111,3 +111,200 @@ footer{
     font-size:20px;
     line-height:1.8;
 }
+/* ===========================
+   BIG BOSS LUXURY HOMEPAGE
+=========================== */
+
+.hero{
+    position:relative;
+    min-height:700px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+    background:#000;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    padding:40px;
+}
+
+.hero h1{
+    font-size:64px;
+    color:#D4A622;
+    margin-bottom:10px;
+}
+
+.hero h2{
+    color:#ffffff;
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn-gold{
+    background:#D4A622;
+    color:#000;
+    padding:18px 40px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-gold:hover{
+    background:#b88b18;
+}
+
+.btn-teal{
+    background:#00A6D6;
+    color:#fff;
+    padding:18px 40px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.section-title{
+    text-align:center;
+    font-size:46px;
+    color:#D4A622;
+    margin:80px 0 20px;
+}
+
+.subtitle{
+    text-align:center;
+    font-size:20px;
+    max-width:900px;
+    margin:auto;
+    color:#555;
+}
+
+.collection-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+    max-width:1400px;
+    margin:70px auto;
+    padding:0 30px;
+}
+
+.collection{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    transition:.35s;
+}
+
+.collection:hover{
+    transform:translateY(-8px);
+}
+
+.collection img{
+    width:100%;
+    display:block;
+}
+
+.collection-info{
+    padding:25px;
+}
+
+.collection-info h3{
+    color:#D4A622;
+    font-size:28px;
+}
+
+.collection-info p{
+    line-height:1.7;
+}
+
+.shop-button{
+    display:inline-block;
+    margin-top:20px;
+    background:#00A6D6;
+    color:#fff;
+    padding:14px 30px;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    max-width:1400px;
+    margin:80px auto;
+    text-align:center;
+    padding:0 30px;
+}
+
+.feature{
+    padding:25px;
+}
+
+.feature h3{
+    color:#D4A622;
+}
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero h2{
+font-size:28px;
+}
+
+.features{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.features{
+grid-template-columns:1fr;
+}
+
+.hero{
+min-height:600px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+}
