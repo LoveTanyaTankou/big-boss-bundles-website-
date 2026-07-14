@@ -11,8 +11,6 @@
         content="Shop premium luxury raw hair from Laos, Cambodia, Vietnam, Burma, and India at Big Boss Bundles."
     >
 
- <link rel="stylesheet" href="./style.css?v=2">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -20,36 +18,789 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet"
     >
+
+    <style>
+        :root {
+            --gold: #D4A622;
+            --teal: #00A6D6;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --cream: #F7F5F0;
+            --gray: #666666;
+            --border: #E7E2D8;
+            --shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: "DM Sans", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .announcement {
+            padding: 11px 20px;
+            background: var(--teal);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .announcement span {
+            padding: 0 12px;
+            color: var(--gold);
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 22px 5%;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.6rem, 3vw, 2.7rem);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            margin-top: 7px;
+            color: var(--teal);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .social-top {
+            display: flex;
+            gap: 14px;
+        }
+
+        .social-top a {
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .social-top a:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 27px;
+            padding: 15px 24px;
+            overflow-x: auto;
+            background: var(--black);
+            color: var(--white);
+            white-space: nowrap;
+        }
+
+        .navigation a {
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .navigation a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            min-height: 730px;
+            background: var(--cream);
+        }
+
+        .hero-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 8%;
+        }
+
+        .eyebrow {
+            margin-bottom: 15px;
+            color: var(--teal);
+            font-size: 0.77rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin-bottom: 25px;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(3.5rem, 6.4vw, 7rem);
+            font-weight: 600;
+            line-height: 0.96;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-description {
+            max-width: 590px;
+            margin-bottom: 34px;
+            color: var(--gray);
+            font-size: 1.08rem;
+            line-height: 1.85;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 53px;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 31px;
+            border: 2px solid transparent;
+            font-size: 0.77rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .button-primary {
+            background: var(--teal);
+            color: var(--white);
+        }
+
+        .button-primary:hover {
+            background: var(--black);
+        }
+
+        .button-secondary {
+            border-color: var(--black);
+            background: transparent;
+            color: var(--black);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--gold);
+            background: var(--gold);
+        }
+
+        .hero-image {
+            position: relative;
+            min-height: 730px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 730px;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .hero-label {
+            position: absolute;
+            right: 28px;
+            bottom: 28px;
+            min-width: 235px;
+            padding: 21px 24px;
+            background: rgba(10, 10, 10, 0.93);
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-label small,
+        .hero-label strong,
+        .hero-label span {
+            display: block;
+        }
+
+        .hero-label small {
+            color: var(--teal);
+            font-size: 0.64rem;
+            font-weight: 800;
+            letter-spacing: 0.17em;
+        }
+
+        .hero-label strong {
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 2.2rem;
+        }
+
+        .hero-label span {
+            font-size: 0.8rem;
+        }
+
+        .quality-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .quality-strip div {
+            padding: 20px 12px;
+            border-right: 1px solid rgba(255, 255, 255, 0.14);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .section {
+            padding: 100px 6%;
+        }
+
+        .section-heading {
+            max-width: 850px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(2.2rem, 4.4vw, 4rem);
+            line-height: 1.12;
+        }
+
+        .section-heading p:last-child {
+            max-width: 680px;
+            margin: 18px auto 0;
+            color: var(--gray);
+        }
+
+        .origin-grid {
+            display: grid;
+            max-width: 1450px;
+            margin: 0 auto;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 27px;
+        }
+
+        .origin-card {
+            display: flex;
+            min-height: 520px;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--white);
+            transition: 0.3s ease;
+        }
+
+        .origin-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+        }
+
+        .origin-card.featured {
+            border: 2px solid var(--gold);
+        }
+
+        .origin-photo {
+            height: 370px;
+            overflow: hidden;
+            background: var(--cream);
+        }
+
+        .origin-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.45s ease;
+        }
+
+        .origin-card:hover .origin-photo img {
+            transform: scale(1.035);
+        }
+
+        .origin-copy {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            padding: 28px;
+        }
+
+        .origin-copy h3 {
+            margin: 7px 0 10px;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 2rem;
+        }
+
+        .origin-copy p {
+            color: var(--gray);
+            font-size: 0.93rem;
+        }
+
+        .premium {
+            color: var(--gold);
+            font-size: 0.65rem;
+            font-weight: 900;
+            letter-spacing: 0.17em;
+        }
+
+        .shop-link {
+            margin-top: 20px;
+            color: var(--teal);
+            font-size: 0.77rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .text-card {
+            min-height: 420px;
+            border: 0;
+            background:
+                linear-gradient(145deg, rgba(212, 166, 34, 0.16), transparent 55%),
+                var(--black);
+            color: var(--white);
+        }
+
+        .text-card .origin-copy h3 {
+            color: var(--gold);
+        }
+
+        .text-card .origin-copy p {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .origin-number {
+            color: rgba(255, 255, 255, 0.22);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 3.5rem;
+            line-height: 1;
+        }
+
+        .texture-section {
+            background: var(--cream);
+        }
+
+        .texture-grid {
+            display: grid;
+            max-width: 1350px;
+            margin: 0 auto;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .texture-card {
+            display: flex;
+            min-height: 160px;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            border-bottom: 4px solid var(--teal);
+            background: var(--white);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: 0.25s ease;
+        }
+
+        .texture-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .feature-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .feature-section .section-heading h2 {
+            color: var(--gold);
+        }
+
+        .feature-section .section-heading p:last-child {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .feature-grid {
+            display: grid;
+            max-width: 1300px;
+            margin: 0 auto;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            padding: 35px 26px;
+            border-left: 3px solid var(--teal);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.35rem;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.9rem;
+        }
+
+        .hair-care {
+            background: var(--white);
+        }
+
+        .hair-care-row {
+            display: grid;
+            max-width: 1150px;
+            margin: 0 auto;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .care-card {
+            padding: 30px 20px;
+            border: 1px solid var(--border);
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .care-card h3 {
+            margin-bottom: 8px;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.25rem;
+        }
+
+        .care-card p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .care-card strong {
+            display: block;
+            margin-top: 13px;
+            color: var(--gold);
+            font-size: 1.15rem;
+        }
+
+        .viral {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 9px;
+            background: var(--teal);
+            color: var(--white);
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .social-section {
+            padding: 90px 6%;
+            background: var(--teal);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+        }
+
+        .social-section p {
+            max-width: 650px;
+            margin: 18px auto 28px;
+        }
+
+        .social-section .buttons {
+            justify-content: center;
+        }
+
+        .social-section .button-primary {
+            background: var(--black);
+        }
+
+        .social-section .button-secondary {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .footer {
+            padding: 65px 6% 25px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .footer-grid {
+            display: grid;
+            max-width: 1350px;
+            margin: 0 auto;
+            grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+            gap: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 13px;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.8rem;
+        }
+
+        .footer h4 {
+            margin-bottom: 13px;
+            color: var(--teal);
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .footer p,
+        .footer a {
+            display: block;
+            margin-bottom: 9px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.88rem;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            max-width: 1350px;
+            margin: 42px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.48);
+            font-size: 0.76rem;
+            text-align: center;
+        }
+
+        @media (max-width: 1050px) {
+            .hero {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .origin-grid,
+            .texture-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .feature-grid,
+            .hair-care-row,
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .quality-strip {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .social-top {
+                display: none;
+            }
+
+            .brand-row {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .navigation {
+                justify-content: flex-start;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy {
+                order: 2;
+                padding: 55px 7%;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero-image,
+            .hero-image img {
+                min-height: 520px;
+            }
+
+            .quality-strip,
+            .origin-grid,
+            .texture-grid,
+            .feature-grid,
+            .hair-care-row,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quality-strip div {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+            }
+
+            .section {
+                padding: 75px 6%;
+            }
+
+            .origin-photo {
+                height: 430px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .announcement {
+                font-size: 0.62rem;
+                line-height: 1.7;
+            }
+
+            .announcement span {
+                padding: 0 5px;
+            }
+
+            .hero h1 {
+                font-size: 3.1rem;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .hero-image,
+            .hero-image img {
+                min-height: 440px;
+            }
+
+            .hero-label {
+                right: 14px;
+                bottom: 14px;
+                min-width: 200px;
+            }
+
+            .origin-photo {
+                height: 350px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="announcement-bar">
-        <p>
-            PREMIUM RAW HAIR
-            <span>•</span>
-            COLORS UP TO 613
-            <span>•</span>
-            LOCAL PICKUP AVAILABLE
-        </p>
+    <div class="announcement">
+        Premium Raw Hair
+        <span>•</span>
+        Colors Up to 613
+        <span>•</span>
+        Local Pickup Available
     </div>
 
-    <header class="site-header">
+    <header class="header">
 
-        <a href="index.html" class="brand">
-            <span class="brand-main">BIG BOSS BUNDLES</span>
-            <span class="brand-tagline">Boss Beauty.</span>
-        </a>
+        <div class="brand-row">
 
-        <nav class="main-navigation" aria-label="Main navigation">
+            <a href="index.html" class="brand">
+                <span class="brand-name">BIG BOSS BUNDLES</span>
+                <span class="brand-tagline">Boss Beauty.</span>
+            </a>
+
+            <div class="social-top">
+                <a
+                    href="https://www.instagram.com/bigbossbundles100/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@bigbossbundles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    TikTok
+                </a>
+            </div>
+
+        </div>
+
+        <nav class="navigation" aria-label="Main navigation">
             <a href="index.html">Home</a>
             <a href="#origins">Collections</a>
             <a href="laos.html">LAOS</a>
             <a href="cambodian.html">Cambodian</a>
             <a href="vietnamese.html">Vietnamese</a>
-            <a href="indian Raw.html">Indian Raw</a>
+            <a href="indian%20Raw.html">Indian Raw</a>
             <a href="burmese.html">Burmese</a>
-            <a href="#textures">Textures</a>
+            <a href="bulkhair.html">Bulk Hair</a>
+            <a href="feather-crochet.html">Feather Crochet</a>
             <a href="#hair-care">Hair Care</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -62,7 +813,7 @@
 
             <div class="hero-copy">
 
-                <p class="section-label">PREMIUM LUXURY RAW HAIR</p>
+                <p class="eyebrow">Premium Luxury Raw Hair</p>
 
                 <h1>
                     Luxury Hair.<br>
@@ -72,11 +823,13 @@
                 <p class="hero-description">
                     Discover premium raw hair selected for exceptional softness,
                     natural movement, beautiful texture, and long-lasting quality.
+                    Big Boss Bundles brings luxury hair from five distinct origins
+                    directly to you.
                 </p>
 
-                <div class="button-row">
+                <div class="buttons">
                     <a href="laos.html" class="button button-primary">
-                        Shop LAOS
+                        Shop Premium LAOS
                     </a>
 
                     <a href="#origins" class="button button-secondary">
@@ -86,58 +839,59 @@
 
             </div>
 
-            <div class="hero-visual">
+            <div class="hero-image">
+
                 <img
                     src="images/LAOS Hair Images/laos-curly-model.png"
-                    alt="Model wearing Big Boss Bundles LAOS curly raw hair"
+                    alt="Big Boss Bundles premium LAOS curly raw hair"
                 >
 
-                <div class="hero-badge">
-                    <span>FLAGSHIP COLLECTION</span>
+                <div class="hero-label">
+                    <small>FLAGSHIP COLLECTION</small>
                     <strong>LAOS</strong>
-                    <small>Premium Luxury Hair</small>
+                    <span>Premium Luxury Hair</span>
                 </div>
+
             </div>
 
         </section>
 
         <section class="quality-strip">
-            <span>100% Raw Hair</span>
-            <span>Long-Lasting Quality</span>
-            <span>Colors Up to 613</span>
-            <span>Beautiful Natural Movement</span>
-            <span>Luxury Textures</span>
+            <div>100% Raw Hair</div>
+            <div>Colors Up to 613</div>
+            <div>Long-Lasting Quality</div>
+            <div>All Lace Is HD</div>
+            <div>Luxury Textures</div>
         </section>
 
-        <section class="section origin-section" id="origins">
+        <section class="section" id="origins">
 
             <div class="section-heading">
-                <p class="section-label">SHOP BY ORIGIN</p>
+                <p class="eyebrow">Shop by Origin</p>
                 <h2>Five Origins. One Standard of Luxury.</h2>
-
                 <p>
-                    Explore our premium collections and choose the origin,
-                    texture, and movement that best fits your look.
+                    Explore premium hair collections selected for softness,
+                    movement, versatility, and exceptional beauty.
                 </p>
             </div>
 
             <div class="origin-grid">
 
-                <a href="laos.html" class="origin-card origin-featured">
+                <a href="laos.html" class="origin-card featured">
 
-                    <div class="origin-image">
+                    <div class="origin-photo">
                         <img
                             src="images/LAOS Hair Images/laos-straight-model.png"
-                            alt="Big Boss Bundles LAOS straight hair"
+                            alt="Big Boss Bundles LAOS straight raw hair"
                         >
                     </div>
 
-                    <div class="origin-content">
-                        <span class="premium-label">PREMIUM LUXURY</span>
+                    <div class="origin-copy">
+                        <span class="premium">PREMIUM LUXURY</span>
                         <h3>LAOS</h3>
                         <p>
-                            Our flagship collection featuring exceptional
-                            softness, movement, and luxury.
+                            Our flagship luxury collection featuring remarkable
+                            softness, natural movement, and premium quality.
                         </p>
                         <span class="shop-link">Shop LAOS →</span>
                     </div>
@@ -146,4 +900,273 @@
 
                 <a href="cambodian.html" class="origin-card">
 
-                    <div class="origin-image">
+                    <div class="origin-photo">
+                        <img
+                            src="images/Cambodian Hair Images/cambodian-straight-model.png"
+                            alt="Big Boss Bundles Cambodian straight raw hair"
+                        >
+                    </div>
+
+                    <div class="origin-copy">
+                        <h3>Cambodian</h3>
+                        <p>
+                            Naturally full, beautifully textured raw hair
+                            with softness, versatility, and body.
+                        </p>
+                        <span class="shop-link">Shop Cambodian →</span>
+                    </div>
+
+                </a>
+
+                <a href="vietnamese.html" class="origin-card text-card">
+                    <div class="origin-copy">
+                        <span class="origin-number">03</span>
+                        <h3>Vietnamese</h3>
+                        <p>
+                            Silky, sleek, luxurious hair known for its smooth,
+                            polished finish and beautiful shine.
+                        </p>
+                        <span class="shop-link">Shop Vietnamese →</span>
+                    </div>
+                </a>
+
+                <a href="indian%20Raw.html" class="origin-card text-card">
+                    <div class="origin-copy">
+                        <span class="origin-number">04</span>
+                        <h3>Indian Raw</h3>
+                        <p>
+                            Versatile raw hair that beautifully supports
+                            styling, coloring, and customization.
+                        </p>
+                        <span class="shop-link">Shop Indian Raw →</span>
+                    </div>
+                </a>
+
+                <a href="burmese.html" class="origin-card text-card">
+                    <div class="origin-copy">
+                        <span class="origin-number">05</span>
+                        <h3>Burmese</h3>
+                        <p>
+                            Soft raw hair featuring natural body,
+                            beautiful texture, and effortless movement.
+                        </p>
+                        <span class="shop-link">Shop Burmese →</span>
+                    </div>
+                </a>
+
+                <a href="bulkhair.html" class="origin-card text-card">
+                    <div class="origin-copy">
+                        <span class="origin-number">06</span>
+                        <h3>Human Bulk Hair</h3>
+                        <p>
+                            Premium human hair for luxury braiding styles,
+                            available in straight, wavy, and curly textures.
+                        </p>
+                        <span class="shop-link">Shop Bulk Hair →</span>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+        <section class="section texture-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">Find Your Look</p>
+                <h2>Shop by Texture</h2>
+                <p>
+                    Choose the texture that matches your style and desired finish.
+                </p>
+            </div>
+
+            <div class="texture-grid">
+                <div class="texture-card">Straight</div>
+                <div class="texture-card">Kinky Straight</div>
+                <div class="texture-card">Body Wave</div>
+                <div class="texture-card">Deep Wave</div>
+                <div class="texture-card">Curly</div>
+                <div class="texture-card">Kinky Curly</div>
+            </div>
+
+        </section>
+
+        <section class="section feature-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">The Big Boss Standard</p>
+                <h2>Luxury You Can See and Feel</h2>
+                <p>
+                    Premium raw hair selected to deliver beauty,
+                    longevity, versatility, and confidence.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <h3>Premium Raw Hair</h3>
+                    <p>
+                        Carefully selected for softness, natural movement,
+                        strength, and quality.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Made to Last</h3>
+                    <p>
+                        With proper care, Big Boss Bundles hair can remain
+                        beautiful for several years.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Color With Confidence</h3>
+                    <p>
+                        Our raw hair can be professionally colored
+                        and lifted up to 613.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>HD Lace Standard</h3>
+                    <p>
+                        All Big Boss Bundles wigs, closures, and frontals
+                        include HD lace.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section hair-care" id="hair-care">
+
+            <div class="section-heading">
+                <p class="eyebrow">Complete Your Install</p>
+                <h2>Celebrity Collection</h2>
+                <p>
+                    Professional finishing products designed to support
+                    your bundles, wigs, closures, and frontals.
+                </p>
+            </div>
+
+            <div class="hair-care-row">
+
+                <div class="care-card">
+                    <span class="viral">TikTok Viral</span>
+                    <h3>Edge Control</h3>
+                    <p>Strong hold with no white residue and no flaking.</p>
+                    <strong>$14.99</strong>
+                </div>
+
+                <div class="care-card">
+                    <h3>Melting Spray</h3>
+                    <p>Quick drying, ultra hold, and glueless install.</p>
+                    <strong>$11.99</strong>
+                </div>
+
+                <div class="care-card">
+                    <h3>Wax Stick</h3>
+                    <p>Strong hold, smooth finish, and non-greasy.</p>
+                    <strong>$11.99</strong>
+                </div>
+
+                <div class="care-card">
+                    <h3>Lace Tint Mousse</h3>
+                    <p>Light Brown, Medium Brown, and Dark Brown.</p>
+                    <strong>$10.99</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="social-section">
+
+            <p class="eyebrow" style="color:#FFFFFF;">Follow the Boss</p>
+
+            <h2>Join the Big Boss Community</h2>
+
+            <p>
+                Follow Big Boss Bundles for hair transformations,
+                product demonstrations, tutorials, and new arrivals.
+            </p>
+
+            <div class="buttons">
+
+                <a
+                    href="https://www.instagram.com/bigbossbundles100/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button button-primary"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@bigbossbundles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button button-secondary"
+                >
+                    TikTok
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Big Boss Bundles</h3>
+                <p>Luxury raw hair and professional hair-care essentials.</p>
+                <p>Boss Beauty.</p>
+            </div>
+
+            <div>
+                <h4>Shop Hair</h4>
+                <a href="laos.html">LAOS</a>
+                <a href="cambodian.html">Cambodian</a>
+                <a href="vietnamese.html">Vietnamese</a>
+                <a href="indian%20Raw.html">Indian Raw</a>
+                <a href="burmese.html">Burmese</a>
+            </div>
+
+            <div>
+                <h4>Customer Care</h4>
+                <a href="shipping-policy.html">Shipping Policy</a>
+                <a href="return-policy.html">Return Policy</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-and-conditions.html">Terms and Conditions</a>
+            </div>
+
+            <div>
+                <h4>Visit or Contact Us</h4>
+                <p>301 W Pecan Street</p>
+                <p>Pflugerville, TX 78660</p>
+
+                <a href="tel:+13106785343">
+                    (310) 678-5343
+                </a>
+
+                <a href="mailto:support@bigbossbundles.com">
+                    support@bigbossbundles.com
+                </a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Big Boss Bundles. All rights reserved.
+        </div>
+
+    </footer>
+
+</body>
+</html>
