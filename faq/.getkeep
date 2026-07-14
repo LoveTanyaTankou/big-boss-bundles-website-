@@ -1,1 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Frequently Asked Questions | Big Boss Bundles</title>
+
+    <meta
+        name="description"
+        content="Find answers about Big Boss Bundles raw hair, textures, lengths, HD lace, coloring, care, shipping, pickup, and exchanges."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --gold: #D4A622;
+            --teal: #00A6D6;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --cream: #F7F5F0;
+            --gray: #555555;
+            --border: #E6E1D7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: "DM Sans", Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .announcement {
+            padding: 11px 20px;
+            background: var(--teal);
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .header {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .brand-row {
+            padding: 27px 20px 20px;
+            text-align: center;
+        }
+
+        .brand-name {
+            display: block;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            display: block;
+            margin-top: 8px;
+            color: var(--teal);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 15px 20px;
+            overflow-x: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            white-space: nowrap;
+        }
+
+        .navigation a {
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .navigation a:hover {
+            color: var(--gold);
+        }
+
+        .page-hero {
+            padding: 85px 7%;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(212, 166, 34, 0.14),
+                    transparent 55%
+                ),
+                var(--cream);
+            text-align: center;
+        }
+
+        .eyebrow {
+            margin-bottom: 12px;
+            color: var(--teal);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.19em;
+            text-transform: uppercase;
+        }
+
+        .page-hero h1 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(2.7rem, 6vw, 5rem);
+            line-height: 1.05;
+        }
+
+        .page-hero p {
+            max-width: 760px;
+            margin: 20px auto 0;
+            color: var(--gray);
+        }
+
+        .faq-layout {
+            display: grid;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 75px 6%;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 55px;
+        }
+
+        .faq-menu {
+            position: sticky;
+            top: 25px;
+            height: fit-content;
+            padding: 24px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .faq-menu h2 {
+            margin-bottom: 15px;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.3rem;
+        }
+
+        .faq-menu a {
+            display: block;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 0.84rem;
+        }
+
+        .faq-menu a:hover {
+            color: var(--teal);
+        }
+
+        .faq-section {
+            margin-bottom: 55px;
+            scroll-margin-top: 25px;
+        }
+
+        .faq-section h2 {
+            margin-bottom: 22px;
+            color: var(--black);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 2rem;
+        }
+
+        details {
+            margin-bottom: 14px;
+            border: 1px solid var(--border);
+            background: var(--cream);
+        }
+
+        summary {
+            position: relative;
+            padding: 22px 58px 22px 24px;
+            cursor: pointer;
+            font-weight: 700;
+            list-style: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            position: absolute;
+            right: 24px;
+            top: 16px;
+            color: var(--teal);
+            font-size: 1.7rem;
+            font-weight: 400;
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        details p,
+        details ul {
+            margin: 0 24px 22px;
+            color: var(--gray);
+        }
+
+        details ul {
+            padding-left: 20px;
+        }
+
+        details li {
+            margin-bottom: 7px;
+        }
+
+        .contact-box {
+            padding: 32px;
+            background: var(--black);
+            color: var(--white);
+            border-left: 5px solid var(--teal);
+        }
+
+        .contact-box h2 {
+            margin-bottom: 12px;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.8rem;
+        }
+
+        .contact-box p,
+        .contact-box a {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .contact-box a:hover {
+            color: var(--teal);
+        }
+
+        .footer {
+            padding: 60px 6% 25px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .footer-grid {
+            display: grid;
+            max-width: 1250px;
+            margin: 0 auto;
+            grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
+            gap: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 12px;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.65rem;
+        }
+
+        .footer h4 {
+            margin-bottom: 14px;
+            color: var(--teal);
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .footer p,
+        .footer a {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.73);
+            font-size: 0.86rem;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            max-width: 1250px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .faq-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-menu {
+                position: static;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navigation {
+                justify-content: flex-start;
+            }
+
+            .page-hero {
+                padding: 65px 7%;
+            }
+
+            .faq-layout {
+                padding: 55px 6%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement">
+        Premium Raw Hair • Boss Beauty • Pflugerville, Texas
+    </div>
+
+    <header class="header">
+
+        <div class="brand-row">
+            <a href="index.html">
+                <span class="brand-name">BIG BOSS BUNDLES</span>
+                <span class="brand-tagline">Boss Beauty.</span>
+            </a>
+        </div>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="laos.html">LAOS</a>
+            <a href="cambodian.html">Cambodian</a>
+            <a href="vietnamese.html">Vietnamese</a>
+            <a href="indian%20Raw.html">Indian Raw</a>
+            <a href="burmese.html">Burmese</a>
+            <a href="bulkhair.html">Bulk Hair</a>
+            <a href="feather-crochet.html">Feather Crochet</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="page-hero">
+
+            <p class="eyebrow">Customer Care</p>
+
+            <h1>Frequently Asked Questions</h1>
+
+            <p>
+                Learn more about our luxury raw hair, textures, lengths,
+                wigs, HD lace, coloring, care, shipping, pickup, and exchanges.
+            </p>
+
+        </section>
+
+        <div class="faq-layout">
+
+            <aside class="faq-menu">
+
+                <h2>FAQ Categories</h2>
+
+                <a href="#hair-quality">Hair Quality</a>
+                <a href="#origins-textures">Origins and Textures</a>
+                <a href="#lengths-wigs">Lengths and Wigs</a>
+                <a href="#coloring-care">Coloring and Care</a>
+                <a href="#orders-shipping">Orders and Shipping</a>
+                <a href="#pickup">Local Pickup</a>
+                <a href="#returns">Returns and Exchanges</a>
+                <a href="#hair-care-products">Hair-Care Products</a>
+
+            </aside>
+
+            <article>
+
+                <section class="faq-section" id="hair-quality">
+
+                    <h2>Hair Quality</h2>
+
+                    <details open>
+                        <summary>What type of hair does Big Boss Bundles sell?</summary>
+
+                        <p>
+                            Big Boss Bundles specializes in premium raw and
+                            luxury human hair sourced from distinct hair origins.
+                            Our hair is selected for softness, movement,
+                            versatility, and long-lasting quality.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How long does Big Boss Bundles hair last?</summary>
+
+                        <p>
+                            With proper installation, maintenance, washing,
+                            conditioning, storage, and styling, Big Boss Bundles
+                            hair can last for several years.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Does the hair shed?</summary>
+
+                        <p>
+                            Some shedding is normal with human hair products.
+                            Proper installation, gentle detangling, limited
+                            product buildup, and proper maintenance help reduce
+                            unnecessary shedding.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Is the hair reusable?</summary>
+
+                        <p>
+                            Yes. With proper care, bundles, wigs, closures,
+                            and frontals may be washed, maintained, stored,
+                            and reused.
+                        </p>
+                    </details>
+
+                </section>
+
+                <section class="faq-section" id="origins-textures">
+
+                    <h2>Hair Origins and Textures</h2>
+
+                    <details>
+                        <summary>What hair origins are available?</summary>
+
+                        <p>
+                            Big Boss Bundles offers five primary hair origins:
+                        </p>
+
+                        <ul>
+                            <li>LAOS Premium Luxury Hair</li>
+                            <li>Cambodian Raw Hair</li>
+                            <li>Vietnamese Hair</li>
+                            <li>Indian Raw Hair</li>
+                            <li>Burmese Hair</li>
+                        </ul>
+                    </details>
+
+                    <details>
+                        <summary>Which collection is the premium luxury collection?</summary>
+
+                        <p>
+                            The LAOS Collection is the Big Boss Bundles
+                            Premium Luxury Collection.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>What textures are available?</summary>
+
+                        <p>
+                            Available textures may include:
+                        </p>
+
+                        <ul>
+                            <li>Straight</li>
+                            <li>Kinky Straight</li>
+                            <li>Body Wave</li>
+                            <li>Deep Wave</li>
+                            <li>Curly</li>
+                            <li>Kinky Curly</li>
+                        </ul>
+
+                        <p>
+                            Availability may vary by hair origin and product type.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Will raw hair look exactly identical every time?</summary>
+
+                        <p>
+                            Raw hair is a natural product. Minor variations in
+                            color, texture, curl pattern, wave pattern, and
+                            fullness may occur between bundles and orders.
+                        </p>
+                    </details>
+
+                </section>
+
+                <section class="faq-section" id="lengths-wigs">
+
+                    <h2>Lengths, Wigs, Closures, and Frontals</h2>
+
+                    <details>
+                        <summary>What bundle lengths are available?</summary>
+
+                        <p>
+                            Bundle lengths generally range from 12 inches
+                            through 32 inches. Available lengths may vary by
+                            hair origin and current inventory.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How long are the wigs?</summary>
+
+                        <p>
+                            Wig lengths may be available up to 40 inches,
+                            depending on the hair origin, texture, density,
+                            and current availability.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>What wig densities are available?</summary>
+
+                        <p>
+                            Wig density options may include:
+                        </p>
+
+                        <ul>
+                            <li>180%</li>
+                            <li>200%</li>
+                            <li>230%</li>
+                            <li>250%</li>
+                        </ul>
+                    </details>
+
+                    <details>
+                        <summary>Are your wigs, closures, and frontals HD lace?</summary>
+
+                        <p>
+                            Yes. All Big Boss Bundles wigs, closures,
+                            and frontals include HD lace.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>What lace sizes are available?</summary>
+
+                        <p>
+                            Lace sizes may include 13×4 and 13×6 for applicable
+                            wigs and frontals. Available lace options will appear
+                            in the product dropdown menu.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How do I select texture, length, density, or lace size?</summary>
+
+                        <p>
+                            Each product page will include dropdown menus for
+                            the options available for that product. The price
+                            will update based on the selected product options.
+                        </p>
+                    </details>
+
+                </section>
+
+                <section class="faq-section" id="coloring-care">
+
+                    <h2>Coloring, Styling, and Hair Care</h2>
+
+                    <details>
+                        <summary>Can the hair be colored?</summary>
+
+                        <p>
+                            Yes. Big Boss Bundles premium raw hair can be
+                            professionally colored and lifted up to 613 blonde.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Can the hair be curled or straightened?</summary>
+
+                        <p>
+                            Yes. The hair may be curled, straightened,
+                            and restyled. Use heat protectant and avoid
+                            excessive heat.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Should I use a professional stylist?</summary>
+
+                        <p>
+                            We recommend using a licensed professional for
+                            installation, bleaching, coloring, cutting,
+                            customization, and significant texture changes.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How should I care for the hair?</summary>
+
+                        <ul>
+                            <li>Wash the hair gently as needed.</li>
+                            <li>Use a moisturizing conditioner.</li>
+                            <li>Detangle carefully from the ends upward.</li>
+                            <li>Avoid excessive product buildup.</li>
+                            <li>Use heat protectant before applying heat.</li>
+                            <li>Store the hair properly when not in use.</li>
+                            <li>Protect curls and waves while sleeping.</li>
+                        </ul>
+                    </details>
+
+                    <details>
+                        <summary>Does the hair require a lot of product?</summary>
+
+                        <p>
+                            No. Minimal product is recommended. Too much product
+                            may cause buildup, reduce movement, and make the hair
+                            feel heavy.
+                        </p>
+                    </details>
+
+                </section>
+
+                <section class="faq-section" id="orders-shipping">
+
+                    <h2>Orders and Shipping</h2>
+
+                    <details>
+                        <summary>How long does it take to receive an order?</summary>
+
+                        <p>
+                            Orders not immediately available generally require
+                            approximately 7 to 10 business days for processing
+                            and fulfillment. Shipping transit time begins after
+                            the carrier receives the package.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Will I receive tracking information?</summary>
+
+                        <p>
+                            Yes, when tracking is available. Tracking may be
+                            sent by email, text message, customer account,
+                            or the marketplace used to place the order.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Is signature confirmation required?</summary>
+
+                        <p>
+                            Big Boss Bundles may require signature confirmation
+                            to protect customers and reduce delivery fraud.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Can I change my shipping address?</summary>
+
+                        <p>
+                            Address changes are not guaranteed after an order
+                            is submitted. Contact Big Boss Bundles immediately
+                            if a correction is needed.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Do you sell on other platforms?</summary>
+
+                        <p>
+                            Big Boss Bundles may also sell through TikTok Shop,
+                            Amazon, Facebook Shop, and other approved official
+                            retail channels.
+                        </p>
+                    </details>
+
+                </section>
+
+                <section class="faq-section" id="pickup">
+
+                    <h2>Local Pickup</h2>
+
+                    <details>
+                        <summary>Is local pickup available?</summary>
+
+                        <p>
+                            Yes. Local pickup may be available at:
+                        </p>
+
+                        <p>
+                            <strong>
+                                301 W Pecan Street<br>
+                                Pflugerville, TX 78660
+                            </strong>
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Can I arrive as soon as I place my order?</summary>
+
+                        <p>
+                            No. Customers must call ahead and wait for
+                            confirmation that the order is ready before arriving.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>What do I need to bring for pickup?</summary>
+
+                        <p>
+                            You may be asked to show identification, order
+                            confirmation, payment verification, or written
+                            authorization if another person is picking up
+                            your order.
+                        </p>
+                    </details>
+
+                </section>
+
+                <section class="faq-section" id="returns">
+
+                    <h2>Returns and Exchanges</h2>
+
+                    <details>
+                        <summary>Do you offer refunds?</summary>
+
+                        <p>
+                            All sales are final. Big Boss Bundles does not
+                            offer refunds or returns because of change of mind,
+                            preference, incorrect customer selection,
+                            installation, coloring, cutting, alteration, or use.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Can I request an exchange?</summary>
+
+                        <p>
+                            Eligible exchange requests must be submitted within
+                            five calendar days after receiving the order.
+                            Approval is subject to the Return and Exchange Policy.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>What condition must the product be in?</summary>
+
+                        <p>
+                            The product must remain unused, unworn,
+                            uninstalled, unwashed, uncolored, uncut,
+                            unaltered, and in its original condition
+                            with original packaging and ties intact.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Can opened hair-care products be exchanged?</summary>
+
+                        <p>
+                            Hair-care and personal-care products generally
+                            cannot be exchanged after the seal is broken,
+                            the container is opened, or the product is used.
+                        </p>
+                    </details>
+
+                </section>
+
+                <section class="faq-section" id="hair-care-products">
+
+                    <h2>Celebrity Collection Products</h2>
+
+                    <details>
+                        <summary>How much is the Edge Control?</summary>
+
+                        <p>
+                            Big Boss Bundles Edge Control is $14.99.
+                            It provides strong hold with no white residue
+                            and no flaking.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How much are the Melting Spray and Wax Stick?</summary>
+
+                        <p>
+                            The Melting Spray is $11.99 and the Wax Stick
+                            is $11.99.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>How much is the Lace Tint Mousse?</summary>
+
+                        <p>
+                            Lace Tint Mousse is $10.99 and is available in
+                            Light Brown, Medium Brown, and Dark Brown.
+                        </p>
+                    </details>
+
+                </section>
+
+                <div class="contact-box">
+
+                    <h2>Still Have Questions?</h2>
+
+                    <p>Big Boss Bundles</p>
+
+                    <p>301 W Pecan Street</p>
+
+                    <p>Pflugerville, TX 78660</p>
+
+                    <a href="tel:+15122762366">
+                        Company: (512) 276-2366
+                    </a>
+
+                    <a href="tel:+15129375119">
+                        Cell: (512) 937-5119
+                    </a>
+
+                    <a href="contact.html">
+                        Visit the Contact Page
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Big Boss Bundles</h3>
+                <p>
+                    Luxury raw hair and professional hair-care essentials.
+                </p>
+                <p>Boss Beauty.</p>
+            </div>
+
+            <div>
+                <h4>Shop Hair</h4>
+                <a href="laos.html">LAOS</a>
+                <a href="cambodian.html">Cambodian</a>
+                <a href="vietnamese.html">Vietnamese</a>
+                <a href="indian%20Raw.html">Indian Raw</a>
+                <a href="burmese.html">Burmese</a>
+            </div>
+
+            <div>
+                <h4>Customer Care</h4>
+                <a href="faq.html">Frequently Asked Questions</a>
+                <a href="shipping-policy.html">Shipping Policy</a>
+                <a href="return-policy.html">Return & Exchange Policy</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-and-conditions.html">
+                    Terms and Conditions
+                </a>
+            </div>
+
+            <div>
+                <h4>Visit or Contact Us</h4>
+
+                <p>301 W Pecan Street</p>
+                <p>Pflugerville, TX 78660</p>
+
+                <a href="tel:+15122762366">
+                    Company: (512) 276-2366
+                </a>
+
+                <a href="tel:+15129375119">
+                    Cell: (512) 937-5119
+                </a>
+
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Big Boss Bundles. All rights reserved.
+        </div>
+
+    </footer>
+
+</body>
+</html>
