@@ -1,1 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Privacy Policy | Big Boss Bundles</title>
+
+    <meta
+        name="description"
+        content="Read the Big Boss Bundles Privacy Policy to learn how we collect, use, protect, and share personal information."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --gold: #D4A622;
+            --teal: #00A6D6;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --cream: #F8F6F0;
+            --gray: #606060;
+            --border: #E8E2D3;
+            --shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: "DM Sans", Arial, sans-serif;
+            line-height: 1.75;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .announcement {
+            padding: 11px 20px;
+            background: var(--teal);
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .announcement span {
+            padding: 0 10px;
+            color: var(--gold);
+        }
+
+        .header {
+            background: var(--black);
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .brand-row {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 5%;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.55rem, 3vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: 0.035em;
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            margin-top: 7px;
+            color: var(--teal);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .home-button {
+            padding: 11px 17px;
+            border: 2px solid var(--teal);
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            transition: 0.2s ease;
+        }
+
+        .home-button:hover {
+            background: var(--teal);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 15px 20px;
+            overflow-x: auto;
+            background: var(--white);
+            white-space: nowrap;
+        }
+
+        .navigation a {
+            color: var(--black);
+            font-size: 0.73rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .navigation a:hover,
+        .navigation .active {
+            color: var(--teal);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 95px 6%;
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(0, 166, 214, 0.23),
+                    transparent 31%
+                ),
+                radial-gradient(
+                    circle at 10% 75%,
+                    rgba(212, 166, 34, 0.25),
+                    transparent 34%
+                ),
+                var(--black);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero::before {
+            content: "BB";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: rgba(255, 255, 255, 0.035);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 19rem;
+            font-weight: 700;
+            line-height: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            margin-bottom: 13px;
+            color: var(--teal);
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(2.9rem, 6vw, 5.7rem);
+            line-height: 1.05;
+        }
+
+        .hero p {
+            max-width: 670px;
+            margin: 22px auto 0;
+            color: rgba(255, 255, 255, 0.81);
+            font-size: 1.02rem;
+        }
+
+        .effective-date {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 9px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .page-layout {
+            display: grid;
+            max-width: 1300px;
+            margin: 0 auto;
+            grid-template-columns: 280px minmax(0, 1fr);
+            gap: 50px;
+            padding: 80px 5%;
+        }
+
+        .policy-menu {
+            position: sticky;
+            top: 25px;
+            height: fit-content;
+            padding: 27px;
+            background: var(--cream);
+            border-top: 5px solid var(--gold);
+            box-shadow: var(--shadow);
+        }
+
+        .policy-menu h2 {
+            margin-bottom: 17px;
+            color: var(--black);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.35rem;
+        }
+
+        .policy-menu a {
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--gray);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .policy-menu a:hover {
+            color: var(--teal);
+        }
+
+        .policy-content {
+            min-width: 0;
+        }
+
+        .intro-box {
+            margin-bottom: 34px;
+            padding: 27px;
+            border-left: 5px solid var(--teal);
+            background: rgba(0, 166, 214, 0.08);
+        }
+
+        .intro-box p {
+            color: #424242;
+        }
+
+        .policy-section {
+            margin-bottom: 28px;
+            padding: 32px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.055);
+        }
+
+        .policy-section h2 {
+            margin-bottom: 15px;
+            color: var(--black);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.55rem, 3vw, 2.1rem);
+            line-height: 1.2;
+        }
+
+        .policy-section h2::after {
+            content: "";
+            display: block;
+            width: 58px;
+            height: 4px;
+            margin-top: 11px;
+            background: linear-gradient(
+                90deg,
+                var(--gold),
+                var(--teal)
+            );
+        }
+
+        .policy-section h3 {
+            margin: 22px 0 8px;
+            color: var(--teal);
+            font-size: 1.03rem;
+        }
+
+        .policy-section p {
+            margin-bottom: 13px;
+            color: var(--gray);
+        }
+
+        .policy-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-section ul {
+            margin: 12px 0 15px 22px;
+            color: var(--gray);
+        }
+
+        .policy-section li {
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+
+        .policy-section strong {
+            color: var(--black);
+        }
+
+        .contact-card {
+            padding: 36px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0, 166, 214, 0.19),
+                    transparent 58%
+                ),
+                var(--black);
+            color: var(--white);
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .contact-card h2 {
+            margin-bottom: 15px;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 2rem;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .contact-card a:hover {
+            color: var(--teal);
+        }
+
+        .policy-links {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 75px;
+        }
+
+        .policy-links a {
+            display: flex;
+            min-height: 80px;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            border: 2px solid var(--teal);
+            background: var(--white);
+            color: var(--black);
+            font-size: 0.76rem;
+            font-weight: 900;
+            letter-spacing: 0.07em;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.2s ease;
+        }
+
+        .policy-links a:hover {
+            background: var(--teal);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            padding: 64px 6% 24px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .footer-grid {
+            display: grid;
+            max-width: 1350px;
+            margin: 0 auto;
+            grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
+            gap: 42px;
+        }
+
+        .footer h3 {
+            margin-bottom: 13px;
+            color: var(--gold);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.75rem;
+        }
+
+        .footer h4 {
+            margin-bottom: 14px;
+            color: var(--teal);
+            font-size: 0.75rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .footer p,
+        .footer a {
+            display: block;
+            margin-bottom: 9px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.86rem;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1350px;
+            margin: 42px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.48);
+            font-size: 0.77rem;
+            text-align: center;
+        }
+
+        @media (max-width: 950px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-menu {
+                position: static;
+            }
+
+            .policy-menu nav {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .policy-links {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .brand-row {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .home-button {
+                display: none;
+            }
+
+            .navigation {
+                justify-content: flex-start;
+            }
+
+            .hero {
+                padding: 72px 6%;
+            }
+
+            .hero::before {
+                font-size: 11rem;
+            }
+
+            .page-layout {
+                padding: 55px 5%;
+            }
+
+            .policy-menu nav,
+            .footer-grid,
+            .policy-links {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-section {
+                padding: 25px 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement">
+        Premium Raw Hair
+        <span>•</span>
+        Boss Beauty
+        <span>•</span>
+        Pflugerville, Texas
+    </div>
+
+    <header class="header">
+
+        <div class="brand-row">
+
+            <a href="index.html" class="brand">
+                <span class="brand-name">BIG BOSS BUNDLES</span>
+                <span class="brand-tagline">Boss Beauty.</span>
+            </a>
+
+            <a href="index.html" class="home-button">
+                Return Home
+            </a>
+
+        </div>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="laos.html">LAOS</a>
+            <a href="cambodian.html">Cambodian</a>
+            <a href="vietnamese.html">Vietnamese</a>
+            <a href="indian%20Raw.html">Indian Raw</a>
+            <a href="burmese.html">Burmese</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html" class="active">Privacy</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">Your Information Matters</p>
+
+                <h1>Privacy Policy</h1>
+
+                <p>
+                    This Privacy Policy explains how Big Boss Bundles may
+                    collect, use, disclose, and protect information when you
+                    visit our website, contact us, or purchase our products.
+                </p>
+
+                <span class="effective-date">
+                    Effective July 14, 2026
+                </span>
+
+            </div>
+
+        </section>
+
+        <div class="page-layout">
+
+            <aside class="policy-menu">
+
+                <h2>On This Page</h2>
+
+                <nav>
+                    <a href="#information-collected">
+                        Information Collected
+                    </a>
+
+                    <a href="#how-used">
+                        How Information Is Used
+                    </a>
+
+                    <a href="#payments">
+                        Payments and Orders
+                    </a>
+
+                    <a href="#cookies">
+                        Cookies and Analytics
+                    </a>
+
+                    <a href="#sharing">
+                        Information Sharing
+                    </a>
+
+                    <a href="#security">
+                        Information Security
+                    </a>
+
+                    <a href="#retention">
+                        Data Retention
+                    </a>
+
+                    <a href="#privacy-rights">
+                        Privacy Rights
+                    </a>
+
+                    <a href="#children">
+                        Children’s Privacy
+                    </a>
+
+                    <a href="#changes">
+                        Policy Changes
+                    </a>
+
+                    <a href="#contact">
+                        Contact Us
+                    </a>
+                </nav>
+
+            </aside>
+
+            <article class="policy-content">
+
+                <div class="intro-box">
+                    <p>
+                        By using this website, submitting information, or
+                        placing an order, you acknowledge the practices
+                        described in this Privacy Policy. This policy applies
+                        to information collected through the Big Boss Bundles
+                        website and related customer communications.
+                    </p>
+                </div>
+
+                <section
+                    class="policy-section"
+                    id="information-collected"
+                >
+
+                    <h2>1. Information We May Collect</h2>
+
+                    <p>
+                        We may collect information that you voluntarily provide
+                        when you place an order, request customer support,
+                        subscribe to communications, participate in a promotion,
+                        complete a form, or otherwise interact with Big Boss
+                        Bundles.
+                    </p>
+
+                    <h3>Personal and Contact Information</h3>
+
+                    <ul>
+                        <li>Name</li>
+                        <li>Email address</li>
+                        <li>Telephone number</li>
+                        <li>Billing address</li>
+                        <li>Shipping address</li>
+                    </ul>
+
+                    <h3>Order and Transaction Information</h3>
+
+                    <ul>
+                        <li>Products purchased or viewed</li>
+                        <li>Order number and order history</li>
+                        <li>Selected hair origin, texture, length, or shade</li>
+                        <li>Shipping, delivery, or pickup details</li>
+                        <li>Discounts, promotions, or gift information</li>
+                    </ul>
+
+                    <h3>Device and Website Information</h3>
+
+                    <p>
+                        When you visit the website, certain information may be
+                        collected automatically, including your IP address,
+                        browser type, device type, referring page, pages viewed,
+                        approximate location, and interactions with the website.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="how-used">
+
+                    <h2>2. How We May Use Information</h2>
+
+                    <p>
+                        Big Boss Bundles may use personal information for
+                        legitimate business purposes, including to:
+                    </p>
+
+                    <ul>
+                        <li>Process, fulfill, and deliver customer orders</li>
+
+                        <li>
+                            Provide order confirmations, shipping updates,
+                            pickup information, and customer service
+                        </li>
+
+                        <li>
+                            Verify information, help prevent fraud, and protect
+                            transactions
+                        </li>
+
+                        <li>
+                            Respond to questions, requests, disputes, or product
+                            concerns
+                        </li>
+
+                        <li>
+                            Operate, maintain, personalize, and improve the
+                            website
+                        </li>
+
+                        <li>
+                            Understand product interest and website performance
+                        </li>
+
+                        <li>
+                            Send promotional communications where permitted and
+                            subject to customer choices
+                        </li>
+
+                        <li>
+                            Maintain business, tax, transaction, and compliance
+                            records
+                        </li>
+
+                        <li>
+                            Enforce our Terms and Conditions, policies, and
+                            legal rights
+                        </li>
+                    </ul>
+
+                </section>
+
+                <section class="policy-section" id="payments">
+
+                    <h2>3. Payments and Order Processing</h2>
+
+                    <p>
+                        Payments may be processed through third-party payment
+                        processors, banks, digital wallets, installment-payment
+                        providers, or marketplace platforms selected for the
+                        website.
+                    </p>
+
+                    <p>
+                        Payment providers may collect and process payment-card,
+                        billing, authentication, and transaction information
+                        under their own privacy policies and security practices.
+                        Big Boss Bundles may receive confirmation of payment,
+                        transaction status, billing contact information, and
+                        limited payment details needed to complete or service
+                        an order.
+                    </p>
+
+                    <p>
+                        Customers should review the privacy terms of any
+                        third-party payment or marketplace service they choose
+                        to use.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="cookies">
+
+                    <h2>4. Cookies and Analytics</h2>
+
+                    <p>
+                        The website may use cookies, pixels, local storage,
+                        analytics tools, and similar technologies to remember
+                        preferences, maintain shopping-cart functionality,
+                        understand website usage, improve performance, and
+                        support marketing.
+                    </p>
+
+                    <p>
+                        You may be able to control certain cookies through your
+                        browser settings. Disabling cookies may prevent some
+                        website features from functioning properly.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="sharing">
+
+                    <h2>5. How Information May Be Shared</h2>
+
+                    <p>
+                        Big Boss Bundles does not disclose personal information
+                        merely for unrelated purposes. Information may be shared
+                        with service providers when reasonably necessary to
+                        operate the business, fulfill orders, or provide the
+                        website.
+                    </p>
+
+                    <p>These recipients may include:</p>
+
+                    <ul>
+                        <li>Payment and fraud-prevention providers</li>
+                        <li>Shipping carriers and delivery providers</li>
+                        <li>Website hosting and technical-service providers</li>
+                        <li>Email, communications, and customer-support tools</li>
+                        <li>Analytics and advertising providers</li>
+                        <li>Professional advisers and business consultants</li>
+                        <li>
+                            Government agencies or other parties when legally
+                            required
+                        </li>
+                    </ul>
+
+                    <p>
+                        Information may also be disclosed when reasonably
+                        necessary to protect customers, prevent fraud, enforce
+                        policies, respond to legal process, or protect the
+                        rights, property, and safety of Big Boss Bundles or
+                        others.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="security">
+
+                    <h2>6. Information Security</h2>
+
+                    <p>
+                        Big Boss Bundles seeks to use reasonable administrative,
+                        technical, and physical safeguards appropriate to the
+                        nature of the information maintained.
+                    </p>
+
+                    <p>
+                        However, no website, transmission method, payment
+                        platform, or electronic-storage system can be guaranteed
+                        to be completely secure. Customers should protect their
+                        passwords, devices, and account information and should
+                        contact us promptly regarding suspected unauthorized
+                        activity involving an order.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="retention">
+
+                    <h2>7. Data Retention</h2>
+
+                    <p>
+                        Information may be retained for as long as reasonably
+                        necessary to process and document transactions, provide
+                        customer service, comply with tax and accounting
+                        obligations, resolve disputes, prevent fraud, enforce
+                        agreements, and satisfy applicable legal requirements.
+                    </p>
+
+                    <p>
+                        Retention periods may vary based on the type of
+                        information, the reason it was collected, and applicable
+                        business or legal obligations.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="privacy-rights">
+
+                    <h2>8. Privacy Choices and Rights</h2>
+
+                    <p>
+                        Depending on your location and applicable law, you may
+                        have the right to request access to, correction of,
+                        deletion of, or information about certain personal data.
+                        You may also have rights concerning certain processing
+                        or disclosures of personal data.
+                    </p>
+
+                    <p>
+                        To submit a privacy request, contact Big Boss Bundles
+                        using the information below. We may need to verify your
+                        identity before completing a request. Certain
+                        information may be retained when necessary to complete
+                        transactions, comply with law, protect security, prevent
+                        fraud, or establish and defend legal rights.
+                    </p>
+
+                    <h3>Marketing Communications</h3>
+
+                    <p>
+                        You may unsubscribe from promotional emails by using the
+                        unsubscribe option included in the communication or by
+                        contacting us. Transactional messages concerning an
+                        order, payment, shipping, pickup, or customer-service
+                        request may still be sent.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="children">
+
+                    <h2>9. Children’s Privacy</h2>
+
+                    <p>
+                        This website is intended for a general audience and is
+                        not directed to children under 13. Big Boss Bundles does
+                        not knowingly request or collect personal information
+                        from children under 13 through this website.
+                    </p>
+
+                    <p>
+                        A parent or legal guardian who believes a child has
+                        submitted personal information may contact us to request
+                        review and appropriate deletion.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="third-party-links">
+
+                    <h2>10. Third-Party Platforms and Links</h2>
+
+                    <p>
+                        The website may contain links to Instagram, TikTok,
+                        Facebook, Amazon, TikTok Shop, payment services, shipping
+                        services, and other third-party websites or platforms.
+                    </p>
+
+                    <p>
+                        Big Boss Bundles does not control the privacy practices,
+                        content, or security of third-party services. Their own
+                        privacy policies and terms apply when you use those
+                        services.
+                    </p>
+
+                </section>
+
+                <section class="policy-section" id="changes">
+
+                    <h2>11. Changes to This Privacy Policy</h2>
+
+                    <p>
+                        Big Boss Bundles may update this Privacy Policy to
+                        reflect operational, legal, technological, or business
+                        changes. The effective date at the top of this page will
+                        be updated when material revisions are published.
+                    </p>
+
+                    <p>
+                        Continued use of the website after an updated policy is
+                        posted means that the updated policy will apply to
+                        subsequent website use, subject to applicable law.
+                    </p>
+
+                </section>
+
+                <section class="contact-card" id="contact">
+
+                    <h2>Contact Big Boss Bundles</h2>
+
+                    <p>
+                        Questions or privacy requests may be directed to:
+                    </p>
+
+                    <p>
+                        <strong>Big Boss Bundles</strong><br>
+                        301 W Pecan Street<br>
+                        Pflugerville, TX 78660
+                    </p>
+
+                    <p>
+                        Telephone:
+                        <a href="tel:+13106785343">
+                            (310) 678-5343
+                        </a>
+                    </p>
+
+                    <p>
+                        Email:
+                        <a href="mailto:support@bigbossbundles.com">
+                            support@bigbossbundles.com
+                        </a>
+                    </p>
+
+                </section>
+
+            </article>
+
+        </div>
+
+        <nav class="policy-links" aria-label="Website policies">
+            <a href="terms-and-conditions.html">
+                Terms and Conditions
+            </a>
+
+            <a href="shipping-policy.html">
+                Shipping Policy
+            </a>
+
+            <a href="return-policy.html">
+                Return and Exchange Policy
+            </a>
+
+            <a href="faq.html">
+                Frequently Asked Questions
+            </a>
+        </nav>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Big Boss Bundles</h3>
+
+                <p>
+                    Luxury raw hair and professional hair-care essentials.
+                </p>
+
+                <p>Boss Beauty.</p>
+            </div>
+
+            <div>
+                <h4>Shop Hair</h4>
+                <a href="laos.html">LAOS</a>
+                <a href="cambodian.html">Cambodian</a>
+                <a href="vietnamese.html">Vietnamese</a>
+                <a href="indian%20Raw.html">Indian Raw</a>
+                <a href="burmese.html">Burmese</a>
+            </div>
+
+            <div>
+                <h4>Customer Care</h4>
+                <a href="faq.html">FAQ</a>
+                <a href="shipping-policy.html">Shipping Policy</a>
+                <a href="return-policy.html">
+                    Return and Exchange Policy
+                </a>
+                <a href="terms-and-conditions.html">
+                    Terms and Conditions
+                </a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <p>301 W Pecan Street</p>
+                <p>Pflugerville, TX 78660</p>
+
+                <a href="tel:+13106785343">
+                    (310) 678-5343
+                </a>
+
+                <a href="mailto:support@bigbossbundles.com">
+                    support@bigbossbundles.com
+                </a>
+
+                <a
+                    href="https://www.instagram.com/bigbossbundles100/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@bigbossbundles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    TikTok
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Big Boss Bundles. All rights reserved.
+        </div>
+
+    </footer>
+
+</body>
+</html>
