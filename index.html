@@ -423,7 +423,55 @@
             padding: 40px 5% 100px;
         }
 
-        /* FOOTER */
+  
+      /* COLLECTIONS */
+
+.collections-grid{
+    max-width:1400px;
+    margin:80px auto;
+    padding:0 4%;
+}
+
+.collections-grid h2{
+    text-align:center;
+    color:var(--gold);
+    font-size:2.5rem;
+    margin-bottom:50px;
+    font-family:"Cormorant Garamond",serif;
+}
+
+.collection-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+}
+
+.collection-card{
+    background:#141414;
+    border:1px solid rgba(212,166,34,.35);
+    border-radius:18px;
+    padding:40px 25px;
+    text-align:center;
+    transition:.35s;
+}
+
+.collection-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--gold);
+    box-shadow:0 0 35px rgba(212,166,34,.25);
+}
+
+.collection-card h3{
+    color:var(--gold);
+    font-size:1.8rem;
+    margin-bottom:12px;
+    font-family:"Cormorant Garamond",serif;
+}
+
+.collection-card p{
+    color:#d6d6d6;
+    line-height:1.6;
+}
 
         .site-footer {
             padding: 65px 5% 25px;
@@ -859,7 +907,40 @@
             class="next-section-marker"
             id="collections"
         >
-            <!-- PART 2 GOES HERE -->
+          <section class="collections-grid">
+
+    <h2>Shop by Hair Origin</h2>
+
+    <div class="collection-cards">
+
+        <a href="laos.html" class="collection-card">
+            <h3>LAOS</h3>
+            <p>Premium Luxury Hair</p>
+        </a>
+
+        <a href="cambodian.html" class="collection-card">
+            <h3>Cambodian</h3>
+            <p>Soft • Full • Natural</p>
+        </a>
+
+        <a href="vietnamese.html" class="collection-card">
+            <h3>Vietnamese</h3>
+            <p>Silky • Straight • Elegant</p>
+        </a>
+
+        <a href="indian%20Raw.html" class="collection-card">
+            <h3>Indian Raw</h3>
+            <p>Luxury Raw Collection</p>
+        </a>
+
+        <a href="burmese.html" class="collection-card">
+            <h3>Burmese</h3>
+            <p>Natural Volume & Texture</p>
+        </a>
+
+    </div>
+
+</section>
         </div>
 
     </main>
