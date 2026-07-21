@@ -9,7 +9,7 @@
 
   <meta
     name="description"
-    content="Shop luxury bundles, wigs, closures, frontals, men's hair pieces and professional hair care from Big Boss Bundles."
+    content="Luxury bundles, wigs, closures, frontals, men's hair pieces and professional hair care from Big Boss Bundles."
   >
 
   <link rel="stylesheet" href="style.css">
@@ -64,22 +64,7 @@
       font-weight: 800;
       letter-spacing: 2px;
     }
-
-    .header-contact {
-      background: var(--teal);
-      color: var(--white);
-      padding: 12px 22px;
-      border-radius: 30px;
-      font-weight: 700;
-      transition: 0.3s ease;
-    }
-
-    .header-contact:hover {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    .main-nav {
+.main-nav {
       background: var(--white);
       border-bottom: 2px solid var(--gold);
       display: flex;
@@ -104,62 +89,57 @@
     .main-nav a:hover {
       color: var(--teal);
     }
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="hero-label">
-            Luxury Hair & Beauty
-        </div>
-
-        <h1>
-            Boss Beauty<br>Starts Here
-        </h1>
-
-        <p>
-            Premium bundles, wigs, closures, frontals, men's hair pieces and professional hair care designed for luxury without compromise.
-        </p>
-
-        <div class="button-row">
-
-            <a class="button button-gold" href="bundles.html">
-                Luxury Hair
-            </a>
-
-            <a class="button button-outline" href="wigs.html">
-                Wigs
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="hero-image">
-
-        <img
-            src="images/celebrity-hero.png"
-            alt="Achieve Celebrity Hair Styles Here">
-
-    </div>
-
-</section>
+    .hero {
+      min-height: 680px;
+      display: grid;
+      grid-template-columns: 44% 56%;
+      align-items: stretch;
+      background: var(--black);
+      color: var(--white);
+      overflow: hidden;
+    }
 
     .hero-content {
-      max-width: 680px;
-    }
-.hero-content{
-width:42%;
-max-width:650px;
-margin-left:6%;
-padding:60px 0;
-color:#ffffff;
-}
+      max-width: none;
+      padding: 80px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top left, rgba(0, 166, 214, 0.13), transparent 42%),
+        var(--black);
     }
 
-   <h1>Luxury Hair<br>Without<br>Compromise.</h1> <p>
-Premium bundles, wigs, closures, frontals, men's hair pieces and professional hair care designed for women who expect luxury.
-</p>
+    .hero-image {
+      min-height: 680px;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 680px;
+      object-fit: contain;
+      object-position: center;
+      background: var(--black);
+    }
+
+    .hero-label {
+      color: var(--teal);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      color: var(--gold);
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.98;
+      margin: 0 0 22px;
+      text-transform: uppercase;
     }
 
     .hero p {
@@ -612,386 +592,32 @@ Premium bundles, wigs, closures, frontals, men's hair pieces and professional ha
       .collection-card img,
       .social-strip img {
         height: 320px;
-        /* ---------- LUXURY UPDATES ---------- */
-
-.brand-name{
-font-size:clamp(2.4rem,4vw,4rem);
-letter-spacing:4px;
-}
-
-.top-header{
-padding:28px 5%;
-}
-
-.main-nav{
-padding:20px 4%;
-gap:28px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-
-.main-nav a{
-transition:.3s;
-position:relative;
-}
-
-.main-nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-8px;
-width:0;
-height:2px;
-background:#d4a622;
-transition:.3s;
-}
-
-.main-nav a:hover::after{
-width:100%;
-}
-
-.hero{
-min-height:760px;
-}
-
-.hero h1{
-font-size:clamp(4rem,8vw,6.8rem);
-}
-
-.hero p{
-font-size:1.2rem;
-max-width:650px;
-}
-
-.collection-card,
-.texture-card,
-.feature-card,
-.review-card{
-transition:all .35s ease;
-}
-
-.collection-card:hover,
-.texture-card:hover,
-.feature-card:hover,
-.review-card:hover{
-transform:translateY(-8px);
-box-shadow:0 25px 45px rgba(0,0,0,.18);
-}
-
-.collection-card img,
-.texture-card img,
-.feature-card img,
-.social-strip img{
-cursor:pointer;
-transition:transform .35s ease;
-}
-
-.collection-card img:hover,
-.texture-card img:hover,
-.feature-card img:hover,
-.social-strip img:hover{
-transform:scale(1.05);
-}
-
-.small-button,
-.button{
-font-weight:700;
-letter-spacing:1px;
-}
-
-.small-button{
-padding:12px 28px;
-}
-
-.button{
-padding:16px 34px;
-}
-
-.section-heading h2{
-margin-bottom:20px;
-}
-
-footer{
-margin-top:80px;
-}
-
-.footer-grid a{
-transition:.3s;
-}
-
-.footer-grid a:hover{
-padding-left:8px;
-}
-
-@media(max-width:768px){
-
-.hero{
-min-height:620px;
-}
-
-.brand-name{
-font-size:2rem;
-}
-
-.main-nav{
-gap:14px;
-}
-
-}
       }
-  /* ===== EMERGENCY LAYOUT RESET ===== */
+    }
 
-html,
-body {
-  width: 100% !important;
-  max-width: none !important;
-  overflow-x: hidden !important;
-}
-
-main,
-section,
-.section,
-.section-light,
-.section-dark {
-  width: 100% !important;
-  max-width: none !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.top-header {
-  width: 100% !important;
-  justify-content: center !important;
-}
-
-.main-nav {
-  width: 100% !important;
-}
+    @media (max-width: 900px) {
       .hero {
-  min-height: 660px;
-  background: #0a0a0a;
-  display: grid;
-  grid-template-columns: 52% 48%;
-  align-items: stretch;
-  overflow: hidden;
-}
+        grid-template-columns: 1fr;
+      }
 
-.hero-content {
-  padding: 80px 7%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+      .hero-content {
+        padding: 65px 7%;
+      }
 
-.hero-image {
-  width: 100%;
-  min-height: 660px;
-  background: #0a0a0a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+      .hero-image,
+      .hero-image img {
+        min-height: 420px;
+      }
+    }
 
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  min-height: 660px;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-}
-
-@media (max-width: 800px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-image,
-  .hero-image img {
-    min-height: 420px;
-  }
-}
-
-.hero {
-  width: 100% !important;
-  min-height: 700px !important;
-  padding: 70px 7% !important;
-  margin: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  background-position: center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-}
-
-.hero-content {
-  width: 45% !important;
-  max-width: 680px !important;
-  margin: 0 !important;
-  padding: 40px 0 !important;
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-.hero h1 {
-  font-size: clamp(3rem, 6vw, 5.8rem) !important;
-  line-height: 1 !important;
-  margin: 0 0 24px !important;
-}
-
-.hero p {
-  max-width: 590px !important;
-  font-size: 1.15rem !important;
-  line-height: 1.7 !important;
-}
-
-.section {
-  padding: 85px 5% !important;
-}
-
-.section-heading {
-  width: 100% !important;
-  max-width: 800px !important;
-  margin: 0 auto 50px !important;
-}
-
-.collection-grid {
-  width: 100% !important;
-  max-width: 1250px !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  gap: 22px !important;
-}
-
-.collection-card {
-  width: 100% !important;
-  min-width: 0 !important;
-}
-
-.collection-card img {
-  width: 100% !important;
-  height: 310px !important;
-  object-fit: cover !important;
-}
-
-.texture-grid {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 25px !important;
-}
-
-.texture-card {
-  width: 100% !important;
-  min-width: 0 !important;
-  min-height: 390px !important;
-}
-
-.feature-grid {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 30px !important;
-}
-
-.feature-card {
-  width: 100% !important;
-  min-width: 0 !important;
-  min-height: 480px !important;
-}
-
-.reviews-grid {
-  width: 100% !important;
-  max-width: 1150px !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 24px !important;
-}
-
-.review-card {
-  width: 100% !important;
-  min-width: 0 !important;
-}
-
-.social-strip {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 14px !important;
-}
-
-footer {
-  width: 100% !important;
-  margin-top: 0 !important;
-}
-
-.footer-grid {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: 2fr 1fr 1fr !important;
-  gap: 45px !important;
-}
-
-/* Hide broken-image words and icons */
-
-.collection-card img,
-.texture-card img,
-.feature-card img,
-.social-strip img {
-  color: transparent !important;
-  font-size: 0 !important;
-}
-
-/* Tablet */
-
-@media (max-width: 1100px) {
-  .collection-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-
-  .texture-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-}
-
-/* Mobile */
-
-@media (max-width: 800px) {
-  .hero {
-    min-height: 620px !important;
-    padding: 60px 7% !important;
-  }
-
-  .hero-content {
-    width: 100% !important;
-    max-width: 600px !important;
-  }
-
-  .collection-grid,
-  .texture-grid,
-  .feature-grid,
-  .reviews-grid,
-  .social-strip,
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-  }
-}  }
   </style>
 </head>
 
 <body>
 
+  <header class="top-header">
+    <div class="brand-name">BIG BOSS BUNDLES</div>
+</header>
 
   <nav class="main-nav">
     <a href="index.html">Home</a>
@@ -1001,7 +627,6 @@ footer {
     <a href="frontals.html">Frontals</a>
     <a href="mens.html">Men's Hair Pieces</a>
     <a href="haircare.html">Hair Care</a>
-    <a href="contact.html">Contact</a>
   </nav>
 
   <main>
@@ -1019,22 +644,28 @@ footer {
         </p>
 
         <div class="button-row">
+          <a class="button button-gold" href="bundles.html">Luxury Hair</a>
+          <a class="button button-outline" href="wigs.html">Wigs</a>
+        </div>
+      </div>
 
-<a class="button button-gold" href="bundles.html">
-Collections
-</a>
+      <div class="hero-image">
+        <img onerror="this.style.display=\'none\'"
+          src="./celebrity-hero.png"
+          alt="Achieve Celebrity Hair Styles Here"
+        >
+      </div>
+    </section>
 
-<a class="button button-outline" href="wigs.html">
-Wigs
-</a>
-
-</div>
+    <div class="celebrity-banner">
+      Achieve Celebrity Hair Styles Here
+    </div>
 
     <section class="section section-light">
 
       <div class="section-heading">
         <span>Premium Collections</span>
-        <h2>Shop by Hair Origin</h2>
+        <h2>Hair Origins</h2>
         <p>
           Explore luxury hair selected from five premium origins, each offering
           distinctive beauty, softness and styling versatility.
@@ -1044,7 +675,7 @@ Wigs
       <div class="collection-grid">
 
         <article class="collection-card">
-          <img
+          <img onerror="this.style.display=\'none\'"
             src="images/laos-hair.jpg"
             alt="LAOS premium luxury hair"
           >
@@ -1060,7 +691,7 @@ Wigs
         </article>
 
         <article class="collection-card">
-          <img
+          <img onerror="this.style.display=\'none\'"
             src="images/cambodian-hair.jpg"
             alt="Cambodian luxury hair"
           >
@@ -1076,7 +707,7 @@ Wigs
         </article>
 
         <article class="collection-card">
-          <img
+          <img onerror="this.style.display=\'none\'"
             src="images/indian-hair.jpg"
             alt="Indian raw luxury hair"
           >
@@ -1086,13 +717,13 @@ Wigs
             <p>Natural texture, softness and incredible styling versatility.</p>
 
             <a class="small-button" href="indian.html">
-              Indian
+              Indian Raw
             </a>
           </div>
         </article>
 
         <article class="collection-card">
-          <img
+          <img onerror="this.style.display=\'none\'"
             src="images/burmese-hair.jpg"
             alt="Burmese luxury hair"
           >
@@ -1108,7 +739,7 @@ Wigs
         </article>
 
         <article class="collection-card">
-          <img
+          <img onerror="this.style.display=\'none\'"
             src="images/vietnamese-hair.jpg"
             alt="Vietnamese luxury hair"
           >
@@ -1130,7 +761,7 @@ Wigs
 
       <div class="section-heading">
         <span>Find Your Perfect Look</span>
-        <h2>Shop by Texture</h2>
+        <h2>Textures</h2>
         <p>
           Choose your signature texture and create a look that is polished,
           glamorous and completely unforgettable.
@@ -1140,7 +771,7 @@ Wigs
       <div class="texture-grid">
 
         <article class="texture-card">
-          <img src="images/straight-hair.jpg" alt="Straight luxury hair">
+          <img onerror="this.style.display=\'none\'" src="images/straight-hair.jpg" alt="Straight luxury hair">
 
           <div class="texture-overlay">
             <h3>Straight</h3>
@@ -1153,7 +784,7 @@ Wigs
         </article>
 
         <article class="texture-card">
-          <img src="images/kinky-straight-hair.jpg" alt="Kinky straight hair">
+          <img onerror="this.style.display=\'none\'" src="images/kinky-straight-hair.jpg" alt="Kinky straight hair">
 
           <div class="texture-overlay">
             <h3>Kinky Straight</h3>
@@ -1166,7 +797,7 @@ Wigs
         </article>
 
         <article class="texture-card">
-          <img src="images/body-wave-hair.jpg" alt="Body wave luxury hair">
+          <img onerror="this.style.display=\'none\'" src="images/body-wave-hair.jpg" alt="Body wave luxury hair">
 
           <div class="texture-overlay">
             <h3>Body Wave</h3>
@@ -1179,7 +810,7 @@ Wigs
         </article>
 
         <article class="texture-card">
-          <img src="images/deep-wave-hair.jpg" alt="Deep wave luxury hair">
+          <img onerror="this.style.display=\'none\'" src="images/deep-wave-hair.jpg" alt="Deep wave luxury hair">
 
           <div class="texture-overlay">
             <h3>Deep Wave</h3>
@@ -1192,7 +823,7 @@ Wigs
         </article>
 
         <article class="texture-card">
-          <img src="images/curly-hair.jpg" alt="Curly luxury hair">
+          <img onerror="this.style.display=\'none\'" src="images/curly-hair.jpg" alt="Curly luxury hair">
 
           <div class="texture-overlay">
             <h3>Curly</h3>
@@ -1205,7 +836,7 @@ Wigs
         </article>
 
         <article class="texture-card">
-          <img src="images/kinky-curly-hair.jpg" alt="Kinky curly hair">
+          <img onerror="this.style.display=\'none\'" src="images/kinky-curly-hair.jpg" alt="Kinky curly hair">
 
           <div class="texture-overlay">
             <h3>Kinky Curly</h3>
@@ -1234,7 +865,7 @@ Wigs
       <div class="feature-grid">
 
         <article class="feature-card">
-          <img
+          <img onerror="this.style.display=\'none\'"
             src="images/mens-hair-pieces.jpg"
             alt="Men's premium hair pieces"
           >
@@ -1254,7 +885,7 @@ Wigs
         </article>
 
         <article class="feature-card">
-          <img
+          <img onerror="this.style.display=\'none\'"
             src="images/hair-care-products.jpg"
             alt="Big Boss Bundles hair care products"
           >
@@ -1338,10 +969,10 @@ Wigs
       </div>
 
       <div class="social-strip">
-        <img src="images/social-1.jpg" alt="Big Boss Bundles social post">
-        <img src="images/social-2.jpg" alt="Big Boss Bundles social post">
-        <img src="images/social-3.jpg" alt="Big Boss Bundles social post">
-        <img src="images/social-4.jpg" alt="Big Boss Bundles social post">
+        <img onerror="this.style.display=\'none\'" src="images/social-1.jpg" alt="Big Boss Bundles social post">
+        <img onerror="this.style.display=\'none\'" src="images/social-2.jpg" alt="Big Boss Bundles social post">
+        <img onerror="this.style.display=\'none\'" src="images/social-3.jpg" alt="Big Boss Bundles social post">
+        <img onerror="this.style.display=\'none\'" src="images/social-4.jpg" alt="Big Boss Bundles social post">
       </div>
 
       <div class="social-links">
@@ -1368,7 +999,7 @@ Wigs
       </div>
 
       <div>
-        <h3>Shop</h3>
+        <h3>Collections</h3>
 
         <a href="bundles.html">Bundles</a>
         <a href="wigs.html">Wigs</a>
