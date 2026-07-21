@@ -1,1 +1,6 @@
-
+<div class="hero-image">
+  <img
+    src="./celebrity-hero.png"
+    alt="Achieve Celebrity Hair Styles Here"
+  >
+</div>
