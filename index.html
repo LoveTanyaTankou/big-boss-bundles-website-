@@ -48,47 +48,62 @@
       text-decoration: none;
     }
 
-    .top-header {
-      background: var(--black);
-      color: var(--white);
-      padding: 22px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid rgba(212, 166, 34, 0.55);
     }
 
-    .brand-name {
-      color: var(--gold);
-      font-size: clamp(1.7rem, 3vw, 2.8rem);
-      font-weight: 800;
-      letter-spacing: 2px;
+    .brand-wrap {
+      padding: 12px 5% 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-.main-nav {
+
+    .brand-logo {
+      width: 125px;
+      max-height: 90px;
+      object-fit: contain;
+    }
+
+    .main-nav {
       background: var(--white);
       border-bottom: 2px solid var(--gold);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 22px;
-      padding: 17px 4%;
+      gap: 28px;
+      padding: 15px 4% 18px;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 8px 22px rgba(0,0,0,.08);
     }
 
     .main-nav a {
       color: var(--black);
-      font-size: 0.95rem;
+      font-size: .86rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.7px;
-      transition: 0.25s ease;
+      letter-spacing: .8px;
+      position: relative;
     }
 
-    .main-nav a:hover {
-      color: var(--teal);
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width .25s ease;
     }
+
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
     .hero {
       min-height: 680px;
       display: grid;
@@ -165,20 +180,9 @@
       transition: 0.3s ease;
     }
 
-   .button-gold{
-background:#D4A622;
-color:#000;
-padding:16px 36px;
-border-radius:40px;
-font-weight:800;
-transition:.3s;
-}
-
-.button-gold:hover{
-background:#00A6D6;
-color:#fff;
-transform:translateY(-3px);
-}
+    .button-gold {
+      background: var(--gold);
+      color: var(--black);
     }
 
     .button-gold:hover {
@@ -187,21 +191,10 @@ transform:translateY(-3px);
       transform: translateY(-2px);
     }
 
-   .button-outline{
-border:2px solid #fff;
-color:#fff;
-background:transparent;
-padding:16px 36px;
-border-radius:40px;
-font-weight:800;
-transition:.3s;
-}
-
-.button-outline:hover{
-background:#fff;
-color:#000;
-transform:translateY(-3px);
-}
+    .button-outline {
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
     }
 
     .button-outline:hover {
@@ -632,13 +625,81 @@ transform:translateY(-3px);
       }
     }
 
+  
+    .hero {
+      min-height: 720px;
+      display: grid;
+      grid-template-columns: 44% 56%;
+      background: var(--black);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: none;
+      padding: 90px 9%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top left, rgba(0,166,214,.10), transparent 38%),
+        var(--black);
+    }
+
+    .hero h1 {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.8rem, 7vw, 7rem);
+      line-height: .95;
+      margin: 0 0 24px;
+      text-transform: uppercase;
+    }
+
+    .hero-image {
+      min-height: 720px;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 720px;
+      object-fit: contain;
+      object-position: center;
+      background: var(--black);
+    }
+
+    @media (max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image,
+      .hero-image img {
+        min-height: 500px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .brand-logo {
+        width: 105px;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <header class="top-header">
-    <div class="brand-name">BIG BOSS BUNDLES</div>
+  <header class="site-header">
+  <div class="brand-wrap">
+    <img
+      class="brand-logo"
+      src="./BigBossBundles-logo.jpg"
+      alt="Big Boss Bundles logo"
+    >
+  </div>
 </header>
 
   <nav class="main-nav">
