@@ -593,6 +593,131 @@
       .collection-card img,
       .social-strip img {
         height: 320px;
+        /* ---------- LUXURY UPDATES ---------- */
+
+.brand-name{
+font-size:clamp(2.4rem,4vw,4rem);
+letter-spacing:4px;
+}
+
+.top-header{
+padding:28px 5%;
+}
+
+.main-nav{
+padding:20px 4%;
+gap:28px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.main-nav a{
+transition:.3s;
+position:relative;
+}
+
+.main-nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-8px;
+width:0;
+height:2px;
+background:#d4a622;
+transition:.3s;
+}
+
+.main-nav a:hover::after{
+width:100%;
+}
+
+.hero{
+min-height:760px;
+}
+
+.hero h1{
+font-size:clamp(4rem,8vw,6.8rem);
+}
+
+.hero p{
+font-size:1.2rem;
+max-width:650px;
+}
+
+.collection-card,
+.texture-card,
+.feature-card,
+.review-card{
+transition:all .35s ease;
+}
+
+.collection-card:hover,
+.texture-card:hover,
+.feature-card:hover,
+.review-card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 45px rgba(0,0,0,.18);
+}
+
+.collection-card img,
+.texture-card img,
+.feature-card img,
+.social-strip img{
+cursor:pointer;
+transition:transform .35s ease;
+}
+
+.collection-card img:hover,
+.texture-card img:hover,
+.feature-card img:hover,
+.social-strip img:hover{
+transform:scale(1.05);
+}
+
+.small-button,
+.button{
+font-weight:700;
+letter-spacing:1px;
+}
+
+.small-button{
+padding:12px 28px;
+}
+
+.button{
+padding:16px 34px;
+}
+
+.section-heading h2{
+margin-bottom:20px;
+}
+
+footer{
+margin-top:80px;
+}
+
+.footer-grid a{
+transition:.3s;
+}
+
+.footer-grid a:hover{
+padding-left:8px;
+}
+
+@media(max-width:768px){
+
+.hero{
+min-height:620px;
+}
+
+.brand-name{
+font-size:2rem;
+}
+
+.main-nav{
+gap:14px;
+}
+
+}
       }
     }
   </style>
