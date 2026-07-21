@@ -1,17 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Big Boss Bundles</title>
-<meta name="description" content="Luxury Hair Extensions, Wigs, Men's Hair Pieces and Hair Care">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Big Boss Bundles | Luxury Hair, Wigs and Hair Pieces</title>
+
+  <meta
+    name="description"
+    content="Shop luxury bundles, wigs, closures, frontals, men's hair pieces and professional hair care from Big Boss Bundles."
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #151515;
+      --gold: #d4a622;
+      --teal: #00a6d6;
+      --white: #ffffff;
+      --light: #f8f8f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--black);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .top-header {
+      background: var(--black);
+      color: var(--white);
+      padding: 22px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand-name {
+      color: var(--gold);
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .header-contact {
+      background: var(--teal);
+      color: var(--white);
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .header-contact:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .main-nav {
+      background: var(--white);
+      border-bottom: 2px solid var(--gold);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      padding: 17px 4%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .main-nav a {
+      color: var(--black);
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      transition: 0.25s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--teal);
+    }
+
+    .hero {
+      min-height: 660px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.88) 0%,
+          rgba(0, 0, 0, 0.63) 48%,
+          rgba(0, 0, 0, 0.18) 100%
+        ),
+        url("images/hero-model.jpg") center center / cover no-repeat;
+
+      display: flex;
+      align-items: center;
+      padding: 70px 7%;
+      color: var(--white);
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .hero-label {
+      color: var(--teal);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      color: var(--gold);
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.98;
+      margin: 0 0 22px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2vw, 1.4rem);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 590px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 29px;
+      border-radius: 30px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      transition: 0.3s ease;
+    }
+
+    .button-gold {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .button-gold:hover {
+      background: var(--teal);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .button-outline:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .celebrity-banner {
+      background: var(--teal);
+      color: var(--white);
+      padding: 24px 5%;
+      text-align: center;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 85px 5%;
+    }
+
+    .section-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .section-light {
+      background: var(--light);
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .section-heading span {
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      color: var(--gold);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      margin: 10px 0 14px;
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      color: #555;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .section-dark .section-heading p {
+      color: #dddddd;
+    }
+
+    .collection-grid {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+    }
+
+    .collection-card {
+      background: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      overflow: hidden;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+    }
+
+    .collection-card img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      background: #eeeeee;
+    }
+
+    .collection-card-content {
+      padding: 22px 16px 26px;
+    }
+
+    .collection-card h3 {
+      color: var(--gold);
+      font-size: 1.35rem;
+      margin: 0 0 9px;
+      text-transform: uppercase;
+    }
+
+    .collection-card p {
+      color: #555;
+      line-height: 1.55;
+      min-height: 48px;
+      margin: 0 0 18px;
+    }
+
+    .small-button {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      padding: 11px 21px;
+      border-radius: 25px;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.84rem;
+      transition: 0.3s ease;
+    }
+
+    .small-button:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .texture-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .texture-card {
+      position: relative;
+      min-height: 390px;
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background: var(--dark);
+    }
+
+    .texture-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .texture-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 65px 25px 27px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.92));
+      color: var(--white);
+    }
+
+    .texture-overlay h3 {
+      color: var(--gold);
+      font-size: 1.7rem;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+
+    .texture-overlay p {
+      margin: 0 0 18px;
+      line-height: 1.5;
+    }
+
+    .feature-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .feature-card {
+      min-height: 480px;
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      border: 2px solid var(--gold);
+      background: var(--dark);
+    }
+
+    .feature-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .feature-content {
+      position: relative;
+      z-index: 2;
+      padding: 90px 35px 35px;
+      width: 100%;
+      color: var(--white);
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.96));
+    }
+
+    .feature-content h3 {
+      color: var(--gold);
+      font-size: 2.1rem;
+      margin: 0 0 10px;
+      text-transform: uppercase;
+    }
+
+    .feature-content p {
+      line-height: 1.7;
+      margin: 0 0 22px;
+    }
+
+    .reviews-grid {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1.25rem;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+    }
+
+    .review-card p {
+      color: #444;
+      line-height: 1.75;
+      margin: 0 0 20px;
+    }
+
+    .review-card strong {
+      color: var(--teal);
+      text-transform: uppercase;
+    }
+
+    .social-strip {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .social-strip img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+    }
+
+    .social-links {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .social-links a {
+      background: var(--teal);
+      color: var(--white);
+      padding: 13px 25px;
+      border-radius: 28px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .social-links a:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 65px 5% 25px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 45px;
+    }
+
+    footer h3 {
+      color: var(--gold);
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+
+    footer p {
+      color: #cccccc;
+      line-height: 1.7;
+    }
+
+    footer a {
+      color: var(--white);
+      display: block;
+      margin: 10px 0;
+    }
+
+    footer a:hover {
+      color: var(--teal);
+    }
+
+    .copyright {
+      border-top: 1px solid #333333;
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 22px;
+      text-align: center;
+      color: #999999;
+    }
+
+    @media (max-width: 1100px) {
+      .collection-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .texture-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .top-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .main-nav {
+        gap: 13px;
+      }
+
+      .main-nav a {
+        font-size: 0.82rem;
+      }
+
+      .hero {
+        min-height: 590px;
+        background-position: 65% center;
+        padding: 70px 7%;
+      }
+
+      .hero h1 {
+        font-size: 3.4rem;
+      }
+
+      .collection-grid,
+      .texture-grid,
+      .feature-grid,
+      .reviews-grid,
+      .social-strip,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-card img {
+        height: 360px;
+      }
+
+      .social-strip img {
+        height: 390px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .section {
+        padding: 65px 5%;
+      }
+
+      .hero h1 {
+        font-size: 2.65rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+
+      .collection-card img,
+      .social-strip img {
+        height: 320px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">BIG BOSS BUNDLES</div>
-  <nav>
+  <header class="top-header">
+    <div class="brand-name">BIG BOSS BUNDLES</div>
+
+    <a class="header-contact" href="contact.html">
+      CONTACT US
+    </a>
+  </header>
+
+  <nav class="main-nav">
     <a href="index.html">Home</a>
     <a href="bundles.html">Bundles</a>
     <a href="wigs.html">Wigs</a>
@@ -21,52 +618,402 @@
     <a href="haircare.html">Hair Care</a>
     <a href="contact.html">Contact</a>
   </nav>
-</header>
 
-<section class="hero">
-<h1>Achieve Celebrity Hair Styles Here</h1>
-<p>Luxury Hair • Premium Quality • Boss Beauty</p>
-<a class="button" href="bundles.html">SHOP NOW</a>
-</section>
+  <main>
 
-<section>
-<h2>Shop by Hair Origin</h2>
-<div class="grid">
-<div>LAOS</div>
-<div>Vietnamese</div>
-<div>Cambodian</div>
-<div>Burmese</div>
-<div>Indian Raw</div>
-</div>
-</section>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-label">Luxury Hair and Beauty</div>
 
-<section>
-<h2>Shop by Texture</h2>
-<div class="grid">
-<div>Straight</div>
-<div>Body Wave</div>
-<div>Deep Wave</div>
-<div>Curly</div>
-<div>Kinky Straight</div>
-<div>Kinky Curly</div>
-</div>
-</section>
+        <h1>Boss Beauty Starts Here</h1>
 
-<section>
-<h2>Men's Hair Pieces</h2>
-<p>Afro • Wavy • Curly</p>
-<a class="button" href="mens.html">SHOP MEN</a>
-</section>
+        <p>
+          Experience premium bundles, wigs, closures, frontals, men's hair
+          pieces and professional hair care selected for luxury, fullness
+          and unforgettable style.
+        </p>
 
-<section>
-<h2>Hair Care</h2>
-<p>Professional products for wigs, bundles and natural hair.</p>
-<a class="button" href="haircare.html">SHOP HAIR CARE</a>
-</section>
+        <div class="button-row">
+          <a class="button button-gold" href="bundles.html">
+            Shop Luxury Hair
+          </a>
 
-<footer>
-<p>&copy; 2026 Big Boss Bundles</p>
-</footer>
+          <a class="button button-outline" href="wigs.html">
+            Shop Wigs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="celebrity-banner">
+      Achieve Celebrity Hair Styles Here
+    </div>
+
+    <section class="section section-light">
+
+      <div class="section-heading">
+        <span>Premium Collections</span>
+        <h2>Shop by Hair Origin</h2>
+        <p>
+          Explore luxury hair selected from five premium origins, each offering
+          distinctive beauty, softness and styling versatility.
+        </p>
+      </div>
+
+      <div class="collection-grid">
+
+        <article class="collection-card">
+          <img
+            src="images/laos-hair.jpg"
+            alt="LAOS premium luxury hair"
+          >
+
+          <div class="collection-card-content">
+            <h3>LAOS</h3>
+            <p>Premium luxury hair with rich fullness and long-lasting beauty.</p>
+
+            <a class="small-button" href="laos.html">
+              Shop LAOS
+            </a>
+          </div>
+        </article>
+
+        <article class="collection-card">
+          <img
+            src="images/cambodian-hair.jpg"
+            alt="Cambodian luxury hair"
+          >
+
+          <div class="collection-card-content">
+            <h3>Cambodian</h3>
+            <p>Strong, naturally full strands with beautiful movement.</p>
+
+            <a class="small-button" href="cambodian.html">
+              Shop Cambodian
+            </a>
+          </div>
+        </article>
+
+        <article class="collection-card">
+          <img
+            src="images/indian-hair.jpg"
+            alt="Indian raw luxury hair"
+          >
+
+          <div class="collection-card-content">
+            <h3>Indian Raw</h3>
+            <p>Natural texture, softness and incredible styling versatility.</p>
+
+            <a class="small-button" href="indian.html">
+              Shop Indian
+            </a>
+          </div>
+        </article>
+
+        <article class="collection-card">
+          <img
+            src="images/burmese-hair.jpg"
+            alt="Burmese luxury hair"
+          >
+
+          <div class="collection-card-content">
+            <h3>Burmese</h3>
+            <p>Thick, durable strands made for glamorous fullness.</p>
+
+            <a class="small-button" href="burmese.html">
+              Shop Burmese
+            </a>
+          </div>
+        </article>
+
+        <article class="collection-card">
+          <img
+            src="images/vietnamese-hair.jpg"
+            alt="Vietnamese luxury hair"
+          >
+
+          <div class="collection-card-content">
+            <h3>Vietnamese</h3>
+            <p>Sleek luxury hair known for strength, shine and smoothness.</p>
+
+            <a class="small-button" href="vietnamese.html">
+              Shop Vietnamese
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section section-dark">
+
+      <div class="section-heading">
+        <span>Find Your Perfect Look</span>
+        <h2>Shop by Texture</h2>
+        <p>
+          Choose your signature texture and create a look that is polished,
+          glamorous and completely unforgettable.
+        </p>
+      </div>
+
+      <div class="texture-grid">
+
+        <article class="texture-card">
+          <img src="images/straight-hair.jpg" alt="Straight luxury hair">
+
+          <div class="texture-overlay">
+            <h3>Straight</h3>
+            <p>Sleek, smooth and polished from root to end.</p>
+
+            <a class="small-button" href="bundles.html">
+              Shop Straight
+            </a>
+          </div>
+        </article>
+
+        <article class="texture-card">
+          <img src="images/kinky-straight-hair.jpg" alt="Kinky straight hair">
+
+          <div class="texture-overlay">
+            <h3>Kinky Straight</h3>
+            <p>Natural-looking texture with soft, blown-out fullness.</p>
+
+            <a class="small-button" href="bundles.html">
+              Shop Kinky Straight
+            </a>
+          </div>
+        </article>
+
+        <article class="texture-card">
+          <img src="images/body-wave-hair.jpg" alt="Body wave luxury hair">
+
+          <div class="texture-overlay">
+            <h3>Body Wave</h3>
+            <p>Soft flowing waves with effortless body and movement.</p>
+
+            <a class="small-button" href="bundles.html">
+              Shop Body Wave
+            </a>
+          </div>
+        </article>
+
+        <article class="texture-card">
+          <img src="images/deep-wave-hair.jpg" alt="Deep wave luxury hair">
+
+          <div class="texture-overlay">
+            <h3>Deep Wave</h3>
+            <p>Defined waves that deliver luxurious volume and drama.</p>
+
+            <a class="small-button" href="bundles.html">
+              Shop Deep Wave
+            </a>
+          </div>
+        </article>
+
+        <article class="texture-card">
+          <img src="images/curly-hair.jpg" alt="Curly luxury hair">
+
+          <div class="texture-overlay">
+            <h3>Curly</h3>
+            <p>Beautiful curls with bounce, body and lasting definition.</p>
+
+            <a class="small-button" href="bundles.html">
+              Shop Curly
+            </a>
+          </div>
+        </article>
+
+        <article class="texture-card">
+          <img src="images/kinky-curly-hair.jpg" alt="Kinky curly hair">
+
+          <div class="texture-overlay">
+            <h3>Kinky Curly</h3>
+            <p>Bold, natural curls with rich texture and stunning fullness.</p>
+
+            <a class="small-button" href="bundles.html">
+              Shop Kinky Curly
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section section-light">
+
+      <div class="section-heading">
+        <span>More Boss Beauty</span>
+        <h2>Featured Collections</h2>
+        <p>
+          Complete your look with premium men's hair pieces and professional
+          products for wigs, bundles and natural hair.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+
+        <article class="feature-card">
+          <img
+            src="images/mens-hair-pieces.jpg"
+            alt="Men's premium hair pieces"
+          >
+
+          <div class="feature-content">
+            <h3>Men's Hair Pieces</h3>
+
+            <p>
+              Shop Afro, Wavy and Curly hair pieces in sizes from 4×4 through
+              12×12 for one flat price of $279.99.
+            </p>
+
+            <a class="button button-gold" href="mens.html">
+              Shop Men's Hair Pieces
+            </a>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img
+            src="images/hair-care-products.jpg"
+            alt="Big Boss Bundles hair care products"
+          >
+
+          <div class="feature-content">
+            <h3>Hair Care</h3>
+
+            <p>
+              Maintain softness, shine and beauty with professional products
+              created for wigs, bundles and natural hair.
+            </p>
+
+            <a class="button button-gold" href="haircare.html">
+              Shop Hair Care
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section">
+
+      <div class="section-heading">
+        <span>Boss Approved</span>
+        <h2>Customer Reviews</h2>
+        <p>
+          See why customers choose Big Boss Bundles for luxury hair and
+          premium beauty.
+        </p>
+      </div>
+
+      <div class="reviews-grid">
+
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+
+          <p>
+            “The hair was soft, full and absolutely beautiful. The ends were
+            thick and the texture stayed gorgeous after styling.”
+          </p>
+
+          <strong>Verified Customer</strong>
+        </article>
+
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+
+          <p>
+            “My wig looked natural, luxurious and full without feeling heavy.
+            I received compliments all night.”
+          </p>
+
+          <strong>Verified Customer</strong>
+        </article>
+
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+
+          <p>
+            “The quality exceeded my expectations. The hair had minimal
+            shedding and kept its shine and softness.”
+          </p>
+
+          <strong>Verified Customer</strong>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section section-dark">
+
+      <div class="section-heading">
+        <span>Follow the Beauty</span>
+        <h2>Big Boss Bundles Social</h2>
+
+        <p>
+          Follow us for luxury hair inspiration, new arrivals, styling ideas
+          and behind-the-scenes beauty.
+        </p>
+      </div>
+
+      <div class="social-strip">
+        <img src="images/social-1.jpg" alt="Big Boss Bundles social post">
+        <img src="images/social-2.jpg" alt="Big Boss Bundles social post">
+        <img src="images/social-3.jpg" alt="Big Boss Bundles social post">
+        <img src="images/social-4.jpg" alt="Big Boss Bundles social post">
+      </div>
+
+      <div class="social-links">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">TikTok</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>Big Boss Bundles</h3>
+
+        <p>
+          Luxury bundles, wigs, closures, frontals, men's hair pieces and
+          professional hair care designed for unforgettable beauty.
+        </p>
+      </div>
+
+      <div>
+        <h3>Shop</h3>
+
+        <a href="bundles.html">Bundles</a>
+        <a href="wigs.html">Wigs</a>
+        <a href="closures.html">Closures</a>
+        <a href="frontals.html">Frontals</a>
+        <a href="mens.html">Men's Hair Pieces</a>
+        <a href="haircare.html">Hair Care</a>
+      </div>
+
+      <div>
+        <h3>Customer Care</h3>
+
+        <a href="contact.html">Contact Us</a>
+        <a href="shipping.html">Shipping Policy</a>
+        <a href="returns.html">Return and Exchange Policy</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Big Boss Bundles. All rights reserved.
+    </div>
+
+  </footer>
 
 </body>
 </html>
