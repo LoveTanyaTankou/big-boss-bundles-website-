@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH="/home/nckm6n94jvjt/public_html/bigbossbundles.com"
-    - /bin/cp -R * "$DEPLOYPATH"
+    - export DEPLOYPATH=/home/nckm6n94jvjt/public_html/bigbossbundles.com
+    - /bin/cp -R . "$DEPLOYPATH"
