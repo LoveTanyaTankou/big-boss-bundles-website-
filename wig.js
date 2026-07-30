@@ -94,6 +94,49 @@ let shoppingCart = JSON.parse(
     localStorage.getItem(CART_STORAGE_KEY)
 ) || [];
 
+/*====================================
+  WIG DATABASE
+====================================*/
+
+COLLECTIONS.laos.textures = [
+
+{
+    name: "Body Wave",
+    price: 289,
+    model:
+        "images/LAOS Hair Images/laos-body-wave-wig-model.png",
+    product:
+        "images/LAOS Hair Images/laos-body-wave-wig-product.png"
+},
+
+{
+    name: "Curly",
+    price: 289,
+    model:
+        "images/LAOS Hair Images/laos-curly-model.png",
+    product:
+        "images/LAOS Hair Images/laos-curly-wig-product.png"
+},
+
+{
+    name: "Deep Wave",
+    price: 289,
+    model:
+        "images/LAOS Hair Images/laos-deep-wave-wig-model.png",
+    product:
+        "images/LAOS Hair Images/laos-deep-wave-wig-product.png"
+},
+
+{
+    name: "Straight",
+    price: 289,
+    model:
+        "images/LAOS Hair Images/laos-straight-wig-model.png",
+    product:
+        "images/LAOS Hair Images/laos-straight-wig-product.png"
+}
+
+];
 
 /*
 ====================================================
