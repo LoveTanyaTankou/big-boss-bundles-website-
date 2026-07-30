@@ -138,6 +138,39 @@ COLLECTIONS.laos.textures = [
 
 ];
 
+/*====================================
+  CREATE WIG CARDS
+====================================*/
+
+function createWigCard(collectionName, wig) {
+
+    return `
+    <div class="wig-card">
+
+        <img
+            src="${wig.model}"
+            alt="${collectionName} ${wig.name}"
+            class="wig-image">
+
+        <div class="wig-info">
+
+            <h3>${collectionName} ${wig.name}</h3>
+
+            <p class="wig-price">
+                $${wig.price}
+            </p>
+
+            <button class="primary-button">
+                View Options
+            </button>
+
+        </div>
+
+    </div>
+    `;
+
+}
+
 /*
 ====================================================
 RENDER PRODUCTS
