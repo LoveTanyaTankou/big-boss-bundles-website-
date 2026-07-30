@@ -206,7 +206,7 @@ function renderProducts() {
 
     grids.forEach(grid => {
 
-        const collection = grid.dataset.collection;
+       const collection = grid.dataset.grid;
 
         const products = WIG_PRODUCTS.filter(product =>
             product.collection === collection
