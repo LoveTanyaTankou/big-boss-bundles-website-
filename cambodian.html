@@ -1,239 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cambodian Collection | Big Boss Bundles</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambodian Hair Collection | Big Boss Bundles</title>
+  <meta name="description" content="Shop the luxury Cambodian Hair Collection from Big Boss Bundles in straight, body wave, deep wave, curly, kinky straight and kinky curly textures.">
+  <style>
+    :root {
+      --black:#0a0a0a; --soft:#151515; --gold:#d4a622; --teal:#00a6d6;
+      --white:#fff; --cream:#f7f5ef; --muted:#bdbdbd;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--black);color:var(--white);line-height:1.5}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .announcement{padding:10px 5%;background:var(--teal);text-align:center;font-size:.76rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.97);border-bottom:2px solid var(--gold);backdrop-filter:blur(12px)}
+    .header-inner{width:min(1250px,92%);margin:auto;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .logo{width:180px;max-height:72px;object-fit:contain}
+    nav{display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:wrap;font-size:.76rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+    nav a:hover{color:var(--teal)}
+    .cart-pill{padding:9px 14px;border:1px solid var(--gold);border-radius:999px;color:var(--gold)}
+    .hero{min-height:630px;display:grid;grid-template-columns:1fr 1fr;align-items:center;background:radial-gradient(circle at 70% 30%,rgba(0,166,214,.18),transparent 34%),#050505;overflow:hidden}
+    .hero-copy{padding:70px max(5vw,40px)}
+    .eyebrow{color:var(--teal);font-size:.78rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
+    h1,h2{font-family:Georgia,"Times New Roman",serif;text-transform:uppercase}
+    h1{margin-top:10px;color:var(--gold);font-size:clamp(3.2rem,7vw,7.4rem);line-height:.9}
+    .hero-copy p{max-width:640px;margin-top:24px;color:#ddd;font-size:1.07rem}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+    .button,.add-cart{display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--gold);border-radius:999px;padding:14px 23px;background:var(--gold);color:var(--black);font-weight:900;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
+    .button.secondary{background:transparent;color:var(--white);border-color:var(--white)}
+    .hero-image{height:630px;width:100%;object-fit:cover;object-position:top center}
+    .section{padding:82px 5%}
+    .section-heading{width:min(850px,100%);margin:0 auto 42px;text-align:center}
+    .section-heading h2{margin-top:8px;color:var(--gold);font-size:clamp(2.4rem,5vw,4.7rem);line-height:1}
+    .section-heading p{max-width:720px;margin:18px auto 0;color:var(--muted)}
+    .category-bar{background:var(--cream);color:var(--black);padding:22px 5%;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .category-bar a{padding:10px 18px;border:1px solid var(--black);border-radius:999px;font-weight:900;text-transform:uppercase;font-size:.76rem}
+    .category-bar a:hover{background:var(--teal);border-color:var(--teal);color:white}
+    .product-grid{width:min(1240px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+    .product-card{overflow:hidden;border:2px solid var(--gold);border-radius:24px;background:var(--soft);box-shadow:0 16px 40px rgba(0,0,0,.25)}
+    .image-wrap{position:relative;height:430px;background:#111;overflow:hidden}
+    .product-image{display:none;width:100%;height:100%;object-fit:cover;object-position:top center}
+    .product-image.active{display:block}
+    .image-toggle{position:absolute;right:14px;bottom:14px;padding:10px 14px;border:0;border-radius:999px;background:rgba(10,10,10,.88);color:white;font-weight:800;cursor:pointer}
+    .product-copy{padding:24px}
+    .collection-label{color:var(--teal)!important;font-size:.7rem!important;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+    .product-copy h3{margin-top:5px;color:var(--gold);font-size:1.45rem;text-transform:uppercase}
+    .product-copy>p{margin-top:8px;color:var(--muted);font-size:.92rem}
+    label{display:block;margin-top:15px;color:#eee;font-size:.78rem;font-weight:800;text-transform:uppercase}
+    select,input{width:100%;margin-top:6px;padding:12px;border:1px solid #454545;border-radius:10px;background:#0e0e0e;color:white;font:inherit}
+    .density-field.hidden{display:none}
+    .buy-row{display:grid;grid-template-columns:85px 1fr;gap:12px;align-items:end;margin-top:18px}
+    .buy-row label{margin:0}
+    .add-cart{width:100%;border-radius:10px;padding:13px}
+    .story-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .story-card{padding:30px;border:1px solid rgba(212,166,34,.65);border-radius:20px;background:var(--soft);text-align:center}
+    .story-card strong{display:block;color:var(--gold);font-size:1.05rem;text-transform:uppercase}
+    .story-card p{margin-top:10px;color:var(--muted)}
+    .faq{width:min(900px,100%);margin:auto}
+    details{margin-bottom:12px;border:1px solid rgba(212,166,34,.55);border-radius:14px;background:var(--soft);padding:18px 20px}
+    summary{color:var(--gold);font-weight:900;cursor:pointer}
+    details p{margin-top:12px;color:#d3d3d3}
+    footer{padding:50px 5% 25px;border-top:1px solid rgba(212,166,34,.45);background:#050505}
+    .footer-grid{width:min(1150px,100%);margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:35px}
+    footer h3,footer h4{color:var(--gold);margin-bottom:10px}
+    footer p,footer a{display:block;color:#aaa;margin:7px 0}
+    .copyright{width:min(1150px,100%);margin:30px auto 0;padding-top:18px;border-top:1px solid #222;text-align:center;color:#777;font-size:.78rem}
+    .toast{position:fixed;right:20px;bottom:20px;z-index:300;display:none;padding:15px 19px;border:2px solid var(--gold);border-radius:12px;background:#050505;color:white;font-weight:800}
+    .toast.show{display:block}
+    @media(max-width:980px){
+      .header-inner{flex-direction:column} .hero{grid-template-columns:1fr} .hero-image{height:540px}
+      .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))} .story-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:650px){
+      header{position:static} nav{justify-content:center;gap:12px 16px} .hero-copy{padding:55px 6%}
+      .hero-image{height:430px} .product-grid,.footer-grid{grid-template-columns:1fr} .image-wrap{height:470px}
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-    <h1>Cambodian Collection</h1>
-    <p>Luxury Cambodian Hair</p>
-</header>
-
-<nav>
-    <a href="index.html">Home</a>
-</nav>
-
-<section>
-
-<h2>Textures</h2>
-
-<section class="texture-card">
-
-<h2>Cambodian Straight</h2>
-
-<img src="images/Cambodian Hair Images/Cambodian-straight-model.png"
-alt="Cambodian Straight Model"
-class="model-photo">
-
-<img src="images/Cambodian Hair Images/Cambodian-straight-product.png"
-alt="Cambodian Straight Hair"
-class="product-photo">
-
-<p><strong>Luxury Cambodian Hair</strong></p>
-
-<p>
-✔ Bundles<br>
-✔ Closures<br>
-✔ Frontals<br>
-✔ Wigs
-</p>
-
-<p>
-Available Lengths<br>
-10" • 12" • 14" • 16" • 18" • 20" • 22" • 24" • 26" • 28" • 30"
-</p>
-
-<p>
-HD Lace Available
-</p>
-
-</section>
-
-<section class="texture-card">
-
-<h2>Cambodian Kinky Straight</h2>
-
-<img src="images/Cambodian Hair Images/Cambodian-kinky-straight-model.png"
-alt="Cambodian Kinky Straight Model"
-class="model-photo">
-
-<img src="images/Cambodian Hair Images/Cambodian-kinky-straight-product.png"
-alt="Cambodian Kinky Straight Hair"
-class="product-photo">
-
-<p>
-Luxury Cambodian Hair<br>
-Natural Full Texture<br>
-Bundles • Closures • Frontals • Wigs
-</p>
-
-<p>
-Available Lengths<br>
-10" • 12" • 14" • 16" • 18" • 20" • 22" • 24" • 26" • 28" • 30"
-</p>
-
-<p>
-HD Lace Available
-</p>
-
-</section>
-
-<section class="texture-card">
-
-<h2>Cambodian Body Wave</h2>
-
-<img src="images/Cambodian Hair Images/laos-body-wave-model.png"
-alt="Cambodian Body Wave Model"
-class="model-photo">
-
-<img src="images/Cambodian Hair Images/laos-body-wave-product.png"
-alt="Cambodian Body Wave Hair"
-class="product-photo">
-
-<p><strong>Luxury Cambodian Hair</strong></p>
-
-<p>
-✓ Bundles<br>
-✓ Closures<br>
-✓ Frontals<br>
-✓ Wigs
-</p>
-
-<p>
-Available Lengths<br>
-10" • 12" • 14" • 16" • 18" • 20" • 22" • 24" • 26" • 28" • 30"
-</p>
-
-<p>
-HD Lace Available
-</p>
-
-</section>
-
-<section class="texture-card">
-
-<h2>Cambodian Deep Wave</h2>
-
-<img src="images/Cambodian Hair Images/Cambodian-deep-wave-model.png"
-alt="Cambodian Deep Wave Model"
-class="model-photo">
-
-<img src="images/Cambodian Hair Images/Cambodian-deep-wave-product.png"
-alt="Cambodian Deep Wave Hair"
-class="product-photo">
-
-<p><strong>Luxury Cambodian Hair</strong></p>
-
-<p>
-✓ Bundles<br>
-✓ Closures<br>
-✓ Frontals<br>
-✓ Wigs
-</p>
-
-<p>
-Available Lengths<br>
-10" • 12" • 14" • 16" • 18" • 20" • 22" • 24" • 26" • 28" • 30"
-</p>
-
-<p>
-HD Lace Available
-</p>
-
-</section>
-
-<section class="texture-card">
-
-<h2>Cambodian Deep Wave</h2>
-
-<img src="images/Cambodian Hair Images/Cambodian-deep-wave-model.png"
-alt="Cambodian Deep Wave Model"
-class="model-photo">
-
-<img src="images/Cambodian Hair Images/Cambodian-deep-wave-product.png"
-alt="Cambodian Deep Wave Hair"
-class="product-photo">
-
-<p><strong>Luxury Cambodian Hair</strong></p>
-
-<p>
-✓ Bundles<br>
-✓ Closures<br>
-✓ Frontals<br>
-✓ Wigs
-</p>
-
-<p>
-Available Lengths<br>
-10" • 12" • 14" • 16" • 18" • 20" • 22" • 24" • 26" • 28" • 30"
-</p>
-
-<p>
-HD Lace Available
-</p>
-
-</section>
-
-<section class="texture-card">
-
-<h2>Cambodian Kinky Curly</h2>
-
-<img src="images/Cambodian Hair Images/Cambodian-kinky-curly-model.png"
-alt="Cambodian Kinky Curly Model"
-class="model-photo">
-
-<img src="images/Cambodian Hair Images/Cambodian-kinky-curly-product.png"
-alt="Cambodian Kinky Curly Hair"
-class="product-photo">
-
-<p><strong>Luxury Cambodian Hair</strong></p>
-
-<p>
-✓ Bundles<br>
-✓ Closures<br>
-✓ Frontals<br>
-✓ Wigs
-</p>
-
-<p>
-Available Lengths<br>
-10" • 12" • 14" • 16" • 18" • 20" • 22" • 24" • 26" • 28" • 30"
-</p>
-
-<p>
-HD Lace Available
-</p>
-
-</section>
-
-<section>
-
-<h2>Wig Density</h2>
-
-<p>180%</p>
-<p>200%</p>
-<p>230%</p>
-<p>250%</p>
-
-</section>
-
-<section>
-
-<h2>Lace</h2>
-
-<p>HD Lace Included</p>
-
-</section>
-
-<footer>
-<p>© Big Boss Bundles</p>
-</footer>
-
+  <div class="announcement">Premium Luxury Cambodian Hair • Bundles • Wigs • Closures • Frontals</div>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" aria-label="Big Boss Bundles home">
+        <img class="logo" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Homepage%20Images/Owner%20Images/Lifestyle%20Images/Store%20Images/Branding/BigBossBundles-logo.jpg" alt="Big Boss Bundles">
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="bundles.html">Bundles</a>
+        <a href="wigs.html">Wigs</a>
+        <a href="closures.html">Closures</a>
+        <a href="frontals.html">Frontals</a>
+        <a href="hair-care.html">Hair Care</a>
+        <a class="cart-pill" href="cart.html">Bag (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Big Boss Bundles Signature Collection</span>
+        <h1>Cambodian Hair</h1>
+        <p>Experience our Premium Luxury Cambodian Hair Collection, chosen for its natural density, soft texture, rich body and impressive styling versatility. Choose your texture, length and finished look below.</p>
+        <div class="hero-actions">
+          <a class="button" href="#shop">Shop Cambodian Hair</a>
+          <a class="button secondary" href="index.html#origins">View All Origins</a>
+        </div>
+      </div>
+      <img class="hero-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-deep-wave-model.png" alt="Cambodian Deep Wave luxury hair model">
+    </section>
+
+    <nav class="category-bar" aria-label="Cambodian product categories">
+      <a href="bundles.html">Bundles</a>
+      <a href="wigs.html">Wigs</a>
+      <a href="closures.html">Closures</a>
+      <a href="frontals.html">Frontals</a>
+      <a href="#shop">All Cambodian Textures</a>
+    </nav>
+
+    <section class="section" id="shop">
+      <div class="section-heading">
+        <span class="eyebrow">Shop by Texture</span>
+        <h2>Premium Cambodian Collection</h2>
+        <p>Model and product views are included for each texture. Select the product type, length, color and quantity before adding your choice to the shopping bag.</p>
+      </div>
+      <div class="product-grid">
+        
+      <article class="product-card" data-product="Cambodian Straight">
+        <div class="image-wrap">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-straight-model.png" alt="Cambodian Straight model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-straight-product.png" alt="Cambodian Straight bundle">
+          <button class="image-toggle" type="button" aria-label="Switch Cambodian Straight image">View Product</button>
+        </div>
+        <div class="product-copy">
+          <p class="collection-label">Premium Luxury Cambodian Hair</p>
+          <h3>Cambodian Straight</h3>
+          <p>Silky, sleek strands with polished movement and a smooth luxury finish.</p>
+
+          <label>Shop Type
+            <select class="type-select">
+              <option>Bundle</option>
+              <option>Closure</option>
+              <option>Frontal</option>
+              <option>Wig</option>
+            </select>
+          </label>
+
+          <label>Length
+            <select class="length-select">
+              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
+              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
+              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
+              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
+              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
+            </select>
+          </label>
+
+          <label class="density-field">Wig Density
+            <select class="density-select">
+              <option>180%</option><option>200%</option><option selected>250%</option>
+              <option>220%</option><option>300%</option>
+            </select>
+          </label>
+
+          <label>Color
+            <select class="color-select">
+              <option>Natural Black</option>
+              <option>Natural Brown</option>
+              <option>Custom Color Consultation</option>
+            </select>
+          </label>
+
+          <div class="buy-row">
+            <label>Qty
+              <input class="quantity" type="number" value="1" min="1" max="10">
+            </label>
+            <button class="add-cart" type="button">Add to Bag</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="Cambodian Body Wave">
+        <div class="image-wrap">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-body-wave-model.png" alt="Cambodian Body Wave model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/Laos-body-wave-product.png" alt="Cambodian Body Wave bundle">
+          <button class="image-toggle" type="button" aria-label="Switch Cambodian Body Wave image">View Product</button>
+        </div>
+        <div class="product-copy">
+          <p class="collection-label">Premium Luxury Cambodian Hair</p>
+          <h3>Cambodian Body Wave</h3>
+          <p>Soft, flowing waves with elegant body, bounce and effortless versatility.</p>
+
+          <label>Shop Type
+            <select class="type-select">
+              <option>Bundle</option>
+              <option>Closure</option>
+              <option>Frontal</option>
+              <option>Wig</option>
+            </select>
+          </label>
+
+          <label>Length
+            <select class="length-select">
+              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
+              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
+              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
+              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
+              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
+            </select>
+          </label>
+
+          <label class="density-field">Wig Density
+            <select class="density-select">
+              <option>180%</option><option>200%</option><option selected>250%</option>
+              <option>220%</option><option>300%</option>
+            </select>
+          </label>
+
+          <label>Color
+            <select class="color-select">
+              <option>Natural Black</option>
+              <option>Natural Brown</option>
+              <option>Custom Color Consultation</option>
+            </select>
+          </label>
+
+          <div class="buy-row">
+            <label>Qty
+              <input class="quantity" type="number" value="1" min="1" max="10">
+            </label>
+            <button class="add-cart" type="button">Add to Bag</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="Cambodian Deep Wave">
+        <div class="image-wrap">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-deep-wave-model.png" alt="Cambodian Deep Wave model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-deep-wave-product.png" alt="Cambodian Deep Wave bundle">
+          <button class="image-toggle" type="button" aria-label="Switch Cambodian Deep Wave image">View Product</button>
+        </div>
+        <div class="product-copy">
+          <p class="collection-label">Premium Luxury Cambodian Hair</p>
+          <h3>Cambodian Deep Wave</h3>
+          <p>Defined waves with rich volume and glamorous, long-lasting texture.</p>
+
+          <label>Shop Type
+            <select class="type-select">
+              <option>Bundle</option>
+              <option>Closure</option>
+              <option>Frontal</option>
+              <option>Wig</option>
+            </select>
+          </label>
+
+          <label>Length
+            <select class="length-select">
+              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
+              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
+              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
+              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
+              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
+            </select>
+          </label>
+
+          <label class="density-field">Wig Density
+            <select class="density-select">
+              <option>180%</option><option>200%</option><option selected>250%</option>
+              <option>220%</option><option>300%</option>
+            </select>
+          </label>
+
+          <label>Color
+            <select class="color-select">
+              <option>Natural Black</option>
+              <option>Natural Brown</option>
+              <option>Custom Color Consultation</option>
+            </select>
+          </label>
+
+          <div class="buy-row">
+            <label>Qty
+              <input class="quantity" type="number" value="1" min="1" max="10">
+            </label>
+            <button class="add-cart" type="button">Add to Bag</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="Cambodian Curly">
+        <div class="image-wrap">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/Laos-curly-model.png" alt="Cambodian Curly model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/Laos-curly-product.png" alt="Cambodian Curly bundle">
+          <button class="image-toggle" type="button" aria-label="Switch Cambodian Curly image">View Product</button>
+        </div>
+        <div class="product-copy">
+          <p class="collection-label">Premium Luxury Cambodian Hair</p>
+          <h3>Cambodian Curly</h3>
+          <p>Soft, defined curls with beautiful bounce, fullness and movement.</p>
+
+          <label>Shop Type
+            <select class="type-select">
+              <option>Bundle</option>
+              <option>Closure</option>
+              <option>Frontal</option>
+              <option>Wig</option>
+            </select>
+          </label>
+
+          <label>Length
+            <select class="length-select">
+              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
+              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
+              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
+              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
+              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
+            </select>
+          </label>
+
+          <label class="density-field">Wig Density
+            <select class="density-select">
+              <option>180%</option><option>200%</option><option selected>250%</option>
+              <option>220%</option><option>300%</option>
+            </select>
+          </label>
+
+          <label>Color
+            <select class="color-select">
+              <option>Natural Black</option>
+              <option>Natural Brown</option>
+              <option>Custom Color Consultation</option>
+            </select>
+          </label>
+
+          <div class="buy-row">
+            <label>Qty
+              <input class="quantity" type="number" value="1" min="1" max="10">
+            </label>
+            <button class="add-cart" type="button">Add to Bag</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="Cambodian Kinky Straight">
+        <div class="image-wrap">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-kinky-straight-model.png" alt="Cambodian Kinky Straight model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-kinky-straight-product.png" alt="Cambodian Kinky Straight bundle">
+          <button class="image-toggle" type="button" aria-label="Switch Cambodian Kinky Straight image">View Product</button>
+        </div>
+        <div class="product-copy">
+          <p class="collection-label">Premium Luxury Cambodian Hair</p>
+          <h3>Cambodian Kinky Straight</h3>
+          <p>A natural blown-out look with soft texture, fullness and realistic body.</p>
+
+          <label>Shop Type
+            <select class="type-select">
+              <option>Bundle</option>
+              <option>Closure</option>
+              <option>Frontal</option>
+              <option>Wig</option>
+            </select>
+          </label>
+
+          <label>Length
+            <select class="length-select">
+              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
+              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
+              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
+              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
+              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
+            </select>
+          </label>
+
+          <label class="density-field">Wig Density
+            <select class="density-select">
+              <option>180%</option><option>200%</option><option selected>250%</option>
+              <option>220%</option><option>300%</option>
+            </select>
+          </label>
+
+          <label>Color
+            <select class="color-select">
+              <option>Natural Black</option>
+              <option>Natural Brown</option>
+              <option>Custom Color Consultation</option>
+            </select>
+          </label>
+
+          <div class="buy-row">
+            <label>Qty
+              <input class="quantity" type="number" value="1" min="1" max="10">
+            </label>
+            <button class="add-cart" type="button">Add to Bag</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="Cambodian Kinky Curly">
+        <div class="image-wrap">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-kinky-curlly-model.png" alt="Cambodian Kinky Curly model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/laos-kinky-curly-product.png" alt="Cambodian Kinky Curly bundle">
+          <button class="image-toggle" type="button" aria-label="Switch Cambodian Kinky Curly image">View Product</button>
+        </div>
+        <div class="product-copy">
+          <p class="collection-label">Premium Luxury Cambodian Hair</p>
+          <h3>Cambodian Kinky Curly</h3>
+          <p>Bold, natural-looking curls with rich texture and luxurious fullness.</p>
+
+          <label>Shop Type
+            <select class="type-select">
+              <option>Bundle</option>
+              <option>Closure</option>
+              <option>Frontal</option>
+              <option>Wig</option>
+            </select>
+          </label>
+
+          <label>Length
+            <select class="length-select">
+              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
+              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
+              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
+              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
+              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
+            </select>
+          </label>
+
+          <label class="density-field">Wig Density
+            <select class="density-select">
+              <option>180%</option><option>200%</option><option selected>250%</option>
+              <option>220%</option><option>300%</option>
+            </select>
+          </label>
+
+          <label>Color
+            <select class="color-select">
+              <option>Natural Black</option>
+              <option>Natural Brown</option>
+              <option>Custom Color Consultation</option>
+            </select>
+          </label>
+
+          <div class="buy-row">
+            <label>Qty
+              <input class="quantity" type="number" value="1" min="1" max="10">
+            </label>
+            <button class="add-cart" type="button">Add to Bag</button>
+          </div>
+        </div>
+      </article>
+
+      </div>
+    </section>
+
+    <section class="section" style="background:#111">
+      <div class="section-heading">
+        <span class="eyebrow">Luxury You Can Feel</span>
+        <h2>The Cambodian Difference</h2>
+      </div>
+      <div class="story-grid">
+        <article class="story-card"><strong>Soft & Full</strong><p>Naturally full strands with a soft touch, beautiful body and a premium finish.</p></article>
+        <article class="story-card"><strong>Style Versatility</strong><p>Create sleek, waved or curled styles while preserving natural-looking movement and fullness.</p></article>
+        <article class="story-card"><strong>Made to Last</strong><p>With proper care, Cambodian hair maintains its softness, texture and luxurious appearance through repeated wear.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="eyebrow">Before You Order</span>
+        <h2>Cambodian Hair FAQ</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Which lengths are available?</summary><p>Bundles are offered from 12 to 32 inches. Select wig styles may be offered up to 40 inches, depending on availability.</p></details>
+        <details><summary>What lace is used?</summary><p>Big Boss Bundles wigs, closures and frontals use HD lace for a natural-looking finish.</p></details>
+        <details><summary>How long does fulfillment take?</summary><p>Unless an item is confirmed for local pickup, allow approximately 7 to 10 business days for fulfillment.</p></details>
+        <details><summary>What is the return policy?</summary><p>All sales are final. Eligible exchanges must be requested within five days after receiving the order and the hair must remain unused and unaltered.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div><h3>Big Boss Bundles</h3><p>Luxury hair, wigs, closures, frontals, men’s hair pieces and professional hair care.</p></div>
+      <div><h4>Customer Care</h4><a href="contact.html">Contact</a><a href="shipping-policy.html">Shipping Policy</a><a href="return-policy.html">Return and Exchange Policy</a></div>
+      <div><h4>Visit or Contact</h4><p>301 W Pecan Street</p><p>Pflugerville, TX 78660</p><a href="tel:+15122762366">(512) 276-2366</a><a href="mailto:support@bigbossbundles.com">support@bigbossbundles.com</a></div>
+    </div>
+    <div class="copyright">© 2026 Big Boss Bundles. All rights reserved.</div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const cartKey = "bbbCart";
+    const cart = JSON.parse(localStorage.getItem(cartKey) || "[]");
+    const countEl = document.getElementById("cart-count");
+    const toast = document.getElementById("toast");
+
+    function updateCartCount() {
+      countEl.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+
+    document.querySelectorAll(".product-card").forEach(card => {
+      const images = card.querySelectorAll(".product-image");
+      const toggle = card.querySelector(".image-toggle");
+      const type = card.querySelector(".type-select");
+      const density = card.querySelector(".density-field");
+
+      toggle.addEventListener("click", () => {
+        images.forEach(img => img.classList.toggle("active"));
+        toggle.textContent = images[0].classList.contains("active") ? "View Product" : "View Model";
+      });
+
+      function updateDensity() {
+        density.classList.toggle("hidden", type.value !== "Wig");
+      }
+      type.addEventListener("change", updateDensity);
+      updateDensity();
+
+      card.querySelector(".add-cart").addEventListener("click", () => {
+        const item = {
+          name: card.dataset.product,
+          type: type.value,
+          length: card.querySelector(".length-select").value,
+          density: type.value === "Wig" ? card.querySelector(".density-select").value : null,
+          color: card.querySelector(".color-select").value,
+          quantity: Number(card.querySelector(".quantity").value) || 1
+        };
+        cart.push(item);
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+        updateCartCount();
+        showToast(item.name + " added to your bag.");
+      });
+    });
+
+    updateCartCount();
+  </script>
 </body>
 </html>
-
