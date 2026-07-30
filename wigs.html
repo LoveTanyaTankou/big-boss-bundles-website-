@@ -487,3 +487,111 @@
 
 </body>
 </html>
+
+/* ===== Luxury Wig Hero ===== */
+
+.wig-hero{
+    position:relative;
+    height:75vh;
+    overflow:hidden;
+}
+
+.wig-hero-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.wig-hero-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    color:#fff;
+
+    padding:20px;
+}
+
+.wig-hero-overlay h1{
+
+    font-size:4rem;
+
+    color:#D4A622;
+
+    margin-bottom:20px;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+}
+
+.wig-hero-overlay p{
+
+    font-size:1.35rem;
+
+    line-height:1.7;
+
+    max-width:700px;
+
+    margin-bottom:35px;
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+
+.hero-btn{
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.hero-btn.primary{
+
+    background:#D4A622;
+
+    color:#000;
+}
+
+.hero-btn.primary:hover{
+
+    background:#e6bf3d;
+}
+
+.hero-btn.secondary{
+
+    background:#000;
+
+    color:#fff;
+
+    border:2px solid #D4A622;
+}
+
+.hero-btn.secondary:hover{
+
+    background:#D4A622;
+
+    color:#000;
+}
