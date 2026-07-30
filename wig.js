@@ -171,6 +171,36 @@ function createWigCard(collectionName, wig) {
 
 }
 
+/*====================================
+  POPULATE COLLECTIONS
+====================================*/
+
+function loadCollections() {
+
+    Object.keys(COLLECTIONS).forEach(collectionKey => {
+
+        const grid = document.querySelector(
+            `[data-grid="${collectionKey}"]`
+        );
+
+        if (!grid) return;
+
+        grid.innerHTML = "";
+
+        COLLECTIONS[collectionKey].textures.forEach(wig => {
+
+            grid.innerHTML += createWigCard(
+                COLLECTIONS[collectionKey].title,
+                wig
+            );
+
+        });
+
+    });
+
+}
+
+loadCollections();
 /*
 ====================================================
 RENDER PRODUCTS
