@@ -191,3 +191,61 @@ CAMBODIAN
 }
 
 ];
+
+/*
+====================================================
+RENDER PRODUCTS
+====================================================
+*/
+
+function renderProducts() {
+
+    const grids = document.querySelectorAll(".wig-grid");
+
+    if (!grids.length) return;
+
+    grids.forEach(grid => {
+
+        const collection = grid.dataset.collection;
+
+        const products = WIG_PRODUCTS.filter(product =>
+            product.collection === collection
+        );
+
+        grid.innerHTML = "";
+
+        products.forEach(product => {
+
+            grid.innerHTML += `
+
+            <div class="wig-card">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.texture}"
+                    class="wig-image"
+                >
+
+                <h3>${product.texture}</h3>
+
+                <p>${product.collection.toUpperCase()}</p>
+
+                <h4>$${product.price.toFixed(2)}</h4>
+
+                <button class="shop-btn">
+
+                    View Wig
+
+                </button>
+
+            </div>
+
+            `;
+
+        });
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", renderProducts);
