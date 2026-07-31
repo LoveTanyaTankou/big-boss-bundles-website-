@@ -3,9 +3,6 @@
 BIG BOSS BUNDLES
 STORE ENGINE
 =========================================================
-Shared shopping cart and store functions.
-This file will be used by every page.
-=========================================================
 */
 
 const BBB = {
@@ -13,29 +10,69 @@ const BBB = {
     cart: JSON.parse(localStorage.getItem("bbb-cart")) || [],
 
     saveCart() {
+
         localStorage.setItem(
             "bbb-cart",
             JSON.stringify(this.cart)
         );
+
     },
 
     cartCount() {
-        return this.cart.length;
+
+        return this.cart.reduce((total,item)=>{
+
+            return total + (item.quantity || 1);
+
+        },0);
+
+    },
+
+    cartTotal() {
+
+        return this.cart.reduce((total,item)=>{
+
+            return total + (item.price * (item.quantity || 1));
+
+        },0);
+
     },
 
     updateCartBadge() {
 
-        const badge = document.querySelector("[data-cart-count]");
+        const badge =
+            document.querySelector("[data-cart-count]");
 
-        if (badge) {
-            badge.textContent = this.cart.length;
+        if(badge){
+
+            badge.textContent = this.cartCount();
+
         }
 
     },
 
-    add(item) {
+    add(item){
 
-        this.cart.push(item);
+        const existing = this.cart.find(product =>
+
+            product.id === item.id &&
+            product.length === item.length &&
+            product.lace === item.lace &&
+            product.density === item.density
+
+        );
+
+        if(existing){
+
+            existing.quantity++;
+
+        }else{
+
+            item.quantity = 1;
+
+            this.cart.push(item);
+
+        }
 
         this.saveCart();
 
@@ -45,18 +82,37 @@ const BBB = {
 
     },
 
-    toast(message) {
+    remove(index){
 
-        const toast =
-            document.getElementById("shopping-toast");
+        this.cart.splice(index,1);
 
-        if (!toast) return;
+        this.saveCart();
 
-        toast.textContent = message;
+        this.updateCartBadge();
+
+    },
+
+    clear(){
+
+        this.cart=[];
+
+        this.saveCart();
+
+        this.updateCartBadge();
+
+    },
+
+    toast(message){
+
+        const toast=document.getElementById("shopping-toast");
+
+        if(!toast) return;
+
+        toast.textContent=message;
 
         toast.classList.add("show");
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
             toast.classList.remove("show");
 
