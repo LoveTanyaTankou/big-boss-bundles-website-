@@ -22,7 +22,7 @@ const PRODUCTS = [
     productImage:
     "images/LAOS Hair Images/laos-deep-wave-wig-product.png",
 
-    price:189.99,
+   pricing:"laos",
 
     bestseller:true
 
@@ -64,7 +64,7 @@ const PRODUCTS = [
     productImage:
     "images/Cambodian Hair Images/cambodian-body-wave-wig-product.png",
 
-    price:189.99,
+    pricing:"cambodian",
 
     bestseller:false
 
@@ -85,10 +85,66 @@ const PRODUCTS = [
     productImage:
     "images/Burmese Hair Images/burmese-straight-wig-product.jpeg",
 
-    price:189.99,
+  pricing:"burmese",
 
     bestseller:false
 
 }
 
 ];
+
+/*
+=========================================================
+BIG BOSS BUNDLES
+AUTO PRODUCT UPGRADE
+=========================================================
+*/
+
+PRODUCTS.forEach(product => {
+
+    if (!product.productType) {
+
+        if (
+            product.modelImage &&
+            product.modelImage.toLowerCase().includes("-wig-")
+        ) {
+
+            product.productType = "wig";
+
+        } else {
+
+            product.productType = "bundle";
+
+        }
+
+    }
+
+    if (!product.inStock) {
+
+        product.inStock = true;
+
+    }
+
+    if (!product.pricing) {
+
+        switch (product.collection.toLowerCase()) {
+
+            case "laos":
+                product.pricing = "laos";
+                break;
+
+            case "cambodian":
+                product.pricing = "cambodian";
+                break;
+
+            case "burmese":
+                product.pricing = "burmese";
+                break;
+
+            default:
+                product.pricing = "";
+        }
+
+    }
+
+});
