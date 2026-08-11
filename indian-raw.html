@@ -1,1 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Indian Raw Collection | Big Boss Bundles</title>
+
+  <meta
+    name="description"
+    content="Shop the Big Boss Bundles Indian Raw Collection in Straight, Kinky Straight, Body Wave, Deep Wave, Curly and Kinky Curly textures."
+  >
+
+  <link rel="stylesheet" href="css/site.css">
+
+  <style>
+    .collection-hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(0,166,214,.18), transparent 34%),
+        #0a0a0a;
+      color:#fff;
+      padding:85px 5%;
+    }
+
+    .hero-grid {
+      width:min(1250px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero-copy h1 {
+      margin-top:10px;
+      color:#d4a622;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(3.5rem,7vw,6.7rem);
+      line-height:.92;
+      text-transform:uppercase;
+    }
+
+    .hero-copy p {
+      max-width:610px;
+      margin-top:22px;
+      color:rgba(255,255,255,.76);
+      font-size:1.05rem;
+    }
+
+    .hero-photo {
+      border:2px solid #d4a622;
+      border-radius:26px;
+      overflow:hidden;
+      background:#fff;
+      min-height:520px;
+    }
+
+    .hero-photo img {
+      width:100%;
+      height:100%;
+      min-height:520px;
+      object-fit:cover;
+      object-position:top center;
+    }
+
+    .shop-builder {
+      background:#f8f7f3;
+    }
+
+    .builder-wrap {
+      width:min(1180px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:40px;
+      align-items:start;
+    }
+
+    .product-preview {
+      background:#fff;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 16px 45px rgba(0,0,0,.12);
+      border:1px solid #e4e4e4;
+    }
+
+    .preview-image {
+      min-height:620px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+    }
+
+    .preview-image img {
+      width:100%;
+      height:620px;
+      object-fit:contain;
+    }
+
+    .preview-caption {
+      padding:22px 25px;
+      border-top:1px solid #eee;
+    }
+
+    .preview-caption h2 {
+      color:#d4a622;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:2rem;
+      text-transform:uppercase;
+    }
+
+    .preview-caption p {
+      margin-top:7px;
+      color:#777;
+    }
+
+    .configuration {
+      position:sticky;
+      top:115px;
+      background:#0a0a0a;
+      color:#fff;
+      border:2px solid #d4a622;
+      border-radius:24px;
+      padding:32px;
+    }
+
+    .configuration h2 {
+      color:#d4a622;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:2.4rem;
+      text-transform:uppercase;
+    }
+
+    .configuration > p {
+      margin-top:10px;
+      color:#bbb;
+    }
+
+    .configuration label {
+      color:#fff;
+    }
+
+    .configuration select,
+    .configuration input {
+      background:#fff;
+      color:#0a0a0a;
+    }
+
+    .live-price {
+      margin-top:25px;
+      padding:22px;
+      border-radius:16px;
+      background:#151515;
+      border:1px solid rgba(212,166,34,.65);
+    }
+
+    .live-price small {
+      display:block;
+      color:#aaa;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    #price {
+      margin-top:5px;
+      color:#d4a622;
+      font-size:2.25rem;
+      font-weight:900;
+    }
+
+    #price-note {
+      margin-top:5px;
+      color:#00a6d6;
+      font-size:.88rem;
+      font-weight:800;
+    }
+
+    .availability-note {
+      margin-top:14px;
+      color:#aaa;
+      font-size:.82rem;
+    }
+
+    .add-button {
+      width:100%;
+      min-height:55px;
+      margin-top:20px;
+      border:2px solid #00a6d6;
+      border-radius:999px;
+      background:#00a6d6;
+      color:#fff;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .add-button:disabled {
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
+    .texture-nav {
+      width:min(1180px,100%);
+      margin:55px auto 0;
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .texture-chip {
+      padding:15px 10px;
+      border:1px solid #d4a622;
+      border-radius:999px;
+      background:#0a0a0a;
+      color:#fff;
+      text-align:center;
+      font-size:.78rem;
+      font-weight:900;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .texture-chip:hover,
+    .texture-chip.active {
+      background:#00a6d6;
+      border-color:#00a6d6;
+    }
+
+    .feature-section {
+      background:#0a0a0a;
+      color:#fff;
+    }
+
+    .feature-grid {
+      width:min(1100px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .feature {
+      padding:28px 20px;
+      border:1px solid rgba(212,166,34,.65);
+      border-radius:18px;
+      background:#151515;
+      text-align:center;
+    }
+
+    .feature strong {
+      display:block;
+      color:#d4a622;
+      text-transform:uppercase;
+    }
+
+    .feature p {
+      margin-top:8px;
+      color:#aaa;
+      font-size:.88rem;
+    }
+
+    .other-products {
+      width:min(1000px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .other-card {
+      padding:30px 25px;
+      border-radius:20px;
+      background:#0a0a0a;
+      color:#fff;
+      border:1px solid #d4a622;
+    }
+
+    .other-card h3 {
+      color:#d4a622;
+      text-transform:uppercase;
+    }
+
+    .other-card p {
+      margin:10px 0 20px;
+      color:#aaa;
+      font-size:.9rem;
+    }
+
+    @media(max-width:900px) {
+      .hero-grid,
+      .builder-wrap {
+        grid-template-columns:1fr;
+      }
+
+      .configuration {
+        position:static;
+      }
+
+      .texture-nav {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .feature-grid,
+      .other-products {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:620px) {
+      .feature-grid,
+      .other-products {
+        grid-template-columns:1fr;
+      }
+
+      .hero-photo,
+      .hero-photo img {
+        min-height:420px;
+      }
+
+      .preview-image,
+      .preview-image img {
+        min-height:470px;
+        height:470px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    Indian Raw Collection • Six Signature Textures • Boss Beauty
+  </div>
+
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a class="logo" href="index.html">
+
+        <img
+          src="images/Homepage Images/Owner Images/Lifestyle Images/Store Images/Branding/BigBossBundles-logo.jpg"
+          alt="Big Boss Bundles"
+        >
+
+      </a>
+
+
+      <nav class="main-nav">
+
+        <a href="index.html">Home</a>
+        <a href="index.html#collections">Collections</a>
+        <a href="bundles.html">Bundles</a>
+        <a href="wigs.html">Wigs</a>
+        <a href="closures.html">Closures</a>
+        <a href="frontals.html">Frontals</a>
+        <a href="mens-hair-pieces.html">Men's Hair</a>
+        <a href="hair-care.html">Hair Care</a>
+        <a href="contact.html">Contact</a>
+
+        <a class="cart-pill" href="cart.html">
+          Bag (<span data-cart-count>0</span>)
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- HERO -->
+
+    <section class="collection-hero">
+
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+
+          <span class="eyebrow">
+            Big Boss Bundles
+          </span>
+
+          <h1>
+            Indian Raw
+            Collection
+          </h1>
+
+          <p>
+            Discover the Indian Raw Collection in six signature
+            textures. Choose your texture and length below to
+            create your perfect Boss Beauty look.
+          </p>
+
+        </div>
+
+
+        <div class="hero-photo">
+
+          <img
+            id="hero-image"
+            src="images/Indian Raw Hair Images/indian-raw-body-wave-model.png"
+            alt="Indian Raw Hair"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- PRODUCT BUILDER -->
+
+    <section class="section shop-builder">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          Build Your Look
+        </span>
+
+        <h2>
+          Indian Raw Bundles
+        </h2>
+
+        <p>
+          Select a texture and available length.
+          Your retail price updates automatically.
+        </p>
+
+      </div>
+
+
+
+      <div class="builder-wrap">
+
+
+        <!-- PRODUCT IMAGE -->
+
+        <div class="product-preview">
+
+          <div class="preview-image">
+
+            <img
+              id="product-image"
+              src="images/Indian Raw Hair Images/indian-raw-body-wave-product.png"
+              alt="Indian Raw Body Wave Hair"
+            >
+
+          </div>
+
+
+          <div class="preview-caption">
+
+            <h2 id="texture-title">
+              Indian Raw Body Wave
+            </h2>
+
+            <p>
+              Premium Indian Raw hair from the
+              Big Boss Bundles luxury collection.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- CONFIGURATION -->
+
+        <div class="configuration">
+
+          <span class="eyebrow">
+            Customize
+          </span>
+
+          <h2>
+            Choose Your Hair
+          </h2>
+
+
+          <label>
+            Texture
+
+            <select id="texture">
+
+              <option value="Straight">
+                Straight
+              </option>
+
+              <option value="Kinky Straight">
+                Kinky Straight
+              </option>
+
+              <option value="Body Wave" selected>
+                Body Wave
+              </option>
+
+              <option value="Deep Wave">
+                Deep Wave
+              </option>
+
+              <option value="Curly">
+                Curly
+              </option>
+
+              <option value="Kinky Curly">
+                Kinky Curly
+              </option>
+
+            </select>
+
+          </label>
+
+
+
+          <label>
+            Length
+
+            <select id="length">
+
+              <option value="14">
+                14"
+              </option>
+
+            </select>
+
+          </label>
+
+
+
+          <label>
+            Quantity
+
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              max="20"
+              value="1"
+            >
+
+          </label>
+
+
+
+          <div class="live-price">
+
+            <small>
+              Your Price
+            </small>
+
+            <div id="price">
+              $60.00
+            </div>
+
+            <div id="price-note">
+              14" • Body Wave
+            </div>
+
+          </div>
+
+
+          <p class="availability-note">
+            Additional lengths will become available as
+            confirmed supplier pricing is added to the
+            Big Boss Bundles pricing engine.
+          </p>
+
+
+          <button
+            class="add-button"
+            id="add-to-cart"
+            type="button"
+          >
+            Add To Bag
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- QUICK TEXTURE BUTTONS -->
+
+      <div class="texture-nav">
+
+        <button
+          class="texture-chip"
+          data-texture="Straight"
+        >
+          Straight
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Kinky Straight"
+        >
+          Kinky Straight
+        </button>
+
+        <button
+          class="texture-chip active"
+          data-texture="Body Wave"
+        >
+          Body Wave
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Deep Wave"
+        >
+          Deep Wave
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Curly"
+        >
+          Curly
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Kinky Curly"
+        >
+          Kinky Curly
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- FEATURES -->
+
+    <section class="section feature-section">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          The Big Boss Difference
+        </span>
+
+        <h2>
+          Indian Raw Luxury
+        </h2>
+
+      </div>
+
+
+      <div class="feature-grid">
+
+        <div class="feature">
+
+          <strong>
+            Six Textures
+          </strong>
+
+          <p>
+            Straight, Kinky Straight, Body Wave,
+            Deep Wave, Curly and Kinky Curly.
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <strong>
+            Natural Beauty
+          </strong>
+
+          <p>
+            Beautiful movement and versatile
+            styling possibilities.
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <strong>
+            Boss Quality
+          </strong>
+
+          <p>
+            Selected as part of the premium
+            Big Boss Bundles collection.
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <strong>
+            Complete Looks
+          </strong>
+
+          <p>
+            Shop bundles, closures, frontals
+            and luxury wigs.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- RELATED -->
+
+    <section class="section">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          Complete Your Install
+        </span>
+
+        <h2>
+          Shop More Indian Raw
+        </h2>
+
+      </div>
+
+
+      <div class="other-products">
+
+
+        <div class="other-card">
+
+          <h3>
+            HD Closures
+          </h3>
+
+          <p>
+            Complete your install with
+            premium HD lace closures.
+          </p>
+
+          <a
+            class="btn"
+            href="closures.html"
+          >
+            Shop Closures
+          </a>
+
+        </div>
+
+
+        <div class="other-card">
+
+          <h3>
+            HD Frontals
+          </h3>
+
+          <p>
+            Create a seamless,
+            versatile frontal installation.
+          </p>
+
+          <a
+            class="btn"
+            href="frontals.html"
+          >
+            Shop Frontals
+          </a>
+
+        </div>
+
+
+        <div class="other-card">
+
+          <h3>
+            Luxury Wigs
+          </h3>
+
+          <p>
+            Shop Indian Raw
+            HD lace wig options.
+          </p>
+
+          <a
+            class="btn"
+            href="wigs.html"
+          >
+            Shop Wigs
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="footer-grid">
+
+
+      <div>
+
+        <h3>
+          Big Boss Bundles
+        </h3>
+
+        <p>
+          Luxury bundles, wigs, closures,
+          frontals, men's hair pieces and
+          Boss Beauty essentials.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Customer Care
+        </h4>
+
+        <a href="contact.html">
+          Contact Us
+        </a>
+
+        <a href="shipping-policy.html">
+          Shipping Policy
+        </a>
+
+        <a href="return-policy.html">
+          Return & Exchange Policy
+        </a>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms-and-conditions.html">
+          Terms & Conditions
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Visit or Contact
+        </h4>
+
+        <p>
+          301 W Pecan Street
+        </p>
+
+        <p>
+          Pflugerville, TX 78660
+        </p>
+
+        <a href="tel:+15122762366">
+          (512) 276-2366
+        </a>
+
+        <a href="mailto:support@bigbossbundles.com">
+          support@bigbossbundles.com
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Big Boss Bundles. All rights reserved.
+    </div>
+
+  </footer>
+
+
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+
+  <script src="js/pricing.js"></script>
+
+  <script src="js/cart.js"></script>
+
+
+
+  <script>
+
+    /* =========================================
+       CONFIRMED INDIAN RAW SUPPLIER PRICING
+       ========================================= */
+
+    const supplierPrices = {
+
+      14: {
+
+        "Straight": 20,
+
+        "Body Wave": 20,
+
+        "Deep Wave": 22,
+
+        "Curly": 22,
+
+        "Kinky Curly": 22,
+
+        "Kinky Straight": 22
+
+      }
+
+    };
+
+
+    /* =========================================
+       PRODUCT IMAGES
+       ========================================= */
+
+    const images = {
+
+      "Straight": {
+        model:
+          "images/Indian Raw Hair Images/indian-raw-straight-model.png",
+        product:
+          "images/Indian Raw Hair Images/indian-raw-straight-product.png"
+      },
+
+      "Kinky Straight": {
+        model:
+          "images/Indian Raw Hair Images/indian-raw-kinky-straight-model.png",
+        product:
+          "images/Indian Raw Hair Images/indian-raw-kinky-straight-product.png"
+      },
+
+      "Body Wave": {
+        model:
+          "images/Indian Raw Hair Images/indian-raw-body-wave-model.png",
+        product:
+          "images/Indian Raw Hair Images/indian-raw-body-wave-product.png"
+      },
+
+      "Deep Wave": {
+        model:
+          "images/Indian Raw Hair Images/indian-raw-deep-wave-model.png",
+        product:
+          "images/Indian Raw Hair Images/indian-raw-deep-wave-product.png"
+      },
+
+      "Curly": {
+        model:
+          "images/Indian Raw Hair Images/indian-raw-curly-model.png",
+        product:
+          "images/Indian Raw Hair Images/indian-raw-curly-product.png"
+      },
+
+      "Kinky Curly": {
+        model:
+          "images/Indian Raw Hair Images/indian-raw-kinky-curly-model.png",
+        product:
+          "images/Indian Raw Hair Images/indian-raw-kinky-curly-product.png"
+      }
+
+    };
+
+
+
+    const texture =
+      document.getElementById("texture");
+
+    const length =
+      document.getElementById("length");
+
+    const quantity =
+      document.getElementById("quantity");
+
+    const price =
+      document.getElementById("price");
+
+    const priceNote =
+      document.getElementById("price-note");
+
+    const heroImage =
+      document.getElementById("hero-image");
+
+    const productImage =
+      document.getElementById("product-image");
+
+    const textureTitle =
+      document.getElementById("texture-title");
+
+    const addButton =
+      document.getElementById("add-to-cart");
+
+    const toast =
+      document.getElementById("toast");
+
+
+
+    function showToast(message) {
+
+      toast.textContent =
+        message;
+
+      toast.classList.add("show");
+
+
+      setTimeout(() => {
+
+        toast.classList.remove("show");
+
+      }, 2300);
+
+    }
+
+
+
+    function retailPrice() {
+
+      const selectedLength =
+        Number(length.value);
+
+      const selectedTexture =
+        texture.value;
+
+      const supplier =
+        supplierPrices?.[selectedLength]?.[selectedTexture];
+
+
+      if (
+        supplier === undefined ||
+        supplier === null
+      ) {
+
+        return null;
+
+      }
+
+
+      return window.BBBPricing
+        .retailFromSupplier(
+          supplier,
+          "Bundle"
+        );
+
+    }
+
+
+
+    function updateProduct() {
+
+      const selectedTexture =
+        texture.value;
+
+      const selectedLength =
+        Number(length.value);
+
+      const qty =
+        Math.max(
+          1,
+          Number(quantity.value) || 1
+        );
+
+
+      const imageSet =
+        images[selectedTexture];
+
+
+      if (imageSet) {
+
+        heroImage.src =
+          imageSet.model;
+
+        productImage.src =
+          imageSet.product;
+
+      }
+
+
+      textureTitle.textContent =
+        "Indian Raw " +
+        selectedTexture;
+
+
+      const eachPrice =
+        retailPrice();
+
+
+      if (eachPrice === null) {
+
+        price.textContent =
+          "Price Coming Soon";
+
+        priceNote.textContent =
+          selectedLength +
+          '" • ' +
+          selectedTexture;
+
+        addButton.disabled =
+          true;
+
+      }
+
+      else {
+
+        const total =
+          eachPrice * qty;
+
+
+        price.textContent =
+          window.BBBPricing.money(total);
+
+
+        priceNote.textContent =
+          qty +
+          " bundle" +
+          (qty > 1 ? "s" : "") +
+          " • " +
+          selectedLength +
+          '" • ' +
+          selectedTexture;
+
+
+        addButton.disabled =
+          false;
+
+      }
+
+
+
+      document
+        .querySelectorAll(".texture-chip")
+        .forEach(button => {
+
+          button.classList.toggle(
+            "active",
+            button.dataset.texture ===
+              selectedTexture
+          );
+
+        });
+
+    }
+
+
+
+    texture.addEventListener(
+      "change",
+      updateProduct
+    );
+
+
+    length.addEventListener(
+      "change",
+      updateProduct
+    );
+
+
+    quantity.addEventListener(
+      "input",
+      updateProduct
+    );
+
+
+
+    document
+      .querySelectorAll(".texture-chip")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            texture.value =
+              button.dataset.texture;
+
+            updateProduct();
+
+            window.scrollTo({
+              top:
+                document
+                  .querySelector(".builder-wrap")
+                  .offsetTop - 100,
+              behavior:"smooth"
+            });
+
+          }
+        );
+
+      });
+
+
+
+    addButton.addEventListener(
+      "click",
+      () => {
+
+        const unitPrice =
+          retailPrice();
+
+
+        if (unitPrice === null) {
+
+          showToast(
+            "Pricing for this selection is not available yet."
+          );
+
+          return;
+
+        }
+
+
+        const qty =
+          Math.max(
+            1,
+            Number(quantity.value) || 1
+          );
+
+
+        window.BBBCart.add({
+
+          name:
+            "Indian Raw " +
+            texture.value +
+            " Bundle",
+
+          collection:
+            "Indian Raw",
+
+          type:
+            "Bundle",
+
+          texture:
+            texture.value,
+
+          length:
+            length.value + '"',
+
+          quantity:
+            qty,
+
+          price:
+            unitPrice,
+
+          image:
+            images[texture.value].product
+
+        });
+
+
+        showToast(
+          "Indian Raw " +
+          texture.value +
+          " added to your bag."
+        );
+
+      }
+    );
+
+
+
+    updateProduct();
+
+  </script>
+
+
+</body>
+</html>
