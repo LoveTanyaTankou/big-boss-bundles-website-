@@ -1,1 +1,233 @@
+<!-- ========================================
+     SHOP BUNDLES BY HAIR ORIGIN
+========================================= -->
 
+<style>
+.bundle-origin-section {
+  padding: 70px 5%;
+  background: #ffffff;
+}
+
+.bundle-origin-heading {
+  max-width: 850px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.bundle-origin-heading .eyebrow {
+  display: block;
+  color: #00A6D6;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.bundle-origin-heading h2 {
+  margin: 0;
+  color: #0A0A0A;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  text-transform: uppercase;
+}
+
+.bundle-origin-heading p {
+  max-width: 700px;
+  margin: 14px auto 0;
+  color: #666;
+  line-height: 1.7;
+}
+
+.bundle-origin-grid {
+  width: min(1250px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.bundle-origin-card {
+  position: relative;
+  display: block;
+  min-height: 500px;
+  overflow: hidden;
+  border: 2px solid #D4A622;
+  border-radius: 22px;
+  background: #0A0A0A;
+  box-shadow: 0 16px 38px rgba(0,0,0,.15);
+  text-decoration: none;
+}
+
+.bundle-origin-card img {
+  width: 100%;
+  height: 500px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  background: #ffffff;
+  filter: none;
+}
+
+.bundle-origin-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 45px 24px 25px;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.96) 0%,
+      rgba(0,0,0,.84) 50%,
+      rgba(0,0,0,0) 100%
+    );
+}
+
+.bundle-origin-overlay h3 {
+  margin: 0;
+  color: #D4A622;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.bundle-origin-overlay p {
+  margin: 7px 0 15px;
+  max-width: 520px;
+  color: #ffffff;
+}
+
+.bundle-origin-button {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: #00A6D6;
+  color: #ffffff;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.bundle-origin-card:hover {
+  transform: translateY(-4px);
+  transition: .25s ease;
+  box-shadow: 0 20px 45px rgba(0,0,0,.22);
+}
+
+.bundle-origin-card:hover .bundle-origin-button {
+  background: #D4A622;
+  color: #0A0A0A;
+}
+
+@media (max-width: 800px) {
+  .bundle-origin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bundle-origin-card,
+  .bundle-origin-card img {
+    min-height: 430px;
+    height: 430px;
+  }
+}
+</style>
+
+
+<section class="bundle-origin-section">
+
+  <div class="bundle-origin-heading">
+    <span class="eyebrow">Big Boss Bundles</span>
+    <h2>Shop Bundles by Collection</h2>
+    <p>
+      Explore our luxury hair origins. Click any collection to shop
+      its available bundle textures and lengths.
+    </p>
+  </div>
+
+
+  <div class="bundle-origin-grid">
+
+    <!-- LAOS -->
+    <a
+      class="bundle-origin-card"
+      href="laos.html"
+      aria-label="Shop LAOS Bundles"
+    >
+      <img
+        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/laos-body-wave-model.png"
+        alt="LAOS Luxury Bundles"
+        loading="lazy"
+      >
+
+      <div class="bundle-origin-overlay">
+        <h3>LAOS</h3>
+        <p>Premium luxury hair with exceptional softness, fullness and movement.</p>
+        <span class="bundle-origin-button">Shop LAOS Bundles</span>
+      </div>
+    </a>
+
+
+    <!-- CAMBODIAN -->
+    <a
+      class="bundle-origin-card"
+      href="cambodian.html"
+      aria-label="Shop Cambodian Bundles"
+    >
+      <img
+        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/cambodian-curly-model.png"
+        alt="Cambodian Hair Bundles"
+        loading="lazy"
+      >
+
+      <div class="bundle-origin-overlay">
+        <h3>Cambodian</h3>
+        <p>Rich natural texture with beautiful body, strength and versatility.</p>
+        <span class="bundle-origin-button">Shop Cambodian Bundles</span>
+      </div>
+    </a>
+
+
+    <!-- INDIAN RAW -->
+    <a
+      class="bundle-origin-card"
+      href="indian-raw.html"
+      aria-label="Shop Indian Raw Bundles"
+    >
+      <img
+        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Indian%20Raw%20Hair%20Images/indian-straight-model.png"
+        alt="Indian Raw Hair Bundles"
+        loading="lazy"
+      >
+
+      <div class="bundle-origin-overlay">
+        <h3>Indian Raw</h3>
+        <p>Authentic raw hair with natural movement, softness and styling versatility.</p>
+        <span class="bundle-origin-button">Shop Indian Raw Bundles</span>
+      </div>
+    </a>
+
+
+    <!-- BURMESE -->
+    <a
+      class="bundle-origin-card"
+      href="burmese.html"
+      aria-label="Shop Burmese Bundles"
+    >
+      <img
+        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-model.png"
+        alt="Burmese Hair Bundles"
+        loading="lazy"
+      >
+
+      <div class="bundle-origin-overlay">
+        <h3>Burmese</h3>
+        <p>Full-bodied luxury hair with soft texture and beautiful natural definition.</p>
+        <span class="bundle-origin-button">Shop Burmese Bundles</span>
+      </div>
+    </a>
+
+  </div>
+</section>
