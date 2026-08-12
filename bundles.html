@@ -1,233 +1,723 @@
-<!-- ========================================
-     SHOP BUNDLES BY HAIR ORIGIN
-========================================= -->
+<!-- =========================================================
+     BIG BOSS BUNDLES
+     SHOP BUNDLES BY COLLECTION
+     ONE COMPLETE PASTE
+========================================================= -->
 
 <style>
-.bundle-origin-section {
-  padding: 70px 5%;
-  background: #ffffff;
+:root{
+  --bbb-black:#050505;
+  --bbb-gold:#D4A622;
+  --bbb-teal:#00A6D6;
+  --bbb-white:#FFFFFF;
 }
 
-.bundle-origin-heading {
-  max-width: 850px;
-  margin: 0 auto 38px;
-  text-align: center;
+/* ==============================
+   MAIN SECTION
+============================== */
+
+.bbb-origin-section{
+  background:#ffffff;
+  padding:70px 24px;
 }
 
-.bundle-origin-heading .eyebrow {
-  display: block;
-  color: #00A6D6;
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+.bbb-origin-heading{
+  max-width:1100px;
+  margin:0 auto 38px;
+  text-align:center;
 }
 
-.bundle-origin-heading h2 {
-  margin: 0;
-  color: #0A0A0A;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  text-transform: uppercase;
+.bbb-origin-heading .eyebrow{
+  color:var(--bbb-teal);
+  font-size:.9rem;
+  font-weight:900;
+  letter-spacing:.25em;
+  text-transform:uppercase;
 }
 
-.bundle-origin-heading p {
-  max-width: 700px;
-  margin: 14px auto 0;
-  color: #666;
-  line-height: 1.7;
+.bbb-origin-heading h2{
+  margin:8px 0 8px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2.5rem,6vw,4.8rem);
+  line-height:1;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#111111;
 }
 
-.bundle-origin-grid {
-  width: min(1250px, 100%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
+.bbb-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin:15px auto;
+  color:var(--bbb-gold);
 }
 
-.bundle-origin-card {
-  position: relative;
-  display: block;
-  min-height: 500px;
-  overflow: hidden;
-  border: 2px solid #D4A622;
-  border-radius: 22px;
-  background: #0A0A0A;
-  box-shadow: 0 16px 38px rgba(0,0,0,.15);
-  text-decoration: none;
+.bbb-divider::before,
+.bbb-divider::after{
+  content:"";
+  width:160px;
+  height:1px;
+  background:var(--bbb-gold);
 }
 
-.bundle-origin-card img {
-  width: 100%;
-  height: 500px;
-  display: block;
-  object-fit: contain;
-  object-position: center;
-  background: #ffffff;
-  filter: none;
+.bbb-divider span{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.8rem;
+  font-weight:bold;
 }
 
-.bundle-origin-overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 45px 24px 25px;
-  color: #ffffff;
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.96) 0%,
-      rgba(0,0,0,.84) 50%,
-      rgba(0,0,0,0) 100%
-    );
+.bbb-origin-heading p{
+  margin:0;
+  color:#444444;
+  font-size:1rem;
+  line-height:1.6;
 }
 
-.bundle-origin-overlay h3 {
-  margin: 0;
-  color: #D4A622;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 2rem;
-  text-transform: uppercase;
+
+/* ==============================
+   COLLECTION GRID
+============================== */
+
+.bbb-origin-grid{
+  width:min(1450px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
 }
 
-.bundle-origin-overlay p {
-  margin: 7px 0 15px;
-  max-width: 520px;
-  color: #ffffff;
+
+/* ==============================
+   COLLECTION CARD
+============================== */
+
+.bbb-origin-card{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  min-height:330px;
+
+  overflow:hidden;
+
+  border:2px solid var(--bbb-gold);
+  border-radius:18px;
+
+  background:var(--bbb-black);
+
+  text-decoration:none;
+
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
 }
 
-.bundle-origin-button {
-  display: inline-block;
-  padding: 11px 20px;
-  border-radius: 999px;
-  background: #00A6D6;
-  color: #ffffff;
-  font-size: .78rem;
-  font-weight: 900;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+.bbb-origin-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 42px rgba(0,0,0,.28);
 }
 
-.bundle-origin-card:hover {
-  transform: translateY(-4px);
-  transition: .25s ease;
-  box-shadow: 0 20px 45px rgba(0,0,0,.22);
+
+/* ==============================
+   IMAGES
+============================== */
+
+.bbb-origin-images{
+  display:grid;
+  grid-template-columns:1fr .85fr;
+  min-width:0;
+  background:#111111;
 }
 
-.bundle-origin-card:hover .bundle-origin-button {
-  background: #D4A622;
-  color: #0A0A0A;
+.bbb-model{
+  width:100%;
+  height:100%;
+  min-height:330px;
+
+  object-fit:cover;
+  object-position:center;
+
+  display:block;
 }
 
-@media (max-width: 800px) {
-  .bundle-origin-grid {
-    grid-template-columns: 1fr;
+.bbb-product{
+  width:100%;
+  height:100%;
+  min-height:330px;
+
+  object-fit:contain;
+  object-position:center;
+
+  display:block;
+
+  background:#ffffff;
+
+  padding:8px;
+  box-sizing:border-box;
+}
+
+
+/* ==============================
+   TEXT AREA
+============================== */
+
+.bbb-origin-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  padding:28px 22px;
+
+  text-align:center;
+
+  color:#ffffff;
+}
+
+.bbb-origin-copy h3{
+  color:var(--bbb-gold);
+
+  font-family:Georgia,"Times New Roman",serif;
+
+  font-size:clamp(1.7rem,3vw,2.3rem);
+
+  line-height:1;
+
+  margin:0;
+
+  text-transform:uppercase;
+}
+
+.bbb-origin-copy h4{
+  margin:7px 0 12px;
+
+  color:#ffffff;
+
+  font-family:Georgia,"Times New Roman",serif;
+
+  font-size:1.45rem;
+
+  font-weight:400;
+
+  text-transform:uppercase;
+}
+
+.bbb-card-divider{
+  width:115px;
+  height:1px;
+
+  margin:5px 0 16px;
+
+  background:var(--bbb-gold);
+}
+
+.bbb-origin-copy p{
+  max-width:240px;
+
+  margin:0 0 20px;
+
+  font-size:.95rem;
+
+  line-height:1.5;
+
+  color:#f4f4f4;
+}
+
+
+/* ==============================
+   BUTTON
+============================== */
+
+.bbb-shop-button{
+  display:inline-block;
+
+  padding:11px 20px;
+
+  border:1px solid #ffffff;
+  border-radius:12px;
+
+  background:var(--bbb-teal);
+
+  color:#ffffff;
+
+  font-weight:900;
+
+  font-size:.82rem;
+
+  letter-spacing:.04em;
+
+  text-transform:uppercase;
+
+  transition:.2s ease;
+}
+
+.bbb-origin-card:hover .bbb-shop-button{
+  transform:scale(1.04);
+}
+
+
+/* ==============================
+   VIETNAMESE FULL WIDTH
+============================== */
+
+.bbb-origin-card.vietnamese-card{
+  grid-column:1 / -1;
+}
+
+
+/* ==============================
+   BENEFITS STRIP
+============================== */
+
+.bbb-benefits{
+  margin:28px auto 0;
+
+  width:min(1450px,100%);
+
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:1px;
+
+  background:var(--bbb-gold);
+
+  border:1px solid var(--bbb-gold);
+}
+
+.bbb-benefit{
+  background:#050505;
+
+  color:#ffffff;
+
+  padding:22px 14px;
+
+  text-align:center;
+
+  font-weight:800;
+
+  text-transform:uppercase;
+
+  letter-spacing:.04em;
+}
+
+.bbb-benefit strong{
+  display:block;
+
+  color:var(--bbb-gold);
+
+  margin-bottom:4px;
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media(max-width:1000px){
+
+  .bbb-origin-grid{
+    grid-template-columns:1fr;
   }
 
-  .bundle-origin-card,
-  .bundle-origin-card img {
-    min-height: 430px;
-    height: 430px;
+  .bbb-origin-card.vietnamese-card{
+    grid-column:auto;
   }
+
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:700px){
+
+  .bbb-origin-section{
+    padding:45px 14px;
+  }
+
+  .bbb-origin-heading h2{
+    font-size:2.4rem;
+  }
+
+  .bbb-divider::before,
+  .bbb-divider::after{
+    width:70px;
+  }
+
+  .bbb-origin-card{
+    grid-template-columns:1fr;
+  }
+
+  .bbb-origin-images{
+    min-height:350px;
+  }
+
+  .bbb-model,
+  .bbb-product{
+    min-height:350px;
+  }
+
+  .bbb-origin-copy{
+    padding:30px 20px;
+  }
+
+  .bbb-benefits{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+
+/* ==============================
+   SMALL PHONES
+============================== */
+
+@media(max-width:450px){
+
+  .bbb-origin-images{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .bbb-model,
+  .bbb-product{
+    min-height:280px;
+  }
+
+  .bbb-benefits{
+    grid-template-columns:1fr;
+  }
+
 }
 </style>
 
 
-<section class="bundle-origin-section">
+<section class="bbb-origin-section">
 
-  <div class="bundle-origin-heading">
-    <span class="eyebrow">Big Boss Bundles</span>
-    <h2>Shop Bundles by Collection</h2>
+
+  <!-- ==========================
+       HEADING
+  =========================== -->
+
+  <div class="bbb-origin-heading">
+
+    <div class="eyebrow">
+      Shop Bundles by Collection
+    </div>
+
+    <h2>
+      Luxury Hair, Every Origin
+    </h2>
+
+    <div class="bbb-divider">
+      <span>BB</span>
+    </div>
+
     <p>
-      Explore our luxury hair origins. Click any collection to shop
-      its available bundle textures and lengths.
+      Premium quality. Raw beauty. Unmatched versatility.<br>
+      Click any collection below to explore all textures and lengths.
     </p>
+
   </div>
 
 
-  <div class="bundle-origin-grid">
 
-    <!-- LAOS -->
+  <!-- ==========================
+       COLLECTION GRID
+  =========================== -->
+
+  <div class="bbb-origin-grid">
+
+
+    <!-- =================================
+         1. BURMESE
+    ================================== -->
+
     <a
-      class="bundle-origin-card"
-      href="laos.html"
-      aria-label="Shop LAOS Bundles"
-    >
-      <img
-        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/laos-body-wave-model.png"
-        alt="LAOS Luxury Bundles"
-        loading="lazy"
-      >
-
-      <div class="bundle-origin-overlay">
-        <h3>LAOS</h3>
-        <p>Premium luxury hair with exceptional softness, fullness and movement.</p>
-        <span class="bundle-origin-button">Shop LAOS Bundles</span>
-      </div>
-    </a>
-
-
-    <!-- CAMBODIAN -->
-    <a
-      class="bundle-origin-card"
-      href="cambodian.html"
-      aria-label="Shop Cambodian Bundles"
-    >
-      <img
-        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Cambodian%20Hair%20Images/cambodian-curly-model.png"
-        alt="Cambodian Hair Bundles"
-        loading="lazy"
-      >
-
-      <div class="bundle-origin-overlay">
-        <h3>Cambodian</h3>
-        <p>Rich natural texture with beautiful body, strength and versatility.</p>
-        <span class="bundle-origin-button">Shop Cambodian Bundles</span>
-      </div>
-    </a>
-
-
-    <!-- INDIAN RAW -->
-    <a
-      class="bundle-origin-card"
-      href="indian-raw.html"
-      aria-label="Shop Indian Raw Bundles"
-    >
-      <img
-        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Indian%20Raw%20Hair%20Images/indian-straight-model.png"
-        alt="Indian Raw Hair Bundles"
-        loading="lazy"
-      >
-
-      <div class="bundle-origin-overlay">
-        <h3>Indian Raw</h3>
-        <p>Authentic raw hair with natural movement, softness and styling versatility.</p>
-        <span class="bundle-origin-button">Shop Indian Raw Bundles</span>
-      </div>
-    </a>
-
-
-    <!-- BURMESE -->
-    <a
-      class="bundle-origin-card"
+      class="bbb-origin-card"
       href="burmese.html"
       aria-label="Shop Burmese Bundles"
     >
-      <img
-        src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-model.png"
-        alt="Burmese Hair Bundles"
-        loading="lazy"
-      >
 
-      <div class="bundle-origin-overlay">
-        <h3>Burmese</h3>
-        <p>Full-bodied luxury hair with soft texture and beautiful natural definition.</p>
-        <span class="bundle-origin-button">Shop Burmese Bundles</span>
+      <div class="bbb-origin-images">
+
+        <img
+          class="bbb-model"
+          src="images/Burmese Hair Images/burmese-kinky-curly-model.png"
+          alt="Burmese Kinky Curly Hair Model"
+          loading="lazy"
+        >
+
+        <img
+          class="bbb-product"
+          src="images/Burmese Hair Images/burmese-kinky-curly-product.png"
+          alt="Burmese Kinky Curly Hair Bundles"
+          loading="lazy"
+        >
+
       </div>
+
+      <div class="bbb-origin-copy">
+
+        <h3>Burmese</h3>
+
+        <h4>Bundles</h4>
+
+        <div class="bbb-card-divider"></div>
+
+        <p>
+          Full-bodied luxury hair with soft texture,
+          beautiful fullness and natural definition.
+        </p>
+
+        <span class="bbb-shop-button">
+          Shop Burmese
+        </span>
+
+      </div>
+
     </a>
 
+
+
+    <!-- =================================
+         2. CAMBODIAN
+    ================================== -->
+
+    <a
+      class="bbb-origin-card"
+      href="cambodian.html"
+      aria-label="Shop Cambodian Bundles"
+    >
+
+      <div class="bbb-origin-images">
+
+        <img
+          class="bbb-model"
+          src="images/Cambodian Hair Images/cambodian-deep-wave-model.png"
+          alt="Cambodian Deep Wave Hair Model"
+          loading="lazy"
+        >
+
+        <img
+          class="bbb-product"
+          src="images/Cambodian Hair Images/cambodian-deep-wave-product.png"
+          alt="Cambodian Deep Wave Hair Bundles"
+          loading="lazy"
+        >
+
+      </div>
+
+      <div class="bbb-origin-copy">
+
+        <h3>Cambodian</h3>
+
+        <h4>Bundles</h4>
+
+        <div class="bbb-card-divider"></div>
+
+        <p>
+          Rich natural texture with beautiful body,
+          strength and styling versatility.
+        </p>
+
+        <span class="bbb-shop-button">
+          Shop Cambodian
+        </span>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- =================================
+         3. LAOS
+    ================================== -->
+
+    <a
+      class="bbb-origin-card"
+      href="laos.html"
+      aria-label="Shop LAOS Bundles"
+    >
+
+      <div class="bbb-origin-images">
+
+        <img
+          class="bbb-model"
+          src="images/LAOS Hair Images/laos-kinky-straight-model.png"
+          alt="LAOS Hair Model"
+          loading="lazy"
+        >
+
+        <img
+          class="bbb-product"
+          src="images/LAOS Hair Images/laos-kinky-straight-product.png"
+          alt="LAOS Hair Bundles"
+          loading="lazy"
+        >
+
+      </div>
+
+      <div class="bbb-origin-copy">
+
+        <h3>LAOS</h3>
+
+        <h4>Bundles</h4>
+
+        <div class="bbb-card-divider"></div>
+
+        <p>
+          Premium luxury hair with exceptional
+          softness, fullness and movement.
+        </p>
+
+        <span class="bbb-shop-button">
+          Shop LAOS
+        </span>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- =================================
+         4. INDIAN RAW
+    ================================== -->
+
+    <a
+      class="bbb-origin-card"
+      href="indian-raw.html"
+      aria-label="Shop Indian Raw Bundles"
+    >
+
+      <div class="bbb-origin-images">
+
+        <img
+          class="bbb-model"
+          src="images/Indian Raw Hair Images/indian-raw-straight-model.png"
+          alt="Indian Raw Straight Hair Model"
+          loading="lazy"
+        >
+
+        <img
+          class="bbb-product"
+          src="images/Indian Raw Hair Images/indian-raw-straight-product.png"
+          alt="Indian Raw Straight Hair Bundles"
+          loading="lazy"
+        >
+
+      </div>
+
+      <div class="bbb-origin-copy">
+
+        <h3>Indian Raw</h3>
+
+        <h4>Bundles</h4>
+
+        <div class="bbb-card-divider"></div>
+
+        <p>
+          Authentic raw hair with natural movement,
+          softness and styling versatility.
+        </p>
+
+        <span class="bbb-shop-button">
+          Shop Indian Raw
+        </span>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- =================================
+         5. VIETNAMESE
+    ================================== -->
+
+    <a
+      class="bbb-origin-card vietnamese-card"
+      href="vietnamese.html"
+      aria-label="Shop Vietnamese Bundles"
+    >
+
+      <div class="bbb-origin-images">
+
+        <img
+          class="bbb-model"
+          src="images/Vietnamese Hair Images/vietnamese-curly-model.png"
+          alt="Vietnamese Curly Hair Model"
+          loading="lazy"
+        >
+
+        <img
+          class="bbb-product"
+          src="images/Vietnamese Hair Images/vietnamese-curly-product.png"
+          alt="Vietnamese Curly Hair Bundles"
+          loading="lazy"
+        >
+
+      </div>
+
+      <div class="bbb-origin-copy">
+
+        <h3>Vietnamese</h3>
+
+        <h4>Bundles</h4>
+
+        <div class="bbb-card-divider"></div>
+
+        <p>
+          Luxurious Vietnamese hair with beautiful
+          texture, strength, shine and versatility.
+        </p>
+
+        <span class="bbb-shop-button">
+          Shop Vietnamese
+        </span>
+
+      </div>
+
+    </a>
+
+
   </div>
+
+
+
+  <!-- ==========================
+       BENEFITS
+  =========================== -->
+
+  <div class="bbb-benefits">
+
+    <div class="bbb-benefit">
+      <strong>100% Premium</strong>
+      Human Hair
+    </div>
+
+    <div class="bbb-benefit">
+      <strong>Luxury</strong>
+      Hair Collections
+    </div>
+
+    <div class="bbb-benefit">
+      <strong>Soft, Strong</strong>
+      &amp; Long Lasting
+    </div>
+
+    <div class="bbb-benefit">
+      <strong>Big Boss</strong>
+      Luxury Quality
+    </div>
+
+  </div>
+
+
 </section>
