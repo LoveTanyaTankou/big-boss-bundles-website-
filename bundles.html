@@ -1,723 +1,195 @@
-<!-- =========================================================
-     BIG BOSS BUNDLES
-     SHOP BUNDLES BY COLLECTION
-     ONE COMPLETE PASTE
-========================================================= -->
-
-<style>
-:root{
-  --bbb-black:#050505;
-  --bbb-gold:#D4A622;
-  --bbb-teal:#00A6D6;
-  --bbb-white:#FFFFFF;
-}
-
-/* ==============================
-   MAIN SECTION
-============================== */
-
-.bbb-origin-section{
-  background:#ffffff;
-  padding:70px 24px;
-}
-
-.bbb-origin-heading{
-  max-width:1100px;
-  margin:0 auto 38px;
-  text-align:center;
-}
-
-.bbb-origin-heading .eyebrow{
-  color:var(--bbb-teal);
-  font-size:.9rem;
-  font-weight:900;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-}
-
-.bbb-origin-heading h2{
-  margin:8px 0 8px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(2.5rem,6vw,4.8rem);
-  line-height:1;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  color:#111111;
-}
-
-.bbb-divider{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-  margin:15px auto;
-  color:var(--bbb-gold);
-}
-
-.bbb-divider::before,
-.bbb-divider::after{
-  content:"";
-  width:160px;
-  height:1px;
-  background:var(--bbb-gold);
-}
-
-.bbb-divider span{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:1.8rem;
-  font-weight:bold;
-}
-
-.bbb-origin-heading p{
-  margin:0;
-  color:#444444;
-  font-size:1rem;
-  line-height:1.6;
-}
-
-
-/* ==============================
-   COLLECTION GRID
-============================== */
-
-.bbb-origin-grid{
-  width:min(1450px,100%);
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:20px;
-}
-
-
-/* ==============================
-   COLLECTION CARD
-============================== */
-
-.bbb-origin-card{
-  display:grid;
-  grid-template-columns:1.55fr 1fr;
-  min-height:330px;
-
-  overflow:hidden;
-
-  border:2px solid var(--bbb-gold);
-  border-radius:18px;
-
-  background:var(--bbb-black);
-
-  text-decoration:none;
-
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    border-color .25s ease;
-}
-
-.bbb-origin-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 20px 42px rgba(0,0,0,.28);
-}
-
-
-/* ==============================
-   IMAGES
-============================== */
-
-.bbb-origin-images{
-  display:grid;
-  grid-template-columns:1fr .85fr;
-  min-width:0;
-  background:#111111;
-}
-
-.bbb-model{
-  width:100%;
-  height:100%;
-  min-height:330px;
-
-  object-fit:cover;
-  object-position:center;
-
-  display:block;
-}
-
-.bbb-product{
-  width:100%;
-  height:100%;
-  min-height:330px;
-
-  object-fit:contain;
-  object-position:center;
-
-  display:block;
-
-  background:#ffffff;
-
-  padding:8px;
-  box-sizing:border-box;
-}
-
-
-/* ==============================
-   TEXT AREA
-============================== */
-
-.bbb-origin-copy{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  padding:28px 22px;
-
-  text-align:center;
-
-  color:#ffffff;
-}
-
-.bbb-origin-copy h3{
-  color:var(--bbb-gold);
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:clamp(1.7rem,3vw,2.3rem);
-
-  line-height:1;
-
-  margin:0;
-
-  text-transform:uppercase;
-}
-
-.bbb-origin-copy h4{
-  margin:7px 0 12px;
-
-  color:#ffffff;
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:1.45rem;
-
-  font-weight:400;
-
-  text-transform:uppercase;
-}
-
-.bbb-card-divider{
-  width:115px;
-  height:1px;
-
-  margin:5px 0 16px;
-
-  background:var(--bbb-gold);
-}
-
-.bbb-origin-copy p{
-  max-width:240px;
-
-  margin:0 0 20px;
-
-  font-size:.95rem;
-
-  line-height:1.5;
-
-  color:#f4f4f4;
-}
-
-
-/* ==============================
-   BUTTON
-============================== */
-
-.bbb-shop-button{
-  display:inline-block;
-
-  padding:11px 20px;
-
-  border:1px solid #ffffff;
-  border-radius:12px;
-
-  background:var(--bbb-teal);
-
-  color:#ffffff;
-
-  font-weight:900;
-
-  font-size:.82rem;
-
-  letter-spacing:.04em;
-
-  text-transform:uppercase;
-
-  transition:.2s ease;
-}
-
-.bbb-origin-card:hover .bbb-shop-button{
-  transform:scale(1.04);
-}
-
-
-/* ==============================
-   VIETNAMESE FULL WIDTH
-============================== */
-
-.bbb-origin-card.vietnamese-card{
-  grid-column:1 / -1;
-}
-
-
-/* ==============================
-   BENEFITS STRIP
-============================== */
-
-.bbb-benefits{
-  margin:28px auto 0;
-
-  width:min(1450px,100%);
-
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:1px;
-
-  background:var(--bbb-gold);
-
-  border:1px solid var(--bbb-gold);
-}
-
-.bbb-benefit{
-  background:#050505;
-
-  color:#ffffff;
-
-  padding:22px 14px;
-
-  text-align:center;
-
-  font-weight:800;
-
-  text-transform:uppercase;
-
-  letter-spacing:.04em;
-}
-
-.bbb-benefit strong{
-  display:block;
-
-  color:var(--bbb-gold);
-
-  margin-bottom:4px;
-}
-
-
-/* ==============================
-   TABLET
-============================== */
-
-@media(max-width:1000px){
-
-  .bbb-origin-grid{
-    grid-template-columns:1fr;
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const textureSelect = document.getElementById("texture");
+  const lengthSelect = document.getElementById("length");
+  const quantityInput = document.getElementById("quantity");
+  const priceElement = document.getElementById("price");
+  const priceNote = document.getElementById("price-note");
+
+  /*
+    IMPORTANT:
+    Put the VERIFIED supplier prices for THIS collection here.
+    Retail is calculated automatically at ×3.
+  */
+
+  const supplierPrices = {
+    12: 15,
+    14: 19,
+    16: 24,
+    18: 29,
+    20: 34,
+    22: 38,
+    24: 44,
+    26: 52,
+    28: 58,
+    30: 68,
+    32: 72
+  };
+
+  /*
+    Texture upcharges are RETAIL upcharges.
+
+    Straight and Body Wave = base price.
+
+    Premium textures:
+    Kinky Straight
+    Deep Wave
+    Curly
+    Kinky Curly
+  */
+
+  const textureUpcharges = {
+    "Straight": 0,
+    "Body Wave": 0,
+    "Kinky Straight": 6,
+    "Deep Wave": 6,
+    "Curly": 6,
+    "Kinky Curly": 6
+  };
+
+
+  function money(amount) {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
+    }).format(amount);
   }
 
-  .bbb-origin-card.vietnamese-card{
-    grid-column:auto;
+
+  function getQuantity() {
+
+    if (!quantityInput) {
+      return 1;
+    }
+
+    const quantity = Number(quantityInput.value);
+
+    return quantity > 0 ? quantity : 1;
   }
 
-}
+
+  function calculatePrice() {
+
+    const texture = textureSelect.value;
+
+    const length = Number(lengthSelect.value);
+
+    const quantity = getQuantity();
+
+    const supplierPrice = supplierPrices[length];
 
 
-/* ==============================
-   MOBILE
-============================== */
+    if (supplierPrice === undefined) {
 
-@media(max-width:700px){
+      priceElement.textContent = "Price Pending";
 
-  .bbb-origin-section{
-    padding:45px 14px;
+      if (priceNote) {
+        priceNote.textContent =
+          texture + " • " + length + "\" • price not entered";
+      }
+
+      return;
+    }
+
+
+    /*
+      Bundle pricing:
+      supplier × 3
+    */
+
+    const baseRetailPrice = supplierPrice * 3;
+
+
+    /*
+      Add texture variation price
+    */
+
+    const textureUpcharge =
+      textureUpcharges[texture] || 0;
+
+
+    /*
+      Price for ONE bundle
+    */
+
+    const pricePerBundle =
+      baseRetailPrice + textureUpcharge;
+
+
+    /*
+      Quantity total
+    */
+
+    const total =
+      pricePerBundle * quantity;
+
+
+    priceElement.textContent =
+      money(total);
+
+
+    if (priceNote) {
+
+      priceNote.textContent =
+        texture +
+        " • " +
+        length +
+        "\" • " +
+        quantity +
+        " bundle" +
+        (quantity > 1 ? "s" : "") +
+        " • " +
+        money(pricePerBundle) +
+        " each";
+
+    }
+
   }
 
-  .bbb-origin-heading h2{
-    font-size:2.4rem;
+
+  /*
+    PRICE MUST UPDATE WHEN
+    ANY VARIATION CHANGES
+  */
+
+  textureSelect.addEventListener(
+    "change",
+    calculatePrice
+  );
+
+  lengthSelect.addEventListener(
+    "change",
+    calculatePrice
+  );
+
+
+  /*
+    Works whether Quantity
+    is a dropdown or number field.
+  */
+
+  if (quantityInput) {
+
+    quantityInput.addEventListener(
+      "change",
+      calculatePrice
+    );
+
+    quantityInput.addEventListener(
+      "input",
+      calculatePrice
+    );
+
   }
 
-  .bbb-divider::before,
-  .bbb-divider::after{
-    width:70px;
-  }
 
-  .bbb-origin-card{
-    grid-template-columns:1fr;
-  }
+  /*
+    Calculate initial price
+    when page loads
+  */
 
-  .bbb-origin-images{
-    min-height:350px;
-  }
+  calculatePrice();
 
-  .bbb-model,
-  .bbb-product{
-    min-height:350px;
-  }
-
-  .bbb-origin-copy{
-    padding:30px 20px;
-  }
-
-  .bbb-benefits{
-    grid-template-columns:1fr 1fr;
-  }
-
-}
-
-
-/* ==============================
-   SMALL PHONES
-============================== */
-
-@media(max-width:450px){
-
-  .bbb-origin-images{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .bbb-model,
-  .bbb-product{
-    min-height:280px;
-  }
-
-  .bbb-benefits{
-    grid-template-columns:1fr;
-  }
-
-}
-</style>
-
-
-<section class="bbb-origin-section">
-
-
-  <!-- ==========================
-       HEADING
-  =========================== -->
-
-  <div class="bbb-origin-heading">
-
-    <div class="eyebrow">
-      Shop Bundles by Collection
-    </div>
-
-    <h2>
-      Luxury Hair, Every Origin
-    </h2>
-
-    <div class="bbb-divider">
-      <span>BB</span>
-    </div>
-
-    <p>
-      Premium quality. Raw beauty. Unmatched versatility.<br>
-      Click any collection below to explore all textures and lengths.
-    </p>
-
-  </div>
-
-
-
-  <!-- ==========================
-       COLLECTION GRID
-  =========================== -->
-
-  <div class="bbb-origin-grid">
-
-
-    <!-- =================================
-         1. BURMESE
-    ================================== -->
-
-    <a
-      class="bbb-origin-card"
-      href="burmese.html"
-      aria-label="Shop Burmese Bundles"
-    >
-
-      <div class="bbb-origin-images">
-
-        <img
-          class="bbb-model"
-          src="images/Burmese Hair Images/burmese-kinky-curly-model.png"
-          alt="Burmese Kinky Curly Hair Model"
-          loading="lazy"
-        >
-
-        <img
-          class="bbb-product"
-          src="images/Burmese Hair Images/burmese-kinky-curly-product.png"
-          alt="Burmese Kinky Curly Hair Bundles"
-          loading="lazy"
-        >
-
-      </div>
-
-      <div class="bbb-origin-copy">
-
-        <h3>Burmese</h3>
-
-        <h4>Bundles</h4>
-
-        <div class="bbb-card-divider"></div>
-
-        <p>
-          Full-bodied luxury hair with soft texture,
-          beautiful fullness and natural definition.
-        </p>
-
-        <span class="bbb-shop-button">
-          Shop Burmese
-        </span>
-
-      </div>
-
-    </a>
-
-
-
-    <!-- =================================
-         2. CAMBODIAN
-    ================================== -->
-
-    <a
-      class="bbb-origin-card"
-      href="cambodian.html"
-      aria-label="Shop Cambodian Bundles"
-    >
-
-      <div class="bbb-origin-images">
-
-        <img
-          class="bbb-model"
-          src="images/Cambodian Hair Images/cambodian-deep-wave-model.png"
-          alt="Cambodian Deep Wave Hair Model"
-          loading="lazy"
-        >
-
-        <img
-          class="bbb-product"
-          src="images/Cambodian Hair Images/cambodian-deep-wave-product.png"
-          alt="Cambodian Deep Wave Hair Bundles"
-          loading="lazy"
-        >
-
-      </div>
-
-      <div class="bbb-origin-copy">
-
-        <h3>Cambodian</h3>
-
-        <h4>Bundles</h4>
-
-        <div class="bbb-card-divider"></div>
-
-        <p>
-          Rich natural texture with beautiful body,
-          strength and styling versatility.
-        </p>
-
-        <span class="bbb-shop-button">
-          Shop Cambodian
-        </span>
-
-      </div>
-
-    </a>
-
-
-
-    <!-- =================================
-         3. LAOS
-    ================================== -->
-
-    <a
-      class="bbb-origin-card"
-      href="laos.html"
-      aria-label="Shop LAOS Bundles"
-    >
-
-      <div class="bbb-origin-images">
-
-        <img
-          class="bbb-model"
-          src="images/LAOS Hair Images/laos-kinky-straight-model.png"
-          alt="LAOS Hair Model"
-          loading="lazy"
-        >
-
-        <img
-          class="bbb-product"
-          src="images/LAOS Hair Images/laos-kinky-straight-product.png"
-          alt="LAOS Hair Bundles"
-          loading="lazy"
-        >
-
-      </div>
-
-      <div class="bbb-origin-copy">
-
-        <h3>LAOS</h3>
-
-        <h4>Bundles</h4>
-
-        <div class="bbb-card-divider"></div>
-
-        <p>
-          Premium luxury hair with exceptional
-          softness, fullness and movement.
-        </p>
-
-        <span class="bbb-shop-button">
-          Shop LAOS
-        </span>
-
-      </div>
-
-    </a>
-
-
-
-    <!-- =================================
-         4. INDIAN RAW
-    ================================== -->
-
-    <a
-      class="bbb-origin-card"
-      href="indian-raw.html"
-      aria-label="Shop Indian Raw Bundles"
-    >
-
-      <div class="bbb-origin-images">
-
-        <img
-          class="bbb-model"
-          src="images/Indian Raw Hair Images/indian-raw-straight-model.png"
-          alt="Indian Raw Straight Hair Model"
-          loading="lazy"
-        >
-
-        <img
-          class="bbb-product"
-          src="images/Indian Raw Hair Images/indian-raw-straight-product.png"
-          alt="Indian Raw Straight Hair Bundles"
-          loading="lazy"
-        >
-
-      </div>
-
-      <div class="bbb-origin-copy">
-
-        <h3>Indian Raw</h3>
-
-        <h4>Bundles</h4>
-
-        <div class="bbb-card-divider"></div>
-
-        <p>
-          Authentic raw hair with natural movement,
-          softness and styling versatility.
-        </p>
-
-        <span class="bbb-shop-button">
-          Shop Indian Raw
-        </span>
-
-      </div>
-
-    </a>
-
-
-
-    <!-- =================================
-         5. VIETNAMESE
-    ================================== -->
-
-    <a
-      class="bbb-origin-card vietnamese-card"
-      href="vietnamese.html"
-      aria-label="Shop Vietnamese Bundles"
-    >
-
-      <div class="bbb-origin-images">
-
-        <img
-          class="bbb-model"
-          src="images/Vietnamese Hair Images/vietnamese-curly-model.png"
-          alt="Vietnamese Curly Hair Model"
-          loading="lazy"
-        >
-
-        <img
-          class="bbb-product"
-          src="images/Vietnamese Hair Images/vietnamese-curly-product.png"
-          alt="Vietnamese Curly Hair Bundles"
-          loading="lazy"
-        >
-
-      </div>
-
-      <div class="bbb-origin-copy">
-
-        <h3>Vietnamese</h3>
-
-        <h4>Bundles</h4>
-
-        <div class="bbb-card-divider"></div>
-
-        <p>
-          Luxurious Vietnamese hair with beautiful
-          texture, strength, shine and versatility.
-        </p>
-
-        <span class="bbb-shop-button">
-          Shop Vietnamese
-        </span>
-
-      </div>
-
-    </a>
-
-
-  </div>
-
-
-
-  <!-- ==========================
-       BENEFITS
-  =========================== -->
-
-  <div class="bbb-benefits">
-
-    <div class="bbb-benefit">
-      <strong>100% Premium</strong>
-      Human Hair
-    </div>
-
-    <div class="bbb-benefit">
-      <strong>Luxury</strong>
-      Hair Collections
-    </div>
-
-    <div class="bbb-benefit">
-      <strong>Soft, Strong</strong>
-      &amp; Long Lasting
-    </div>
-
-    <div class="bbb-benefit">
-      <strong>Big Boss</strong>
-      Luxury Quality
-    </div>
-
-  </div>
-
-
-</section>
+});
+</script>
