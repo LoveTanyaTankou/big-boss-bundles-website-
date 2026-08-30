@@ -984,102 +984,461 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script>
-    const cartKey = "bbbCart";
-    const cart = JSON.parse(localStorage.getItem(cartKey) || "[]");
-    const countEl = document.getElementById("cart-count");
-    const toast = document.getElementById("toast");
+<script src="cart.js"></script>
 
-    function updateCartCount() {
-      countEl.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+<script>
+  const toast = document.getElementById("toast");
+  const countEl = document.getElementById("cart-count");
+
+  /*
+  |--------------------------------------------------------------------------
+  | BURMESE DOUBLE DRAWN BUNDLE RETAIL PRICING
+  |--------------------------------------------------------------------------
+  | Retail = supplier cost × 3
+  |
+  | Straight and Body Wave use base pricing.
+  | Deep Wave, Curly, Kinky Straight and Kinky Curly use the
+  | specialty-texture pricing.
+  |--------------------------------------------------------------------------
+  */
+
+  const burmeseBasePrices = {
+    10: 51,
+    12: 57,
+    14: 63,
+    16: 78,
+    18: 96,
+    20: 114,
+    22: 132,
+    24: 150,
+    26: 174,
+    28: 201,
+    30: 228
+  };
+
+  const burmeseSpecialtyPrices = {
+    10: 57,
+    12: 63,
+    14: 69,
+    16: 84,
+    18: 102,
+    20: 120,
+    22: 138,
+    24: 156,
+    26: 180,
+    28: 207,
+    30: 234
+  };
+
+  const specialtyTextures = new Set([
+    "Deep Wave",
+    "Curly",
+    "Kinky Straight",
+    "Kinky Curly"
+  ]);
+
+  const bundleLengths = [
+    10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30
+  ];
+
+  const closureLengths = [
+    12, 14, 16, 18, 20, 22
+  ];
+
+  const wigLengths = [
+    18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40
+  ];
+
+  function money(value) {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
+    }).format(value);
+  }
+
+  function updateCartCount() {
+    if (window.BBBCart && countEl) {
+      countEl.textContent = window.BBBCart.count();
     }
+  }
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2400);
-    }
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
 
-    function imageFor(card, type, view) {
-      const keyMap = {
-        Bundle: view === "model" ? "bundleModel" : "bundleProduct",
-        Closure: "closure",
-        Wig: view === "model" ? "wigModel" : "wigProduct"
-      };
-      return card.dataset[keyMap[type]];
-    }
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2400);
+  }
 
-    document.querySelectorAll(".product-card").forEach(card => {
-      const image = card.querySelector(".display-image");
-      const imageError = card.querySelector(".image-error");
-      const toggle = card.querySelector(".image-toggle");
-      const type = card.querySelector(".type-select");
-      const density = card.querySelector(".density-field");
-      let view = "model";
+  function textureFromCard(card) {
+    return card.dataset.product.replace(/^Burmese\s+/i, "").trim();
+  }
 
-      function loadImage() {
-        const selectedType = type.value;
+  function getBundlePrice(texture, length) {
+    const table = specialtyTextures.has(texture)
+      ? burmeseSpecialtyPrices
+      : burmeseBasePrices;
 
-        if (selectedType === "Closure") {
-          view = "product";
-          toggle.textContent = "Closure View";
-          toggle.disabled = true;
-        } else {
-          toggle.disabled = false;
-          toggle.textContent = view === "model" ? "View Product" : "View Model";
-        }
+    return table[Number(length)] || null;
+  }
 
-        const nextImage = imageFor(card, selectedType, view);
-        imageError.hidden = true;
-        image.hidden = false;
-        image.src = nextImage;
-        image.alt = `${card.dataset.product} ${selectedType} ${view}`;
+  function populateLengths(select, lengths) {
+    const previous = parseInt(select.value, 10);
+
+    select.innerHTML = "";
+
+    lengths.forEach(length => {
+      const option = document.createElement("option");
+
+      option.value = String(length);
+      option.textContent = length + ' inches';
+
+      if (length === previous) {
+        option.selected = true;
       }
 
-      image.addEventListener("error", () => {
-        image.hidden = true;
-        imageError.hidden = false;
-        imageError.textContent = "This product image is not available yet.";
-      });
+      select.appendChild(option);
+    });
+  }
 
-      image.addEventListener("load", () => {
-        image.hidden = false;
-        imageError.hidden = true;
-      });
+  function imageFor(card, type, view) {
+    const keyMap = {
+      Bundle: view === "model"
+        ? "bundleModel"
+        : "bundleProduct",
 
-      toggle.addEventListener("click", () => {
-        if (type.value === "Closure") return;
-        view = view === "model" ? "product" : "model";
-        loadImage();
-      });
+      Closure: "closure",
 
-      type.addEventListener("change", () => {
-        view = type.value === "Wig" ? "model" : type.value === "Closure" ? "product" : "model";
-        density.classList.toggle("hidden", type.value !== "Wig");
-        loadImage();
-      });
+      Wig: view === "model"
+        ? "wigModel"
+        : "wigProduct"
+    };
 
-      card.querySelector(".add-cart").addEventListener("click", () => {
-        const item = {
-          name: card.dataset.product,
-          type: type.value,
-          length: card.querySelector(".length-select").value,
-          density: type.value === "Wig" ? card.querySelector(".density-select").value : null,
-          color: card.querySelector(".color-select").value,
-          quantity: Number(card.querySelector(".quantity").value) || 1,
-          image: image.src
-        };
+    return card.dataset[keyMap[type]];
+  }
 
-        cart.push(item);
-        localStorage.setItem(cartKey, JSON.stringify(cart));
-        updateCartCount();
-        showToast(item.name + " added to your bag.");
-      });
+  document.querySelectorAll(".product-card").forEach(card => {
+
+    const image = card.querySelector(".display-image");
+    const imageError = card.querySelector(".image-error");
+    const toggle = card.querySelector(".image-toggle");
+
+    const typeSelect = card.querySelector(".type-select");
+    const lengthSelect = card.querySelector(".length-select");
+
+    const densityField = card.querySelector(".density-field");
+    const densitySelect = card.querySelector(".density-select");
+
+    const colorSelect = card.querySelector(".color-select");
+    const quantityInput = card.querySelector(".quantity");
+
+    const addButton = card.querySelector(".add-cart");
+    const pricingNote = card.querySelector(".pricing-note");
+
+    const texture = textureFromCard(card);
+
+    let view = "model";
+
+    /*
+    |--------------------------------------------------------------------------
+    | Image switching
+    |--------------------------------------------------------------------------
+    */
+
+    function loadImage() {
+
+      const selectedType = typeSelect.value;
+
+      if (selectedType === "Closure") {
+
+        view = "product";
+
+        toggle.textContent = "Closure View";
+        toggle.disabled = true;
+
+      } else {
+
+        toggle.disabled = false;
+
+        toggle.textContent =
+          view === "model"
+            ? "View Product"
+            : "View Model";
+      }
+
+      const nextImage =
+        imageFor(card, selectedType, view);
+
+      imageError.hidden = true;
+      image.hidden = false;
+      image.src = nextImage;
+
+      image.alt =
+        card.dataset.product +
+        " " +
+        selectedType +
+        " " +
+        view;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Price display
+    |--------------------------------------------------------------------------
+    */
+
+    function updatePrice() {
+
+      const selectedType = typeSelect.value;
+
+      /*
+      | Bundles are being activated first.
+      | Closures and wigs will receive their own secure pricing next.
+      */
+
+      if (selectedType !== "Bundle") {
+
+        pricingNote.textContent =
+          selectedType +
+          " pricing is being added next.";
+
+        addButton.disabled = true;
+        addButton.textContent = "Coming Next";
+
+        return;
+      }
+
+      const length =
+        Number(lengthSelect.value);
+
+      const price =
+        getBundlePrice(texture, length);
+
+      if (!price) {
+
+        pricingNote.textContent =
+          "Please select another length.";
+
+        addButton.disabled = true;
+        addButton.textContent = "Unavailable";
+
+        return;
+      }
+
+      pricingNote.textContent =
+        money(price) +
+        " per bundle • Double Drawn • Extra Full";
+
+      addButton.disabled = false;
+      addButton.textContent = "Add to Bag";
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Product type selection
+    |--------------------------------------------------------------------------
+    */
+
+    function syncProductType() {
+
+      const selectedType = typeSelect.value;
+
+      if (selectedType === "Bundle") {
+
+        populateLengths(
+          lengthSelect,
+          bundleLengths
+        );
+
+        densityField.classList.add("hidden");
+
+        view = "model";
+
+      } else if (selectedType === "Closure") {
+
+        populateLengths(
+          lengthSelect,
+          closureLengths
+        );
+
+        densityField.classList.add("hidden");
+
+        view = "product";
+
+      } else {
+
+        populateLengths(
+          lengthSelect,
+          wigLengths
+        );
+
+        densityField.classList.remove("hidden");
+
+        view = "model";
+      }
+
+      loadImage();
+      updatePrice();
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Image error handling
+    |--------------------------------------------------------------------------
+    */
+
+    image.addEventListener("error", () => {
+
+      image.hidden = true;
+
+      imageError.hidden = false;
+
+      imageError.textContent =
+        "This product image is not available yet.";
+    });
+
+    image.addEventListener("load", () => {
+
+      image.hidden = false;
+      imageError.hidden = true;
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | View Product / View Model
+    |--------------------------------------------------------------------------
+    */
+
+    toggle.addEventListener("click", () => {
+
+      if (typeSelect.value === "Closure") {
+        return;
+      }
+
+      view =
+        view === "model"
+          ? "product"
+          : "model";
 
       loadImage();
     });
 
-    updateCartCount();
-  </script>
-</body>
-</html>
+    /*
+    |--------------------------------------------------------------------------
+    | Type and length changes
+    |--------------------------------------------------------------------------
+    */
+
+    typeSelect.addEventListener(
+      "change",
+      syncProductType
+    );
+
+    lengthSelect.addEventListener(
+      "change",
+      updatePrice
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | Add Burmese Bundle to universal bag
+    |--------------------------------------------------------------------------
+    */
+
+    addButton.addEventListener("click", () => {
+
+      if (typeSelect.value !== "Bundle") {
+
+        showToast(
+          "We are adding secure " +
+          typeSelect.value +
+          " checkout next."
+        );
+
+        return;
+      }
+
+      if (!window.BBBCart) {
+
+        showToast(
+          "Shopping bag is temporarily unavailable."
+        );
+
+        return;
+      }
+
+      const length =
+        Number(lengthSelect.value);
+
+      const price =
+        getBundlePrice(texture, length);
+
+      if (!price) {
+
+        showToast(
+          "Please select an available length."
+        );
+
+        return;
+      }
+
+      const quantity =
+        Math.min(
+          20,
+          Math.max(
+            1,
+            Number(quantityInput.value) || 1
+          )
+        );
+
+      const item = {
+
+        productId: "burmese-bundle",
+
+        name:
+          "Burmese Double Drawn Bundle",
+
+        texture: texture,
+
+        length:
+          length + '"',
+
+        color:
+          colorSelect.value,
+
+        density: "",
+
+        laceSize: "",
+
+        quantity: quantity,
+
+        price: price,
+
+        image: image.src
+      };
+
+      window.BBBCart.add(item);
+
+      updateCartCount();
+
+      showToast(
+        "Burmese " +
+        texture +
+        " " +
+        length +
+        '" bundle added to your bag.'
+      );
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Initialize card
+    |--------------------------------------------------------------------------
+    */
+
+    syncProductType();
+  });
+
+  updateCartCount();
+</script>
