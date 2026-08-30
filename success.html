@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Order Confirmed | Big Boss Bundles</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #0A0A0A;
+    }
+
+    .announcement {
+      background: #0A0A0A;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #eeeeee;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .brand {
+      color: #D4A622;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .success-section {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fafafa 100%
+        );
+    }
+
+    .success-card {
+      width: 100%;
+      max-width: 720px;
+      background: #ffffff;
+      border: 1px solid #e6e6e6;
+      border-radius: 20px;
+      padding: 55px 35px;
+      text-align: center;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+    }
+
+    .checkmark {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      background: #00A6D6;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 46px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+      color: #0A0A0A;
+    }
+
+    .gold-line {
+      width: 90px;
+      height: 4px;
+      background: #D4A622;
+      margin: 0 auto 25px;
+      border-radius: 10px;
+    }
+
+    .thank-you {
+      font-size: 19px;
+      line-height: 1.7;
+      color: #444444;
+      max-width: 580px;
+      margin: 0 auto 25px;
+    }
+
+    .confirmation-box {
+      background: #fafafa;
+      border: 1px solid #eeeeee;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+    }
+
+    .confirmation-box strong {
+      color: #D4A622;
+    }
+
+    .confirmation-box p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #444444;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      background: #00A6D6;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.88;
+    }
+
+    .btn-secondary {
+      background: #0A0A0A;
+    }
+
+    .support {
+      margin-top: 35px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #666666;
+    }
+
+    .support a {
+      color: #00A6D6;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer {
+      background: #0A0A0A;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer .gold {
+      color: #D4A622;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .success-card {
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .thank-you {
+        font-size: 17px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    Double Drawn • Extra Full • Boss Beauty
+  </div>
+
+  <header>
+    <div class="brand">BIG BOSS BUNDLES</div>
+  </header>
+
+  <main class="success-section">
+
+    <div class="success-card">
+
+      <div class="checkmark">✓</div>
+
+      <h1>Thank You, Boss!</h1>
+
+      <div class="gold-line"></div>
+
+      <p class="thank-you">
+        Your order has been successfully received by
+        <strong>Big Boss Bundles.</strong>
+        We appreciate you choosing us for your beauty and hair needs.
+      </p>
+
+      <div class="confirmation-box">
+        <p>
+          <strong>Payment Confirmed</strong>
+          <br><br>
+          Your payment was securely processed through Stripe.
+          Please keep your payment confirmation for your records.
+          <br><br>
+          We will begin preparing your order for shipment.
+        </p>
+      </div>
+
+      <p class="thank-you">
+        Once your order ships, please watch for your shipping
+        and tracking information.
+      </p>
+
+      <div class="button-row">
+
+        <a href="index.html" class="btn">
+          Continue Shopping
+        </a>
+
+        <a href="contact.html" class="btn btn-secondary">
+          Contact Us
+        </a>
+
+      </div>
+
+      <div class="support">
+        Questions about your order?
+        <br>
+        Call <a href="tel:+15122762366">(512) 276-2366</a>
+        <br>
+        Text <a href="sms:+15129375119">(512) 937-5119</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <span class="gold">BIG BOSS BUNDLES</span>
+    <br>
+    Pflugerville, Texas
+    <br><br>
+    Boss Beauty.
+  </footer>
+
+  <script src="cart.js"></script>
+
+  <script>
+    /*
+    |--------------------------------------------------------------------------
+    | Clear bag after successful Stripe checkout
+    |--------------------------------------------------------------------------
+    */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get("session_id");
+
+      /*
+      | Only clear the cart when Stripe sends the customer
+      | back with a Checkout Session ID.
+      */
+
+      if (sessionId && window.BBBCart) {
+        window.BBBCart.clear();
+      }
+
+    });
+  </script>
+
+</body>
+</html>
