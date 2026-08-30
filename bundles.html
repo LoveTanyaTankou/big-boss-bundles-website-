@@ -1,195 +1,638 @@
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  const textureSelect = document.getElementById("texture");
-  const lengthSelect = document.getElementById("length");
-  const quantityInput = document.getElementById("quantity");
-  const priceElement = document.getElementById("price");
-  const priceNote = document.getElementById("price-note");
+  <title>Luxury Hair Bundles | Big Boss Bundles</title>
 
-  /*
-    IMPORTANT:
-    Put the VERIFIED supplier prices for THIS collection here.
-    Retail is calculated automatically at ×3.
-  */
+  <meta
+    name="description"
+    content="Shop premium double drawn hair bundles from Big Boss Bundles including Burmese, Cambodian, LAOS, Indian Raw and Vietnamese collections."
+  >
 
-  const supplierPrices = {
-    12: 15,
-    14: 19,
-    16: 24,
-    18: 29,
-    20: 34,
-    22: 38,
-    24: 44,
-    26: 52,
-    28: 58,
-    30: 68,
-    32: 72
-  };
-
-  /*
-    Texture upcharges are RETAIL upcharges.
-
-    Straight and Body Wave = base price.
-
-    Premium textures:
-    Kinky Straight
-    Deep Wave
-    Curly
-    Kinky Curly
-  */
-
-  const textureUpcharges = {
-    "Straight": 0,
-    "Body Wave": 0,
-    "Kinky Straight": 6,
-    "Deep Wave": 6,
-    "Curly": 6,
-    "Kinky Curly": 6
-  };
-
-
-  function money(amount) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD"
-    }).format(amount);
-  }
-
-
-  function getQuantity() {
-
-    if (!quantityInput) {
-      return 1;
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --gold: #D4A622;
+      --teal: #00A6D6;
+      --white: #FFFFFF;
+      --soft: #151515;
+      --gray: #BDBDBD;
     }
 
-    const quantity = Number(quantityInput.value);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    return quantity > 0 ? quantity : 1;
-  }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+    }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  function calculatePrice() {
+    .announcement {
+      background: var(--gold);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
 
-    const texture = textureSelect.value;
+    header {
+      background: #0A0A0A;
+      border-bottom: 2px solid var(--gold);
+    }
 
-    const length = Number(lengthSelect.value);
+    .header-inner {
+      width: min(1250px, 92%);
+      margin: auto;
+      min-height: 88px;
 
-    const quantity = getQuantity();
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
 
-    const supplierPrice = supplierPrices[length];
+    .brand {
+      color: var(--gold);
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
 
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
 
-    if (supplierPrice === undefined) {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
 
-      priceElement.textContent = "Price Pending";
+    nav a:hover {
+      color: var(--teal);
+    }
 
-      if (priceNote) {
-        priceNote.textContent =
-          texture + " • " + length + "\" • price not entered";
+    .bag {
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      padding: 10px 15px;
+      color: var(--gold);
+    }
+
+    .hero {
+      padding: 90px 5%;
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 15%,
+          rgba(0,166,214,.20),
+          transparent 35%
+        ),
+        linear-gradient(
+          180deg,
+          #101010,
+          #050505
+        );
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-top: 12px;
+      color: var(--gold);
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 90px);
+      line-height: .95;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 24px auto 0;
+      color: #D0D0D0;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .double-drawn {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 10px 20px;
+
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+
+      color: var(--gold);
+
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .collections {
+      padding: 80px 5%;
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      color: var(--gold);
+      margin-top: 8px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(36px, 5vw, 60px);
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+      margin-top: 15px;
+      line-height: 1.7;
+    }
+
+    .collection-grid {
+      width: min(1200px, 100%);
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .collection-card {
+      background: var(--soft);
+
+      border: 2px solid var(--gold);
+      border-radius: 22px;
+
+      padding: 35px 28px;
+
+      min-height: 300px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      transition: transform .2s ease;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .collection-card .number {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .collection-card h3 {
+      margin-top: 15px;
+      color: var(--gold);
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 31px;
+      text-transform: uppercase;
+    }
+
+    .collection-card p {
+      color: #C8C8C8;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .shop-button {
+      margin-top: 28px;
+      width: 100%;
+
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 14px 18px;
+
+      background: var(--teal);
+      color: var(--white);
+
+      border-radius: 10px;
+
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .shop-button:hover {
+      opacity: .9;
+    }
+
+    .info {
+      background: #FFFFFF;
+      color: #0A0A0A;
+      padding: 70px 5%;
+    }
+
+    .info-grid {
+      width: min(1100px, 100%);
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .info-box {
+      padding: 28px;
+      border: 1px solid #E4E4E4;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .info-box h3 {
+      color: #9B7415;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .info-box p {
+      color: #444;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 45px 5%;
+      background: #050505;
+      border-top: 1px solid rgba(212,166,34,.4);
+      text-align: center;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    footer p {
+      color: #999;
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        padding: 20px 0;
       }
 
-      return;
+      nav {
+        justify-content: center;
+      }
+
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
+    @media (max-width: 620px) {
+      .collection-grid {
+        grid-template-columns: 1fr;
+      }
 
-    /*
-      Bundle pricing:
-      supplier × 3
-    */
-
-    const baseRetailPrice = supplierPrice * 3;
-
-
-    /*
-      Add texture variation price
-    */
-
-    const textureUpcharge =
-      textureUpcharges[texture] || 0;
-
-
-    /*
-      Price for ONE bundle
-    */
-
-    const pricePerBundle =
-      baseRetailPrice + textureUpcharge;
-
-
-    /*
-      Quantity total
-    */
-
-    const total =
-      pricePerBundle * quantity;
-
-
-    priceElement.textContent =
-      money(total);
-
-
-    if (priceNote) {
-
-      priceNote.textContent =
-        texture +
-        " • " +
-        length +
-        "\" • " +
-        quantity +
-        " bundle" +
-        (quantity > 1 ? "s" : "") +
-        " • " +
-        money(pricePerBundle) +
-        " each";
-
+      .hero {
+        padding: 65px 6%;
+      }
     }
+  </style>
+</head>
 
-  }
+<body>
 
+  <div class="announcement">
+    Double Drawn • Extra Full • Luxury Hair
+  </div>
 
-  /*
-    PRICE MUST UPDATE WHEN
-    ANY VARIATION CHANGES
-  */
+  <header>
+    <div class="header-inner">
 
-  textureSelect.addEventListener(
-    "change",
-    calculatePrice
-  );
+      <a href="index.html" class="brand">
+        BIG BOSS BUNDLES
+      </a>
 
-  lengthSelect.addEventListener(
-    "change",
-    calculatePrice
-  );
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="bundles.html">Bundles</a>
+        <a href="wigs.html">Wigs</a>
+        <a href="closures.html">Closures</a>
+        <a href="frontals.html">Frontals</a>
+        <a href="mens-hair-pieces.html">Men's Hair</a>
+        <a href="hair-care.html">Hair Care</a>
 
+        <a href="cart.html" class="bag">
+          Bag (<span data-cart-count>0</span>)
+        </a>
+      </nav>
 
-  /*
-    Works whether Quantity
-    is a dropdown or number field.
-  */
-
-  if (quantityInput) {
-
-    quantityInput.addEventListener(
-      "change",
-      calculatePrice
-    );
-
-    quantityInput.addEventListener(
-      "input",
-      calculatePrice
-    );
-
-  }
+    </div>
+  </header>
 
 
-  /*
-    Calculate initial price
-    when page loads
-  */
+  <main>
 
-  calculatePrice();
+    <section class="hero">
 
-});
-</script>
+      <span class="eyebrow">
+        Big Boss Bundles
+      </span>
+
+      <h1>
+        Luxury Bundles
+      </h1>
+
+      <p>
+        Shop premium hair from five luxury collections.
+        Choose your origin, texture, length and quantity
+        to create your perfect look.
+      </p>
+
+      <div class="double-drawn">
+        Double Drawn • Extra Full
+      </div>
+
+    </section>
+
+
+    <section class="collections">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          Shop By Origin
+        </span>
+
+        <h2>
+          Choose Your Collection
+        </h2>
+
+        <p>
+          Each Big Boss Bundles collection has its own
+          premium pricing and texture selections.
+        </p>
+
+      </div>
+
+
+      <div class="collection-grid">
+
+
+        <article class="collection-card">
+
+          <div>
+
+            <div class="number">
+              COLLECTION 01
+            </div>
+
+            <h3>
+              Burmese
+            </h3>
+
+            <p>
+              Naturally full, soft and versatile hair
+              with beautiful movement and premium density.
+            </p>
+
+          </div>
+
+          <a
+            href="burmese.html"
+            class="shop-button"
+          >
+            Shop Burmese
+          </a>
+
+        </article>
+
+
+        <article class="collection-card">
+
+          <div>
+
+            <div class="number">
+              COLLECTION 02
+            </div>
+
+            <h3>
+              Cambodian
+            </h3>
+
+            <p>
+              Rich, luxurious hair known for fullness,
+              strength and beautiful natural texture.
+            </p>
+
+          </div>
+
+          <a
+            href="cambodian.html"
+            class="shop-button"
+          >
+            Shop Cambodian
+          </a>
+
+        </article>
+
+
+        <article class="collection-card">
+
+          <div>
+
+            <div class="number">
+              COLLECTION 03
+            </div>
+
+            <h3>
+              LAOS
+            </h3>
+
+            <p>
+              Premium luxury hair selected for softness,
+              body, durability and polished movement.
+            </p>
+
+          </div>
+
+          <a
+            href="laos.html"
+            class="shop-button"
+          >
+            Shop LAOS
+          </a>
+
+        </article>
+
+
+        <article class="collection-card">
+
+          <div>
+
+            <div class="number">
+              COLLECTION 04
+            </div>
+
+            <h3>
+              Indian Raw
+            </h3>
+
+            <p>
+              Raw hair with natural character,
+              versatility and long lasting luxury.
+            </p>
+
+          </div>
+
+          <a
+            href="indian-raw.html"
+            class="shop-button"
+          >
+            Shop Indian Raw
+          </a>
+
+        </article>
+
+
+        <article class="collection-card">
+
+          <div>
+
+            <div class="number">
+              COLLECTION 05
+            </div>
+
+            <h3>
+              Vietnamese
+            </h3>
+
+            <p>
+              Sleek, strong and luxurious hair with
+              exceptional movement and a polished finish.
+            </p>
+
+          </div>
+
+          <a
+            href="vietnamese.html"
+            class="shop-button"
+          >
+            Shop Vietnamese
+          </a>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <section class="info">
+
+      <div class="info-grid">
+
+        <div class="info-box">
+
+          <h3>
+            Double Drawn
+          </h3>
+
+          <p>
+            Our bundle collections are selected for
+            fuller density from top to ends with less tapering.
+          </p>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <h3>
+            Multiple Textures
+          </h3>
+
+          <p>
+            Shop Straight, Body Wave, Deep Wave,
+            Curly, Kinky Straight and Kinky Curly.
+          </p>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <h3>
+            Length Options
+          </h3>
+
+          <p>
+            Bundle lengths begin at 10 inches and extend
+            through longer lengths where available
+            for each collection and texture.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <strong>
+      BIG BOSS BUNDLES
+    </strong>
+
+    <p>
+      Pflugerville, Texas
+      <br>
+      Luxury Hair • Boss Beauty
+    </p>
+
+  </footer>
+
+
+  <script src="cart.js"></script>
+
+</body>
+</html>
