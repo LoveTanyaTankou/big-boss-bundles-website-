@@ -1,219 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hair Care & Accessories | Big Boss Bundles</title>
-<meta name="description" content="Shop Big Boss Bundles hair care and styling essentials including lace tint mousse, wig glue, wax sticks, lace melting spray, pressing combs, wig bands and bulk braiding hair.">
-<style>
-:root{
-  --black:#0a0a0a;
-  --soft:#151515;
-  --gold:#d4a622;
-  --teal:#00a6d6;
-  --white:#fff;
-  --cream:#f8f7f3;
-  --gray:#777;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--white);color:var(--black);line-height:1.5}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-button,select,input{font:inherit}
-.announcement{background:var(--teal);color:#fff;text-align:center;padding:10px 16px;font-size:.75rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
-header{position:sticky;top:0;z-index:99;background:rgba(10,10,10,.97);border-bottom:2px solid var(--gold)}
-.header-inner{width:min(1360px,94%);margin:auto;min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:26px}
-.logo{width:150px;flex:0 0 150px}
-.logo img{width:100%;height:64px;object-fit:contain}
-nav{display:flex;align-items:center;justify-content:flex-end;gap:18px;flex-wrap:wrap}
-nav a{color:#fff;font-size:.76rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase}
-nav a:hover{color:var(--teal)}
-.cart-pill{border:1px solid var(--gold);border-radius:999px;padding:8px 13px;color:var(--gold)!important}
-.hero{background:radial-gradient(circle at 80% 20%,rgba(0,166,214,.18),transparent 34%),var(--black);color:#fff;text-align:center;padding:82px 5%}
-.eyebrow{display:block;color:var(--teal);font-size:.75rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
-.hero h1,.heading h2{font-family:Georgia,"Times New Roman",serif;color:var(--gold);text-transform:uppercase}
-.hero h1{font-size:clamp(3rem,7vw,6rem);line-height:.95;margin-top:8px}
-.hero p{max-width:720px;margin:18px auto 0;color:#c8c8c8}
-.section{padding:76px 5%}
-.heading{width:min(850px,100%);margin:0 auto 42px;text-align:center}
-.heading h2{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1;margin-top:8px}
-.heading p{margin:16px auto 0;max-width:700px;color:var(--gray)}
-.grid{width:min(1240px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.card{background:#fff;border:1px solid #e5e5e5;border-radius:22px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.1)}
-.pic{height:330px;background:var(--cream);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.pic img{width:100%;height:100%;object-fit:contain;background:#fff}
-.placeholder{padding:25px;color:#999;text-align:center;font-weight:700}
-.copy{padding:24px}
-.copy h3{font-size:1.15rem;text-transform:uppercase}
-.price{margin-top:7px;color:var(--gold);font-weight:900;font-size:1.4rem}
-.copy p{margin-top:8px;color:var(--gray);font-size:.9rem}
-label{display:block;margin-top:14px;font-size:.76rem;font-weight:900;text-transform:uppercase}
-select,input{width:100%;margin-top:6px;padding:11px;border:1px solid #ccc;border-radius:10px;background:#fff;color:#000}
-.buy{display:grid;grid-template-columns:82px 1fr;gap:12px;align-items:end;margin-top:17px}
-.buy label{margin:0}
-.add{width:100%;min-height:48px;border:2px solid var(--teal);border-radius:10px;background:var(--teal);color:#fff;font-weight:900;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
-.add:hover{transform:translateY(-2px)}
-.special{border:2px solid var(--gold)}
-.color-note{color:var(--teal)!important;font-weight:800}
-.band{background:var(--black);color:#fff;text-align:center;padding:60px 5%}
-.band h2{font-family:Georgia,"Times New Roman",serif;color:var(--gold);font-size:clamp(2.5rem,5vw,4.8rem);text-transform:uppercase}
-.band p{max-width:750px;margin:15px auto 0;color:#bdbdbd}
-footer{background:#050505;color:#fff;border-top:2px solid var(--gold);padding:50px 5% 24px}
-.footer-grid{width:min(1180px,100%);margin:auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
-footer h3,footer h4{color:var(--gold);margin-bottom:12px}
-footer p,footer a{display:block;color:#aaa;margin:7px 0;font-size:.9rem}
-footer a:hover{color:var(--teal)}
-.copyr{width:min(1180px,100%);margin:32px auto 0;padding-top:18px;border-top:1px solid #222;text-align:center;color:#666;font-size:.78rem}
-.toast{position:fixed;right:20px;bottom:20px;display:none;z-index:999;padding:14px 18px;border:2px solid var(--gold);border-radius:12px;background:#050505;color:#fff;font-weight:800}
-.toast.show{display:block}
-@media(max-width:980px){.header-inner{flex-direction:column;padding:14px 0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav{justify-content:center}}
-@media(max-width:650px){header{position:static}.grid,.footer-grid{grid-template-columns:1fr}.pic{height:390px}.logo{width:135px;flex-basis:135px}}
-</style>
-</head>
-<body>
+window.BBBHairCareProducts = [
+  {
+    productId: "edge-control",
+    name: "Edge Control",
+    price: 12.99,
+    image: "images/Hair Care Products/edge-control.png",
+    description: "Smooth, shape and control edges with a polished long-lasting finish."
+  },
 
-<div class="announcement">Boss Beauty • Hair Care • Styling Essentials • Bulk Braiding Hair</div>
+  {
+    productId: "lace-tint-mousse",
+    name: "Lace Tint Mousse",
+    price: 11.99,
+    image: "images/Hair Care Products/lace-tint-shades.png",
+    description: "Create a natural-looking lace finish with easy-to-use lace tint mousse.",
+    options: [
+      {
+        label: "Shade",
+        values: [
+          "Light Brown",
+          "Medium Brown",
+          "Dark Brown"
+        ]
+      }
+    ]
+  },
 
-<header>
-  <div class="header-inner">
-    <a class="logo" href="index.html" aria-label="Big Boss Bundles Home">
-      <img src="images/Homepage Images/Owner Images/Lifestyle Images/Store Images/Branding/BigBossBundles-logo.jpg" alt="Big Boss Bundles">
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#collections">Collections</a>
-      <a href="bundles.html">Bundles</a>
-      <a href="wigs.html">Wigs</a>
-      <a href="closures.html">Closures</a>
-      <a href="frontals.html">Frontals</a>
-      <a href="mens-hair-pieces.html">Men's Hair</a>
-      <a href="hair-care.html">Hair Care</a>
-      <a href="contact.html">Contact</a>
-      <a class="cart-pill" href="cart.html">Bag (<span id="cart-count">0</span>)</a>
-    </nav>
-  </div>
-</header>
+  {
+    productId: "wig-glue",
+    name: "Wig Glue",
+    price: 14.99,
+    image: "images/Hair Care Products/wig-glue.png",
+    description: "Strong-hold wig adhesive for secure, polished lace installations."
+  },
 
-<main>
-  <section class="hero">
-    <span class="eyebrow">The Big Boss Beauty Collection</span>
-    <h1>Hair Care & Essentials</h1>
-    <p>Professional styling essentials designed to help maintain, protect and perfect your Big Boss look.</p>
-  </section>
+  {
+    productId: "wax-stick",
+    name: "Wax Stick",
+    price: 9.99,
+    image: "images/Hair Care Products/wax-stick.png",
+    description: "Smooth flyaways and create sleek, polished styles."
+  },
 
-  <section class="section">
-    <div class="heading">
-      <span class="eyebrow">Shop Boss Beauty</span>
-      <h2>Beauty Essentials</h2>
-      <p>Everything you need for flawless installs, polished styling and beautiful finishing.</p>
-    </div>
-    <div class="grid" id="product-grid"></div>
-  </section>
+  {
+    productId: "lace-melting-spray",
+    name: "Lace Melting Spray",
+    price: 12.99,
+    image: "images/Hair Care Products/melting-spray.png",
+    description: "Helps create a seamless-looking lace melt and polished hairline."
+  },
 
-  <section class="band">
-    <span class="eyebrow">Big Boss Bundles</span>
-    <h2>Boss Beauty.</h2>
-    <p>From luxury hair to professional finishing products, Big Boss Bundles brings together the essentials you need to create and maintain your look.</p>
-  </section>
-</main>
+  {
+    productId: "pressing-comb",
+    name: "Pressing Comb",
+    price: 49.99,
+    image: "images/Hair Care Products/pressing-comb.png",
+    description: "Professional styling tool for smoothing roots, wigs and installs."
+  },
 
-<footer>
-  <div class="footer-grid">
-    <div>
-      <h3>Big Boss Bundles</h3>
-      <p>Luxury hair, HD lace wigs, closures, frontals, men's hair pieces and Boss Beauty essentials.</p>
-    </div>
-    <div>
-      <h4>Customer Care</h4>
-      <a href="contact.html">Contact Us</a>
-      <a href="shipping-policy.html">Shipping Policy</a>
-      <a href="return-policy.html">Return & Exchange Policy</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-and-conditions.html">Terms & Conditions</a>
-    </div>
-    <div>
-      <h4>Visit or Contact</h4>
-      <p>301 W Pecan Street</p>
-      <p>Pflugerville, TX 78660</p>
-      <a href="tel:+15122762366">(512) 276-2366</a>
-      <a href="mailto:support@bigbossbundles.com">support@bigbossbundles.com</a>
-    </div>
-  </div>
-  <div class="copyr">© 2026 Big Boss Bundles. All rights reserved.</div>
-</footer>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script>
-const products = [
-  {name:"Lace Tint Mousse",price:11.99,image:"images/Hair Care Products/lace-tint-shades.png",description:"Create a more natural-looking lace finish with easy-to-use lace tint mousse.",options:[{label:"Shade",values:["Light Brown","Medium Brown","Dark Brown"]}]},
-  {name:"Wig Glue",price:14.99,image:"images/Hair Care Products/wig-glue.png",description:"Strong-hold wig adhesive for secure, polished lace installations."},
-  {name:"Wax Stick",price:9.99,image:"images/Hair Care Products/wax-stick.png",description:"Smooth flyaways and create sleek, polished styles."},
-  {name:"Lace Melting Spray",price:12.99,image:"images/Hair Care Products/melting-spray.png",description:"Helps create a seamless-looking lace melt and polished hairline."},
-  {name:"Pressing Comb",price:49.99,image:"images/Hair Care Products/pressing-comb.png",description:"Professional styling tool for smoothing roots, wigs and installs."},
-  {name:"Wig Bands",price:1.99,image:"images/Hair Care Products/wig-band.png",description:"A styling essential for helping secure and set lace during installation."},
-  {name:"Bulk Braiding Hair",price:99.00,image:"images/Hair Care Products/bulk-braiding-hair.png",description:"Premium bulk braiding hair for protective styles.",bulk:true}
+  {
+    productId: "wig-bands",
+    name: "Wig Bands",
+    price: 1.99,
+    image: "images/Hair Care Products/wig-band.png",
+    description: "A styling essential for helping secure and set lace during installation."
+  }
 ];
-
-const CART_KEY="bbbCart";
-let cart=[];
-try{cart=JSON.parse(localStorage.getItem(CART_KEY)||"[]")}catch(e){cart=[]}
-const grid=document.getElementById("product-grid");
-const countEl=document.getElementById("cart-count");
-const toast=document.getElementById("toast");
-
-function money(v){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(v)}
-function updateCount(){countEl.textContent=cart.reduce((s,i)=>s+Number(i.quantity||0),0)}
-function showToast(msg){toast.textContent=msg;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2200)}
-
-grid.innerHTML=products.map((p,i)=>{
-  const opts=(p.options||[]).map(o=>`<label>${o.label}<select class="option" data-label="${o.label}">${o.values.map(v=>`<option value="${v}">${v}</option>`).join("")}</select></label>`).join("");
-  const color=p.bulk?`<label>Hair Color<select class="color"><option value="Natural Hair Color">Natural Hair Color — Included</option><option value="Specialty Color">Specialty Color — +$6.00</option></select></label><p class="color-note">Specialty colors add $6.00.</p>`:"";
-  return `<article class="card${p.bulk?" special":""}" data-i="${i}">
-    <div class="pic">
-      <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <div class="placeholder" style="display:none">Product photo coming soon</div>
-    </div>
-    <div class="copy">
-      <h3>${p.name}</h3>
-      <div class="price">${money(p.price)}</div>
-      <p>${p.description}</p>
-      ${opts}${color}
-      <div class="buy">
-        <label>Qty<input class="qty" type="number" min="1" max="20" value="1"></label>
-        <button class="add" type="button">Add to Bag</button>
-      </div>
-    </div>
-  </article>`;
-}).join("");
-
-document.querySelectorAll(".card").forEach(card=>{
-  const p=products[Number(card.dataset.i)];
-  const priceEl=card.querySelector(".price");
-  const color=card.querySelector(".color");
-  function unitPrice(){return p.price+(p.bulk&&color?.value==="Specialty Color"?6:0)}
-  function refresh(){priceEl.textContent=money(unitPrice())}
-  color?.addEventListener("change",refresh);
-  card.querySelector(".add").addEventListener("click",()=>{
-    const options={};
-    card.querySelectorAll(".option").forEach(s=>options[s.dataset.label]=s.value);
-    if(color)options["Hair Color"]=color.value;
-    cart.push({
-      id:String(Date.now())+Math.random(),
-      name:p.name,
-      category:"Hair Care",
-      quantity:Number(card.querySelector(".qty").value)||1,
-      price:unitPrice(),
-      options,
-      image:p.image
-    });
-    localStorage.setItem(CART_KEY,JSON.stringify(cart));
-    updateCount();
-    showToast(p.name+" added to your bag.");
-  });
-});
-updateCount();
-</script>
-</body>
-</html>
