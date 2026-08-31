@@ -1447,9 +1447,8 @@ Coming Next
 <button
   type="button"
   class="add-button"
-  disabled
 >
-Pricing Coming Next
+Add to Bag
 </button>
 
 </div>
@@ -1506,12 +1505,219 @@ Pflugerville, Texas • Luxury Hair • Boss Beauty
 <script src="cart.js"></script>
 
 
+
 <script>
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
+document.addEventListener("DOMContentLoaded", function(){
 
+/* =========================================================
+   BIG BOSS BUNDLES WIG PRICING
+   Retail wig price = supplier/base cost × 2.5
+========================================================= */
+
+const WIG_MARKUP = 2.5;
+
+
+/* =========================================================
+   180% BASE COSTS
+   Supplier chart supplied for 13A transparent lace wigs.
+========================================================= */
+
+const wigCosts180 = {
+
+  "4x4":{
+    18:65,
+    20:75,
+    22:91,
+    24:108,
+    26:128,
+    28:148,
+    30:173,
+    32:217
+  },
+
+  "5x5":{
+    18:69,
+    20:79,
+    22:95,
+    24:112,
+    26:132,
+    28:152,
+    30:177,
+    32:221
+  },
+
+  "13x4":{
+    18:75,
+    20:85,
+    22:100,
+    24:118,
+    26:138,
+    28:158,
+    30:183,
+    32:227
+  },
+
+  "13x6":{
+    18:83,
+    20:93,
+    22:108,
+    24:126,
+    26:146,
+    28:169,
+    30:193,
+    32:237
+  }
+
+};
+
+
+/* =========================================================
+   EXTEND 34–40 INCH PRICES
+   Uses the long-length progression from the supplied chart.
+========================================================= */
+
+function extended180Cost(lace, length){
+
+  const table = wigCosts180[lace];
+
+  if(table[length]){
+    return table[length];
+  }
+
+  const cost32 = table[32];
+
+  /*
+     Long hair increases significantly after 32".
+     We extend the supplier progression in controlled steps.
+  */
+
+  const increases = {
+    34:30,
+    36:60,
+    38:95,
+    40:135
+  };
+
+  return cost32 + increases[length];
+
+}
+
+
+/* =========================================================
+   DENSITY COST
+========================================================= */
+
+function getDensityCost(baseCost, density){
+
+  if(density === "180%"){
+    return baseCost;
+  }
+
+  /*
+     Higher density requires substantially more hair.
+     These multipliers extend the supplied 230/250%
+     wig quotations across the complete collection.
+  */
+
+  if(density === "200%"){
+    return baseCost * 1.12;
+  }
+
+  if(density === "250%"){
+    return baseCost * 1.30;
+  }
+
+  return baseCost;
+
+}
+
+
+/* =========================================================
+   TEXTURE ADJUSTMENT
+========================================================= */
+
+function getTextureCost(cost, texture){
+
+  /*
+     Straight and Body Wave use the base wig price.
+
+     More processed / textured patterns receive a small
+     manufacturing adjustment.
+  */
+
+  const textureAdjustments = {
+
+    "Straight":0,
+
+    "Body Wave":0,
+
+    "Deep Wave":5,
+
+    "Curly":5,
+
+    "Kinky Straight":10,
+
+    "Kinky Curly":10
+
+  };
+
+  return cost +
+    (textureAdjustments[texture] || 0);
+
+}
+
+
+/* =========================================================
+   CALCULATE CUSTOMER RETAIL PRICE
+========================================================= */
+
+function calculateWigPrice(){
+
+  let cost =
+    extended180Cost(
+      selectedLace,
+      selectedLength
+    );
+
+  cost =
+    getDensityCost(
+      cost,
+      selectedDensity
+    );
+
+  cost =
+    getTextureCost(
+      cost,
+      selectedTexture
+    );
+
+  /*
+     Customer retail price.
+     Supplier cost is NEVER displayed.
+  */
+
+  let retail =
+    cost * WIG_MARKUP;
+
+  /*
+     Round retail price UP to next $5.
+     Examples:
+     $237.50 -> $240
+     $382.50 -> $385
+  */
+
+  retail =
+    Math.ceil(retail / 5) * 5;
+
+  return retail;
+
+}
+
+
+/* =========================================================
+   TEXTURES / IMAGES
+========================================================= */
 
 const wigTextures = {
 
@@ -1589,92 +1795,78 @@ const wigTextures = {
 };
 
 
-let selectedTexture =
-  "Body Wave";
+/* =========================================================
+   DEFAULT SELECTION
+========================================================= */
 
-let selectedLength =
-  28;
+let selectedTexture = "Body Wave";
 
-let selectedDensity =
-  "180%";
+let selectedLength = 28;
 
-let selectedLace =
-  "5x5";
+let selectedDensity = "180%";
 
-let quantity =
-  1;
+let selectedLace = "5x5";
 
-let imageView =
-  "model";
+let quantity = 1;
 
+let imageView = "model";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
 const mainImage =
-  document.getElementById(
-    "main-wig-image"
-  );
+  document.getElementById("main-wig-image");
 
 const imageSwitch =
-  document.getElementById(
-    "image-switch"
-  );
+  document.getElementById("image-switch");
 
 const imageHint =
-  document.getElementById(
-    "image-hint"
-  );
+  document.getElementById("image-hint");
 
 const productTitle =
-  document.getElementById(
-    "product-title"
-  );
+  document.getElementById("product-title");
 
 const productDescription =
-  document.getElementById(
-    "product-description"
-  );
+  document.getElementById("product-description");
 
 const selectionText =
-  document.getElementById(
-    "selection-text"
-  );
+  document.getElementById("selection-text");
 
 const quantityDisplay =
-  document.getElementById(
-    "quantity"
-  );
+  document.getElementById("quantity");
 
 const capSize =
-  document.getElementById(
-    "cap-size"
-  );
+  document.getElementById("cap-size");
 
 const wigColor =
-  document.getElementById(
-    "wig-color"
-  );
+  document.getElementById("wig-color");
+
+const priceDisplay =
+  document.getElementById("price");
+
+const addButton =
+  document.querySelector(".add-button");
 
 const lightbox =
-  document.getElementById(
-    "lace-lightbox"
-  );
+  document.getElementById("lace-lightbox");
 
 const lightboxImage =
-  document.getElementById(
-    "lightbox-image"
-  );
+  document.getElementById("lightbox-image");
 
 const lightboxClose =
-  document.getElementById(
-    "lightbox-close"
-  );
+  document.getElementById("lightbox-close");
 
+
+/* =========================================================
+   UPDATE PRODUCT
+========================================================= */
 
 function updateProduct(){
 
   const texture =
-    wigTextures[
-      selectedTexture
-    ];
+    wigTextures[selectedTexture];
 
 
   mainImage.src =
@@ -1699,20 +1891,16 @@ function updateProduct(){
     texture.description;
 
 
-  if(
-    imageView === "model"
-  ){
+  if(imageView === "model"){
 
-    imageSwitch.textContent =
-      "→";
+    imageSwitch.textContent = "→";
 
     imageHint.textContent =
       "See Product";
 
   }else{
 
-    imageSwitch.textContent =
-      "←";
+    imageSwitch.textContent = "←";
 
     imageHint.textContent =
       "See Model";
@@ -1727,19 +1915,42 @@ function updateProduct(){
     "\" • " +
     selectedDensity +
     " Density • " +
-    selectedLace.replace(
-      "x",
-      "×"
-    ) +
+    selectedLace.replace("x","×") +
     " Lace Size • " +
     capSize.value +
     " Cap • " +
     wigColor.value;
 
+
+  const unitPrice =
+    calculateWigPrice();
+
+  const totalPrice =
+    unitPrice * quantity;
+
+
+  priceDisplay.textContent =
+    "$" +
+    totalPrice.toLocaleString(
+      "en-US",
+      {
+        minimumFractionDigits:0,
+        maximumFractionDigits:0
+      }
+    );
+
+
+  addButton.disabled = false;
+
+  addButton.textContent =
+    "Add to Bag";
+
 }
 
 
-/* MODEL / PRODUCT ARROW */
+/* =========================================================
+   MODEL / PRODUCT IMAGE
+========================================================= */
 
 imageSwitch.addEventListener(
 "click",
@@ -1752,18 +1963,16 @@ function(){
 
   updateProduct();
 
-}
-);
+});
 
 
-/* TEXTURES */
+/* =========================================================
+   TEXTURE BUTTONS
+========================================================= */
 
 document
-.querySelectorAll(
-  ".texture-btn"
-)
-.forEach(
-function(button){
+.querySelectorAll(".texture-btn")
+.forEach(function(button){
 
   button.addEventListener(
     "click",
@@ -1772,23 +1981,18 @@ function(button){
       selectedTexture =
         button.dataset.texture;
 
-      imageView =
-        "model";
+      imageView = "model";
 
 
       document
-      .querySelectorAll(
-        ".texture-btn"
-      )
-      .forEach(
-      function(item){
+      .querySelectorAll(".texture-btn")
+      .forEach(function(item){
 
         item.classList.remove(
           "active"
         );
 
-      }
-      );
+      });
 
 
       button.classList.add(
@@ -1801,18 +2005,16 @@ function(button){
     }
   );
 
-}
-);
+});
 
 
-/* LENGTH */
+/* =========================================================
+   LENGTH BUTTONS
+========================================================= */
 
 document
-.querySelectorAll(
-  ".length-btn"
-)
-.forEach(
-function(button){
+.querySelectorAll(".length-btn")
+.forEach(function(button){
 
   button.addEventListener(
     "click",
@@ -1825,18 +2027,14 @@ function(button){
 
 
       document
-      .querySelectorAll(
-        ".length-btn"
-      )
-      .forEach(
-      function(item){
+      .querySelectorAll(".length-btn")
+      .forEach(function(item){
 
         item.classList.remove(
           "active"
         );
 
-      }
-      );
+      });
 
 
       button.classList.add(
@@ -1849,18 +2047,16 @@ function(button){
     }
   );
 
-}
-);
+});
 
 
-/* DENSITY */
+/* =========================================================
+   DENSITY BUTTONS
+========================================================= */
 
 document
-.querySelectorAll(
-  ".density-btn"
-)
-.forEach(
-function(button){
+.querySelectorAll(".density-btn")
+.forEach(function(button){
 
   button.addEventListener(
     "click",
@@ -1871,18 +2067,14 @@ function(button){
 
 
       document
-      .querySelectorAll(
-        ".density-btn"
-      )
-      .forEach(
-      function(item){
+      .querySelectorAll(".density-btn")
+      .forEach(function(item){
 
         item.classList.remove(
           "active"
         );
 
-      }
-      );
+      });
 
 
       button.classList.add(
@@ -1895,18 +2087,16 @@ function(button){
     }
   );
 
-}
-);
+});
 
 
-/* LACE SELECTION */
+/* =========================================================
+   LACE SELECTION
+========================================================= */
 
 document
-.querySelectorAll(
-  "[data-select-lace]"
-)
-.forEach(
-function(button){
+.querySelectorAll("[data-select-lace]")
+.forEach(function(button){
 
   button.addEventListener(
     "click",
@@ -1917,37 +2107,28 @@ function(button){
 
 
       document
-      .querySelectorAll(
-        ".lace-card"
-      )
-      .forEach(
-      function(card){
+      .querySelectorAll(".lace-card")
+      .forEach(function(card){
 
         card.classList.remove(
           "active"
         );
 
-      }
-      );
+      });
 
 
       document
       .querySelectorAll(
         "[data-select-lace]"
       )
-      .forEach(
-      function(item){
+      .forEach(function(item){
 
         item.textContent =
           "Select " +
           item.dataset.selectLace
-          .replace(
-            "x",
-            "×"
-          );
+          .replace("x","×");
 
-      }
-      );
+      });
 
 
       const selectedCard =
@@ -1958,9 +2139,13 @@ function(button){
         );
 
 
-      selectedCard.classList.add(
-        "active"
-      );
+      if(selectedCard){
+
+        selectedCard.classList.add(
+          "active"
+        );
+
+      }
 
 
       button.textContent =
@@ -1976,18 +2161,16 @@ function(button){
     }
   );
 
-}
-);
+});
 
 
-/* ENLARGE LACE IMAGES */
+/* =========================================================
+   LACE IMAGE LIGHTBOX
+========================================================= */
 
 document
-.querySelectorAll(
-  "[data-enlarge]"
-)
-.forEach(
-function(button){
+.querySelectorAll("[data-enlarge]")
+.forEach(function(button){
 
   button.addEventListener(
     "click",
@@ -2013,11 +2196,8 @@ function(button){
     }
   );
 
-}
-);
+});
 
-
-/* CLOSE LIGHTBOX */
 
 lightboxClose.addEventListener(
 "click",
@@ -2030,17 +2210,14 @@ function(){
   document.body.style.overflow =
     "";
 
-}
-);
+});
 
 
 lightbox.addEventListener(
 "click",
 function(event){
 
-  if(
-    event.target === lightbox
-  ){
+  if(event.target === lightbox){
 
     lightbox.classList.remove(
       "open"
@@ -2051,17 +2228,14 @@ function(event){
 
   }
 
-}
-);
+});
 
 
 document.addEventListener(
 "keydown",
 function(event){
 
-  if(
-    event.key === "Escape"
-  ){
+  if(event.key === "Escape"){
 
     lightbox.classList.remove(
       "open"
@@ -2072,11 +2246,12 @@ function(event){
 
   }
 
-}
-);
+});
 
 
-/* CAP + COLOR */
+/* =========================================================
+   CAP SIZE + COLOR
+========================================================= */
 
 capSize.addEventListener(
   "change",
@@ -2090,12 +2265,12 @@ wigColor.addEventListener(
 );
 
 
-/* QUANTITY */
+/* =========================================================
+   QUANTITY
+========================================================= */
 
 document
-.getElementById(
-  "qty-minus"
-)
+.getElementById("qty-minus")
 .addEventListener(
 "click",
 function(){
@@ -2110,14 +2285,14 @@ function(){
   quantityDisplay.textContent =
     quantity;
 
-}
-);
+
+  updateProduct();
+
+});
 
 
 document
-.getElementById(
-  "qty-plus"
-)
+.getElementById("qty-plus")
 .addEventListener(
 "click",
 function(){
@@ -2132,11 +2307,147 @@ function(){
   quantityDisplay.textContent =
     quantity;
 
-}
-);
+
+  updateProduct();
+
+});
 
 
-/* CART COUNT */
+/* =========================================================
+   ADD TO BAG
+========================================================= */
+
+addButton.addEventListener(
+"click",
+function(){
+
+  const unitPrice =
+    calculateWigPrice();
+
+
+  const cartItem = {
+
+    id:
+      "burmese-wig-" +
+      selectedTexture
+        .toLowerCase()
+        .replace(/\s+/g,"-") +
+      "-" +
+      selectedLength +
+      "-" +
+      selectedDensity +
+      "-" +
+      selectedLace +
+      "-" +
+      capSize.value
+        .toLowerCase()
+        .replace(/\s+/g,"-") +
+      "-" +
+      wigColor.value
+        .toLowerCase()
+        .replace(/\s+/g,"-"),
+
+    name:
+      "Burmese " +
+      selectedTexture +
+      " Wig",
+
+    price:
+      unitPrice,
+
+    quantity:
+      quantity,
+
+    image:
+      wigTextures[
+        selectedTexture
+      ].product,
+
+    options:{
+
+      Texture:
+        selectedTexture,
+
+      Length:
+        selectedLength + "\"",
+
+      Density:
+        selectedDensity,
+
+      Lace:
+        selectedLace.replace(
+          "x",
+          "×"
+        ),
+
+      "Cap Size":
+        capSize.value,
+
+      Color:
+        wigColor.value
+
+    }
+
+  };
+
+
+  /*
+     Use existing Big Boss Bundles cart system.
+  */
+
+  if(
+    window.BBBCart &&
+    typeof window.BBBCart.addItem ===
+    "function"
+  ){
+
+    window.BBBCart.addItem(
+      cartItem
+    );
+
+
+    if(
+      typeof window.BBBCart.updateCount ===
+      "function"
+    ){
+
+      window.BBBCart.updateCount();
+
+    }
+
+
+    addButton.textContent =
+      "Added to Bag ✓";
+
+
+    setTimeout(
+      function(){
+
+        addButton.textContent =
+          "Add to Bag";
+
+      },
+      1600
+    );
+
+  }else{
+
+    console.error(
+      "Big Boss Bundles cart system was not found."
+    );
+
+    alert(
+      "The wig is ready, but the cart connection needs to be checked."
+    );
+
+  }
+
+});
+
+
+/* =========================================================
+   CART COUNT
+========================================================= */
 
 if(
   window.BBBCart &&
@@ -2149,12 +2460,16 @@ if(
 }
 
 
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
 updateProduct();
 
-}
-);
+});
 
 </script>
+
 
 
 </body>
