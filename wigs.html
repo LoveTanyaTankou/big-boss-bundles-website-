@@ -593,28 +593,179 @@ nav .active{
    CAP + COLOR
 ========================================================= */
 
-.two-column{
-  display:grid;
+/* =========================================================
+   VISUAL HAIR COLOR SELECTOR
+========================================================= */
 
-  grid-template-columns:1fr 1fr;
-
-  gap:20px;
+.color-option-group{
+  min-width:0;
 }
 
-.select-box{
-  width:100%;
+.selected-color-display{
+  margin-bottom:12px;
+  color:#BBB;
+  font-size:.82rem;
+}
 
-  min-height:54px;
+.selected-color-display strong{
+  color:var(--gold);
+}
 
-  padding:0 14px;
+.hair-color-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
 
-  border:1px solid #555;
-
-  border-radius:9px;
-
+.hair-color-btn{
+  padding:7px;
+  border:2px solid #444;
+  border-radius:10px;
   background:#080808;
-
   color:#FFF;
+  text-align:center;
+}
+
+.hair-color-btn:hover{
+  border-color:var(--teal);
+}
+
+.hair-color-btn.active{
+  border-color:var(--gold);
+  box-shadow:0 0 0 1px var(--gold);
+}
+
+.color-swatch{
+  display:block;
+  width:100%;
+  height:48px;
+  margin-bottom:6px;
+  border:1px solid #555;
+  border-radius:7px;
+}
+
+.hair-color-btn > span:not(.color-swatch){
+  display:block;
+  color:var(--gold);
+  font-weight:900;
+  font-size:.78rem;
+}
+
+.hair-color-btn small{
+  display:block;
+  margin-top:2px;
+  color:#BBB;
+  font-size:.58rem;
+}
+
+/* SOLID HAIR COLORS */
+
+.color-1{
+  background:#050505;
+}
+
+.color-1b{
+  background:#171310;
+}
+
+.color-2{
+  background:#2B1B14;
+}
+
+.color-4{
+  background:#513224;
+}
+
+.color-27{
+  background:#C58B45;
+}
+
+.color-30{
+  background:#9A4F28;
+}
+
+.color-33{
+  background:#6E2F24;
+}
+
+.color-99j{
+  background:#541323;
+}
+
+.color-613{
+  background:#E3C681;
+}
+
+.color-platinum{
+  background:#EEE1BD;
+}
+
+/* HIGHLIGHT / MIXED COLORS */
+
+.color-p427{
+  background:
+    linear-gradient(
+      90deg,
+      #513224 0%,
+      #513224 45%,
+      #C58B45 45%,
+      #C58B45 55%,
+      #513224 55%,
+      #513224 70%,
+      #C58B45 70%,
+      #C58B45 100%
+    );
+}
+
+.color-p1b27{
+  background:
+    linear-gradient(
+      90deg,
+      #171310 0%,
+      #171310 45%,
+      #C58B45 45%,
+      #C58B45 55%,
+      #171310 55%,
+      #171310 70%,
+      #C58B45 70%,
+      #C58B45 100%
+    );
+}
+
+.color-p1b30{
+  background:
+    linear-gradient(
+      90deg,
+      #171310 0%,
+      #171310 45%,
+      #9A4F28 45%,
+      #9A4F28 55%,
+      #171310 55%,
+      #171310 70%,
+      #9A4F28 70%,
+      #9A4F28 100%
+    );
+}
+
+.color-p1b99j{
+  background:
+    linear-gradient(
+      90deg,
+      #171310 0%,
+      #171310 45%,
+      #541323 45%,
+      #541323 55%,
+      #171310 55%,
+      #171310 70%,
+      #541323 70%,
+      #541323 100%
+    );
+}
+
+@media(max-width:700px){
+  .hair-color-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 
 /* =========================================================
