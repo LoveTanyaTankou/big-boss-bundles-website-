@@ -20,8 +20,9 @@ window.BBBCart = (() => {
       item.texture || "",
       item.length || "",
       item.density || "",
-      item.laceSize || "",
-      item.color || ""
+     item.laceSize || "",
+item.color || "",
+item.capSize || ""
     ].join("|");
   }
 
