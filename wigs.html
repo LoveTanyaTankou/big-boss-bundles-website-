@@ -2476,7 +2476,7 @@ function(event){
 
 
 /* =========================================================
-   CAP SIZE + COLOR
+   CAP SIZE + HAIR COLOR
 ========================================================= */
 
 capSize.addEventListener(
@@ -2484,11 +2484,36 @@ capSize.addEventListener(
   updateProduct
 );
 
+document
+.querySelectorAll(".hair-color-btn")
+.forEach(function(button){
 
-wigColor.addEventListener(
-  "change",
-  updateProduct
-);
+  button.addEventListener(
+    "click",
+    function(){
+
+      selectedColor =
+        button.dataset.color;
+
+      document
+      .querySelectorAll(".hair-color-btn")
+      .forEach(function(item){
+
+        item.classList.remove("active");
+
+      });
+
+      button.classList.add("active");
+
+      if(selectedColorName){
+        selectedColorName.textContent =
+          selectedColor;
+      }
+
+      updateProduct();
+
+    }
+  );
 
 
 /* =========================================================
