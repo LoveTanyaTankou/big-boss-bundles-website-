@@ -1,506 +1,2402 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="Shop luxury HD lace wigs from the LAOS, Cambodian, Indian Raw, Burmese, and Vietnamese collections at Big Boss Bundles."
-  >
+<meta charset="UTF-8">
 
-  <title>Luxury Wig Collection | Big Boss Bundles</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-  <!-- Main wig-page stylesheet -->
-  <link rel="stylesheet" href="wigs.css">
+<title>
+Luxury Lace Wigs | Big Boss Bundles
+</title>
+
+<meta
+  name="description"
+  content="Shop luxury lace wigs from Big Boss Bundles. Choose your texture, length, density, lace size, cap size and color."
+>
+
+<style>
+
+:root{
+  --black:#050505;
+  --soft:#0d0d0d;
+  --soft2:#151515;
+  --gold:#D4A622;
+  --teal:#00A6D6;
+  --white:#FFFFFF;
+  --gray:#B9B9B9;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+button,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  background:rgba(3,3,3,.98);
+
+  border-bottom:1px solid var(--gold);
+}
+
+.header-inner{
+  width:min(1450px,95%);
+  min-height:92px;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:30px;
+}
+
+.logo{
+  width:120px;
+  height:78px;
+
+  object-fit:contain;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+
+  gap:30px;
+
+  flex-wrap:wrap;
+}
+
+nav a{
+  position:relative;
+
+  font-size:.82rem;
+  font-weight:900;
+
+  letter-spacing:.05em;
+  text-transform:uppercase;
+
+  transition:.2s ease;
+}
+
+nav a:hover,
+nav a.active{
+  color:var(--gold);
+}
+
+nav a.active::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  right:0;
+  bottom:-13px;
+
+  height:2px;
+
+  background:var(--gold);
+}
+
+.bag{
+  border:1px solid var(--gold);
+
+  border-radius:999px;
+
+  padding:12px 20px;
+
+  color:var(--gold);
+}
+
+
+/* =========================================================
+   HERO INTRO
+========================================================= */
+
+.hero-heading{
+  padding:40px 5% 20px;
+
+  text-align:center;
+}
+
+.eyebrow{
+  display:block;
+
+  color:var(--teal);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:1rem;
+
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
+}
+
+.hero-heading h1{
+  margin-top:8px;
+
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:clamp(2.7rem,5vw,4.8rem);
+
+  letter-spacing:.08em;
+
+  text-transform:uppercase;
+}
+
+.hero-heading p{
+  width:min(850px,100%);
+
+  margin:12px auto 0;
+
+  color:#E4E4E4;
+
+  font-size:1.05rem;
+
+  line-height:1.55;
+}
+
+.hero-heading strong{
+  color:var(--gold);
+}
+
+
+/* =========================================================
+   WIG BUILDER
+========================================================= */
+
+.builder-section{
+  padding:10px 4% 45px;
+}
+
+.builder{
+  width:min(1450px,100%);
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(400px,.95fr)
+    minmax(600px,1.25fr);
+
+  gap:14px;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.image-panel{
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:760px;
+
+  border:1px solid var(--gold);
+
+  border-radius:18px;
+
+  background:#111;
+}
+
+.hero-image{
+  width:100%;
+  height:100%;
+
+  min-height:760px;
+
+  object-fit:cover;
+  object-position:center top;
+}
+
+.gallery-button{
+  position:absolute;
+
+  left:20px;
+  bottom:20px;
+
+  padding:12px 20px;
+
+  border:1px solid var(--gold);
+
+  border-radius:8px;
+
+  background:rgba(0,0,0,.88);
+
+  color:var(--gold);
+
+  font-size:.78rem;
+  font-weight:900;
+
+  letter-spacing:.05em;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   CONFIG PANEL
+========================================================= */
+
+.config-panel{
+  padding:30px 30px 26px;
+
+  border:1px solid var(--gold);
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111,
+      #050505
+    );
+}
+
+.config-panel h2{
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:1.55rem;
+
+  letter-spacing:.05em;
+
+  text-transform:uppercase;
+}
+
+.config-panel h2 span{
+  color:var(--teal);
+}
+
+.config-intro{
+  margin-top:8px;
+
+  color:#D2D2D2;
+
+  font-size:.9rem;
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.option-group{
+  margin-top:25px;
+}
+
+.option-title{
+  margin-bottom:10px;
+
+  color:#FFF;
+
+  font-size:.78rem;
+  font-weight:900;
+
+  letter-spacing:.03em;
+
+  text-transform:uppercase;
+}
+
+
+/* TEXTURE */
+
+.texture-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+}
+
+.choice-btn{
+  min-height:48px;
+
+  padding:10px;
+
+  border:1px solid #725A17;
+
+  border-radius:7px;
+
+  background:#080808;
+
+  color:#FFF;
+
+  font-size:.78rem;
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  transition:.2s ease;
+}
+
+.choice-btn:hover{
+  border-color:var(--gold);
+}
+
+.choice-btn.active{
+  background:var(--gold);
+
+  color:#000;
+
+  border-color:var(--gold);
+}
+
+
+/* LENGTH */
+
+.length-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(5,1fr);
+
+  gap:10px;
+}
+
+.length-btn{
+  min-height:48px;
+
+  border:1px solid #555;
+
+  border-radius:7px;
+
+  background:#080808;
+
+  color:#FFF;
+
+  font-weight:900;
+}
+
+.length-btn:hover{
+  border-color:var(--gold);
+}
+
+.length-btn.active{
+  background:var(--gold);
+
+  color:#000;
+
+  border-color:var(--gold);
+}
+
+
+/* TWO COLUMN OPTIONS */
+
+.two-column{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:22px;
+}
+
+
+/* DENSITY */
+
+.density-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:9px;
+}
+
+
+/* LACE */
+
+.lace-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:9px;
+}
+
+
+/* SELECTS */
+
+.select-box{
+  width:100%;
+
+  min-height:50px;
+
+  padding:0 14px;
+
+  border:1px solid #555;
+
+  border-radius:8px;
+
+  background:#080808;
+
+  color:#FFF;
+}
+
+
+/* QUANTITY */
+
+.bottom-controls{
+  margin-top:25px;
+
+  display:grid;
+
+  grid-template-columns:180px 1fr;
+
+  gap:22px;
+
+  align-items:end;
+}
+
+.quantity-control{
+  display:grid;
+
+  grid-template-columns:50px 1fr 50px;
+
+  min-height:52px;
+
+  border:1px solid #555;
+
+  border-radius:8px;
+
+  overflow:hidden;
+}
+
+.qty-btn{
+  border:0;
+
+  background:#0D0D0D;
+
+  color:var(--gold);
+
+  font-size:1.6rem;
+
+  font-weight:900;
+}
+
+.qty-display{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:#080808;
+
+  border-left:1px solid #333;
+  border-right:1px solid #333;
+
+  font-weight:900;
+}
+
+
+/* ADD TO BAG */
+
+.add-to-bag{
+  min-height:58px;
+
+  border:0;
+
+  border-radius:8px;
+
+  background:var(--teal);
+
+  color:#FFF;
+
+  font-size:1rem;
+
+  font-weight:900;
+
+  letter-spacing:.03em;
+
+  text-transform:uppercase;
+}
+
+.add-to-bag:hover{
+  filter:brightness(1.05);
+}
+
+.add-to-bag:disabled{
+  opacity:.7;
+
+  cursor:not-allowed;
+}
+
+
+/* PRICE */
+
+.price-row{
+  margin-top:25px;
+
+  padding-top:20px;
+
+  border-top:1px solid #333;
+
+  display:flex;
+
+  align-items:end;
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+.price-label{
+  color:#AAA;
+
+  font-size:.8rem;
+
+  text-transform:uppercase;
+}
+
+.price{
+  margin-top:4px;
+
+  color:var(--gold);
+
+  font-size:2.25rem;
+
+  font-weight:900;
+}
+
+.quality-note{
+  color:#CCC;
+
+  font-size:.85rem;
+
+  text-align:right;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.benefits{
+  width:min(1450px,92%);
+
+  margin:0 auto 60px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  border-top:1px solid rgba(212,166,34,.5);
+  border-bottom:1px solid rgba(212,166,34,.5);
+}
+
+.benefit{
+  padding:30px 25px;
+
+  text-align:center;
+
+  border-right:1px solid rgba(212,166,34,.25);
+}
+
+.benefit:last-child{
+  border-right:0;
+}
+
+.benefit-icon{
+  color:var(--gold);
+
+  font-size:2.6rem;
+}
+
+.benefit h3{
+  margin-top:12px;
+
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:1rem;
+
+  letter-spacing:.05em;
+
+  text-transform:uppercase;
+}
+
+.benefit p{
+  margin-top:8px;
+
+  color:#BFBFBF;
+
+  font-size:.82rem;
+
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   TEXTURE SECTION
+========================================================= */
+
+.texture-section{
+  padding:10px 3% 65px;
+}
+
+.section-heading{
+  text-align:center;
+
+  margin-bottom:30px;
+}
+
+.section-heading h2{
+  margin-top:7px;
+
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:clamp(2rem,4vw,3.2rem);
+
+  letter-spacing:.06em;
+
+  text-transform:uppercase;
+}
+
+.texture-cards{
+  width:min(1450px,100%);
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(6,1fr);
+
+  gap:14px;
+}
+
+.texture-card{
+  overflow:hidden;
+
+  border:1px solid var(--gold);
+
+  border-radius:12px;
+
+  background:#101010;
+
+  transition:.25s ease;
+}
+
+.texture-card:hover{
+  transform:translateY(-4px);
+
+  border-color:var(--teal);
+}
+
+.texture-card img{
+  width:100%;
+  height:270px;
+
+  object-fit:cover;
+  object-position:top center;
+}
+
+.texture-copy{
+  padding:18px 14px 20px;
+
+  text-align:center;
+}
+
+.texture-copy h3{
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:1rem;
+
+  text-transform:uppercase;
+}
+
+.texture-copy p{
+  margin-top:8px;
+
+  min-height:70px;
+
+  color:#D0D0D0;
+
+  font-size:.78rem;
+
+  line-height:1.45;
+}
+
+.texture-select{
+  margin-top:12px;
+
+  border:0;
+
+  background:transparent;
+
+  color:var(--teal);
+
+  font-size:.74rem;
+
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   COLLECTION LINKS
+========================================================= */
+
+.collections{
+  padding:55px 4%;
+
+  border-top:1px solid rgba(212,166,34,.35);
+
+  background:#080808;
+}
+
+.collection-heading{
+  text-align:center;
+}
+
+.collection-heading h2{
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:2rem;
+
+  text-transform:uppercase;
+}
+
+.collection-grid{
+  width:min(1400px,100%);
+
+  margin:30px auto 0;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(6,1fr);
+
+  gap:14px;
+}
+
+.collection-card{
+  padding:25px 12px;
+
+  border:1px solid rgba(212,166,34,.6);
+
+  border-radius:10px;
+
+  text-align:center;
+}
+
+.collection-icon{
+  font-size:2.2rem;
+}
+
+.collection-card h3{
+  margin-top:12px;
+
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  text-transform:uppercase;
+}
+
+.collection-card a{
+  display:inline-block;
+
+  margin-top:13px;
+
+  color:var(--teal);
+
+  font-size:.76rem;
+
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:38px 5%;
+
+  border-top:1px solid var(--gold);
+
+  text-align:center;
+}
+
+footer h2{
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  letter-spacing:.1em;
+
+  text-transform:uppercase;
+}
+
+footer p{
+  margin-top:8px;
+
+  color:#CCC;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+
+  right:25px;
+  bottom:25px;
+
+  z-index:3000;
+
+  display:none;
+
+  max-width:360px;
+
+  padding:17px 20px;
+
+  border:1px solid var(--gold);
+
+  border-radius:10px;
+
+  background:#080808;
+
+  color:#FFF;
+
+  font-weight:900;
+}
+
+.toast.show{
+  display:block;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+  .header-inner{
+    flex-direction:column;
+
+    padding:14px 0;
+  }
+
+  nav{
+    justify-content:center;
+  }
+
+  .builder{
+    grid-template-columns:1fr;
+  }
+
+  .texture-cards{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+  .collection-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+  .benefits{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+
+@media(max-width:700px){
+
+  header{
+    position:static;
+  }
+
+  nav{
+    gap:15px;
+  }
+
+  .builder-section{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  .image-panel,
+  .hero-image{
+    min-height:520px;
+  }
+
+  .config-panel{
+    padding:25px 18px;
+  }
+
+  .texture-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .length-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+  .two-column{
+    grid-template-columns:1fr;
+  }
+
+  .bottom-controls{
+    grid-template-columns:1fr;
+  }
+
+  .texture-cards{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .collection-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .benefits{
+    grid-template-columns:1fr;
+  }
+
+  .benefit{
+    border-right:0;
+
+    border-bottom:
+      1px solid rgba(212,166,34,.25);
+  }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-  <!-- =========================
-       SITE HEADER
-  ========================== -->
-  <header class="site-header">
-    <div class="header-inner">
-
-      <a class="site-logo" href="index.html" aria-label="Big Boss Bundles home">
-        BIG BOSS BUNDLES
-      </a>
-
-      <button
-        class="mobile-menu-button"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="primary-navigation"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
 
-      <nav id="primary-navigation" class="primary-navigation" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="collections.html">Collections</a>
-        <a href="bundles.html">Bundles</a>
-        <a href="wigs.html" aria-current="page">Wigs</a>
-        <a href="closures.html">Closures</a>
-        <a href="frontals.html">Frontals</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+<!-- ======================================================
+     HEADER
+====================================================== -->
 
-      <a class="cart-link" href="cart.html" aria-label="View shopping bag">
-        Bag
-        <span id="cart-count" class="cart-count">0</span>
-      </a>
+<header>
 
-    </div>
-  </header>
+<div class="header-inner">
 
+<a
+  href="index.html"
+  aria-label="Big Boss Bundles Home"
+>
 
-  <main>
-
-    <!-- =========================
-         HERO SECTION
-    ========================== -->
-    <section class="wig-hero">
-
-      <div class="wig-hero-content">
-
-        <p class="eyebrow">Premium HD Lace Wigs</p>
-
-        <h1>Luxury Wig Collection</h1>
-
-        <p class="hero-description">
-          Find the wig that fits your style. From sleek straight looks to defined
-          curls, every Big Boss Bundles wig is crafted with premium hair and HD
-          lace for a flawless finish.
-        </p>
-
-        <div class="hero-actions">
-          <a class="primary-button" href="#laos-collection">
-            Shop Wigs
-          </a>
-
-          <a class="secondary-button" href="#wig-features">
-            See What Is Included
-          </a>
-        </div>
-
-      </div>
-
-      <div class="wig-hero-media">
-
-        <img
-          src="images/Cambodian Hair Images/cambodian-deep-wave-wig-model.png"
-          alt="LAOS Deep Wave HD lace wig showing the lace and hairline"
-          class="wig-hero-image"
-        >
-
-        <div class="hero-image-badge">
-          <span>HD Lace</span>
-          <strong>Flawless Finish</strong>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         COLLECTION SHORTCUTS
-    ========================== -->
-    <section class="collection-shortcuts" aria-label="Wig collection shortcuts">
-
-      <a href="#laos-collection">LAOS</a>
-      <a href="#cambodian-collection">Cambodian</a>
-      <a href="#indian-raw-collection">Indian Raw</a>
-      <a href="#burmese-collection">Burmese</a>
-      <a href="#vietnamese-collection">Vietnamese</a>
-
-    </section>
-
-
-    <!-- =========================
-         INTRODUCTION
-    ========================== -->
-    <section class="section-intro">
-
-      <p class="eyebrow">Shop By Hair Origin</p>
-
-      <h2>Find Your Signature Wig</h2>
-
-      <p>
-        Explore premium textures across every Big Boss Bundles hair collection.
-        View the model image, switch to the product image, choose your
-        customization options, and add your perfect wig to your bag.
-      </p>
-
-    </section>
-
-
-    <!-- =========================
-         INCLUDED FEATURES
-    ========================== -->
-    <section id="wig-features" class="wig-features-section">
-
-      <div class="section-heading centered-heading">
-        <p class="eyebrow">Premium Features Included</p>
-        <h2>Every Big Boss Bundles Wig Includes</h2>
-        <p>
-          All premium wig features are included automatically. You only choose
-          your preferred length, density, hair color, cap size, and cap construction.
-        </p>
-      </div>
-
-      <div class="features-grid">
-
-        <article class="feature-card">
-          <span class="feature-number">01</span>
-          <h3>HD Lace</h3>
-          <p>Thin, natural-looking lace designed for a seamless finish.</p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">02</span>
-          <h3>Pre-Plucked Hairline</h3>
-          <p>A natural-looking hairline that reduces preparation time.</p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">03</span>
-          <h3>Bleached Knots</h3>
-          <p>Knots are prepared for a more realistic scalp appearance.</p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">04</span>
-          <h3>Elastic Band</h3>
-          <p>An adjustable elastic band provides extra security and comfort.</p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">05</span>
-          <h3>Adjustable Straps</h3>
-          <p>Built-in straps allow customers to personalize the fit.</p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">06</span>
-          <h3>Combs Installed</h3>
-          <p>Strategically placed combs help keep the wig secure.</p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">07</span>
-          <h3>Ready to Wear</h3>
-          <p>Designed to provide a polished look with less preparation.</p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         WIG COLLECTIONS
-         Cards are generated by wigs.js
-    ========================== -->
-    <section class="collections-wrapper">
-
-      <section
-        id="laos-collection"
-        class="wig-collection-section"
-        data-brand="laos"
-      >
-        <div class="collection-heading">
-          <div>
-            <p class="eyebrow">Premium Luxury Hair</p>
-            <h2>LAOS Collection</h2>
-          </div>
-
-          <p>
-            Premium LAOS hair selected for softness, movement, fullness, and
-            a luxurious finish.
-          </p>
-        </div>
-
-        <div class="wig-grid" data-grid="laos"></div>
-      </section>
-
-
-      <section
-        id="cambodian-collection"
-        class="wig-collection-section"
-        data-brand="cambodian"
-      >
-        <div class="collection-heading">
-          <div>
-            <p class="eyebrow">Luxury Hair Collection</p>
-            <h2>Cambodian Collection</h2>
-          </div>
-
-          <p>
-            Full-bodied Cambodian hair known for strength, richness, and
-            beautiful natural texture.
-          </p>
-        </div>
-
-        <div class="wig-grid" data-grid="cambodian"></div>
-      </section>
-
-
-      <section
-        id="indian-raw-collection"
-        class="wig-collection-section"
-        data-brand="indian-raw"
-      >
-        <div class="collection-heading">
-          <div>
-            <p class="eyebrow">Authentic Raw Hair</p>
-            <h2>Indian Raw Collection</h2>
-          </div>
-
-          <p>
-            Authentic Indian Raw hair with natural movement, versatility, and
-            exceptional styling possibilities.
-          </p>
-        </div>
-
-        <div class="wig-grid" data-grid="indian-raw"></div>
-      </section>
-
-
-      <section
-        id="burmese-collection"
-        class="wig-collection-section"
-        data-brand="burmese"
-      >
-        <div class="collection-heading">
-          <div>
-            <p class="eyebrow">Soft Luxury Texture</p>
-            <h2>Burmese Collection</h2>
-          </div>
-
-          <p>
-            Soft, durable Burmese hair with naturally rich body, texture, and
-            lasting beauty.
-          </p>
-        </div>
-
-        <div class="wig-grid" data-grid="burmese"></div>
-      </section>
-
-
-      <section
-        id="vietnamese-collection"
-        class="wig-collection-section"
-        data-brand="vietnamese"
-      >
-        <div class="collection-heading">
-          <div>
-            <p class="eyebrow">Luxury Hair Collection</p>
-            <h2>Vietnamese Collection</h2>
-          </div>
-
-          <p>
-            Strong, sleek Vietnamese hair with smooth strands, natural shine,
-            and long-lasting quality.
-          </p>
-        </div>
-
-        <div class="wig-grid" data-grid="vietnamese"></div>
-      </section>
-
-    </section>
-
-
-    <!-- =========================
-         LUXURY GUARANTEE
-    ========================== -->
-    <section class="luxury-guarantee">
-
-      <div class="section-heading centered-heading">
-        <p class="eyebrow">The Big Boss Bundles Experience</p>
-        <h2>Luxury From Selection to Delivery</h2>
-      </div>
-
-      <div class="guarantee-grid">
-
-        <article>
-          <h3>Premium Hair</h3>
-          <p>Carefully selected hair designed for beauty, versatility, and wear.</p>
-        </article>
-
-        <article>
-          <h3>Secure Checkout</h3>
-          <p>Your purchase information is handled through a secure checkout experience.</p>
-        </article>
-
-        <article>
-          <h3>Order Support</h3>
-          <p>Our team is available to assist with product and order questions.</p>
-        </article>
-
-        <article>
-          <h3>Local Pickup</h3>
-          <p>Call ahead for local pickup availability at the Big Boss Bundles location.</p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         FAQ
-    ========================== -->
-    <section class="wig-faq-section">
-
-      <div class="section-heading centered-heading">
-        <p class="eyebrow">Questions and Answers</p>
-        <h2>Luxury Wig FAQ</h2>
-      </div>
-
-      <div class="faq-list">
-
-        <details>
-          <summary>Do all Big Boss Bundles wigs include HD lace?</summary>
-          <p>
-            Yes. Every wig in this collection includes HD lace. Customers do
-            not need to choose a separate lace type.
-          </p>
-        </details>
-
-        <details>
-          <summary>What density options are available?</summary>
-          <p>
-            Available density options are 180%, 200%, 220%, 250%, and 300%.
-            The featured density is 250%.
-          </p>
-        </details>
-
-        <details>
-          <summary>What is the difference between Glueless and Glue Required?</summary>
-          <p>
-            A Glueless wig is designed for secure wear without adhesive when
-            properly fitted. A Glue Required construction is intended for
-            customers who prefer an adhesive installation.
-          </p>
-        </details>
-
-        <details>
-          <summary>Can the wigs be colored?</summary>
-          <p>
-            Human hair wigs may be customized by a qualified professional.
-            Results depend on the selected starting color, hair condition, and
-            coloring process.
-          </p>
-        </details>
-
-        <details>
-          <summary>How should I care for my wig?</summary>
-          <p>
-            Use products made for premium human hair, detangle gently, minimize
-            excessive heat, and store the wig properly between wears.
-          </p>
-        </details>
-
-        <details>
-          <summary>How long does fulfillment take?</summary>
-          <p>
-            Unless the wig is available for local pickup, standard fulfillment
-            is generally 7 to 10 business days.
-          </p>
-        </details>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         FINAL CALL TO ACTION
-    ========================== -->
-    <section class="final-cta">
-
-      <div>
-        <p class="eyebrow">Boss Beauty Starts Here</p>
-        <h2>Ready to Find Your New Signature Look?</h2>
-        <p>
-          Browse the luxury wig collections and select the texture, length, and
-          construction that fit your style.
-        </p>
-      </div>
-
-      <a class="primary-button" href="#laos-collection">
-        Shop the Collection
-      </a>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-  <footer class="site-footer">
-
-    <div class="footer-grid">
-
-      <div>
-        <h2>Big Boss Bundles</h2>
-        <p>Luxury hair, premium textures, and boss-level confidence.</p>
-      </div>
-
-      <div>
-        <h3>Shop</h3>
-        <a href="bundles.html">Bundles</a>
-        <a href="wigs.html">Wigs</a>
-        <a href="closures.html">Closures</a>
-        <a href="frontals.html">Frontals</a>
-      </div>
-
-      <div>
-        <h3>Help</h3>
-        <a href="contact.html">Contact</a>
-        <a href="shipping.html">Shipping</a>
-        <a href="returns.html">Returns and Exchanges</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
-
-      <div>
-        <h3>Follow</h3>
-        <a href="#" aria-label="Big Boss Bundles on Instagram">Instagram</a>
-        <a href="#" aria-label="Big Boss Bundles on TikTok">TikTok</a>
-        <a href="#" aria-label="Big Boss Bundles on Facebook">Facebook</a>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <p>© <span id="current-year"></span> Big Boss Bundles. All rights reserved.</p>
-    </div>
-
-  </footer>
-
-
-  <!-- Shopping feedback -->
-  <div
-    id="shopping-toast"
-    class="shopping-toast"
-    role="status"
-    aria-live="polite"
-    aria-atomic="true"
-  ></div>
-
-
-  <!-- Wig page functionality -->
-<script src="js/store.js" defer></script>
-<script src="js/pricing.js" defer></script>
-<script src="js/products.js" defer></script>
-<script src="js/wigs.js" defer></script>
+<img
+  class="logo"
+  src="images/Homepage Images/Owner Images/Lifestyle Images/Store Images/Branding/BigBossBundles-logo.jpg"
+  alt="Big Boss Bundles BB Logo"
+>
+
+</a>
+
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="bundles.html">
+Bundles
+</a>
+
+<a
+  href="wigs.html"
+  class="active"
+>
+Wigs
+</a>
+
+<a href="closures.html">
+Closures
+</a>
+
+<a href="frontals.html">
+Frontals
+</a>
+
+<a href="mens-hair-pieces.html">
+Men's Hair
+</a>
+
+<a href="hair-care.html">
+Hair Care
+</a>
+
+<a
+  href="cart.html"
+  class="bag"
+>
+Bag (
+<span data-cart-count>0</span>
+)
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- ======================================================
+     TITLE
+====================================================== -->
+
+<section class="hero-heading">
+
+<span class="eyebrow">
+Luxury Burmese Hair
+</span>
+
+<h1>
+Lace Wig Collection
+</h1>
+
+<p>
+Premium Double Drawn Burmese lace wigs designed
+for a flawless, natural look with long lasting beauty.
+Choose your texture, length, density and lace configuration.
+</p>
+
+</section>
+
+
+
+<!-- ======================================================
+     WIG BUILDER
+====================================================== -->
+
+<main>
+
+<section class="builder-section">
+
+<div class="builder">
+
+
+<!-- IMAGE -->
+
+<div class="image-panel">
+
+<img
+  class="hero-image"
+  id="wig-main-image"
+  src="images/Burmese Hair Images/burmese-body-wave-wig-model.png"
+  alt="Big Boss Bundles Burmese Lace Wig"
+>
+
+<button
+  type="button"
+  class="gallery-button"
+>
+View Gallery
+</button>
+
+</div>
+
+
+
+<!-- CONFIG -->
+
+<div class="config-panel">
+
+<h2>
+Create Your
+<span>Perfect Wig</span>
+</h2>
+
+<p class="config-intro">
+Select your options below.
+</p>
+
+
+
+<!-- TEXTURE -->
+
+<div class="option-group">
+
+<div class="option-title">
+1. Choose Texture
+</div>
+
+<div
+  class="texture-grid"
+  id="texture-grid"
+>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-texture="Straight"
+>
+Straight
+</button>
+
+<button
+  type="button"
+  class="choice-btn active"
+  data-texture="Body Wave"
+>
+Body Wave
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-texture="Deep Wave"
+>
+Deep Wave
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-texture="Curly"
+>
+Curly
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-texture="Kinky Straight"
+>
+Kinky Straight
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-texture="Kinky Curly"
+>
+Kinky Curly
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- LENGTH -->
+
+<div class="option-group">
+
+<div class="option-title">
+2. Choose Length
+</div>
+
+<div
+  class="length-grid"
+  id="length-grid"
+>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="18"
+>
+18"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="20"
+>
+20"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="22"
+>
+22"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="24"
+>
+24"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="26"
+>
+26"
+</button>
+
+<button
+  type="button"
+  class="length-btn active"
+  data-length="28"
+>
+28"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="30"
+>
+30"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="32"
+>
+32"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="34"
+>
+34"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="36"
+>
+36"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="38"
+>
+38"
+</button>
+
+<button
+  type="button"
+  class="length-btn"
+  data-length="40"
+>
+40"
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- DENSITY + LACE -->
+
+<div class="two-column">
+
+<div class="option-group">
+
+<div class="option-title">
+3. Choose Density
+</div>
+
+<div
+  class="density-grid"
+  id="density-grid"
+>
+
+<button
+  type="button"
+  class="choice-btn active"
+  data-density="180%"
+>
+180%
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-density="200%"
+>
+200%
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-density="250%"
+>
+250%
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="option-group">
+
+<div class="option-title">
+4. Choose Lace Size
+</div>
+
+<div
+  class="lace-grid"
+  id="lace-grid"
+>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-lace="4x4"
+>
+4×4
+</button>
+
+<button
+  type="button"
+  class="choice-btn active"
+  data-lace="5x5"
+>
+5×5
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-lace="13x4"
+>
+13×4
+</button>
+
+<button
+  type="button"
+  class="choice-btn"
+  data-lace="13x6"
+>
+13×6
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- CAP + COLOR -->
+
+<div class="two-column">
+
+<div class="option-group">
+
+<div class="option-title">
+5. Choose Cap Size
+</div>
+
+<select
+  id="cap-size"
+  class="select-box"
+>
+
+<option value="Small">
+Small
+</option>
+
+<option
+  value="Medium"
+  selected
+>
+Medium
+</option>
+
+<option value="Large">
+Large
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="option-group">
+
+<div class="option-title">
+6. Choose Color
+</div>
+
+<select
+  id="color"
+  class="select-box"
+>
+
+<option value="Natural Black">
+Natural Black
+</option>
+
+<option value="Natural Brown">
+Natural Brown
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<!-- QUANTITY + BAG -->
+
+<div class="bottom-controls">
+
+<div>
+
+<div class="option-title">
+7. Quantity
+</div>
+
+<div class="quantity-control">
+
+<button
+  type="button"
+  class="qty-btn"
+  id="qty-minus"
+>
+−
+</button>
+
+<div
+  class="qty-display"
+  id="quantity"
+>
+1
+</div>
+
+<button
+  type="button"
+  class="qty-btn"
+  id="qty-plus"
+>
++
+</button>
+
+</div>
+
+</div>
+
+
+<button
+  type="button"
+  class="add-to-bag"
+  id="add-to-bag"
+  disabled
+>
+Pricing Coming Next
+</button>
+
+</div>
+
+
+
+<div class="price-row">
+
+<div>
+
+<div class="price-label">
+Your Wig Price
+</div>
+
+<div
+  class="price"
+  id="price"
+>
+Coming Next
+</div>
+
+</div>
+
+
+<div class="quality-note">
+Double Drawn
+<br>
+Extra Full
+<br>
+Premium Lace
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     BENEFITS
+====================================================== -->
+
+<section class="benefits">
+
+<div class="benefit">
+
+<div class="benefit-icon">
+◇
+</div>
+
+<h3>
+Double Drawn
+</h3>
+
+<p>
+Fuller density from top to ends
+for a luxurious appearance.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+↕
+</div>
+
+<h3>
+Up To 40"
+</h3>
+
+<p>
+Select longer wig lengths
+where available.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+♛
+</div>
+
+<h3>
+Premium Quality
+</h3>
+
+<p>
+Luxurious hair designed for
+beautiful styles that last.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+♡
+</div>
+
+<h3>
+Natural Hairline
+</h3>
+
+<p>
+Premium lace for a seamless
+natural looking finish.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     TEXTURES
+====================================================== -->
+
+<section class="texture-section">
+
+<div class="section-heading">
+
+<span class="eyebrow">
+Shop By Texture
+</span>
+
+<h2>
+Our Lace Wig Textures
+</h2>
+
+</div>
+
+
+<div class="texture-cards">
+
+
+<!-- STRAIGHT -->
+
+<article class="texture-card">
+
+<img
+  src="images/Burmese Hair Images/burmese-straight-wig-model.png"
+  alt="Burmese Straight Wig"
+>
+
+<div class="texture-copy">
+
+<h3>
+Straight
+</h3>
+
+<p>
+Naturally sleek strands with
+soft movement and a polished finish.
+</p>
+
+<button
+  class="texture-select"
+  type="button"
+  data-select-texture="Straight"
+>
+Shop Straight
+</button>
+
+</div>
+
+</article>
+
+
+
+<!-- BODY WAVE -->
+
+<article class="texture-card">
+
+<img
+  src="images/Burmese Hair Images/burmese-body-wave-wig-model.png"
+  alt="Burmese Body Wave Wig"
+>
+
+<div class="texture-copy">
+
+<h3>
+Body Wave
+</h3>
+
+<p>
+Soft flowing waves with natural
+volume and effortless versatility.
+</p>
+
+<button
+  class="texture-select"
+  type="button"
+  data-select-texture="Body Wave"
+>
+Shop Body Wave
+</button>
+
+</div>
+
+</article>
+
+
+
+<!-- DEEP WAVE -->
+
+<article class="texture-card">
+
+<img
+  src="images/Burmese Hair Images/burmese-deep-wave-wig-model.jpg"
+  alt="Burmese Deep Wave Wig"
+>
+
+<div class="texture-copy">
+
+<h3>
+Deep Wave
+</h3>
+
+<p>
+Defined waves with rich texture,
+volume and beautiful movement.
+</p>
+
+<button
+  class="texture-select"
+  type="button"
+  data-select-texture="Deep Wave"
+>
+Shop Deep Wave
+</button>
+
+</div>
+
+</article>
+
+
+
+<!-- CURLY -->
+
+<article class="texture-card">
+
+<img
+  src="images/Burmese Hair Images/burmese-curly-wig-model.jpg"
+  alt="Burmese Curly Wig"
+>
+
+<div class="texture-copy">
+
+<h3>
+Curly
+</h3>
+
+<p>
+Soft defined curls with
+bounce and natural fullness.
+</p>
+
+<button
+  class="texture-select"
+  type="button"
+  data-select-texture="Curly"
+>
+Shop Curly
+</button>
+
+</div>
+
+</article>
+
+
+
+<!-- KINKY STRAIGHT -->
+
+<article class="texture-card">
+
+<img
+  src="images/Burmese Hair Images/burmese-kinky-straight-wig-model.jpg"
+  alt="Burmese Kinky Straight Wig"
+>
+
+<div class="texture-copy">
+
+<h3>
+Kinky Straight
+</h3>
+
+<p>
+Natural blown-out texture
+with softness and realistic movement.
+</p>
+
+<button
+  class="texture-select"
+  type="button"
+  data-select-texture="Kinky Straight"
+>
+Shop Kinky Straight
+</button>
+
+</div>
+
+</article>
+
+
+
+<!-- KINKY CURLY -->
+
+<article class="texture-card">
+
+<img
+  src="images/Burmese Hair Images/burmese-kinky-curly-wig-model.jpg"
+  alt="Burmese Kinky Curly Wig"
+>
+
+<div class="texture-copy">
+
+<h3>
+Kinky Curly
+</h3>
+
+<p>
+Bold naturally textured curls
+with rich fullness and soft luxury.
+</p>
+
+<button
+  class="texture-select"
+  type="button"
+  data-select-texture="Kinky Curly"
+>
+Shop Kinky Curly
+</button>
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     COLLECTION LINKS
+====================================================== -->
+
+<section class="collections">
+
+<div class="collection-heading">
+
+<h2>
+Shop Our Collections
+</h2>
+
+</div>
+
+
+<div class="collection-grid">
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+♢
+</div>
+
+<h3>
+Bundles
+</h3>
+
+<a href="bundles.html">
+Shop Now
+</a>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+♛
+</div>
+
+<h3>
+Wigs
+</h3>
+
+<a href="wigs.html">
+Shop Now
+</a>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+◡
+</div>
+
+<h3>
+Closures
+</h3>
+
+<a href="closures.html">
+Shop Now
+</a>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+⌒
+</div>
+
+<h3>
+Frontals
+</h3>
+
+<a href="frontals.html">
+Shop Now
+</a>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+♙
+</div>
+
+<h3>
+Men's Hair
+</h3>
+
+<a href="mens-hair-pieces.html">
+Shop Now
+</a>
+
+</div>
+
+
+<div class="collection-card">
+
+<div class="collection-icon">
+♨
+</div>
+
+<h3>
+Hair Care
+</h3>
+
+<a href="hair-care.html">
+Shop Now
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+<h2>
+Big Boss Bundles
+</h2>
+
+<p>
+Pflugerville, Texas
+&nbsp; | &nbsp;
+Luxury Hair
+&nbsp; • &nbsp;
+Boss Beauty
+</p>
+
+</footer>
+
+
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+
+<script src="cart.js"></script>
+
+
+<script>
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+
+/* ========================================================
+   CURRENT SELECTIONS
+======================================================== */
+
+let selectedTexture =
+  "Body Wave";
+
+let selectedLength =
+  28;
+
+let selectedDensity =
+  "180%";
+
+let selectedLace =
+  "5x5";
+
+let quantity =
+  1;
+
+
+/* ========================================================
+   TEXTURE BUTTONS
+======================================================== */
+
+const textureButtons =
+  document.querySelectorAll(
+    "[data-texture]"
+  );
+
+textureButtons.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+selectedTexture =
+  button.dataset.texture;
+
+textureButtons.forEach(
+function(btn){
+
+btn.classList.remove(
+  "active"
+);
+
+}
+);
+
+button.classList.add(
+  "active"
+);
+
+}
+);
+
+}
+);
+
+
+/* ========================================================
+   LENGTH BUTTONS
+======================================================== */
+
+const lengthButtons =
+  document.querySelectorAll(
+    "[data-length]"
+  );
+
+lengthButtons.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+selectedLength =
+  Number(
+    button.dataset.length
+  );
+
+lengthButtons.forEach(
+function(btn){
+
+btn.classList.remove(
+  "active"
+);
+
+}
+);
+
+button.classList.add(
+  "active"
+);
+
+}
+);
+
+}
+);
+
+
+/* ========================================================
+   DENSITY
+======================================================== */
+
+const densityButtons =
+  document.querySelectorAll(
+    "[data-density]"
+  );
+
+densityButtons.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+selectedDensity =
+  button.dataset.density;
+
+densityButtons.forEach(
+function(btn){
+
+btn.classList.remove(
+  "active"
+);
+
+}
+);
+
+button.classList.add(
+  "active"
+);
+
+}
+);
+
+}
+);
+
+
+/* ========================================================
+   LACE
+======================================================== */
+
+const laceButtons =
+  document.querySelectorAll(
+    "[data-lace]"
+  );
+
+laceButtons.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+selectedLace =
+  button.dataset.lace;
+
+laceButtons.forEach(
+function(btn){
+
+btn.classList.remove(
+  "active"
+);
+
+}
+);
+
+button.classList.add(
+  "active"
+);
+
+}
+);
+
+}
+);
+
+
+/* ========================================================
+   QUANTITY
+======================================================== */
+
+const quantityDisplay =
+  document.getElementById(
+    "quantity"
+  );
+
+
+document
+.getElementById(
+  "qty-minus"
+)
+.addEventListener(
+"click",
+function(){
+
+quantity =
+  Math.max(
+    1,
+    quantity - 1
+  );
+
+quantityDisplay.textContent =
+  quantity;
+
+}
+);
+
+
+document
+.getElementById(
+  "qty-plus"
+)
+.addEventListener(
+"click",
+function(){
+
+quantity =
+  Math.min(
+    20,
+    quantity + 1
+  );
+
+quantityDisplay.textContent =
+  quantity;
+
+}
+);
+
+
+/* ========================================================
+   TEXTURE CARDS
+======================================================== */
+
+document
+.querySelectorAll(
+  "[data-select-texture]"
+)
+.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+selectedTexture =
+  button.dataset.selectTexture;
+
+textureButtons.forEach(
+function(btn){
+
+btn.classList.toggle(
+  "active",
+  btn.dataset.texture ===
+  selectedTexture
+);
+
+}
+);
+
+document
+.querySelector(
+  ".builder-section"
+)
+.scrollIntoView({
+  behavior:"smooth"
+});
+
+}
+);
+
+}
+);
+
+
+/* ========================================================
+   BAG COUNT
+======================================================== */
+
+if(
+  window.BBBCart &&
+  typeof window.BBBCart.updateCount ===
+  "function"
+){
+
+window.BBBCart.updateCount();
+
+}
+
+}
+);
+
+</script>
+
 
 </body>
+
 </html>
