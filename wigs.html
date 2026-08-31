@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta
@@ -57,7 +56,6 @@ select{
 button{
   cursor:pointer;
 }
-
 
 /* =========================================================
    HEADER
@@ -120,7 +118,6 @@ nav .active{
   color:var(--gold);
 }
 
-
 /* =========================================================
    PAGE TITLE
 ========================================================= */
@@ -165,7 +162,6 @@ nav .active{
   line-height:1.6;
 }
 
-
 /* =========================================================
    MAIN BUILDER
 ========================================================= */
@@ -186,8 +182,9 @@ nav .active{
     minmax(600px,1.25fr);
 
   gap:18px;
-}
 
+  align-items:start;
+}
 
 /* =========================================================
    MODEL / PRODUCT IMAGE
@@ -198,8 +195,6 @@ nav .active{
 
   overflow:hidden;
 
-  min-height:800px;
-
   border:2px solid var(--gold);
 
   border-radius:22px;
@@ -209,39 +204,70 @@ nav .active{
 
 .main-wig-image{
   width:100%;
-  height:800px;
+  height:auto;
 
-  object-fit:cover;
-  object-position:top center;
+  max-height:820px;
+
+  object-fit:contain;
+
+  background:#111;
 }
 
-.view-product-btn{
+/* Arrow switch */
+
+.image-switch{
   position:absolute;
 
-  right:20px;
-  bottom:20px;
+  right:18px;
+  top:50%;
 
-  padding:12px 20px;
+  transform:translateY(-50%);
 
-  border:1px solid var(--gold);
+  width:54px;
+  height:54px;
 
-  border-radius:999px;
+  border:2px solid var(--gold);
 
-  background:rgba(0,0,0,.90);
+  border-radius:50%;
 
-  color:#FFF;
+  background:rgba(0,0,0,.9);
 
-  font-size:.78rem;
+  color:var(--gold);
+
+  font-size:2rem;
   font-weight:900;
 
-  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.2s;
 }
 
-.view-product-btn:hover{
+.image-switch:hover{
   background:var(--gold);
   color:#000;
 }
 
+.image-hint{
+  position:absolute;
+
+  right:16px;
+  bottom:16px;
+
+  padding:7px 11px;
+
+  border-radius:999px;
+
+  background:rgba(0,0,0,.78);
+
+  color:#FFF;
+
+  font-size:.68rem;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
 
 /* =========================================================
    OPTIONS PANEL
@@ -306,7 +332,6 @@ nav .active{
   text-transform:uppercase;
 }
 
-
 /* =========================================================
    TEXTURE
 ========================================================= */
@@ -336,8 +361,6 @@ nav .active{
   font-weight:900;
 
   text-transform:uppercase;
-
-  transition:.2s;
 }
 
 .texture-btn:hover{
@@ -351,7 +374,6 @@ nav .active{
 
   color:#000;
 }
-
 
 /* =========================================================
    LENGTH
@@ -392,7 +414,6 @@ nav .active{
   color:#000;
 }
 
-
 /* =========================================================
    DENSITY
 ========================================================= */
@@ -432,9 +453,8 @@ nav .active{
   color:#000;
 }
 
-
 /* =========================================================
-   LACE SIZE PHOTOS
+   LACE SIZE
 ========================================================= */
 
 .lace-intro{
@@ -464,12 +484,6 @@ nav .active{
   border-radius:15px;
 
   background:#090909;
-
-  transition:.2s;
-}
-
-.lace-card:hover{
-  border-color:#7A6529;
 }
 
 .lace-card.active{
@@ -575,7 +589,6 @@ nav .active{
   color:#000;
 }
 
-
 /* =========================================================
    CAP + COLOR
 ========================================================= */
@@ -583,8 +596,7 @@ nav .active{
 .two-column{
   display:grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
   gap:20px;
 }
@@ -604,7 +616,6 @@ nav .active{
 
   color:#FFF;
 }
-
 
 /* =========================================================
    QUANTITY
@@ -649,9 +660,8 @@ nav .active{
   font-weight:900;
 }
 
-
 /* =========================================================
-   SELECTION SUMMARY
+   SUMMARY
 ========================================================= */
 
 .selection-summary{
@@ -673,7 +683,6 @@ nav .active{
 .selection-summary strong{
   color:var(--gold);
 }
-
 
 /* =========================================================
    PRICE
@@ -731,7 +740,6 @@ nav .active{
   cursor:not-allowed;
 }
 
-
 /* =========================================================
    LIGHTBOX
 ========================================================= */
@@ -750,8 +758,7 @@ nav .active{
 
   padding:30px;
 
-  background:
-    rgba(0,0,0,.96);
+  background:rgba(0,0,0,.96);
 }
 
 .lightbox.open{
@@ -799,7 +806,6 @@ nav .active{
   font-weight:900;
 }
 
-
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -828,7 +834,6 @@ footer p{
   color:#AAA;
 }
 
-
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -837,7 +842,6 @@ footer p{
 
   .header-inner{
     flex-direction:column;
-
     padding:15px 0;
   }
 
@@ -847,12 +851,6 @@ footer p{
 
   .builder{
     grid-template-columns:1fr;
-  }
-
-  .main-wig-image{
-    height:auto;
-
-    max-height:850px;
   }
 
 }
@@ -868,13 +866,11 @@ footer p{
   }
 
   .texture-grid{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .length-grid{
-    grid-template-columns:
-      repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
   }
 
   .lace-grid{
@@ -907,10 +903,6 @@ footer p{
 <body>
 
 
-<!-- ======================================================
-     HEADER
-====================================================== -->
-
 <header>
 
 <div class="header-inner">
@@ -928,46 +920,24 @@ footer p{
 
 <nav>
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="bundles.html">
-Bundles
-</a>
+<a href="bundles.html">Bundles</a>
 
-<a
-  class="active"
-  href="wigs.html"
->
-Wigs
-</a>
+<a class="active" href="wigs.html">Wigs</a>
 
-<a href="closures.html">
-Closures
-</a>
+<a href="closures.html">Closures</a>
 
-<a href="frontals.html">
-Frontals
-</a>
+<a href="frontals.html">Frontals</a>
 
-<a href="mens-hair-pieces.html">
-Men's Hair
-</a>
+<a href="mens-hair-pieces.html">Men's Hair</a>
 
-<a href="hair-care.html">
-Hair Care
-</a>
+<a href="hair-care.html">Hair Care</a>
 
-<a
-  class="bag"
-  href="cart.html"
->
+<a class="bag" href="cart.html">
 
 Bag (
-<span data-cart-count>
-0
-</span>
+<span data-cart-count>0</span>
 )
 
 </a>
@@ -978,10 +948,6 @@ Bag (
 
 </header>
 
-
-<!-- ======================================================
-     TITLE
-====================================================== -->
 
 <section class="page-heading">
 
@@ -1001,16 +967,10 @@ length, density, lace size, cap size and color.
 </section>
 
 
-<!-- ======================================================
-     BUILDER
-====================================================== -->
-
 <section class="builder-section">
 
 <div class="builder">
 
-
-<!-- MAIN IMAGE -->
 
 <div class="image-panel">
 
@@ -1023,16 +983,22 @@ length, density, lace size, cap size and color.
 
 <button
   type="button"
-  id="view-product"
-  class="view-product-btn"
+  id="image-switch"
+  class="image-switch"
+  aria-label="Show next image"
 >
-View Product
+→
 </button>
+
+<div
+  id="image-hint"
+  class="image-hint"
+>
+See Product
+</div>
 
 </div>
 
-
-<!-- OPTIONS -->
 
 <div class="options-panel">
 
@@ -1056,10 +1022,6 @@ movement and effortless versatility.
 </p>
 
 
-<!-- ======================================================
-     TEXTURE
-====================================================== -->
-
 <div class="option-group">
 
 <div class="option-title">
@@ -1068,51 +1030,27 @@ movement and effortless versatility.
 
 <div class="texture-grid">
 
-<button
-  type="button"
-  class="texture-btn"
-  data-texture="Straight"
->
+<button type="button" class="texture-btn" data-texture="Straight">
 Straight
 </button>
 
-<button
-  type="button"
-  class="texture-btn active"
-  data-texture="Body Wave"
->
+<button type="button" class="texture-btn active" data-texture="Body Wave">
 Body Wave
 </button>
 
-<button
-  type="button"
-  class="texture-btn"
-  data-texture="Deep Wave"
->
+<button type="button" class="texture-btn" data-texture="Deep Wave">
 Deep Wave
 </button>
 
-<button
-  type="button"
-  class="texture-btn"
-  data-texture="Curly"
->
+<button type="button" class="texture-btn" data-texture="Curly">
 Curly
 </button>
 
-<button
-  type="button"
-  class="texture-btn"
-  data-texture="Kinky Straight"
->
+<button type="button" class="texture-btn" data-texture="Kinky Straight">
 Kinky Straight
 </button>
 
-<button
-  type="button"
-  class="texture-btn"
-  data-texture="Kinky Curly"
->
+<button type="button" class="texture-btn" data-texture="Kinky Curly">
 Kinky Curly
 </button>
 
@@ -1120,10 +1058,6 @@ Kinky Curly
 
 </div>
 
-
-<!-- ======================================================
-     LENGTH
-====================================================== -->
 
 <div class="option-group">
 
@@ -1134,43 +1068,22 @@ Kinky Curly
 <div class="length-grid">
 
 <button type="button" class="length-btn" data-length="18">18"</button>
-
 <button type="button" class="length-btn" data-length="20">20"</button>
-
 <button type="button" class="length-btn" data-length="22">22"</button>
-
 <button type="button" class="length-btn" data-length="24">24"</button>
-
 <button type="button" class="length-btn" data-length="26">26"</button>
-
-<button
-  type="button"
-  class="length-btn active"
-  data-length="28"
->
-28"
-</button>
-
+<button type="button" class="length-btn active" data-length="28">28"</button>
 <button type="button" class="length-btn" data-length="30">30"</button>
-
 <button type="button" class="length-btn" data-length="32">32"</button>
-
 <button type="button" class="length-btn" data-length="34">34"</button>
-
 <button type="button" class="length-btn" data-length="36">36"</button>
-
 <button type="button" class="length-btn" data-length="38">38"</button>
-
 <button type="button" class="length-btn" data-length="40">40"</button>
 
 </div>
 
 </div>
 
-
-<!-- ======================================================
-     DENSITY
-====================================================== -->
 
 <div class="option-group">
 
@@ -1209,10 +1122,6 @@ Kinky Curly
 </div>
 
 
-<!-- ======================================================
-     LACE SIZE
-====================================================== -->
-
 <div class="option-group">
 
 <div class="option-title">
@@ -1220,15 +1129,11 @@ Kinky Curly
 </div>
 
 <p class="lace-intro">
-Select your lace size. Use <strong>Click to Enlarge</strong>
-to see the actual lace construction in more detail.
+Select your lace size. Click to enlarge each image to see the lace construction.
 </p>
-
 
 <div class="lace-grid">
 
-
-<!-- 4X4 -->
 
 <div
   class="lace-card"
@@ -1275,8 +1180,6 @@ Select 4×4
 </div>
 
 
-<!-- 5X5 -->
-
 <div
   class="lace-card active"
   data-lace-card="5x5"
@@ -1322,8 +1225,6 @@ Selected 5×5
 </div>
 
 
-<!-- 13X4 -->
-
 <div
   class="lace-card"
   data-lace-card="13x4"
@@ -1368,8 +1269,6 @@ Select 13×4
 
 </div>
 
-
-<!-- 13X6 -->
 
 <div
   class="lace-card"
@@ -1420,10 +1319,6 @@ Select 13×6
 
 </div>
 
-
-<!-- ======================================================
-     CAP + COLOR
-====================================================== -->
 
 <div class="two-column">
 
@@ -1481,10 +1376,6 @@ Natural Brown
 </div>
 
 
-<!-- ======================================================
-     QUANTITY
-====================================================== -->
-
 <div class="option-group">
 
 <div class="option-title">
@@ -1521,10 +1412,6 @@ Natural Brown
 </div>
 
 
-<!-- ======================================================
-     SUMMARY
-====================================================== -->
-
 <div class="selection-summary">
 
 <strong>
@@ -1532,18 +1419,12 @@ Your Selection:
 </strong>
 
 <div id="selection-text">
-
 Body Wave • 28" • 180% Density •
 5×5 Lace Size • Medium Cap • Natural Black
-
 </div>
 
 </div>
 
-
-<!-- ======================================================
-     PRICE
-====================================================== -->
 
 <div class="buy-row">
 
@@ -1581,10 +1462,6 @@ Pricing Coming Next
 </section>
 
 
-<!-- ======================================================
-     LIGHTBOX
-====================================================== -->
-
 <div
   id="lace-lightbox"
   class="lightbox"
@@ -1613,10 +1490,6 @@ Pricing Coming Next
 </div>
 
 
-<!-- ======================================================
-     FOOTER
-====================================================== -->
-
 <footer>
 
 <h2>
@@ -1640,15 +1513,9 @@ document.addEventListener(
 function(){
 
 
-/* =========================================================
-   EXACT IMAGE PATHS FROM YOUR GITHUB FILES
-========================================================= */
-
 const wigTextures = {
 
-
   "Straight":{
-
     model:
       "images/Burmese Hair Images/burmese-straight-wig-model.png",
 
@@ -1657,12 +1524,10 @@ const wigTextures = {
 
     description:
       "Smooth, sleek and polished with luxurious natural movement."
-
   },
 
 
   "Body Wave":{
-
     model:
       "images/Burmese Hair Images/burmese-body-wave-wig-model.png",
 
@@ -1671,12 +1536,10 @@ const wigTextures = {
 
     description:
       "Soft flowing waves with natural volume, movement and effortless versatility."
-
   },
 
 
   "Deep Wave":{
-
     model:
       "images/Burmese Hair Images/burmese-deep-wave-model.png",
 
@@ -1685,12 +1548,10 @@ const wigTextures = {
 
     description:
       "Defined waves with rich texture, glamorous volume and beautiful movement."
-
   },
 
 
   "Curly":{
-
     model:
       "images/Burmese Hair Images/burmese-curly-wig-model.jpg",
 
@@ -1699,12 +1560,10 @@ const wigTextures = {
 
     description:
       "Beautiful defined curls with bounce, softness and natural fullness."
-
   },
 
 
   "Kinky Straight":{
-
     model:
       "images/Burmese Hair Images/burmese-kinky-straight-wig-model.jpg",
 
@@ -1713,12 +1572,10 @@ const wigTextures = {
 
     description:
       "A natural blown out texture with softness, body and realistic movement."
-
   },
 
 
   "Kinky Curly":{
-
     model:
       "images/Burmese Hair Images/burmese-kinky-curly-model.jpg",
 
@@ -1727,15 +1584,10 @@ const wigTextures = {
 
     description:
       "Bold naturally textured curls with rich fullness and luxurious volume."
-
   }
 
 };
 
-
-/* =========================================================
-   CURRENT OPTIONS
-========================================================= */
 
 let selectedTexture =
   "Body Wave";
@@ -1756,13 +1608,19 @@ let imageView =
   "model";
 
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
 const mainImage =
   document.getElementById(
     "main-wig-image"
+  );
+
+const imageSwitch =
+  document.getElementById(
+    "image-switch"
+  );
+
+const imageHint =
+  document.getElementById(
+    "image-hint"
   );
 
 const productTitle =
@@ -1795,11 +1653,6 @@ const wigColor =
     "wig-color"
   );
 
-const viewProductButton =
-  document.getElementById(
-    "view-product"
-  );
-
 const lightbox =
   document.getElementById(
     "lace-lightbox"
@@ -1816,29 +1669,18 @@ const lightboxClose =
   );
 
 
-/* =========================================================
-   UPDATE WIG
-========================================================= */
-
 function updateProduct(){
 
   const texture =
-    wigTextures[selectedTexture];
+    wigTextures[
+      selectedTexture
+    ];
 
 
-  if(
+  mainImage.src =
     imageView === "model"
-  ){
-
-    mainImage.src =
-      texture.model;
-
-  }else{
-
-    mainImage.src =
-      texture.product;
-
-  }
+      ? texture.model
+      : texture.product;
 
 
   mainImage.alt =
@@ -1857,10 +1699,25 @@ function updateProduct(){
     texture.description;
 
 
-  viewProductButton.textContent =
+  if(
     imageView === "model"
-      ? "View Product"
-      : "View Model";
+  ){
+
+    imageSwitch.textContent =
+      "→";
+
+    imageHint.textContent =
+      "See Product";
+
+  }else{
+
+    imageSwitch.textContent =
+      "←";
+
+    imageHint.textContent =
+      "See Model";
+
+  }
 
 
   selectionText.textContent =
@@ -1882,11 +1739,9 @@ function updateProduct(){
 }
 
 
-/* =========================================================
-   MODEL / PRODUCT SWITCH
-========================================================= */
+/* MODEL / PRODUCT ARROW */
 
-viewProductButton.addEventListener(
+imageSwitch.addEventListener(
 "click",
 function(){
 
@@ -1901,9 +1756,7 @@ function(){
 );
 
 
-/* =========================================================
-   TEXTURES
-========================================================= */
+/* TEXTURES */
 
 document
 .querySelectorAll(
@@ -1952,9 +1805,7 @@ function(button){
 );
 
 
-/* =========================================================
-   LENGTH
-========================================================= */
+/* LENGTH */
 
 document
 .querySelectorAll(
@@ -2002,9 +1853,7 @@ function(button){
 );
 
 
-/* =========================================================
-   DENSITY
-========================================================= */
+/* DENSITY */
 
 document
 .querySelectorAll(
@@ -2050,9 +1899,7 @@ function(button){
 );
 
 
-/* =========================================================
-   LACE SIZE SELECTION
-========================================================= */
+/* LACE SELECTION */
 
 document
 .querySelectorAll(
@@ -2133,9 +1980,7 @@ function(button){
 );
 
 
-/* =========================================================
-   CLICK TO ENLARGE
-========================================================= */
+/* ENLARGE LACE IMAGES */
 
 document
 .querySelectorAll(
@@ -2153,12 +1998,8 @@ function(button){
       event.stopPropagation();
 
 
-      const imagePath =
-        button.dataset.enlarge;
-
-
       lightboxImage.src =
-        imagePath;
+        button.dataset.enlarge;
 
 
       lightbox.classList.add(
@@ -2176,9 +2017,7 @@ function(button){
 );
 
 
-/* =========================================================
-   CLOSE LIGHTBOX
-========================================================= */
+/* CLOSE LIGHTBOX */
 
 lightboxClose.addEventListener(
 "click",
@@ -2237,9 +2076,7 @@ function(event){
 );
 
 
-/* =========================================================
-   CAP + COLOR
-========================================================= */
+/* CAP + COLOR */
 
 capSize.addEventListener(
   "change",
@@ -2253,9 +2090,7 @@ wigColor.addEventListener(
 );
 
 
-/* =========================================================
-   QUANTITY
-========================================================= */
+/* QUANTITY */
 
 document
 .getElementById(
@@ -2301,9 +2136,7 @@ function(){
 );
 
 
-/* =========================================================
-   CART COUNT
-========================================================= */
+/* CART COUNT */
 
 if(
   window.BBBCart &&
@@ -2315,10 +2148,6 @@ if(
 
 }
 
-
-/* =========================================================
-   START PAGE
-========================================================= */
 
 updateProduct();
 
