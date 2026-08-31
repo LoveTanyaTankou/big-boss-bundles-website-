@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>Luxury Lace Wigs | Big Boss Bundles</title>
 
@@ -23,6 +29,10 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:var(--black);
   color:var(--white);
@@ -30,8 +40,8 @@ body{
 }
 
 img{
-  max-width:100%;
   display:block;
+  max-width:100%;
 }
 
 a{
@@ -44,16 +54,19 @@ select{
   font:inherit;
 }
 
-/* ======================================================
-   HEADER
-====================================================== */
+button{
+  cursor:pointer;
+}
+
+/* HEADER */
 
 header{
-  background:#050505;
-  border-bottom:2px solid var(--gold);
   position:sticky;
   top:0;
   z-index:1000;
+
+  background:#050505;
+  border-bottom:2px solid var(--gold);
 }
 
 .header-inner{
@@ -64,7 +77,6 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:28px;
 }
 
@@ -97,9 +109,7 @@ nav .active{
   color:var(--gold);
 }
 
-/* ======================================================
-   HERO HEADING
-====================================================== */
+/* HERO */
 
 .hero-heading{
   text-align:center;
@@ -116,6 +126,7 @@ nav .active{
 
 .hero-heading h1{
   margin-top:8px;
+
   color:var(--gold);
   font-family:Georgia,serif;
   font-size:clamp(2.8rem,5vw,4.8rem);
@@ -126,16 +137,15 @@ nav .active{
 .hero-heading p{
   max-width:900px;
   margin:12px auto 0;
+
   color:#ddd;
   line-height:1.55;
 }
 
-/* ======================================================
-   BUILDER
-====================================================== */
+/* BUILDER */
 
 .builder-section{
-  padding:10px 4% 45px;
+  padding:10px 4% 50px;
 }
 
 .builder{
@@ -147,28 +157,27 @@ nav .active{
   gap:16px;
 }
 
-/* ======================================================
-   IMAGE
-====================================================== */
+/* MAIN IMAGE */
 
 .image-panel{
   overflow:hidden;
+
   border:2px solid var(--gold);
   border-radius:20px;
+
   background:#111;
-  min-height:760px;
+  min-height:780px;
 }
 
 .hero-image{
   width:100%;
-  height:760px;
+  height:780px;
+
   object-fit:cover;
   object-position:top center;
 }
 
-/* ======================================================
-   CONFIG
-====================================================== */
+/* CONFIG */
 
 .config-panel{
   padding:32px;
@@ -192,7 +201,6 @@ nav .active{
   color:var(--gold);
   font-family:Georgia,serif;
   font-size:2.4rem;
-
   text-transform:uppercase;
 }
 
@@ -214,9 +222,7 @@ nav .active{
   text-transform:uppercase;
 }
 
-/* ======================================================
-   TEXTURE BUTTONS
-====================================================== */
+/* TEXTURE */
 
 .texture-grid{
   display:grid;
@@ -226,25 +232,23 @@ nav .active{
 
 .texture-btn{
   min-height:55px;
+  padding:10px;
 
   border:1px solid #6d5516;
   border-radius:9px;
 
   background:#080808;
-  color:white;
+  color:#fff;
 
   font-size:.82rem;
   font-weight:900;
   text-transform:uppercase;
-
-  cursor:pointer;
 
   transition:.2s;
 }
 
 .texture-btn:hover{
   border-color:var(--gold);
-  transform:translateY(-1px);
 }
 
 .texture-btn.active{
@@ -253,9 +257,7 @@ nav .active{
   color:#000;
 }
 
-/* ======================================================
-   LENGTH BUTTONS
-====================================================== */
+/* LENGTH */
 
 .length-grid{
   display:grid;
@@ -266,15 +268,17 @@ nav .active{
 .length-btn{
   min-height:50px;
 
-  background:#080808;
-  color:white;
-
   border:1px solid #555;
   border-radius:8px;
 
-  font-weight:900;
+  background:#080808;
+  color:white;
 
-  cursor:pointer;
+  font-weight:900;
+}
+
+.length-btn:hover{
+  border-color:var(--gold);
 }
 
 .length-btn.active{
@@ -283,9 +287,7 @@ nav .active{
   border-color:var(--gold);
 }
 
-/* ======================================================
-   DENSITY
-====================================================== */
+/* DENSITY */
 
 .density-grid{
   display:grid;
@@ -296,15 +298,13 @@ nav .active{
 .density-btn{
   min-height:50px;
 
-  background:#080808;
-  color:white;
-
   border:1px solid #555;
   border-radius:8px;
 
-  font-weight:900;
+  background:#080808;
+  color:white;
 
-  cursor:pointer;
+  font-weight:900;
 }
 
 .density-btn.active{
@@ -313,85 +313,80 @@ nav .active{
   border-color:var(--gold);
 }
 
-/* ======================================================
-   LACE VISUAL CARDS
-====================================================== */
+/* LACE PHOTOS */
 
-.lace-grid{
+.lace-help{
+  margin:-2px 0 14px;
+
+  color:#aaa;
+  font-size:.8rem;
+}
+
+.lace-photo-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:14px;
+  gap:16px;
 }
 
-.lace-card{
-  position:relative;
+.lace-photo-card{
+  padding:0;
+  overflow:hidden;
 
-  min-height:180px;
-
-  border:2px solid #454545;
+  border:2px solid #444;
   border-radius:14px;
 
-  background:#0a0a0a;
-  color:white;
+  background:#090909;
+  color:#fff;
 
-  padding:15px;
+  text-align:left;
 
-  cursor:pointer;
-
-  transition:.2s;
+  transition:.2s ease;
 }
 
-.lace-card:hover{
+.lace-photo-card:hover{
   border-color:var(--gold);
   transform:translateY(-2px);
 }
 
-.lace-card.active{
+.lace-photo-card.active{
   border-color:var(--gold);
   box-shadow:0 0 0 1px var(--gold);
 }
 
-.lace-card.active .lace-name{
-  color:var(--gold);
-}
-
-.lace-image{
-  height:105px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  margin-bottom:8px;
-}
-
-.lace-image svg{
+.lace-photo-card img{
   width:100%;
-  max-width:190px;
-  height:100px;
+  height:220px;
+
+  object-fit:cover;
+  object-position:center;
+
+  background:#fff;
 }
 
-.lace-name{
-  text-align:center;
+.lace-photo-copy{
+  padding:14px 15px 16px;
+}
+
+.lace-photo-copy strong{
+  display:block;
+
+  color:var(--gold);
 
   font-size:1rem;
-  font-weight:900;
+  text-transform:uppercase;
 }
 
-.lace-description{
-  margin-top:5px;
+.lace-photo-copy span{
+  display:block;
+  margin-top:6px;
 
-  text-align:center;
+  color:#bbb;
 
-  color:#aaa;
-
-  font-size:.72rem;
-  line-height:1.35;
+  font-size:.76rem;
+  line-height:1.4;
 }
 
-/* ======================================================
-   CAP + COLOR
-====================================================== */
+/* CAP + COLOR */
 
 .two-column{
   display:grid;
@@ -405,16 +400,14 @@ nav .active{
 
   padding:0 14px;
 
-  background:#080808;
-  color:white;
-
   border:1px solid #555;
   border-radius:8px;
+
+  background:#080808;
+  color:white;
 }
 
-/* ======================================================
-   QUANTITY
-====================================================== */
+/* QUANTITY */
 
 .quantity-control{
   width:190px;
@@ -436,8 +429,6 @@ nav .active{
 
   font-size:1.7rem;
   font-weight:900;
-
-  cursor:pointer;
 }
 
 .qty-display{
@@ -453,9 +444,7 @@ nav .active{
   font-weight:900;
 }
 
-/* ======================================================
-   BUY AREA
-====================================================== */
+/* BUY */
 
 .buy-row{
   margin-top:28px;
@@ -497,11 +486,8 @@ nav .active{
 
 .add-to-bag:disabled{
   opacity:.7;
+  cursor:not-allowed;
 }
-
-/* ======================================================
-   CURRENT SELECTION
-====================================================== */
 
 .selection-summary{
   margin-top:22px;
@@ -523,9 +509,7 @@ nav .active{
   line-height:1.6;
 }
 
-/* ======================================================
-   TEXTURE GALLERY
-====================================================== */
+/* TEXTURE GALLERY */
 
 .texture-section{
   padding:65px 4%;
@@ -553,7 +537,6 @@ nav .active{
 
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
   gap:20px;
 }
 
@@ -593,26 +576,78 @@ nav .active{
   margin-top:7px;
 
   color:#bbb;
-
   line-height:1.45;
 }
 
 .texture-copy span{
   display:inline-block;
-
   margin-top:12px;
 
   color:var(--teal);
 
   font-size:.8rem;
   font-weight:900;
-
   text-transform:uppercase;
 }
 
-/* ======================================================
-   FOOTER
-====================================================== */
+/* LIGHTBOX */
+
+.lace-lightbox{
+  position:fixed;
+  inset:0;
+
+  z-index:5000;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:30px;
+
+  background:rgba(0,0,0,.94);
+}
+
+.lace-lightbox.open{
+  display:flex;
+}
+
+.lace-lightbox-inner{
+  position:relative;
+  width:min(900px,95vw);
+}
+
+.lace-lightbox img{
+  width:100%;
+  max-height:85vh;
+
+  object-fit:contain;
+
+  border:2px solid var(--gold);
+  border-radius:14px;
+
+  background:#fff;
+}
+
+.lace-lightbox-close{
+  position:absolute;
+
+  top:-18px;
+  right:-18px;
+
+  width:45px;
+  height:45px;
+
+  border:2px solid var(--gold);
+  border-radius:50%;
+
+  background:#000;
+  color:#fff;
+
+  font-size:1.5rem;
+  font-weight:900;
+}
+
+/* FOOTER */
 
 footer{
   padding:42px;
@@ -626,9 +661,7 @@ footer h2{
   color:var(--gold);
 
   font-family:Georgia,serif;
-
   letter-spacing:.1em;
-
   text-transform:uppercase;
 }
 
@@ -637,9 +670,7 @@ footer p{
   color:#bbb;
 }
 
-/* ======================================================
-   RESPONSIVE
-====================================================== */
+/* RESPONSIVE */
 
 @media(max-width:1100px){
 
@@ -676,8 +707,12 @@ footer p{
     grid-template-columns:repeat(3,1fr);
   }
 
-  .lace-grid{
+  .lace-photo-grid{
     grid-template-columns:1fr;
+  }
+
+  .lace-photo-card img{
+    height:260px;
   }
 
   .two-column{
@@ -699,9 +734,12 @@ footer p{
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -717,24 +755,47 @@ footer p{
 
 </a>
 
+
 <nav>
 
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="bundles.html">Bundles</a>
+<a href="bundles.html">
+Bundles
+</a>
 
-<a class="active" href="wigs.html">Wigs</a>
+<a
+  class="active"
+  href="wigs.html"
+>
+Wigs
+</a>
 
-<a href="closures.html">Closures</a>
+<a href="closures.html">
+Closures
+</a>
 
-<a href="frontals.html">Frontals</a>
+<a href="frontals.html">
+Frontals
+</a>
 
-<a href="mens-hair-pieces.html">Men's Hair</a>
+<a href="mens-hair-pieces.html">
+Men's Hair
+</a>
 
-<a href="hair-care.html">Hair Care</a>
+<a href="hair-care.html">
+Hair Care
+</a>
 
-<a class="bag" href="cart.html">
-Bag (<span data-cart-count>0</span>)
+<a
+  class="bag"
+  href="cart.html"
+>
+Bag (
+<span data-cart-count>0</span>
+)
 </a>
 
 </nav>
@@ -755,7 +816,7 @@ Lace Wig Collection
 </h1>
 
 <p>
-Create your perfect luxury wig by selecting your texture,
+Create your perfect luxury wig by choosing your texture,
 length, density, lace size, cap size and color.
 </p>
 
@@ -764,12 +825,11 @@ length, density, lace size, cap size and color.
 
 <main>
 
+
 <section class="builder-section">
 
 <div class="builder">
 
-
-<!-- MAIN IMAGE -->
 
 <div class="image-panel">
 
@@ -782,8 +842,6 @@ length, density, lace size, cap size and color.
 
 </div>
 
-
-<!-- OPTIONS -->
 
 <div class="config-panel">
 
@@ -806,8 +864,6 @@ Soft flowing waves with natural volume,
 movement and effortless versatility.
 </p>
 
-
-<!-- TEXTURE -->
 
 <div class="option-group">
 
@@ -870,8 +926,6 @@ Kinky Curly
 </div>
 
 
-<!-- LENGTH -->
-
 <div class="option-group">
 
 <div class="option-title">
@@ -904,8 +958,6 @@ Kinky Curly
 
 </div>
 
-
-<!-- DENSITY -->
 
 <div class="option-group">
 
@@ -941,218 +993,123 @@ Kinky Curly
 </div>
 
 
-<!-- LACE SIZE VISUALS -->
-
 <div class="option-group">
 
 <div class="option-title">
-4. Choose Your Lace Size
+4. Choose Lace Size
 </div>
 
-<div class="lace-grid">
+<p class="lace-help">
+Click the wig image to enlarge and compare the lace coverage.
+</p>
 
 
-<!-- 4x4 -->
+<div class="lace-photo-grid">
+
 
 <button
   type="button"
-  class="lace-card"
+  class="lace-photo-card"
   data-lace="4x4"
+  data-full-image="images/Wig Lace Sizes/4x4-lace-wig.jpg"
 >
 
-<div class="lace-image">
-
-<svg viewBox="0 0 220 110">
-
-<path
-  d="M45 15 Q110 0 175 15 L160 95 Q110 80 60 95 Z"
-  fill="#b58b67"
-  opacity=".55"
-  stroke="#D4A622"
-  stroke-width="3"
-/>
-
-<rect
-  x="85"
-  y="25"
-  width="50"
-  height="55"
-  fill="#e3b999"
-  opacity=".72"
-  stroke="#ffffff"
-  stroke-width="2"
-/>
-
-<text
-  x="110"
-  y="58"
-  text-anchor="middle"
-  fill="#000"
-  font-size="17"
-  font-weight="bold"
+<img
+  src="images/Wig Lace Sizes/4x4-lace-wig.jpg"
+  alt="4x4 Lace Size Wig"
 >
-4×4
-</text>
 
-</svg>
+<div class="lace-photo-copy">
 
-</div>
+<strong>
+4×4 Lace Size
+</strong>
 
-<div class="lace-name">
-4×4 Closure
-</div>
+<span>
+Compact lace area with focused parting space.
+</span>
 
-<div class="lace-description">
-Compact lace area for a natural center or side part.
 </div>
 
 </button>
 
 
-<!-- 5x5 -->
-
 <button
   type="button"
-  class="lace-card active"
+  class="lace-photo-card active"
   data-lace="5x5"
+  data-full-image="images/Wig Lace Sizes/5x5-lace-wig.jpg"
 >
 
-<div class="lace-image">
-
-<svg viewBox="0 0 220 110">
-
-<path
-  d="M40 15 Q110 0 180 15 L163 96 Q110 80 57 96 Z"
-  fill="#b58b67"
-  opacity=".55"
-  stroke="#D4A622"
-  stroke-width="3"
-/>
-
-<rect
-  x="78"
-  y="22"
-  width="64"
-  height="65"
-  fill="#e3b999"
-  opacity=".72"
-  stroke="#ffffff"
-  stroke-width="2"
-/>
-
-<text
-  x="110"
-  y="58"
-  text-anchor="middle"
-  fill="#000"
-  font-size="17"
-  font-weight="bold"
+<img
+  src="images/Wig Lace Sizes/5x5-lace-wig.jpg"
+  alt="5x5 Lace Size Wig"
 >
-5×5
-</text>
 
-</svg>
+<div class="lace-photo-copy">
 
-</div>
+<strong>
+5×5 Lace Size
+</strong>
 
-<div class="lace-name">
-5×5 Closure
-</div>
+<span>
+Wider lace area with more flexible parting.
+</span>
 
-<div class="lace-description">
-Larger closure area for increased parting versatility.
 </div>
 
 </button>
 
 
-<!-- 13x4 -->
-
 <button
   type="button"
-  class="lace-card"
+  class="lace-photo-card"
   data-lace="13x4"
+  data-full-image="images/Wig Lace Sizes/13x4-lace-wig.jpg"
 >
 
-<div class="lace-image">
-
-<svg viewBox="0 0 220 110">
-
-<path
-  d="M20 20 Q110 0 200 20 L188 75 Q110 55 32 75 Z"
-  fill="#e3b999"
-  opacity=".72"
-  stroke="#D4A622"
-  stroke-width="3"
-/>
-
-<text
-  x="110"
-  y="47"
-  text-anchor="middle"
-  fill="#000"
-  font-size="18"
-  font-weight="bold"
+<img
+  src="images/Wig Lace Sizes/13x4-lace-wig.jpg"
+  alt="13x4 Lace Size Wig"
 >
-13×4
-</text>
 
-</svg>
+<div class="lace-photo-copy">
 
-</div>
+<strong>
+13×4 Lace Size
+</strong>
 
-<div class="lace-name">
-13×4 Frontal
-</div>
+<span>
+Wide hairline coverage with approximately four inches of parting depth.
+</span>
 
-<div class="lace-description">
-Ear to ear lace with approximately four inches of parting space.
 </div>
 
 </button>
 
-
-<!-- 13x6 -->
 
 <button
   type="button"
-  class="lace-card"
+  class="lace-photo-card"
   data-lace="13x6"
+  data-full-image="images/Wig Lace Sizes/13x6-lace-wig.jpg"
 >
 
-<div class="lace-image">
-
-<svg viewBox="0 0 220 110">
-
-<path
-  d="M20 15 Q110 -2 200 15 L180 98 Q110 70 40 98 Z"
-  fill="#e3b999"
-  opacity=".72"
-  stroke="#D4A622"
-  stroke-width="3"
-/>
-
-<text
-  x="110"
-  y="55"
-  text-anchor="middle"
-  fill="#000"
-  font-size="18"
-  font-weight="bold"
+<img
+  src="images/Wig Lace Sizes/13x6-lace-wig.jpg"
+  alt="13x6 Lace Size Wig"
 >
-13×6
-</text>
 
-</svg>
+<div class="lace-photo-copy">
 
-</div>
+<strong>
+13×6 Lace Size
+</strong>
 
-<div class="lace-name">
-13×6 Frontal
-</div>
+<span>
+Wide hairline coverage with deeper parting space.
+</span>
 
-<div class="lace-description">
-Ear to ear lace with deeper parting space for maximum styling freedom.
 </div>
 
 </button>
@@ -1162,8 +1119,6 @@ Ear to ear lace with deeper parting space for maximum styling freedom.
 
 </div>
 
-
-<!-- CAP + COLOR -->
 
 <div class="two-column">
 
@@ -1178,7 +1133,9 @@ Ear to ear lace with deeper parting space for maximum styling freedom.
   class="select-box"
 >
 
-<option>Small</option>
+<option>
+Small
+</option>
 
 <option selected>
 Medium
@@ -1219,8 +1176,6 @@ Natural Brown
 </div>
 
 
-<!-- QUANTITY -->
-
 <div class="option-group">
 
 <div class="option-title">
@@ -1257,8 +1212,6 @@ Natural Brown
 </div>
 
 
-<!-- BUY -->
-
 <div class="buy-row">
 
 <div>
@@ -1288,8 +1241,6 @@ Pricing Coming Next
 </div>
 
 
-<!-- SUMMARY -->
-
 <div class="selection-summary">
 
 <p>
@@ -1299,12 +1250,13 @@ Your Selection:
 </strong>
 
 <span id="selection-text">
-Body Wave • 28" • 180% Density • 5×5 Lace • Medium Cap • Natural Black
+Body Wave • 28" • 180% Density • 5×5 Lace Size • Medium Cap • Natural Black
 </span>
 
 </p>
 
 </div>
+
 
 </div>
 
@@ -1312,11 +1264,6 @@ Body Wave • 28" • 180% Density • 5×5 Lace • Medium Cap • Natural Blac
 
 </section>
 
-
-
-<!-- ======================================================
-     TEXTURE GALLERY
-====================================================== -->
 
 <section class="texture-section">
 
@@ -1514,6 +1461,7 @@ Select Kinky Curly
 
 </section>
 
+
 </main>
 
 
@@ -1530,6 +1478,35 @@ Pflugerville, Texas • Luxury Hair • Boss Beauty
 </footer>
 
 
+<!-- LACE IMAGE LIGHTBOX -->
+
+<div
+  class="lace-lightbox"
+  id="lace-lightbox"
+>
+
+<div class="lace-lightbox-inner">
+
+<button
+  type="button"
+  class="lace-lightbox-close"
+  id="lace-lightbox-close"
+  aria-label="Close image"
+>
+×
+</button>
+
+<img
+  id="lace-lightbox-image"
+  src=""
+  alt="Enlarged Wig Lace Size"
+>
+
+</div>
+
+</div>
+
+
 <script src="cart.js"></script>
 
 
@@ -1539,10 +1516,6 @@ document.addEventListener(
 "DOMContentLoaded",
 function(){
 
-
-/* ======================================================
-   WIG TEXTURE DATA
-====================================================== */
 
 const wigTextures = {
 
@@ -1597,24 +1570,12 @@ const wigTextures = {
 };
 
 
-/* ======================================================
-   CURRENT SELECTION
-====================================================== */
-
 let selectedTexture = "Body Wave";
-
 let selectedLength = 28;
-
 let selectedDensity = "180%";
-
 let selectedLace = "5x5";
-
 let quantity = 1;
 
-
-/* ======================================================
-   ELEMENTS
-====================================================== */
 
 const mainImage =
   document.getElementById(
@@ -1641,10 +1602,6 @@ const selectionText =
     "selection-text"
   );
 
-
-/* ======================================================
-   UPDATE PRODUCT
-====================================================== */
 
 function updateProduct(){
 
@@ -1688,7 +1645,7 @@ function updateProduct(){
       "x",
       "×"
     ) +
-    " Lace • " +
+    " Lace Size • " +
     cap +
     " Cap • " +
     color;
@@ -1696,24 +1653,7 @@ function updateProduct(){
 }
 
 
-/* ======================================================
-   IMAGE FALLBACK
-====================================================== */
-
-mainImage.addEventListener(
-"error",
-function(){
-
-  mainImage.src =
-    "images/Burmese Hair Images/burmese-body-wave-wig-model.png";
-
-}
-);
-
-
-/* ======================================================
-   TEXTURE BUTTONS
-====================================================== */
+/* TEXTURE BUTTONS */
 
 document
 .querySelectorAll(
@@ -1756,9 +1696,7 @@ function(){
 );
 
 
-/* ======================================================
-   GALLERY TEXTURES
-====================================================== */
+/* TEXTURE GALLERY */
 
 document
 .querySelectorAll(
@@ -1807,9 +1745,7 @@ function(){
 );
 
 
-/* ======================================================
-   LENGTH
-====================================================== */
+/* LENGTH */
 
 document
 .querySelectorAll(
@@ -1854,9 +1790,7 @@ function(){
 );
 
 
-/* ======================================================
-   DENSITY
-====================================================== */
+/* DENSITY */
 
 document
 .querySelectorAll(
@@ -1899,77 +1833,153 @@ function(){
 );
 
 
-/* ======================================================
-   LACE CARDS
-====================================================== */
+/* LACE SIZE CARDS */
 
-document
-.querySelectorAll(
-  ".lace-card"
-)
-.forEach(
+const laceCards =
+  document.querySelectorAll(
+    ".lace-photo-card"
+  );
+
+const laceLightbox =
+  document.getElementById(
+    "lace-lightbox"
+  );
+
+const laceLightboxImage =
+  document.getElementById(
+    "lace-lightbox-image"
+  );
+
+const laceLightboxClose =
+  document.getElementById(
+    "lace-lightbox-close"
+  );
+
+
+laceCards.forEach(
 function(card){
 
-card.addEventListener(
+  card.addEventListener(
+    "click",
+    function(event){
+
+      selectedLace =
+        card.dataset.lace;
+
+      laceCards.forEach(
+        function(item){
+
+          item.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+      card.classList.add(
+        "active"
+      );
+
+      updateProduct();
+
+    }
+  );
+
+
+  const image =
+    card.querySelector("img");
+
+  image.addEventListener(
+    "click",
+    function(event){
+
+      event.stopPropagation();
+
+      selectedLace =
+        card.dataset.lace;
+
+      laceCards.forEach(
+        function(item){
+
+          item.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+      card.classList.add(
+        "active"
+      );
+
+      updateProduct();
+
+      laceLightboxImage.src =
+        card.dataset.fullImage;
+
+      laceLightbox.classList.add(
+        "open"
+      );
+
+    }
+  );
+
+});
+
+
+laceLightboxClose.addEventListener(
 "click",
 function(){
 
-  selectedLace =
-    card.dataset.lace;
+  laceLightbox.classList.remove(
+    "open"
+  );
 
-  document
-  .querySelectorAll(
-    ".lace-card"
-  )
-  .forEach(
-  function(item){
+}
+);
 
-    item.classList.remove(
-      "active"
+
+laceLightbox.addEventListener(
+"click",
+function(event){
+
+  if(
+    event.target ===
+    laceLightbox
+  ){
+
+    laceLightbox.classList.remove(
+      "open"
     );
 
   }
-  );
-
-  card.classList.add(
-    "active"
-  );
-
-  updateProduct();
-
-}
-);
 
 }
 );
 
 
-/* ======================================================
-   COLOR + CAP
-====================================================== */
-
-document
-.getElementById(
-  "color"
-)
-.addEventListener(
-"change",
-updateProduct
-);
+/* CAP + COLOR */
 
 document
 .getElementById(
   "cap-size"
 )
 .addEventListener(
-"change",
-updateProduct
+  "change",
+  updateProduct
+);
+
+document
+.getElementById(
+  "color"
+)
+.addEventListener(
+  "change",
+  updateProduct
 );
 
 
-/* ======================================================
-   QUANTITY
-====================================================== */
+/* QUANTITY */
 
 document
 .getElementById(
@@ -2013,13 +2023,12 @@ function(){
 );
 
 
-/* ======================================================
-   CART COUNT
-====================================================== */
+/* CART COUNT */
 
 if(
   window.BBBCart &&
-  typeof window.BBBCart.updateCount === "function"
+  typeof window.BBBCart.updateCount ===
+  "function"
 ){
 
   window.BBBCart.updateCount();
@@ -2027,16 +2036,13 @@ if(
 }
 
 
-/* ======================================================
-   INITIAL DISPLAY
-====================================================== */
-
 updateProduct();
 
 }
 );
 
 </script>
+
 
 </body>
 </html>
