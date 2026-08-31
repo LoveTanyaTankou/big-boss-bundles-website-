@@ -1,64 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>
-Luxury Lace Wigs | Big Boss Bundles
-</title>
-
-<meta
-  name="description"
-  content="Shop luxury lace wigs from Big Boss Bundles. Choose your texture, length, density, lace size, cap size and color."
->
+<title>Luxury Lace Wigs | Big Boss Bundles</title>
 
 <style>
 
 :root{
   --black:#050505;
-  --soft:#0d0d0d;
-  --soft2:#151515;
+  --soft:#101010;
   --gold:#D4A622;
   --teal:#00A6D6;
   --white:#FFFFFF;
-  --gray:#B9B9B9;
+  --gray:#BDBDBD;
 }
 
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
 }
 
 body{
   background:var(--black);
   color:var(--white);
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 img{
-  display:block;
   max-width:100%;
-}
-
-button,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
+  display:block;
 }
 
 a{
@@ -66,19 +39,21 @@ a{
   text-decoration:none;
 }
 
+button,
+select{
+  font:inherit;
+}
 
-/* =========================================================
+/* ======================================================
    HEADER
-========================================================= */
+====================================================== */
 
 header{
+  background:#050505;
+  border-bottom:2px solid var(--gold);
   position:sticky;
   top:0;
   z-index:1000;
-
-  background:rgba(3,3,3,.98);
-
-  border-bottom:1px solid var(--gold);
 }
 
 .header-inner{
@@ -90,126 +65,74 @@ header{
   align-items:center;
   justify-content:space-between;
 
-  gap:30px;
+  gap:28px;
 }
 
 .logo{
   width:120px;
-  height:78px;
-
+  height:80px;
   object-fit:contain;
 }
 
 nav{
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-
-  gap:30px;
-
+  gap:28px;
   flex-wrap:wrap;
-}
 
-nav a{
-  position:relative;
-
-  font-size:.82rem;
+  font-size:.8rem;
   font-weight:900;
-
-  letter-spacing:.05em;
   text-transform:uppercase;
-
-  transition:.2s ease;
 }
 
 nav a:hover,
-nav a.active{
+nav .active{
   color:var(--gold);
-}
-
-nav a.active::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:-13px;
-
-  height:2px;
-
-  background:var(--gold);
 }
 
 .bag{
   border:1px solid var(--gold);
-
   border-radius:999px;
-
-  padding:12px 20px;
-
+  padding:11px 18px;
   color:var(--gold);
 }
 
-
-/* =========================================================
-   HERO INTRO
-========================================================= */
+/* ======================================================
+   HERO HEADING
+====================================================== */
 
 .hero-heading{
-  padding:40px 5% 20px;
-
   text-align:center;
+  padding:42px 5% 25px;
 }
 
 .eyebrow{
-  display:block;
-
   color:var(--teal);
-
-  font-family:Georgia, "Times New Roman", serif;
-
+  font-family:Georgia,serif;
   font-size:1rem;
-
-  letter-spacing:.18em;
-
+  letter-spacing:.2em;
   text-transform:uppercase;
 }
 
 .hero-heading h1{
   margin-top:8px;
-
   color:var(--gold);
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:clamp(2.7rem,5vw,4.8rem);
-
-  letter-spacing:.08em;
-
+  font-family:Georgia,serif;
+  font-size:clamp(2.8rem,5vw,4.8rem);
+  letter-spacing:.07em;
   text-transform:uppercase;
 }
 
 .hero-heading p{
-  width:min(850px,100%);
-
+  max-width:900px;
   margin:12px auto 0;
-
-  color:#E4E4E4;
-
-  font-size:1.05rem;
-
+  color:#ddd;
   line-height:1.55;
 }
 
-.hero-heading strong{
-  color:var(--gold);
-}
-
-
-/* =========================================================
-   WIG BUILDER
-========================================================= */
+/* ======================================================
+   BUILDER
+====================================================== */
 
 .builder-section{
   padding:10px 4% 45px;
@@ -217,298 +140,289 @@ nav a.active::after{
 
 .builder{
   width:min(1450px,100%);
-
   margin:auto;
 
   display:grid;
-
-  grid-template-columns:
-    minmax(400px,.95fr)
-    minmax(600px,1.25fr);
-
-  gap:14px;
+  grid-template-columns:minmax(420px,.95fr) minmax(600px,1.25fr);
+  gap:16px;
 }
 
-
-/* =========================================================
-   HERO IMAGE
-========================================================= */
+/* ======================================================
+   IMAGE
+====================================================== */
 
 .image-panel{
-  position:relative;
-
   overflow:hidden;
-
-  min-height:760px;
-
-  border:1px solid var(--gold);
-
-  border-radius:18px;
-
+  border:2px solid var(--gold);
+  border-radius:20px;
   background:#111;
+  min-height:760px;
 }
 
 .hero-image{
   width:100%;
-  height:100%;
-
-  min-height:760px;
-
+  height:760px;
   object-fit:cover;
-  object-position:center top;
+  object-position:top center;
 }
 
-.gallery-button{
-  position:absolute;
-
-  left:20px;
-  bottom:20px;
-
-  padding:12px 20px;
-
-  border:1px solid var(--gold);
-
-  border-radius:8px;
-
-  background:rgba(0,0,0,.88);
-
-  color:var(--gold);
-
-  font-size:.78rem;
-  font-weight:900;
-
-  letter-spacing:.05em;
-
-  text-transform:uppercase;
-}
-
-
-/* =========================================================
-   CONFIG PANEL
-========================================================= */
+/* ======================================================
+   CONFIG
+====================================================== */
 
 .config-panel{
-  padding:30px 30px 26px;
+  padding:32px;
 
-  border:1px solid var(--gold);
+  border:2px solid var(--gold);
+  border-radius:20px;
 
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #111,
-      #050505
-    );
+  background:linear-gradient(145deg,#111,#050505);
 }
 
-.config-panel h2{
+.collection-label{
+  color:var(--teal);
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.product-title{
+  margin-top:6px;
+
   color:var(--gold);
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:1.55rem;
-
-  letter-spacing:.05em;
+  font-family:Georgia,serif;
+  font-size:2.4rem;
 
   text-transform:uppercase;
 }
 
-.config-panel h2 span{
-  color:var(--teal);
+.product-description{
+  margin-top:9px;
+  color:#ccc;
+  line-height:1.5;
 }
-
-.config-intro{
-  margin-top:8px;
-
-  color:#D2D2D2;
-
-  font-size:.9rem;
-}
-
-
-/* =========================================================
-   OPTIONS
-========================================================= */
 
 .option-group{
-  margin-top:25px;
+  margin-top:28px;
 }
 
 .option-title{
-  margin-bottom:10px;
+  margin-bottom:11px;
 
-  color:#FFF;
-
-  font-size:.78rem;
+  font-size:.8rem;
   font-weight:900;
-
-  letter-spacing:.03em;
-
   text-transform:uppercase;
 }
 
-
-/* TEXTURE */
+/* ======================================================
+   TEXTURE BUTTONS
+====================================================== */
 
 .texture-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:10px;
 }
 
-.choice-btn{
-  min-height:48px;
+.texture-btn{
+  min-height:55px;
 
-  padding:10px;
-
-  border:1px solid #725A17;
-
-  border-radius:7px;
+  border:1px solid #6d5516;
+  border-radius:9px;
 
   background:#080808;
+  color:white;
 
-  color:#FFF;
-
-  font-size:.78rem;
+  font-size:.82rem;
   font-weight:900;
-
   text-transform:uppercase;
 
-  transition:.2s ease;
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-.choice-btn:hover{
+.texture-btn:hover{
   border-color:var(--gold);
+  transform:translateY(-1px);
 }
 
-.choice-btn.active{
+.texture-btn.active{
   background:var(--gold);
-
-  color:#000;
-
   border-color:var(--gold);
+  color:#000;
 }
 
-
-/* LENGTH */
+/* ======================================================
+   LENGTH BUTTONS
+====================================================== */
 
 .length-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(5,1fr);
-
+  grid-template-columns:repeat(6,1fr);
   gap:10px;
 }
 
 .length-btn{
-  min-height:48px;
-
-  border:1px solid #555;
-
-  border-radius:7px;
+  min-height:50px;
 
   background:#080808;
+  color:white;
 
-  color:#FFF;
+  border:1px solid #555;
+  border-radius:8px;
 
   font-weight:900;
-}
 
-.length-btn:hover{
-  border-color:var(--gold);
+  cursor:pointer;
 }
 
 .length-btn.active{
   background:var(--gold);
-
   color:#000;
-
   border-color:var(--gold);
 }
 
-
-/* TWO COLUMN OPTIONS */
-
-.two-column{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:22px;
-}
-
-
-/* DENSITY */
+/* ======================================================
+   DENSITY
+====================================================== */
 
 .density-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:9px;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
+.density-btn{
+  min-height:50px;
 
-/* LACE */
+  background:#080808;
+  color:white;
+
+  border:1px solid #555;
+  border-radius:8px;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.density-btn.active{
+  background:var(--gold);
+  color:#000;
+  border-color:var(--gold);
+}
+
+/* ======================================================
+   LACE VISUAL CARDS
+====================================================== */
 
 .lace-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:9px;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
 }
 
+.lace-card{
+  position:relative;
 
-/* SELECTS */
+  min-height:180px;
+
+  border:2px solid #454545;
+  border-radius:14px;
+
+  background:#0a0a0a;
+  color:white;
+
+  padding:15px;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.lace-card:hover{
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
+
+.lace-card.active{
+  border-color:var(--gold);
+  box-shadow:0 0 0 1px var(--gold);
+}
+
+.lace-card.active .lace-name{
+  color:var(--gold);
+}
+
+.lace-image{
+  height:105px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:8px;
+}
+
+.lace-image svg{
+  width:100%;
+  max-width:190px;
+  height:100px;
+}
+
+.lace-name{
+  text-align:center;
+
+  font-size:1rem;
+  font-weight:900;
+}
+
+.lace-description{
+  margin-top:5px;
+
+  text-align:center;
+
+  color:#aaa;
+
+  font-size:.72rem;
+  line-height:1.35;
+}
+
+/* ======================================================
+   CAP + COLOR
+====================================================== */
+
+.two-column{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
 
 .select-box{
   width:100%;
-
-  min-height:50px;
+  min-height:52px;
 
   padding:0 14px;
 
-  border:1px solid #555;
-
-  border-radius:8px;
-
   background:#080808;
+  color:white;
 
-  color:#FFF;
+  border:1px solid #555;
+  border-radius:8px;
 }
 
-
-/* QUANTITY */
-
-.bottom-controls{
-  margin-top:25px;
-
-  display:grid;
-
-  grid-template-columns:180px 1fr;
-
-  gap:22px;
-
-  align-items:end;
-}
+/* ======================================================
+   QUANTITY
+====================================================== */
 
 .quantity-control{
+  width:190px;
+
   display:grid;
-
-  grid-template-columns:50px 1fr 50px;
-
-  min-height:52px;
+  grid-template-columns:52px 1fr 52px;
 
   border:1px solid #555;
-
   border-radius:8px;
 
   overflow:hidden;
@@ -517,22 +431,21 @@ nav a.active::after{
 .qty-btn{
   border:0;
 
-  background:#0D0D0D;
-
+  background:#101010;
   color:var(--gold);
 
-  font-size:1.6rem;
-
+  font-size:1.7rem;
   font-weight:900;
+
+  cursor:pointer;
 }
 
 .qty-display{
-  display:flex;
+  min-height:52px;
 
+  display:flex;
   align-items:center;
   justify-content:center;
-
-  background:#080808;
 
   border-left:1px solid #333;
   border-right:1px solid #333;
@@ -540,341 +453,169 @@ nav a.active::after{
   font-weight:900;
 }
 
+/* ======================================================
+   BUY AREA
+====================================================== */
 
-/* ADD TO BAG */
+.buy-row{
+  margin-top:28px;
 
-.add-to-bag{
-  min-height:58px;
-
-  border:0;
-
-  border-radius:8px;
-
-  background:var(--teal);
-
-  color:#FFF;
-
-  font-size:1rem;
-
-  font-weight:900;
-
-  letter-spacing:.03em;
-
-  text-transform:uppercase;
-}
-
-.add-to-bag:hover{
-  filter:brightness(1.05);
-}
-
-.add-to-bag:disabled{
-  opacity:.7;
-
-  cursor:not-allowed;
-}
-
-
-/* PRICE */
-
-.price-row{
-  margin-top:25px;
-
-  padding-top:20px;
-
-  border-top:1px solid #333;
-
-  display:flex;
-
-  align-items:end;
-  justify-content:space-between;
-
+  display:grid;
+  grid-template-columns:190px 1fr;
   gap:20px;
+
+  align-items:center;
 }
 
 .price-label{
-  color:#AAA;
-
-  font-size:.8rem;
-
+  color:#aaa;
+  font-size:.75rem;
   text-transform:uppercase;
 }
 
 .price{
-  margin-top:4px;
+  margin-top:5px;
 
   color:var(--gold);
 
-  font-size:2.25rem;
-
+  font-size:2rem;
   font-weight:900;
 }
 
-.quality-note{
-  color:#CCC;
+.add-to-bag{
+  min-height:60px;
 
-  font-size:.85rem;
+  border:0;
+  border-radius:9px;
 
-  text-align:right;
-}
+  background:var(--teal);
+  color:white;
 
-
-/* =========================================================
-   BENEFITS
-========================================================= */
-
-.benefits{
-  width:min(1450px,92%);
-
-  margin:0 auto 60px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  border-top:1px solid rgba(212,166,34,.5);
-  border-bottom:1px solid rgba(212,166,34,.5);
-}
-
-.benefit{
-  padding:30px 25px;
-
-  text-align:center;
-
-  border-right:1px solid rgba(212,166,34,.25);
-}
-
-.benefit:last-child{
-  border-right:0;
-}
-
-.benefit-icon{
-  color:var(--gold);
-
-  font-size:2.6rem;
-}
-
-.benefit h3{
-  margin-top:12px;
-
-  color:var(--gold);
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:1rem;
-
-  letter-spacing:.05em;
-
+  font-weight:900;
   text-transform:uppercase;
 }
 
-.benefit p{
-  margin-top:8px;
-
-  color:#BFBFBF;
-
-  font-size:.82rem;
-
-  line-height:1.5;
+.add-to-bag:disabled{
+  opacity:.7;
 }
 
+/* ======================================================
+   CURRENT SELECTION
+====================================================== */
 
-/* =========================================================
-   TEXTURE SECTION
-========================================================= */
+.selection-summary{
+  margin-top:22px;
+
+  padding:16px;
+
+  border:1px solid #333;
+  border-radius:10px;
+
+  background:#080808;
+}
+
+.selection-summary strong{
+  color:var(--gold);
+}
+
+.selection-summary p{
+  color:#ccc;
+  line-height:1.6;
+}
+
+/* ======================================================
+   TEXTURE GALLERY
+====================================================== */
 
 .texture-section{
-  padding:10px 3% 65px;
+  padding:65px 4%;
 }
 
 .section-heading{
   text-align:center;
-
   margin-bottom:30px;
 }
 
 .section-heading h2{
-  margin-top:7px;
+  margin-top:6px;
 
   color:var(--gold);
 
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:clamp(2rem,4vw,3.2rem);
-
-  letter-spacing:.06em;
+  font-family:Georgia,serif;
+  font-size:2.7rem;
 
   text-transform:uppercase;
 }
 
-.texture-cards{
+.texture-gallery{
   width:min(1450px,100%);
-
   margin:auto;
 
   display:grid;
+  grid-template-columns:repeat(3,1fr);
 
-  grid-template-columns:
-    repeat(6,1fr);
-
-  gap:14px;
+  gap:20px;
 }
 
 .texture-card{
   overflow:hidden;
 
   border:1px solid var(--gold);
+  border-radius:16px;
 
-  border-radius:12px;
+  background:#111;
 
-  background:#101010;
-
-  transition:.25s ease;
+  cursor:pointer;
 }
 
 .texture-card:hover{
-  transform:translateY(-4px);
-
   border-color:var(--teal);
 }
 
 .texture-card img{
   width:100%;
-  height:270px;
+  height:330px;
 
   object-fit:cover;
   object-position:top center;
 }
 
 .texture-copy{
-  padding:18px 14px 20px;
-
-  text-align:center;
+  padding:20px;
 }
 
 .texture-copy h3{
   color:var(--gold);
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:1rem;
-
   text-transform:uppercase;
 }
 
 .texture-copy p{
-  margin-top:8px;
+  margin-top:7px;
 
-  min-height:70px;
-
-  color:#D0D0D0;
-
-  font-size:.78rem;
+  color:#bbb;
 
   line-height:1.45;
 }
 
-.texture-select{
-  margin-top:12px;
-
-  border:0;
-
-  background:transparent;
-
-  color:var(--teal);
-
-  font-size:.74rem;
-
-  font-weight:900;
-
-  text-transform:uppercase;
-}
-
-
-/* =========================================================
-   COLLECTION LINKS
-========================================================= */
-
-.collections{
-  padding:55px 4%;
-
-  border-top:1px solid rgba(212,166,34,.35);
-
-  background:#080808;
-}
-
-.collection-heading{
-  text-align:center;
-}
-
-.collection-heading h2{
-  color:var(--gold);
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  font-size:2rem;
-
-  text-transform:uppercase;
-}
-
-.collection-grid{
-  width:min(1400px,100%);
-
-  margin:30px auto 0;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(6,1fr);
-
-  gap:14px;
-}
-
-.collection-card{
-  padding:25px 12px;
-
-  border:1px solid rgba(212,166,34,.6);
-
-  border-radius:10px;
-
-  text-align:center;
-}
-
-.collection-icon{
-  font-size:2.2rem;
-}
-
-.collection-card h3{
-  margin-top:12px;
-
-  color:var(--gold);
-
-  font-family:Georgia, "Times New Roman", serif;
-
-  text-transform:uppercase;
-}
-
-.collection-card a{
+.texture-copy span{
   display:inline-block;
 
-  margin-top:13px;
+  margin-top:12px;
 
   color:var(--teal);
 
-  font-size:.76rem;
-
+  font-size:.8rem;
   font-weight:900;
 
   text-transform:uppercase;
 }
 
-
-/* =========================================================
+/* ======================================================
    FOOTER
-========================================================= */
+====================================================== */
 
 footer{
-  padding:38px 5%;
+  padding:42px;
 
   border-top:1px solid var(--gold);
 
@@ -884,7 +625,7 @@ footer{
 footer h2{
   color:var(--gold);
 
-  font-family:Georgia, "Times New Roman", serif;
+  font-family:Georgia,serif;
 
   letter-spacing:.1em;
 
@@ -893,55 +634,18 @@ footer h2{
 
 footer p{
   margin-top:8px;
-
-  color:#CCC;
+  color:#bbb;
 }
 
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-  position:fixed;
-
-  right:25px;
-  bottom:25px;
-
-  z-index:3000;
-
-  display:none;
-
-  max-width:360px;
-
-  padding:17px 20px;
-
-  border:1px solid var(--gold);
-
-  border-radius:10px;
-
-  background:#080808;
-
-  color:#FFF;
-
-  font-weight:900;
-}
-
-.toast.show{
-  display:block;
-}
-
-
-/* =========================================================
+/* ======================================================
    RESPONSIVE
-========================================================= */
+====================================================== */
 
 @media(max-width:1100px){
 
   .header-inner{
     flex-direction:column;
-
-    padding:14px 0;
+    padding:15px 0;
   }
 
   nav{
@@ -952,23 +656,7 @@ footer p{
     grid-template-columns:1fr;
   }
 
-  .texture-cards{
-    grid-template-columns:
-      repeat(3,1fr);
-  }
-
-  .collection-grid{
-    grid-template-columns:
-      repeat(3,1fr);
-  }
-
-  .benefits{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
 }
-
 
 @media(max-width:700px){
 
@@ -976,135 +664,77 @@ footer p{
     position:static;
   }
 
-  nav{
-    gap:15px;
-  }
-
-  .builder-section{
-    padding-left:14px;
-    padding-right:14px;
-  }
-
-  .image-panel,
-  .hero-image{
-    min-height:520px;
-  }
-
   .config-panel{
-    padding:25px 18px;
+    padding:22px 17px;
   }
 
   .texture-grid{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .length-grid{
-    grid-template-columns:
-      repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .lace-grid{
+    grid-template-columns:1fr;
   }
 
   .two-column{
     grid-template-columns:1fr;
   }
 
-  .bottom-controls{
+  .buy-row{
     grid-template-columns:1fr;
   }
 
-  .texture-cards{
-    grid-template-columns:
-      repeat(2,1fr);
+  .quantity-control{
+    width:100%;
   }
 
-  .collection-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .benefits{
+  .texture-gallery{
     grid-template-columns:1fr;
-  }
-
-  .benefit{
-    border-right:0;
-
-    border-bottom:
-      1px solid rgba(212,166,34,.25);
   }
 
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- ======================================================
-     HEADER
-====================================================== -->
 
 <header>
 
 <div class="header-inner">
 
-<a
-  href="index.html"
-  aria-label="Big Boss Bundles Home"
->
+<a href="index.html">
 
 <img
   class="logo"
   src="images/Homepage Images/Owner Images/Lifestyle Images/Store Images/Branding/BigBossBundles-logo.jpg"
-  alt="Big Boss Bundles BB Logo"
+  alt="Big Boss Bundles"
 >
 
 </a>
-
 
 <nav>
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="bundles.html">
-Bundles
-</a>
+<a href="bundles.html">Bundles</a>
 
-<a
-  href="wigs.html"
-  class="active"
->
-Wigs
-</a>
+<a class="active" href="wigs.html">Wigs</a>
 
-<a href="closures.html">
-Closures
-</a>
+<a href="closures.html">Closures</a>
 
-<a href="frontals.html">
-Frontals
-</a>
+<a href="frontals.html">Frontals</a>
 
-<a href="mens-hair-pieces.html">
-Men's Hair
-</a>
+<a href="mens-hair-pieces.html">Men's Hair</a>
 
-<a href="hair-care.html">
-Hair Care
-</a>
+<a href="hair-care.html">Hair Care</a>
 
-<a
-  href="cart.html"
-  class="bag"
->
-Bag (
-<span data-cart-count>0</span>
-)
+<a class="bag" href="cart.html">
+Bag (<span data-cart-count>0</span>)
 </a>
 
 </nav>
@@ -1114,34 +744,23 @@ Bag (
 </header>
 
 
-
-<!-- ======================================================
-     TITLE
-====================================================== -->
-
 <section class="hero-heading">
 
-<span class="eyebrow">
+<div class="eyebrow">
 Luxury Burmese Hair
-</span>
+</div>
 
 <h1>
 Lace Wig Collection
 </h1>
 
 <p>
-Premium Double Drawn Burmese lace wigs designed
-for a flawless, natural look with long lasting beauty.
-Choose your texture, length, density and lace configuration.
+Create your perfect luxury wig by selecting your texture,
+length, density, lace size, cap size and color.
 </p>
 
 </section>
 
-
-
-<!-- ======================================================
-     WIG BUILDER
-====================================================== -->
 
 <main>
 
@@ -1150,41 +769,42 @@ Choose your texture, length, density and lace configuration.
 <div class="builder">
 
 
-<!-- IMAGE -->
+<!-- MAIN IMAGE -->
 
 <div class="image-panel">
 
 <img
+  id="main-wig-image"
   class="hero-image"
-  id="wig-main-image"
   src="images/Burmese Hair Images/burmese-body-wave-wig-model.png"
-  alt="Big Boss Bundles Burmese Lace Wig"
+  alt="Burmese Body Wave Wig"
 >
-
-<button
-  type="button"
-  class="gallery-button"
->
-View Gallery
-</button>
 
 </div>
 
 
-
-<!-- CONFIG -->
+<!-- OPTIONS -->
 
 <div class="config-panel">
 
-<h2>
-Create Your
-<span>Perfect Wig</span>
+<div class="collection-label">
+Luxury Burmese Lace Wig
+</div>
+
+<h2
+  class="product-title"
+  id="wig-title"
+>
+Burmese Body Wave Wig
 </h2>
 
-<p class="config-intro">
-Select your options below.
+<p
+  class="product-description"
+  id="wig-description"
+>
+Soft flowing waves with natural volume,
+movement and effortless versatility.
 </p>
-
 
 
 <!-- TEXTURE -->
@@ -1195,14 +815,11 @@ Select your options below.
 1. Choose Texture
 </div>
 
-<div
-  class="texture-grid"
-  id="texture-grid"
->
+<div class="texture-grid">
 
 <button
   type="button"
-  class="choice-btn"
+  class="texture-btn"
   data-texture="Straight"
 >
 Straight
@@ -1210,7 +827,7 @@ Straight
 
 <button
   type="button"
-  class="choice-btn active"
+  class="texture-btn active"
   data-texture="Body Wave"
 >
 Body Wave
@@ -1218,7 +835,7 @@ Body Wave
 
 <button
   type="button"
-  class="choice-btn"
+  class="texture-btn"
   data-texture="Deep Wave"
 >
 Deep Wave
@@ -1226,7 +843,7 @@ Deep Wave
 
 <button
   type="button"
-  class="choice-btn"
+  class="texture-btn"
   data-texture="Curly"
 >
 Curly
@@ -1234,7 +851,7 @@ Curly
 
 <button
   type="button"
-  class="choice-btn"
+  class="texture-btn"
   data-texture="Kinky Straight"
 >
 Kinky Straight
@@ -1242,7 +859,7 @@ Kinky Straight
 
 <button
   type="button"
-  class="choice-btn"
+  class="texture-btn"
   data-texture="Kinky Curly"
 >
 Kinky Curly
@@ -1253,7 +870,6 @@ Kinky Curly
 </div>
 
 
-
 <!-- LENGTH -->
 
 <div class="option-group">
@@ -1262,116 +878,34 @@ Kinky Curly
 2. Choose Length
 </div>
 
-<div
-  class="length-grid"
-  id="length-grid"
->
+<div class="length-grid">
+
+<button class="length-btn" data-length="18">18"</button>
+<button class="length-btn" data-length="20">20"</button>
+<button class="length-btn" data-length="22">22"</button>
+<button class="length-btn" data-length="24">24"</button>
+<button class="length-btn" data-length="26">26"</button>
 
 <button
-  type="button"
-  class="length-btn"
-  data-length="18"
->
-18"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="20"
->
-20"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="22"
->
-22"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="24"
->
-24"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="26"
->
-26"
-</button>
-
-<button
-  type="button"
   class="length-btn active"
   data-length="28"
 >
 28"
 </button>
 
-<button
-  type="button"
-  class="length-btn"
-  data-length="30"
->
-30"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="32"
->
-32"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="34"
->
-34"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="36"
->
-36"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="38"
->
-38"
-</button>
-
-<button
-  type="button"
-  class="length-btn"
-  data-length="40"
->
-40"
-</button>
+<button class="length-btn" data-length="30">30"</button>
+<button class="length-btn" data-length="32">32"</button>
+<button class="length-btn" data-length="34">34"</button>
+<button class="length-btn" data-length="36">36"</button>
+<button class="length-btn" data-length="38">38"</button>
+<button class="length-btn" data-length="40">40"</button>
 
 </div>
 
 </div>
 
 
-
-<!-- DENSITY + LACE -->
-
-<div class="two-column">
+<!-- DENSITY -->
 
 <div class="option-group">
 
@@ -1379,30 +913,24 @@ Kinky Curly
 3. Choose Density
 </div>
 
-<div
-  class="density-grid"
-  id="density-grid"
->
+<div class="density-grid">
 
 <button
-  type="button"
-  class="choice-btn active"
+  class="density-btn active"
   data-density="180%"
 >
 180%
 </button>
 
 <button
-  type="button"
-  class="choice-btn"
+  class="density-btn"
   data-density="200%"
 >
 200%
 </button>
 
 <button
-  type="button"
-  class="choice-btn"
+  class="density-btn"
   data-density="250%"
 >
 250%
@@ -1413,56 +941,226 @@ Kinky Curly
 </div>
 
 
+<!-- LACE SIZE VISUALS -->
 
 <div class="option-group">
 
 <div class="option-title">
-4. Choose Lace Size
+4. Choose Your Lace Size
 </div>
 
-<div
-  class="lace-grid"
-  id="lace-grid"
->
+<div class="lace-grid">
+
+
+<!-- 4x4 -->
 
 <button
   type="button"
-  class="choice-btn"
+  class="lace-card"
   data-lace="4x4"
 >
+
+<div class="lace-image">
+
+<svg viewBox="0 0 220 110">
+
+<path
+  d="M45 15 Q110 0 175 15 L160 95 Q110 80 60 95 Z"
+  fill="#b58b67"
+  opacity=".55"
+  stroke="#D4A622"
+  stroke-width="3"
+/>
+
+<rect
+  x="85"
+  y="25"
+  width="50"
+  height="55"
+  fill="#e3b999"
+  opacity=".72"
+  stroke="#ffffff"
+  stroke-width="2"
+/>
+
+<text
+  x="110"
+  y="58"
+  text-anchor="middle"
+  fill="#000"
+  font-size="17"
+  font-weight="bold"
+>
 4×4
+</text>
+
+</svg>
+
+</div>
+
+<div class="lace-name">
+4×4 Closure
+</div>
+
+<div class="lace-description">
+Compact lace area for a natural center or side part.
+</div>
+
 </button>
+
+
+<!-- 5x5 -->
 
 <button
   type="button"
-  class="choice-btn active"
+  class="lace-card active"
   data-lace="5x5"
 >
+
+<div class="lace-image">
+
+<svg viewBox="0 0 220 110">
+
+<path
+  d="M40 15 Q110 0 180 15 L163 96 Q110 80 57 96 Z"
+  fill="#b58b67"
+  opacity=".55"
+  stroke="#D4A622"
+  stroke-width="3"
+/>
+
+<rect
+  x="78"
+  y="22"
+  width="64"
+  height="65"
+  fill="#e3b999"
+  opacity=".72"
+  stroke="#ffffff"
+  stroke-width="2"
+/>
+
+<text
+  x="110"
+  y="58"
+  text-anchor="middle"
+  fill="#000"
+  font-size="17"
+  font-weight="bold"
+>
 5×5
+</text>
+
+</svg>
+
+</div>
+
+<div class="lace-name">
+5×5 Closure
+</div>
+
+<div class="lace-description">
+Larger closure area for increased parting versatility.
+</div>
+
 </button>
+
+
+<!-- 13x4 -->
 
 <button
   type="button"
-  class="choice-btn"
+  class="lace-card"
   data-lace="13x4"
 >
+
+<div class="lace-image">
+
+<svg viewBox="0 0 220 110">
+
+<path
+  d="M20 20 Q110 0 200 20 L188 75 Q110 55 32 75 Z"
+  fill="#e3b999"
+  opacity=".72"
+  stroke="#D4A622"
+  stroke-width="3"
+/>
+
+<text
+  x="110"
+  y="47"
+  text-anchor="middle"
+  fill="#000"
+  font-size="18"
+  font-weight="bold"
+>
 13×4
+</text>
+
+</svg>
+
+</div>
+
+<div class="lace-name">
+13×4 Frontal
+</div>
+
+<div class="lace-description">
+Ear to ear lace with approximately four inches of parting space.
+</div>
+
 </button>
+
+
+<!-- 13x6 -->
 
 <button
   type="button"
-  class="choice-btn"
+  class="lace-card"
   data-lace="13x6"
 >
+
+<div class="lace-image">
+
+<svg viewBox="0 0 220 110">
+
+<path
+  d="M20 15 Q110 -2 200 15 L180 98 Q110 70 40 98 Z"
+  fill="#e3b999"
+  opacity=".72"
+  stroke="#D4A622"
+  stroke-width="3"
+/>
+
+<text
+  x="110"
+  y="55"
+  text-anchor="middle"
+  fill="#000"
+  font-size="18"
+  font-weight="bold"
+>
 13×6
+</text>
+
+</svg>
+
+</div>
+
+<div class="lace-name">
+13×6 Frontal
+</div>
+
+<div class="lace-description">
+Ear to ear lace with deeper parting space for maximum styling freedom.
+</div>
+
 </button>
 
-</div>
 
 </div>
 
 </div>
-
 
 
 <!-- CAP + COLOR -->
@@ -1472,7 +1170,7 @@ Kinky Curly
 <div class="option-group">
 
 <div class="option-title">
-5. Choose Cap Size
+5. Cap Size
 </div>
 
 <select
@@ -1480,18 +1178,13 @@ Kinky Curly
   class="select-box"
 >
 
-<option value="Small">
-Small
-</option>
+<option>Small</option>
 
-<option
-  value="Medium"
-  selected
->
+<option selected>
 Medium
 </option>
 
-<option value="Large">
+<option>
 Large
 </option>
 
@@ -1500,11 +1193,10 @@ Large
 </div>
 
 
-
 <div class="option-group">
 
 <div class="option-title">
-6. Choose Color
+6. Color
 </div>
 
 <select
@@ -1512,11 +1204,11 @@ Large
   class="select-box"
 >
 
-<option value="Natural Black">
+<option>
 Natural Black
 </option>
 
-<option value="Natural Brown">
+<option>
 Natural Brown
 </option>
 
@@ -1527,12 +1219,9 @@ Natural Brown
 </div>
 
 
+<!-- QUANTITY -->
 
-<!-- QUANTITY + BAG -->
-
-<div class="bottom-controls">
-
-<div>
+<div class="option-group">
 
 <div class="option-title">
 7. Quantity
@@ -1543,7 +1232,7 @@ Natural Brown
 <button
   type="button"
   class="qty-btn"
-  id="qty-minus"
+  id="minus"
 >
 −
 </button>
@@ -1558,7 +1247,7 @@ Natural Brown
 <button
   type="button"
   class="qty-btn"
-  id="qty-plus"
+  id="plus"
 >
 +
 </button>
@@ -1568,20 +1257,9 @@ Natural Brown
 </div>
 
 
-<button
-  type="button"
-  class="add-to-bag"
-  id="add-to-bag"
-  disabled
->
-Pricing Coming Next
-</button>
+<!-- BUY -->
 
-</div>
-
-
-
-<div class="price-row">
+<div class="buy-row">
 
 <div>
 
@@ -1599,16 +1277,34 @@ Coming Next
 </div>
 
 
-<div class="quality-note">
-Double Drawn
-<br>
-Extra Full
-<br>
-Premium Lace
-</div>
+<button
+  type="button"
+  class="add-to-bag"
+  disabled
+>
+Pricing Coming Next
+</button>
 
 </div>
 
+
+<!-- SUMMARY -->
+
+<div class="selection-summary">
+
+<p>
+
+<strong>
+Your Selection:
+</strong>
+
+<span id="selection-text">
+Body Wave • 28" • 180% Density • 5×5 Lace • Medium Cap • Natural Black
+</span>
+
+</p>
+
+</div>
 
 </div>
 
@@ -1619,97 +1315,16 @@ Premium Lace
 
 
 <!-- ======================================================
-     BENEFITS
-====================================================== -->
-
-<section class="benefits">
-
-<div class="benefit">
-
-<div class="benefit-icon">
-◇
-</div>
-
-<h3>
-Double Drawn
-</h3>
-
-<p>
-Fuller density from top to ends
-for a luxurious appearance.
-</p>
-
-</div>
-
-
-<div class="benefit">
-
-<div class="benefit-icon">
-↕
-</div>
-
-<h3>
-Up To 40"
-</h3>
-
-<p>
-Select longer wig lengths
-where available.
-</p>
-
-</div>
-
-
-<div class="benefit">
-
-<div class="benefit-icon">
-♛
-</div>
-
-<h3>
-Premium Quality
-</h3>
-
-<p>
-Luxurious hair designed for
-beautiful styles that last.
-</p>
-
-</div>
-
-
-<div class="benefit">
-
-<div class="benefit-icon">
-♡
-</div>
-
-<h3>
-Natural Hairline
-</h3>
-
-<p>
-Premium lace for a seamless
-natural looking finish.
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- ======================================================
-     TEXTURES
+     TEXTURE GALLERY
 ====================================================== -->
 
 <section class="texture-section">
 
 <div class="section-heading">
 
-<span class="eyebrow">
+<div class="eyebrow">
 Shop By Texture
-</span>
+</div>
 
 <h2>
 Our Lace Wig Textures
@@ -1718,12 +1333,13 @@ Our Lace Wig Textures
 </div>
 
 
-<div class="texture-cards">
+<div class="texture-gallery">
 
 
-<!-- STRAIGHT -->
-
-<article class="texture-card">
+<article
+  class="texture-card"
+  data-gallery-texture="Straight"
+>
 
 <img
   src="images/Burmese Hair Images/burmese-straight-wig-model.png"
@@ -1737,27 +1353,22 @@ Straight
 </h3>
 
 <p>
-Naturally sleek strands with
-soft movement and a polished finish.
+Smooth, sleek and polished with luxurious natural movement.
 </p>
 
-<button
-  class="texture-select"
-  type="button"
-  data-select-texture="Straight"
->
-Shop Straight
-</button>
+<span>
+Select Straight
+</span>
 
 </div>
 
 </article>
 
 
-
-<!-- BODY WAVE -->
-
-<article class="texture-card">
+<article
+  class="texture-card"
+  data-gallery-texture="Body Wave"
+>
 
 <img
   src="images/Burmese Hair Images/burmese-body-wave-wig-model.png"
@@ -1771,27 +1382,22 @@ Body Wave
 </h3>
 
 <p>
-Soft flowing waves with natural
-volume and effortless versatility.
+Soft flowing waves with natural volume and effortless versatility.
 </p>
 
-<button
-  class="texture-select"
-  type="button"
-  data-select-texture="Body Wave"
->
-Shop Body Wave
-</button>
+<span>
+Select Body Wave
+</span>
 
 </div>
 
 </article>
 
 
-
-<!-- DEEP WAVE -->
-
-<article class="texture-card">
+<article
+  class="texture-card"
+  data-gallery-texture="Deep Wave"
+>
 
 <img
   src="images/Burmese Hair Images/burmese-deep-wave-wig-model.jpg"
@@ -1805,27 +1411,22 @@ Deep Wave
 </h3>
 
 <p>
-Defined waves with rich texture,
-volume and beautiful movement.
+Defined waves with rich texture and glamorous fullness.
 </p>
 
-<button
-  class="texture-select"
-  type="button"
-  data-select-texture="Deep Wave"
->
-Shop Deep Wave
-</button>
+<span>
+Select Deep Wave
+</span>
 
 </div>
 
 </article>
 
 
-
-<!-- CURLY -->
-
-<article class="texture-card">
+<article
+  class="texture-card"
+  data-gallery-texture="Curly"
+>
 
 <img
   src="images/Burmese Hair Images/burmese-curly-wig-model.jpg"
@@ -1839,27 +1440,22 @@ Curly
 </h3>
 
 <p>
-Soft defined curls with
-bounce and natural fullness.
+Beautiful defined curls with bounce and natural fullness.
 </p>
 
-<button
-  class="texture-select"
-  type="button"
-  data-select-texture="Curly"
->
-Shop Curly
-</button>
+<span>
+Select Curly
+</span>
 
 </div>
 
 </article>
 
 
-
-<!-- KINKY STRAIGHT -->
-
-<article class="texture-card">
+<article
+  class="texture-card"
+  data-gallery-texture="Kinky Straight"
+>
 
 <img
   src="images/Burmese Hair Images/burmese-kinky-straight-wig-model.jpg"
@@ -1873,27 +1469,22 @@ Kinky Straight
 </h3>
 
 <p>
-Natural blown-out texture
-with softness and realistic movement.
+Natural blown out texture with softness, body and movement.
 </p>
 
-<button
-  class="texture-select"
-  type="button"
-  data-select-texture="Kinky Straight"
->
-Shop Kinky Straight
-</button>
+<span>
+Select Kinky Straight
+</span>
 
 </div>
 
 </article>
 
 
-
-<!-- KINKY CURLY -->
-
-<article class="texture-card">
+<article
+  class="texture-card"
+  data-gallery-texture="Kinky Curly"
+>
 
 <img
   src="images/Burmese Hair Images/burmese-kinky-curly-wig-model.jpg"
@@ -1907,17 +1498,12 @@ Kinky Curly
 </h3>
 
 <p>
-Bold naturally textured curls
-with rich fullness and soft luxury.
+Rich natural curls with bold volume and luxurious texture.
 </p>
 
-<button
-  class="texture-select"
-  type="button"
-  data-select-texture="Kinky Curly"
->
-Shop Kinky Curly
-</button>
+<span>
+Select Kinky Curly
+</span>
 
 </div>
 
@@ -1928,140 +1514,8 @@ Shop Kinky Curly
 
 </section>
 
-
-
-<!-- ======================================================
-     COLLECTION LINKS
-====================================================== -->
-
-<section class="collections">
-
-<div class="collection-heading">
-
-<h2>
-Shop Our Collections
-</h2>
-
-</div>
-
-
-<div class="collection-grid">
-
-
-<div class="collection-card">
-
-<div class="collection-icon">
-♢
-</div>
-
-<h3>
-Bundles
-</h3>
-
-<a href="bundles.html">
-Shop Now
-</a>
-
-</div>
-
-
-<div class="collection-card">
-
-<div class="collection-icon">
-♛
-</div>
-
-<h3>
-Wigs
-</h3>
-
-<a href="wigs.html">
-Shop Now
-</a>
-
-</div>
-
-
-<div class="collection-card">
-
-<div class="collection-icon">
-◡
-</div>
-
-<h3>
-Closures
-</h3>
-
-<a href="closures.html">
-Shop Now
-</a>
-
-</div>
-
-
-<div class="collection-card">
-
-<div class="collection-icon">
-⌒
-</div>
-
-<h3>
-Frontals
-</h3>
-
-<a href="frontals.html">
-Shop Now
-</a>
-
-</div>
-
-
-<div class="collection-card">
-
-<div class="collection-icon">
-♙
-</div>
-
-<h3>
-Men's Hair
-</h3>
-
-<a href="mens-hair-pieces.html">
-Shop Now
-</a>
-
-</div>
-
-
-<div class="collection-card">
-
-<div class="collection-icon">
-♨
-</div>
-
-<h3>
-Hair Care
-</h3>
-
-<a href="hair-care.html">
-Shop Now
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
 </main>
 
-
-
-<!-- ======================================================
-     FOOTER
-====================================================== -->
 
 <footer>
 
@@ -2070,22 +1524,10 @@ Big Boss Bundles
 </h2>
 
 <p>
-Pflugerville, Texas
-&nbsp; | &nbsp;
-Luxury Hair
-&nbsp; • &nbsp;
-Boss Beauty
+Pflugerville, Texas • Luxury Hair • Boss Beauty
 </p>
 
 </footer>
-
-
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
 
 
 <script src="cart.js"></script>
@@ -2098,247 +1540,184 @@ document.addEventListener(
 function(){
 
 
-/* ========================================================
-   CURRENT SELECTIONS
-======================================================== */
+/* ======================================================
+   WIG TEXTURE DATA
+====================================================== */
 
-let selectedTexture =
-  "Body Wave";
+const wigTextures = {
 
-let selectedLength =
-  28;
+  "Straight":{
+    image:
+      "images/Burmese Hair Images/burmese-straight-wig-model.png",
 
-let selectedDensity =
-  "180%";
+    description:
+      "Smooth, sleek and polished with luxurious natural movement."
+  },
 
-let selectedLace =
-  "5x5";
+  "Body Wave":{
+    image:
+      "images/Burmese Hair Images/burmese-body-wave-wig-model.png",
 
-let quantity =
-  1;
+    description:
+      "Soft flowing waves with natural volume, movement and effortless versatility."
+  },
+
+  "Deep Wave":{
+    image:
+      "images/Burmese Hair Images/burmese-deep-wave-wig-model.jpg",
+
+    description:
+      "Defined waves with rich texture, glamorous volume and beautiful movement."
+  },
+
+  "Curly":{
+    image:
+      "images/Burmese Hair Images/burmese-curly-wig-model.jpg",
+
+    description:
+      "Beautiful defined curls with bounce, softness and natural fullness."
+  },
+
+  "Kinky Straight":{
+    image:
+      "images/Burmese Hair Images/burmese-kinky-straight-wig-model.jpg",
+
+    description:
+      "A natural blown out texture with softness, body and realistic movement."
+  },
+
+  "Kinky Curly":{
+    image:
+      "images/Burmese Hair Images/burmese-kinky-curly-wig-model.jpg",
+
+    description:
+      "Bold naturally textured curls with rich fullness and luxurious volume."
+  }
+
+};
 
 
-/* ========================================================
-   TEXTURE BUTTONS
-======================================================== */
+/* ======================================================
+   CURRENT SELECTION
+====================================================== */
 
-const textureButtons =
-  document.querySelectorAll(
-    "[data-texture]"
+let selectedTexture = "Body Wave";
+
+let selectedLength = 28;
+
+let selectedDensity = "180%";
+
+let selectedLace = "5x5";
+
+let quantity = 1;
+
+
+/* ======================================================
+   ELEMENTS
+====================================================== */
+
+const mainImage =
+  document.getElementById(
+    "main-wig-image"
   );
 
-textureButtons.forEach(
-function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-selectedTexture =
-  button.dataset.texture;
-
-textureButtons.forEach(
-function(btn){
-
-btn.classList.remove(
-  "active"
-);
-
-}
-);
-
-button.classList.add(
-  "active"
-);
-
-}
-);
-
-}
-);
-
-
-/* ========================================================
-   LENGTH BUTTONS
-======================================================== */
-
-const lengthButtons =
-  document.querySelectorAll(
-    "[data-length]"
+const title =
+  document.getElementById(
+    "wig-title"
   );
 
-lengthButtons.forEach(
-function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-selectedLength =
-  Number(
-    button.dataset.length
+const description =
+  document.getElementById(
+    "wig-description"
   );
-
-lengthButtons.forEach(
-function(btn){
-
-btn.classList.remove(
-  "active"
-);
-
-}
-);
-
-button.classList.add(
-  "active"
-);
-
-}
-);
-
-}
-);
-
-
-/* ========================================================
-   DENSITY
-======================================================== */
-
-const densityButtons =
-  document.querySelectorAll(
-    "[data-density]"
-  );
-
-densityButtons.forEach(
-function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-selectedDensity =
-  button.dataset.density;
-
-densityButtons.forEach(
-function(btn){
-
-btn.classList.remove(
-  "active"
-);
-
-}
-);
-
-button.classList.add(
-  "active"
-);
-
-}
-);
-
-}
-);
-
-
-/* ========================================================
-   LACE
-======================================================== */
-
-const laceButtons =
-  document.querySelectorAll(
-    "[data-lace]"
-  );
-
-laceButtons.forEach(
-function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-selectedLace =
-  button.dataset.lace;
-
-laceButtons.forEach(
-function(btn){
-
-btn.classList.remove(
-  "active"
-);
-
-}
-);
-
-button.classList.add(
-  "active"
-);
-
-}
-);
-
-}
-);
-
-
-/* ========================================================
-   QUANTITY
-======================================================== */
 
 const quantityDisplay =
   document.getElementById(
     "quantity"
   );
 
-
-document
-.getElementById(
-  "qty-minus"
-)
-.addEventListener(
-"click",
-function(){
-
-quantity =
-  Math.max(
-    1,
-    quantity - 1
+const selectionText =
+  document.getElementById(
+    "selection-text"
   );
 
-quantityDisplay.textContent =
-  quantity;
+
+/* ======================================================
+   UPDATE PRODUCT
+====================================================== */
+
+function updateProduct(){
+
+  const texture =
+    wigTextures[selectedTexture];
+
+  mainImage.src =
+    texture.image;
+
+  mainImage.alt =
+    "Burmese " +
+    selectedTexture +
+    " Wig";
+
+  title.textContent =
+    "Burmese " +
+    selectedTexture +
+    " Wig";
+
+  description.textContent =
+    texture.description;
+
+  const cap =
+    document.getElementById(
+      "cap-size"
+    ).value;
+
+  const color =
+    document.getElementById(
+      "color"
+    ).value;
+
+  selectionText.textContent =
+    selectedTexture +
+    " • " +
+    selectedLength +
+    "\" • " +
+    selectedDensity +
+    " Density • " +
+    selectedLace.replace(
+      "x",
+      "×"
+    ) +
+    " Lace • " +
+    cap +
+    " Cap • " +
+    color;
+
+}
+
+
+/* ======================================================
+   IMAGE FALLBACK
+====================================================== */
+
+mainImage.addEventListener(
+"error",
+function(){
+
+  mainImage.src =
+    "images/Burmese Hair Images/burmese-body-wave-wig-model.png";
 
 }
 );
 
 
-document
-.getElementById(
-  "qty-plus"
-)
-.addEventListener(
-"click",
-function(){
-
-quantity =
-  Math.min(
-    20,
-    quantity + 1
-  );
-
-quantityDisplay.textContent =
-  quantity;
-
-}
-);
-
-
-/* ========================================================
-   TEXTURE CARDS
-======================================================== */
+/* ======================================================
+   TEXTURE BUTTONS
+====================================================== */
 
 document
 .querySelectorAll(
-  "[data-select-texture]"
+  ".texture-btn"
 )
 .forEach(
 function(button){
@@ -2347,56 +1726,317 @@ button.addEventListener(
 "click",
 function(){
 
-selectedTexture =
-  button.dataset.selectTexture;
+  selectedTexture =
+    button.dataset.texture;
 
-textureButtons.forEach(
-function(btn){
+  document
+  .querySelectorAll(
+    ".texture-btn"
+  )
+  .forEach(
+  function(btn){
 
-btn.classList.toggle(
-  "active",
-  btn.dataset.texture ===
-  selectedTexture
+    btn.classList.remove(
+      "active"
+    );
+
+  }
+  );
+
+  button.classList.add(
+    "active"
+  );
+
+  updateProduct();
+
+}
 );
 
 }
+);
+
+
+/* ======================================================
+   GALLERY TEXTURES
+====================================================== */
+
+document
+.querySelectorAll(
+  "[data-gallery-texture]"
+)
+.forEach(
+function(card){
+
+card.addEventListener(
+"click",
+function(){
+
+  selectedTexture =
+    card.dataset.galleryTexture;
+
+  document
+  .querySelectorAll(
+    ".texture-btn"
+  )
+  .forEach(
+  function(button){
+
+    button.classList.toggle(
+      "active",
+      button.dataset.texture ===
+      selectedTexture
+    );
+
+  }
+  );
+
+  updateProduct();
+
+  document
+  .querySelector(
+    ".builder-section"
+  )
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+);
+
+}
+);
+
+
+/* ======================================================
+   LENGTH
+====================================================== */
+
+document
+.querySelectorAll(
+  ".length-btn"
+)
+.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+  selectedLength =
+    Number(
+      button.dataset.length
+    );
+
+  document
+  .querySelectorAll(
+    ".length-btn"
+  )
+  .forEach(
+  function(btn){
+
+    btn.classList.remove(
+      "active"
+    );
+
+  }
+  );
+
+  button.classList.add(
+    "active"
+  );
+
+  updateProduct();
+
+}
+);
+
+}
+);
+
+
+/* ======================================================
+   DENSITY
+====================================================== */
+
+document
+.querySelectorAll(
+  ".density-btn"
+)
+.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+  selectedDensity =
+    button.dataset.density;
+
+  document
+  .querySelectorAll(
+    ".density-btn"
+  )
+  .forEach(
+  function(btn){
+
+    btn.classList.remove(
+      "active"
+    );
+
+  }
+  );
+
+  button.classList.add(
+    "active"
+  );
+
+  updateProduct();
+
+}
+);
+
+}
+);
+
+
+/* ======================================================
+   LACE CARDS
+====================================================== */
+
+document
+.querySelectorAll(
+  ".lace-card"
+)
+.forEach(
+function(card){
+
+card.addEventListener(
+"click",
+function(){
+
+  selectedLace =
+    card.dataset.lace;
+
+  document
+  .querySelectorAll(
+    ".lace-card"
+  )
+  .forEach(
+  function(item){
+
+    item.classList.remove(
+      "active"
+    );
+
+  }
+  );
+
+  card.classList.add(
+    "active"
+  );
+
+  updateProduct();
+
+}
+);
+
+}
+);
+
+
+/* ======================================================
+   COLOR + CAP
+====================================================== */
+
+document
+.getElementById(
+  "color"
+)
+.addEventListener(
+"change",
+updateProduct
 );
 
 document
-.querySelector(
-  ".builder-section"
+.getElementById(
+  "cap-size"
 )
-.scrollIntoView({
-  behavior:"smooth"
-});
+.addEventListener(
+"change",
+updateProduct
+);
+
+
+/* ======================================================
+   QUANTITY
+====================================================== */
+
+document
+.getElementById(
+  "minus"
+)
+.addEventListener(
+"click",
+function(){
+
+  quantity =
+    Math.max(
+      1,
+      quantity - 1
+    );
+
+  quantityDisplay.textContent =
+    quantity;
 
 }
 );
 
+
+document
+.getElementById(
+  "plus"
+)
+.addEventListener(
+"click",
+function(){
+
+  quantity =
+    Math.min(
+      20,
+      quantity + 1
+    );
+
+  quantityDisplay.textContent =
+    quantity;
+
 }
 );
 
 
-/* ========================================================
-   BAG COUNT
-======================================================== */
+/* ======================================================
+   CART COUNT
+====================================================== */
 
 if(
   window.BBBCart &&
-  typeof window.BBBCart.updateCount ===
-  "function"
+  typeof window.BBBCart.updateCount === "function"
 ){
 
-window.BBBCart.updateCount();
+  window.BBBCart.updateCount();
 
 }
+
+
+/* ======================================================
+   INITIAL DISPLAY
+====================================================== */
+
+updateProduct();
 
 }
 );
 
 </script>
 
-
 </body>
-
 </html>
