@@ -39,7 +39,8 @@ item.capSize || ""
       length: item.length || "",
       density: item.density || "",
       laceSize: item.laceSize || "",
-      color: item.color || ""
+color: item.color || "",
+capSize: item.capSize || ""
     };
 
     normalized.key = makeKey(normalized);
