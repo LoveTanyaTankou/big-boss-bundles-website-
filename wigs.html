@@ -592,10 +592,118 @@ nav .active{
 /* =========================================================
    CAP + COLOR
 ========================================================= */
-
 /* =========================================================
    VISUAL HAIR COLOR SELECTOR
 ========================================================= */
+
+/* =========================================================
+   HAIR COLOR MODEL PREVIEW
+========================================================= */
+
+.color-model-preview{
+  margin-top:30px;
+  padding:16px;
+
+  border:2px solid var(--gold);
+  border-radius:15px;
+
+  background:#080808;
+
+  text-align:center;
+}
+
+.color-preview-heading{
+  margin-bottom:12px;
+
+  color:var(--gold);
+
+  font-size:.85rem;
+  font-weight:900;
+
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.color-model-image{
+  width:100%;
+  max-height:500px;
+
+  object-fit:contain;
+
+  border-radius:10px;
+
+  background:#FFF;
+}
+
+.color-model-label{
+  margin-top:12px;
+
+  color:var(--gold);
+
+  font-size:1rem;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.custom-color-message{
+  padding:30px 20px;
+
+  border-radius:10px;
+
+  background:#050505;
+
+  color:#DDD;
+
+  line-height:1.6;
+}
+
+.custom-color-message strong{
+  display:block;
+
+  margin-bottom:12px;
+
+  color:var(--gold);
+
+  font-family:Georgia,serif;
+  font-size:1.5rem;
+
+  text-transform:uppercase;
+}
+  
+  .custom-color-text-btn{
+  display:inline-block;
+
+  margin:18px 0 8px;
+  padding:14px 22px;
+
+  border-radius:999px;
+
+  background:var(--teal);
+
+  color:#FFF;
+
+  font-size:.82rem;
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  transition:.2s;
+}
+
+.custom-color-text-btn:hover{
+  background:var(--gold);
+  color:#000;
+}
+
+.custom-color-phone{
+  margin-bottom:16px;
+
+  color:var(--gold);
+
+  font-size:1rem;
+  font-weight:900;
+}
 
 .color-option-group{
   min-width:0;
@@ -760,6 +868,30 @@ nav .active{
       #541323 70%,
       #541323 100%
     );
+}
+
+/* CUSTOM COLOR */
+
+.color-custom{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #050505 0%,
+      #541323 20%,
+      #9A4F28 40%,
+      #C58B45 60%,
+      #E3C681 80%,
+      #EEE1BD 100%
+    );
+
+  color:#FFF;
+
+  font-size:1.7rem;
+  font-weight:900;
 }
 
 @media(max-width:700px){
@@ -1499,7 +1631,59 @@ Large
 </select>
 
 </div>
+<!-- HAIR COLOR MODEL PREVIEW -->
 
+<div class="color-model-preview">
+
+  <div class="color-preview-heading">
+    Hair Color Preview
+  </div>
+
+  <img
+    id="color-model-image"
+    class="color-model-image"
+    src="images/Hair Color Models/color-1b-natural-black.png"
+    alt="1B Natural Black Hair Color Preview"
+  >
+
+  <div
+    id="color-model-label"
+    class="color-model-label"
+  >
+    1B Natural Black
+  </div>
+
+ <div
+  id="custom-color-message"
+  class="custom-color-message"
+  style="display:none;"
+>
+  <strong>Custom Color</strong>
+
+  <p>
+    Have a specific color in mind?
+    Send us a photo of your desired hair color.
+  </p>
+
+  <a
+    class="custom-color-text-btn"
+    href="sms:+15129375119?body=Hi%20Big%20Boss%20Bundles!%20I%20would%20like%20to%20request%20a%20custom%20hair%20color.%20I%20will%20attach%20my%20color%20inspiration%20photo."
+  >
+    Text Your Color Photo
+  </a>
+
+  <p class="custom-color-phone">
+    512-937-5119
+  </p>
+
+  <p>
+    Please include your name and order number.
+    Custom color pricing will be confirmed after
+    your photo is reviewed.
+  </p>
+</div>
+
+</div>
 
 <div class="option-group color-option-group">
 
@@ -1597,6 +1781,18 @@ Large
       <span>P1B/99J</span>
       <small>Highlight</small>
     </button>
+
+<button
+  type="button"
+  class="hair-color-btn"
+  data-color="Custom Color"
+>
+  <span class="color-swatch color-custom">+</span>
+  <span>CUSTOM</span>
+  <small>Photo Required</small>
+</button>
+
+</div>
 
 </div>
 
@@ -1934,6 +2130,15 @@ function calculateWigPrice(){
 
   retail =
     Math.ceil(retail / 5) * 5;
+    
+    /* Standard Hair Color Upcharge */
+
+if(
+  selectedColor !== "1B Natural Black" &&
+  selectedColor !== "Custom Color"
+){
+  retail += 18;
+}
 
   return retail;
 
@@ -2069,6 +2274,87 @@ let selectedColor = "1B Natural Black";
 
 const selectedColorName =
   document.getElementById("selected-color-name");
+  
+  const colorModelImage =
+  document.getElementById("color-model-image");
+
+const colorModelLabel =
+  document.getElementById("color-model-label");
+
+const customColorMessage =
+  document.getElementById("custom-color-message");
+
+
+
+const colorModelImages = {
+
+  "1 Jet Black": [
+    "images/Hair Color Models/color-1-jet-black.png",
+    "images/Hair Color Models/color-1-jet-black-white-model.png"
+  ],
+
+  "1B Natural Black": [
+    "images/Hair Color Models/color-1b-natural-black-black-white-models.png"
+  ],
+
+  "2 Dark Brown": [
+    "images/Hair Color Models/color-2-dark-brown.png",
+    "images/Hair Color Models/color-2-dark-brown-white-model.png"
+  ],
+
+  "4 Medium Brown": [
+    "images/Hair Color Models/color-4-medium-brown-black-model.png",
+    "images/Hair Color Models/color-4-medium-brown-white-model.png"
+  ],
+
+  "27 Honey Blonde": [
+    "images/Hair Color Models/color-27-honey-blonde-black-model.png",
+    "images/Hair Color Models/color-27-honey-blonde-white-model.png"
+  ],
+
+  "30 Auburn": [
+    "images/Hair Color Models/color-30-auburn-black-model.png",
+    "images/Hair Color Models/color-30-auburn-white-model.png"
+  ],
+
+  "33 Dark Auburn": [
+    "images/Hair Color Models/color-33-dark-auburn-black-white-models.png"
+  ],
+
+  "99J Burgundy": [
+    "images/Hair Color Models/color-99j-burgundy-black-model.png",
+    "images/Hair Color Models/color-99j-burgundy-white-model.png"
+  ],
+
+  "613 Blonde": [
+    "images/Hair Color Models/color-613-blonde-black-model.png",
+    "images/Hair Color Models/color-613-blonde-white-model.png"
+  ],
+
+  "Platinum Blonde": [
+    "images/Hair Color Models/color-platinum-blonde.png"
+  ],
+
+  "P4/27 Highlight": [
+    "images/Hair Color Models/color-p4-27-highlight-black-model.png",
+    "images/Hair Color Models/color-p4-27-highlight-white-model.png"
+  ],
+
+  "P1B/27 Highlight": [
+    "images/Hair Color Models/color-p1b-27-highlight-black-model.png",
+    "images/Hair Color Models/color-p1b-27-highlight-white-model.png"
+  ],
+
+  "P1B/30 Highlight": [
+    "images/Hair Color Models/color-p1b-30-highlight-black-white-models.png"
+  ],
+
+  "P1B/99J Highlight": [
+    "images/Hair Color Models/color-p1b-99j-highlight-black-white-models.png"
+  ]
+
+};
+
 const priceDisplay =
   document.getElementById("price");
 
@@ -2145,8 +2431,33 @@ function updateProduct(){
     " Lace Size • " +
     capSize.value +
     " Cap • " +
-   selectedColor;
+  selectedColor;
+  
+  /* Update Hair Color Model Preview */
 
+if(selectedColor === "Custom Color"){
+
+  colorModelImage.style.display = "none";
+  colorModelLabel.style.display = "none";
+  customColorMessage.style.display = "block";
+
+}else{
+
+  customColorMessage.style.display = "none";
+  colorModelImage.style.display = "block";
+  colorModelLabel.style.display = "block";
+
+  colorModelImage.src =
+    colorModelImages[selectedColor];
+
+  colorModelImage.alt =
+    selectedColor +
+    " Hair Color Preview";
+
+  colorModelLabel.textContent =
+    selectedColor;
+
+}
 
   const unitPrice =
     calculateWigPrice();
@@ -2474,7 +2785,6 @@ function(event){
 
 });
 
-
 /* =========================================================
    CAP SIZE + HAIR COLOR
 ========================================================= */
@@ -2506,15 +2816,17 @@ document
       button.classList.add("active");
 
       if(selectedColorName){
+
         selectedColorName.textContent =
           selectedColor;
+
       }
 
       updateProduct();
 
     }
   );
-
+});
 
 /* =========================================================
    QUANTITY
@@ -2575,123 +2887,100 @@ function(){
   const unitPrice =
     calculateWigPrice();
 
+   const cartItem = {
 
-  const cartItem = {
+  productId:
+    "burmese-wig",
 
-    id:
-      "burmese-wig-" +
+  id:
+    "burmese-wig-" +
+    selectedTexture
+      .toLowerCase()
+      .replace(/\s+/g,"-") +
+    "-" +
+    selectedLength +
+    "-" +
+    selectedDensity +
+    "-" +
+    selectedLace +
+    "-" +
+    capSize.value
+      .toLowerCase()
+      .replace(/\s+/g,"-") +
+    "-" +
+    selectedColor
+      .toLowerCase()
+      .replace(/\s+/g,"-"),
+
+  name:
+    "Burmese " +
+    selectedTexture +
+    " Wig",
+
+  price:
+    unitPrice,
+
+  quantity:
+    quantity,
+
+  image:
+    wigTextures[
       selectedTexture
-        .toLowerCase()
-        .replace(/\s+/g,"-") +
-      "-" +
-      selectedLength +
-      "-" +
-      selectedDensity +
-      "-" +
-      selectedLace +
-      "-" +
-      capSize.value
-        .toLowerCase()
-        .replace(/\s+/g,"-") +
-      "-" +
-     selectedColor
-  .toLowerCase()
-  .replace(/\s+/g,"-"),
+    ].product,
 
-    name:
-      "Burmese " +
-      selectedTexture +
-      " Wig",
+  texture:
+    selectedTexture,
 
-    price:
-      unitPrice,
+  length:
+    selectedLength + "\"",
 
-    quantity:
-      quantity,
+  density:
+    selectedDensity,
 
-    image:
-      wigTextures[
-        selectedTexture
-      ].product,
+  laceSize:
+    selectedLace.replace(
+      "x",
+      "×"
+    ),
 
-    options:{
+  capSize:
+    capSize.value,
 
-      Texture:
-        selectedTexture,
+  color:
+    selectedColor,
 
-      Length:
-        selectedLength + "\"",
+  options:{
 
-      Density:
-        selectedDensity,
+    Texture:
+      selectedTexture,
 
-      Lace:
-        selectedLace.replace(
-          "x",
-          "×"
-        ),
+    Length:
+      selectedLength + "\"",
 
-      "Cap Size":
-        capSize.value,
+    Density:
+      selectedDensity,
 
-       Color:
-  selectedColor
+    Lace:
+      selectedLace.replace(
+        "x",
+        "×"
+      ),
 
-    }
+    "Cap Size":
+      capSize.value,
 
-  };
-
-
-  /*
-     Use existing Big Boss Bundles cart system.
-  */
-
-  if(
-    window.BBBCart &&
-    typeof window.BBBCart.addItem ===
-    "function"
-  ){
-
-    window.BBBCart.addItem(
-      cartItem
-    );
-
-
-    if(
-      typeof window.BBBCart.updateCount ===
-      "function"
-    ){
-
-      window.BBBCart.updateCount();
-
-    }
-
-
-    addButton.textContent =
-      "Added to Bag ✓";
-
-
-    setTimeout(
-      function(){
-
-        addButton.textContent =
-          "Add to Bag";
-
-      },
-      1600
-    );
-
-  }else{
-
-    console.error(
-      "Big Boss Bundles cart system was not found."
-    );
-
-    alert(
-      "The wig is ready, but the cart connection needs to be checked."
-    );
-
+    Color:
+      selectedColor
   }
+
+};
+if(
+  window.BBBCart &&
+  typeof window.BBBCart.add === "function"
+){
+  window.BBBCart.add(cartItem);
+}
+
 
 });
 
