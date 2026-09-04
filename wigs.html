@@ -624,15 +624,50 @@ nav .active{
   text-transform:uppercase;
 }
 
-.color-model-image{
+.color-model-images{
   width:100%;
-  max-height:500px;
 
-  object-fit:contain;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+
+  gap:12px;
+}
+
+.color-model-images img{
+  width:100%;
+  height:500px;
+
+  object-fit:cover;
+  object-position:top center;
 
   border-radius:10px;
 
   background:#FFF;
+}
+
+.color-model-images img:only-child{
+  grid-column:1 / -1;
+
+  height:auto;
+  max-height:600px;
+
+  object-fit:contain;
+}
+
+@media(max-width:700px){
+
+  .color-model-images{
+    grid-template-columns:1fr;
+  }
+
+  .color-model-images img{
+    height:auto;
+    max-height:600px;
+
+    object-fit:contain;
+  }
+
+
 }
 
 .color-model-label{
@@ -1639,12 +1674,12 @@ Large
     Hair Color Preview
   </div>
 
-  <img
-    id="color-model-image"
-    class="color-model-image"
-    src="images/Hair Color Models/color-1b-natural-black.png"
-    alt="1B Natural Black Hair Color Preview"
-  >
+ 
+ <div
+  id="color-model-images"
+  class="color-model-images"
+></div>
+ 
 
   <div
     id="color-model-label"
@@ -2275,8 +2310,8 @@ let selectedColor = "1B Natural Black";
 const selectedColorName =
   document.getElementById("selected-color-name");
   
-  const colorModelImage =
-  document.getElementById("color-model-image");
+ const colorModelImagesContainer =
+  document.getElementById("color-model-images");
 
 const colorModelLabel =
   document.getElementById("color-model-label");
@@ -2376,83 +2411,40 @@ const lightboxClose =
 ========================================================= */
 
 function updateProduct(){
-
-  const texture =
-    wigTextures[selectedTexture];
-
-
-  mainImage.src =
-    imageView === "model"
-      ? texture.model
-      : texture.product;
-
-
-  mainImage.alt =
-    "Burmese " +
-    selectedTexture +
-    " Wig";
-
-
-  productTitle.textContent =
-    "Burmese " +
-    selectedTexture +
-    " Wig";
-
-
-  productDescription.textContent =
-    texture.description;
-
-
-  if(imageView === "model"){
-
-    imageSwitch.textContent = "→";
-
-    imageHint.textContent =
-      "See Product";
-
-  }else{
-
-    imageSwitch.textContent = "←";
-
-    imageHint.textContent =
-      "See Model";
-
-  }
-
-
-  selectionText.textContent =
-    selectedTexture +
-    " • " +
-    selectedLength +
-    "\" • " +
-    selectedDensity +
-    " Density • " +
-    selectedLace.replace("x","×") +
-    " Lace Size • " +
-    capSize.value +
-    " Cap • " +
-  selectedColor;
-  
-  /* Update Hair Color Model Preview */
+    
+/* Update Hair Color Model Preview */
 
 if(selectedColor === "Custom Color"){
 
-  colorModelImage.style.display = "none";
+  colorModelImagesContainer.style.display = "none";
   colorModelLabel.style.display = "none";
   customColorMessage.style.display = "block";
 
 }else{
 
   customColorMessage.style.display = "none";
-  colorModelImage.style.display = "block";
+  colorModelImagesContainer.style.display = "grid";
   colorModelLabel.style.display = "block";
 
-  colorModelImage.src =
-    colorModelImages[selectedColor];
+  colorModelImagesContainer.innerHTML = "";
 
-  colorModelImage.alt =
-    selectedColor +
-    " Hair Color Preview";
+  const previewImages =
+    colorModelImages[selectedColor] || [];
+
+  previewImages.forEach(function(imagePath){
+
+    const img =
+      document.createElement("img");
+
+    img.src = imagePath;
+
+    img.alt =
+      selectedColor +
+      " Hair Color Preview";
+
+    colorModelImagesContainer.appendChild(img);
+
+  });
 
   colorModelLabel.textContent =
     selectedColor;
