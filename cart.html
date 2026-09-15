@@ -438,6 +438,43 @@ function optionText(item){
 
   const options = [];
 
+
+  /* BEAUTY ACADEMY REGISTRATION */
+
+  if(item.itemType === "class"){
+
+    if(item.classDate){
+      options.push("Class Date: " + item.classDate);
+    }
+
+    if(item.classTime){
+      options.push("Time: " + item.classTime);
+    }
+
+    if(item.studentName){
+      options.push("Student: " + item.studentName);
+    }
+
+    if(item.studentAge){
+      options.push("Age: " + item.studentAge);
+    }
+
+    if(item.studentType){
+
+      const group =
+        item.studentType === "youth"
+          ? "Youth Ages 10–16"
+          : "Adult Ages 17+";
+
+      options.push(group);
+    }
+
+    return options.join(" • ");
+  }
+
+
+  /* HAIR PRODUCTS */
+
   if(item.texture){
     options.push(item.texture);
   }
@@ -456,6 +493,10 @@ function optionText(item){
 
   if(item.color){
     options.push(item.color);
+  }
+
+  if(item.capSize){
+    options.push(item.capSize);
   }
 
   return options.join(" • ");
@@ -556,31 +597,43 @@ function renderCart(){
             </div>
 
 
-            <div class="quantity-row">
+          ${
+  item.itemType === "class"
+  ?
+  `
+  <div class="quantity-row">
+    <strong>1 Class Seat</strong>
+  </div>
+  `
+  :
+  `
+  <div class="quantity-row">
 
-              <button
-                type="button"
-                class="qty-btn decrease"
-                data-id="${escapeHtml(item.id)}"
-                aria-label="Decrease quantity"
-              >
-                −
-              </button>
+    <button
+      type="button"
+      class="qty-btn decrease"
+      data-id="${escapeHtml(item.id)}"
+      aria-label="Decrease quantity"
+    >
+      −
+    </button>
 
-              <span class="qty-number">
-                ${quantity}
-              </span>
+    <span class="qty-number">
+      ${quantity}
+    </span>
 
-              <button
-                type="button"
-                class="qty-btn increase"
-                data-id="${escapeHtml(item.id)}"
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
+    <button
+      type="button"
+      class="qty-btn increase"
+      data-id="${escapeHtml(item.id)}"
+      aria-label="Increase quantity"
+    >
+      +
+    </button>
 
-            </div>
+  </div>
+  `
+}
 
           </div>
 
