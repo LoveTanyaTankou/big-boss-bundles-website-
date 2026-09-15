@@ -1235,7 +1235,7 @@ body{
 <script src="class-schedule.js"></script>
 
 
-<script>
+<script src="cart.js"></script>
 
 /* =========================================================
    PAGE ELEMENTS
@@ -1922,13 +1922,126 @@ registrationForm.addEventListener(
       );
 
 
-    alert(
-      activeCourse.name +
-      " registration: $" +
-      tuition +
-      ". Next we will connect this registration " +
-      "to your checkout."
-    );
+   /* STUDENT INFORMATION */
+
+const firstName =
+  document.getElementById("student-first-name").value.trim();
+
+const lastName =
+  document.getElementById("student-last-name").value.trim();
+
+const fullName =
+  firstName + " " + lastName;
+
+const email =
+  document.getElementById("student-email").value.trim();
+
+const phone =
+  document.getElementById("student-phone").value.trim();
+
+
+/* PARENT / GUARDIAN INFORMATION */
+
+let parentName = "";
+let parentPhone = "";
+let parentEmail = "";
+
+if(studentGroup.value === "youth"){
+
+  parentName =
+    document.getElementById("parent-name").value.trim();
+
+  parentPhone =
+    document.getElementById("parent-phone").value.trim();
+
+  parentEmail =
+    document.getElementById("parent-email").value.trim();
+
+}
+
+
+/* MAKE SURE CART IS AVAILABLE */
+
+if(
+  !window.BBBCart ||
+  typeof window.BBBCart.add !== "function"
+){
+
+  alert(
+    "The shopping bag could not be loaded. Please refresh the page and try again."
+  );
+
+  return;
+}
+
+
+/* ADD CLASS REGISTRATION TO CART */
+
+window.BBBCart.add({
+
+  productId:
+    "academy-" + activeSession.id,
+
+  name:
+    activeCourse.name + " Masterclass",
+
+  price:
+    tuition,
+
+  quantity:
+    1,
+
+  image:
+    activeCourse.image,
+
+  itemType:
+    "class",
+
+  classSessionId:
+    activeSession.id,
+
+  classDate:
+    activeSession.date,
+
+  classTime:
+    activeSession.time,
+
+  studentType:
+    studentGroup.value,
+
+  studentAge:
+    age,
+
+  studentName:
+    fullName,
+
+  studentEmail:
+    email,
+
+  studentPhone:
+    phone,
+
+  parentName:
+    parentName,
+
+  parentPhone:
+    parentPhone,
+
+  parentEmail:
+    parentEmail
+
+});
+
+
+alert(
+  fullName +
+  "'s registration for " +
+  activeCourse.name +
+  " has been added to your bag."
+);
+
+
+window.location.href = "cart.html";
 
   }
 );
@@ -1947,3 +2060,4 @@ renderBenefits();
 
 </body>
 </html>
+
