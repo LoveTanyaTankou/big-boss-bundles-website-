@@ -1,1 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Beauty Classes | Big Boss Beauty Academy</title>
+
+<meta
+  name="description"
+  content="Hands on beauty training at Big Boss Beauty Academy. Learn braiding, stitch braids, feed in braids, box braids, quick weaves and sew in installation."
+>
+
+<style>
+
+/* =========================================================
+   BIG BOSS BEAUTY ACADEMY
+========================================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#ffffff;
+  color:#0a0a0a;
+  line-height:1.5;
+}
+
+:root{
+  --gold:#D4A622;
+  --black:#0A0A0A;
+  --white:#FFFFFF;
+  --teal:#00A6D6;
+  --light:#F7F7F7;
+  --border:#E5E5E5;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.academy-header{
+  background:#0a0a0a;
+  color:white;
+  text-align:center;
+  padding:18px 20px;
+}
+
+.academy-header h1{
+  color:var(--gold);
+  font-size:34px;
+  letter-spacing:2px;
+  margin-bottom:3px;
+}
+
+.academy-header p{
+  font-size:13px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.academy-nav{
+  background:white;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  padding:16px 20px;
+  flex-wrap:wrap;
+}
+
+.academy-nav a{
+  color:#111;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.academy-nav a:hover{
+  color:var(--gold);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.academy-hero{
+  background:
+    linear-gradient(
+      135deg,
+      #050505,
+      #151515
+    );
+
+  color:white;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.academy-hero .eyebrow{
+  color:var(--gold);
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.academy-hero h2{
+  font-size:52px;
+  line-height:1.05;
+  max-width:900px;
+  margin:0 auto 20px;
+}
+
+.academy-hero h2 span{
+  color:var(--gold);
+}
+
+.academy-hero .hero-text{
+  max-width:760px;
+  margin:0 auto 28px;
+  color:#e8e8e8;
+  font-size:18px;
+}
+
+.hero-highlights{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.hero-highlight{
+  border:1px solid var(--gold);
+  color:white;
+  padding:10px 16px;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+  max-width:1300px;
+  margin:auto;
+  padding:65px 24px;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-heading .small-heading{
+  color:var(--gold);
+  font-weight:bold;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+.section-heading h2{
+  font-size:38px;
+  margin-top:6px;
+}
+
+.section-heading p{
+  max-width:720px;
+  margin:12px auto 0;
+  color:#666;
+}
+
+
+/* =========================================================
+   COURSE GRID
+========================================================= */
+
+.course-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+  gap:28px;
+}
+
+.course-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.07);
+
+  display:flex;
+  flex-direction:column;
+}
+
+.course-image{
+  width:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  background:#111;
+}
+
+.course-content{
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.course-category{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:6px;
+}
+
+.course-content h3{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.course-description{
+  color:#555;
+  font-size:14px;
+  margin-bottom:18px;
+  min-height:84px;
+}
+
+
+/* =========================================================
+   COURSE DETAILS
+========================================================= */
+
+.course-details{
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  padding:15px 0;
+  margin-bottom:16px;
+}
+
+.course-detail{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:4px 0;
+  font-size:14px;
+}
+
+.course-detail strong{
+  color:#111;
+}
+
+.course-detail span{
+  text-align:right;
+}
+
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+.course-prices{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.price-box{
+  background:#f8f8f8;
+  border:1px solid #eee;
+  border-radius:9px;
+  padding:13px;
+  text-align:center;
+}
+
+.price-box .price-label{
+  font-size:11px;
+  color:#666;
+  text-transform:uppercase;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.price-box .price{
+  display:block;
+  color:#111;
+  font-size:24px;
+  font-weight:bold;
+  margin-top:3px;
+}
+
+.price-box.gold{
+  border-color:var(--gold);
+}
+
+
+/* =========================================================
+   SEATS
+========================================================= */
+
+.seat-message{
+  font-weight:bold;
+  text-align:center;
+  margin-bottom:14px;
+  padding:9px;
+  border-radius:7px;
+  background:#f4f4f4;
+}
+
+.seat-message.low{
+  background:#fff4d6;
+  color:#7a5500;
+}
+
+.seat-message.sold{
+  background:#111;
+  color:white;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.register-button{
+  border:0;
+  width:100%;
+  background:var(--teal);
+  color:white;
+  padding:15px 18px;
+  font-size:14px;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  cursor:pointer;
+  border-radius:7px;
+  margin-top:auto;
+}
+
+.register-button:hover{
+  opacity:.88;
+}
+
+.waiting-button{
+  background:var(--gold);
+  color:#111;
+}
+
+.disabled-button{
+  background:#aaa;
+  cursor:not-allowed;
+}
+
+
+/* =========================================================
+   WHAT'S INCLUDED
+========================================================= */
+
+.included-section{
+  background:#0a0a0a;
+  color:white;
+}
+
+.included-section .section-heading h2{
+  color:white;
+}
+
+.included-grid{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:
+    repeat(4, minmax(0,1fr));
+  gap:15px;
+}
+
+.included-item{
+  border:1px solid #333;
+  padding:22px 15px;
+  text-align:center;
+  border-radius:10px;
+}
+
+.included-check{
+  color:var(--gold);
+  font-size:26px;
+  display:block;
+  margin-bottom:8px;
+}
+
+
+/* =========================================================
+   AGE INFORMATION
+========================================================= */
+
+.age-section{
+  background:#f8f8f8;
+}
+
+.age-grid{
+  max-width:850px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.age-card{
+  background:white;
+  border-radius:12px;
+  padding:30px;
+  border:1px solid #e8e8e8;
+  text-align:center;
+}
+
+.age-card h3{
+  font-size:26px;
+  margin-bottom:8px;
+}
+
+.age-card .age-range{
+  color:var(--gold);
+  font-weight:bold;
+  font-size:20px;
+  margin-bottom:12px;
+}
+
+
+/* =========================================================
+   REGISTRATION MODAL
+========================================================= */
+
+.modal{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  overflow:auto;
+  padding:30px 15px;
+}
+
+.modal.open{
+  display:block;
+}
+
+.modal-box{
+  background:white;
+  max-width:720px;
+  margin:20px auto;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.modal-header{
+  background:#0a0a0a;
+  color:white;
+  padding:24px;
+  position:relative;
+}
+
+.modal-header h2{
+  color:var(--gold);
+  margin-bottom:5px;
+}
+
+.close-modal{
+  position:absolute;
+  top:14px;
+  right:18px;
+  background:none;
+  border:0;
+  color:white;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.modal-body{
+  padding:28px;
+}
+
+.form-group{
+  margin-bottom:18px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:15px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.registration-price{
+  background:#f6f6f6;
+  padding:18px;
+  border-radius:8px;
+  margin:20px 0;
+  text-align:center;
+}
+
+.registration-price strong{
+  display:block;
+  font-size:30px;
+  color:var(--gold);
+}
+
+.parent-fields{
+  display:none;
+  border-left:4px solid var(--gold);
+  padding-left:15px;
+  margin:18px 0;
+}
+
+.parent-fields.show{
+  display:block;
+}
+
+.policy-box{
+  background:#f8f8f8;
+  padding:15px;
+  border-radius:7px;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.checkbox-line{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin-top:10px;
+}
+
+.checkbox-line input{
+  margin-top:3px;
+}
+
+.submit-registration{
+  width:100%;
+  border:0;
+  background:var(--teal);
+  color:white;
+  padding:16px;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:15px;
+}
+
+
+/* =========================================================
+   WAITING LIST
+========================================================= */
+
+.waitlist-message{
+  background:#fff7dd;
+  border:1px solid var(--gold);
+  padding:15px;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.academy-footer{
+  background:#050505;
+  color:#bbb;
+  text-align:center;
+  padding:35px 20px;
+}
+
+.academy-footer strong{
+  color:var(--gold);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1000px){
+
+  .course-grid{
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+  }
+
+  .included-grid{
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+  }
+
+}
+
+@media(max-width:650px){
+
+  .academy-hero h2{
+    font-size:38px;
+  }
+
+  .section-heading h2{
+    font-size:31px;
+  }
+
+  .course-grid{
+    grid-template-columns:1fr;
+  }
+
+  .included-grid{
+    grid-template-columns:1fr;
+  }
+
+  .age-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .academy-nav{
+    gap:14px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
+<header class="academy-header">
+
+  <h1>BIG BOSS BEAUTY ACADEMY</h1>
+
+  <p>Learn • Practice • Build • Boss Up</p>
+
+</header>
+
+
+<nav class="academy-nav">
+
+  <a href="index.html">Home</a>
+
+  <a href="bundles.html">Bundles</a>
+
+  <a href="wigs.html">Wigs</a>
+
+  <a href="closures.html">Closures</a>
+
+  <a href="frontals.html">Frontals</a>
+
+  <a href="classes.html">Classes</a>
+
+</nav>
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section class="academy-hero">
+
+  <div class="eyebrow">
+    Big Boss Beauty Academy
+  </div>
+
+  <h2>
+    Build Your Skills.
+    <span>Build Your Future.</span>
+  </h2>
+
+  <p class="hero-text">
+    Small, hands on beauty training designed to help
+    students learn professional techniques through
+    guided practice and step by step instruction.
+  </p>
+
+  <div class="hero-highlights">
+
+    <div class="hero-highlight">
+      4.5 Hour Hands On Classes
+    </div>
+
+    <div class="hero-highlight">
+      Maximum 7 Students
+    </div>
+
+    <div class="hero-highlight">
+      Supplies Included
+    </div>
+
+    <div class="hero-highlight">
+      Mannequin Head Included
+    </div>
+
+    <div class="hero-highlight">
+      Certificate of Completion
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     UPCOMING CLASSES
+====================================================== -->
+
+<section class="section">
+
+  <div class="section-heading">
+
+    <div class="small-heading">
+      Upcoming Classes
+    </div>
+
+    <h2>
+      Choose Your Masterclass
+    </h2>
+
+    <p>
+      Classes are held on the last Saturday of each month
+      from 12:00 PM to 4:30 PM. Each session is limited to
+      seven students for a small, hands on learning
+      experience.
+    </p>
+
+  </div>
+
+  <div
+    id="class-grid"
+    class="course-grid"
+  ></div>
+
+</section>
+
+
+<!-- ======================================================
+     WHAT'S INCLUDED
+====================================================== -->
+
+<section class="included-section">
+
+  <div class="section">
+
+    <div class="section-heading">
+
+      <div class="small-heading">
+        Your Training Experience
+      </div>
+
+      <h2>
+        What's Included
+      </h2>
+
+    </div>
+
+    <div
+      id="included-grid"
+      class="included-grid"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     AGE GROUPS
+====================================================== -->
+
+<section class="age-section">
+
+  <div class="section">
+
+    <div class="section-heading">
+
+      <div class="small-heading">
+        Student Options
+      </div>
+
+      <h2>
+        Youth & Adult Classes
+      </h2>
+
+    </div>
+
+    <div class="age-grid">
+
+      <div class="age-card">
+
+        <h3>Youth</h3>
+
+        <div class="age-range">
+          Ages 10–16
+        </div>
+
+        <p>
+          Youth tuition applies to students ages
+          10 through 16. A parent or legal guardian
+          must provide registration information.
+        </p>
+
+      </div>
+
+
+      <div class="age-card">
+
+        <h3>Adult</h3>
+
+        <div class="age-range">
+          Ages 17+
+        </div>
+
+        <p>
+          Students age 17 and older register using
+          the adult class rate.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     REGISTRATION MODAL
+====================================================== -->
+
+<div
+  id="registration-modal"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <button
+        type="button"
+        class="close-modal"
+        id="close-modal"
+      >
+        &times;
+      </button>
+
+      <h2 id="modal-course-name">
+        Class Registration
+      </h2>
+
+      <div id="modal-class-date"></div>
+
+    </div>
+
+
+    <div class="modal-body">
+
+      <div
+        id="waitlist-message"
+        class="waitlist-message"
+        style="display:none;"
+      >
+        This class is currently full.
+        Complete the form below to join the waiting list.
+        You may be contacted if a seat becomes available
+        or when the next class opens.
+      </div>
+
+
+      <form id="registration-form">
+
+        <input
+          type="hidden"
+          id="registration-session-id"
+        >
+
+        <input
+          type="hidden"
+          id="registration-course-id"
+        >
+
+        <input
+          type="hidden"
+          id="registration-type"
+          value="registration"
+        >
+
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label for="student-first-name">
+              Student First Name
+            </label>
+
+            <input
+              type="text"
+              id="student-first-name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="student-last-name">
+              Student Last Name
+            </label>
+
+            <input
+              type="text"
+              id="student-last-name"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label for="student-age">
+              Student Age
+            </label>
+
+            <input
+              type="number"
+              id="student-age"
+              min="10"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="student-group">
+              Registration Type
+            </label>
+
+            <select
+              id="student-group"
+              required
+            >
+
+              <option value="">
+                Select
+              </option>
+
+              <option value="youth">
+                Youth Ages 10–16
+              </option>
+
+              <option value="adult">
+                Adult Ages 17+
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label for="student-email">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="student-email"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="student-phone">
+              Phone
+            </label>
+
+            <input
+              type="tel"
+              id="student-phone"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- YOUTH PARENT/GUARDIAN -->
+
+        <div
+          id="parent-fields"
+          class="parent-fields"
+        >
+
+          <h3>
+            Parent / Guardian Information
+          </h3>
+
+          <br>
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="parent-name">
+                Parent / Guardian Name
+              </label>
+
+              <input
+                type="text"
+                id="parent-name"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="parent-phone">
+                Parent / Guardian Phone
+              </label>
+
+              <input
+                type="tel"
+                id="parent-phone"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="parent-email">
+              Parent / Guardian Email
+            </label>
+
+            <input
+              type="email"
+              id="parent-email"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="registration-price"
+          class="registration-price"
+        >
+
+          Select the student's age group
+          to see tuition.
+
+        </div>
+
+
+        <div
+          id="waitlist-options"
+          style="display:none;"
+        >
+
+          <div class="checkbox-line">
+
+            <input
+              type="checkbox"
+              id="notify-seat"
+              checked
+            >
+
+            <label for="notify-seat">
+              Notify me if a seat becomes available
+              for this class.
+            </label>
+
+          </div>
+
+
+          <div class="checkbox-line">
+
+            <input
+              type="checkbox"
+              id="notify-next"
+              checked
+            >
+
+            <label for="notify-next">
+              Notify me about the next available
+              class for this course.
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <div class="policy-box">
+
+          <strong>
+            Registration Notice
+          </strong>
+
+          <p>
+            Class seating is limited. Registration is
+            not complete until required payment has
+            been successfully processed.
+          </p>
+
+          <div class="checkbox-line">
+
+            <input
+              type="checkbox"
+              id="policy-agreement"
+              required
+            >
+
+            <label for="policy-agreement">
+              I understand the class information
+              and registration requirements.
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          id="submit-registration"
+          class="submit-registration"
+        >
+          Continue Registration
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer class="academy-footer">
+
+  <strong>
+    BIG BOSS BEAUTY ACADEMY
+  </strong>
+
+  <p>
+    Skills • Confidence • Opportunity • Boss Mentality
+  </p>
+
+</footer>
+
+
+
+<!-- ======================================================
+     LOAD CLASS SCHEDULE
+====================================================== -->
+
+<script src="class-schedule.js"></script>
+
+
+<script>
+
+/* =========================================================
+   PAGE ELEMENTS
+========================================================= */
+
+const classGrid =
+  document.getElementById("class-grid");
+
+const includedGrid =
+  document.getElementById("included-grid");
+
+const modal =
+  document.getElementById("registration-modal");
+
+const closeModalButton =
+  document.getElementById("close-modal");
+
+const modalCourseName =
+  document.getElementById("modal-course-name");
+
+const modalClassDate =
+  document.getElementById("modal-class-date");
+
+const registrationForm =
+  document.getElementById("registration-form");
+
+const studentAge =
+  document.getElementById("student-age");
+
+const studentGroup =
+  document.getElementById("student-group");
+
+const parentFields =
+  document.getElementById("parent-fields");
+
+const registrationPrice =
+  document.getElementById("registration-price");
+
+const waitlistMessage =
+  document.getElementById("waitlist-message");
+
+const waitlistOptions =
+  document.getElementById("waitlist-options");
+
+const registrationType =
+  document.getElementById("registration-type");
+
+const registrationSessionId =
+  document.getElementById("registration-session-id");
+
+const registrationCourseId =
+  document.getElementById("registration-course-id");
+
+const submitRegistration =
+  document.getElementById("submit-registration");
+
+
+let activeSession = null;
+let activeCourse = null;
+
+
+/* =========================================================
+   RENDER CLASS CARDS
+========================================================= */
+
+function renderClasses(){
+
+  classGrid.innerHTML = "";
+
+  classSchedule.forEach(function(session){
+
+    const course =
+      getAcademyCourse(session.courseId);
+
+    if(!course){
+      return;
+    }
+
+
+    const card =
+      document.createElement("article");
+
+    card.className =
+      "course-card";
+
+
+    const seatText =
+      getSeatMessage(session);
+
+
+    let seatClass =
+      "seat-message";
+
+    if(
+      session.seatsRemaining <= 3 &&
+      session.seatsRemaining > 0
+    ){
+      seatClass += " low";
+    }
+
+    if(
+      session.seatsRemaining <= 0 ||
+      session.status === "sold-out"
+    ){
+      seatClass += " sold";
+    }
+
+
+    const buttonText =
+      getRegistrationButtonText(session);
+
+
+    const waiting =
+      shouldShowWaitingList(session);
+
+
+    let buttonClass =
+      "register-button";
+
+    if(waiting){
+      buttonClass += " waiting-button";
+    }
+
+    if(
+      session.status === "closed" ||
+      session.status === "coming-soon"
+    ){
+      buttonClass += " disabled-button";
+    }
+
+
+    card.innerHTML = `
+
+      <img
+        class="course-image"
+        src="${course.image}"
+        alt="${course.name}"
+      >
+
+      <div class="course-content">
+
+        <div class="course-category">
+          ${course.category}
+        </div>
+
+        <h3>
+          ${course.name}
+        </h3>
+
+        <p class="course-description">
+          ${course.description}
+        </p>
+
+
+        <div class="course-details">
+
+          <div class="course-detail">
+
+            <strong>Date</strong>
+
+            <span>
+              ${session.date}
+            </span>
+
+          </div>
+
+
+          <div class="course-detail">
+
+            <strong>Time</strong>
+
+            <span>
+              ${session.time}
+            </span>
+
+          </div>
+
+
+          <div class="course-detail">
+
+            <strong>Duration</strong>
+
+            <span>
+              ${course.duration}
+            </span>
+
+          </div>
+
+
+          <div class="course-detail">
+
+            <strong>Class Size</strong>
+
+            <span>
+              Maximum 7 Students
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="course-prices">
+
+          <div class="price-box">
+
+            <div class="price-label">
+              Youth 10–16
+            </div>
+
+            <span class="price">
+              $${course.youthPrice}
+            </span>
+
+          </div>
+
+
+          <div class="price-box gold">
+
+            <div class="price-label">
+              Adult 17+
+            </div>
+
+            <span class="price">
+              $${course.adultPrice}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="${seatClass}">
+          ${seatText}
+        </div>
+
+
+        <button
+          type="button"
+          class="${buttonClass}"
+          data-session="${session.id}"
+          ${
+            (
+              session.status === "closed" ||
+              session.status === "coming-soon"
+            )
+            ? "disabled"
+            : ""
+          }
+        >
+          ${buttonText}
+        </button>
+
+      </div>
+
+    `;
+
+
+    classGrid.appendChild(card);
+
+  });
+
+
+  attachRegistrationButtons();
+
+}
+
+
+/* =========================================================
+   RENDER INCLUDED BENEFITS
+========================================================= */
+
+function renderBenefits(){
+
+  includedGrid.innerHTML = "";
+
+  academyClassBenefits.forEach(function(benefit){
+
+    const item =
+      document.createElement("div");
+
+    item.className =
+      "included-item";
+
+    item.innerHTML = `
+
+      <span class="included-check">
+        ✓
+      </span>
+
+      ${benefit}
+
+    `;
+
+    includedGrid.appendChild(item);
+
+  });
+
+}
+
+
+/* =========================================================
+   REGISTRATION BUTTONS
+========================================================= */
+
+function attachRegistrationButtons(){
+
+  const buttons =
+    document.querySelectorAll(
+      "[data-session]"
+    );
+
+
+  buttons.forEach(function(button){
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        const sessionId =
+          this.dataset.session;
+
+        openRegistration(sessionId);
+
+      }
+    );
+
+  });
+
+}
+
+
+/* =========================================================
+   OPEN REGISTRATION
+========================================================= */
+
+function openRegistration(sessionId){
+
+  activeSession =
+    classSchedule.find(
+      function(session){
+        return session.id === sessionId;
+      }
+    );
+
+
+  if(!activeSession){
+    return;
+  }
+
+
+  activeCourse =
+    getAcademyCourse(
+      activeSession.courseId
+    );
+
+
+  if(!activeCourse){
+    return;
+  }
+
+
+  registrationForm.reset();
+
+  registrationSessionId.value =
+    activeSession.id;
+
+  registrationCourseId.value =
+    activeCourse.id;
+
+
+  modalCourseName.textContent =
+    activeCourse.name;
+
+
+  modalClassDate.textContent =
+    activeSession.date +
+    " • " +
+    activeSession.time;
+
+
+  const waiting =
+    shouldShowWaitingList(
+      activeSession
+    );
+
+
+  if(waiting){
+
+    registrationType.value =
+      "waiting-list";
+
+    waitlistMessage.style.display =
+      "block";
+
+    waitlistOptions.style.display =
+      "block";
+
+    submitRegistration.textContent =
+      "Join Waiting List";
+
+  }else{
+
+    registrationType.value =
+      "registration";
+
+    waitlistMessage.style.display =
+      "none";
+
+    waitlistOptions.style.display =
+      "none";
+
+    submitRegistration.textContent =
+      "Continue Registration";
+
+  }
+
+
+  parentFields.classList.remove(
+    "show"
+  );
+
+
+  registrationPrice.innerHTML =
+    "Select the student's age group to see tuition.";
+
+
+  modal.classList.add("open");
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeRegistration(){
+
+  modal.classList.remove("open");
+
+}
+
+
+closeModalButton.addEventListener(
+  "click",
+  closeRegistration
+);
+
+
+modal.addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === modal){
+      closeRegistration();
+    }
+
+  }
+);
+
+
+/* =========================================================
+   AGE VALIDATION
+========================================================= */
+
+studentAge.addEventListener(
+  "input",
+  function(){
+
+    const age =
+      Number(studentAge.value);
+
+
+    if(!age){
+
+      studentGroup.value = "";
+
+      updateStudentGroup();
+
+      return;
+    }
+
+
+    const group =
+      getStudentTypeFromAge(age);
+
+
+    if(group === "youth"){
+
+      studentGroup.value =
+        "youth";
+
+    }else if(group === "adult"){
+
+      studentGroup.value =
+        "adult";
+
+    }else{
+
+      studentGroup.value = "";
+
+    }
+
+
+    updateStudentGroup();
+
+  }
+);
+
+
+studentGroup.addEventListener(
+  "change",
+  updateStudentGroup
+);
+
+
+/* =========================================================
+   UPDATE AGE GROUP / PRICE
+========================================================= */
+
+function updateStudentGroup(){
+
+  if(!activeCourse){
+    return;
+  }
+
+
+  const group =
+    studentGroup.value;
+
+
+  if(group === "youth"){
+
+    parentFields.classList.add(
+      "show"
+    );
+
+
+    document.getElementById(
+      "parent-name"
+    ).required = true;
+
+
+    document.getElementById(
+      "parent-phone"
+    ).required = true;
+
+
+    document.getElementById(
+      "parent-email"
+    ).required = true;
+
+
+    registrationPrice.innerHTML =
+      "Youth Tuition" +
+      "<strong>$" +
+      activeCourse.youthPrice +
+      "</strong>" +
+      "Ages 10–16";
+
+  }
+
+
+  else if(group === "adult"){
+
+    parentFields.classList.remove(
+      "show"
+    );
+
+
+    document.getElementById(
+      "parent-name"
+    ).required = false;
+
+
+    document.getElementById(
+      "parent-phone"
+    ).required = false;
+
+
+    document.getElementById(
+      "parent-email"
+    ).required = false;
+
+
+    registrationPrice.innerHTML =
+      "Adult Tuition" +
+      "<strong>$" +
+      activeCourse.adultPrice +
+      "</strong>" +
+      "Ages 17+";
+
+  }
+
+
+  else{
+
+    parentFields.classList.remove(
+      "show"
+    );
+
+
+    registrationPrice.innerHTML =
+      "Select the student's age group to see tuition.";
+
+  }
+
+}
+
+
+/* =========================================================
+   FORM SUBMISSION
+
+   IMPORTANT:
+   For now this verifies the registration information.
+   Next we will connect paid registrations to your cart /
+   checkout and connect waiting-list submissions.
+========================================================= */
+
+registrationForm.addEventListener(
+  "submit",
+  function(event){
+
+    event.preventDefault();
+
+
+    if(!activeCourse || !activeSession){
+      return;
+    }
+
+
+    const age =
+      Number(studentAge.value);
+
+
+    const correctGroup =
+      getStudentTypeFromAge(age);
+
+
+    if(correctGroup === "ineligible"){
+
+      alert(
+        "Students must be at least 10 years old."
+      );
+
+      return;
+    }
+
+
+    if(
+      studentGroup.value !==
+      correctGroup
+    ){
+
+      alert(
+        "Please check the student's age and registration type."
+      );
+
+      return;
+    }
+
+
+    const waiting =
+      registrationType.value ===
+      "waiting-list";
+
+
+    if(waiting){
+
+      alert(
+        "Waiting list information is ready. " +
+        "Next we will connect this form so the request " +
+        "is sent and saved."
+      );
+
+      return;
+    }
+
+
+    const tuition =
+      getAcademyPrice(
+        activeCourse.id,
+        studentGroup.value
+      );
+
+
+    alert(
+      activeCourse.name +
+      " registration: $" +
+      tuition +
+      ". Next we will connect this registration " +
+      "to your checkout."
+    );
+
+  }
+);
+
+
+/* =========================================================
+   INITIALIZE PAGE
+========================================================= */
+
+renderClasses();
+
+renderBenefits();
+
+</script>
+
+
+</body>
+</html>
