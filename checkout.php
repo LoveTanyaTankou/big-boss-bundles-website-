@@ -1840,6 +1840,82 @@ if (
 }
 /*
 |--------------------------------------------------------------------------
+| SAVE STRIPE SESSION ID TO ACADEMY RESERVATION
+|--------------------------------------------------------------------------
+*/
+
+if (
+    $academyReservationToken !== '' &&
+    !empty($stripeResponse['id'])
+) {
+
+    $academyLockHandle =
+        fopen(
+            $academyLockFile,
+            'c'
+        );
+
+    if (
+        $academyLockHandle !== false &&
+        flock(
+            $academyLockHandle,
+            LOCK_EX
+        )
+    ) {
+
+        $academyReservations =
+            json_decode(
+                file_get_contents(
+                    $academyReservationFile
+                ),
+                true
+            );
+
+        if (
+            is_array($academyReservations) &&
+            isset(
+                $academyReservations[
+                    $academyReservationToken
+                ]
+            ) &&
+            $academyReservations[
+                $academyReservationToken
+            ]['status'] === 'reserved'
+        ) {
+
+            $academyReservations[
+                $academyReservationToken
+            ]['stripe_session_id'] =
+                $stripeResponse['id'];
+
+            $academyReservations[
+                $academyReservationToken
+            ]['stripe_session_created_at'] =
+                gmdate('c');
+
+            file_put_contents(
+                $academyReservationFile,
+                json_encode(
+                    $academyReservations,
+                    JSON_PRETTY_PRINT |
+                    JSON_UNESCAPED_SLASHES
+                ),
+                LOCK_EX
+            );
+        }
+
+        flock(
+            $academyLockHandle,
+            LOCK_UN
+        );
+
+        fclose(
+            $academyLockHandle
+        );
+    }
+
+/*
+|--------------------------------------------------------------------------
 | Return Stripe Checkout URL
 |--------------------------------------------------------------------------
 */
