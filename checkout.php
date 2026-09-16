@@ -728,6 +728,79 @@ elseif (
         $ACADEMY_CLASSES[$classSessionId];
         $academySessionId =
     $classSessionId;
+    /*
+|--------------------------------------------------------------------------
+| VERIFY CLASS HAS AVAILABLE SEATS
+|--------------------------------------------------------------------------
+*/
+
+$academySeatFile =
+    dirname(__DIR__, 2) .
+    '/academy-private/academy-seats.json';
+
+
+if (!is_file($academySeatFile)) {
+
+    http_response_code(500);
+
+    echo json_encode([
+        'error' =>
+            'Academy seat availability is temporarily unavailable.'
+    ]);
+
+    exit;
+}
+
+
+$academySeatContents =
+    file_get_contents(
+        $academySeatFile
+    );
+
+
+$academySeats =
+    json_decode(
+        $academySeatContents,
+        true
+    );
+
+
+if (
+    !is_array($academySeats) ||
+    !array_key_exists(
+        $classSessionId,
+        $academySeats
+    )
+) {
+
+    http_response_code(500);
+
+    echo json_encode([
+        'error' =>
+            'Academy seat availability could not be verified.'
+    ]);
+
+    exit;
+}
+
+
+$seatsRemaining =
+    intval(
+        $academySeats[$classSessionId]
+    );
+
+
+if ($seatsRemaining <= 0) {
+
+    http_response_code(409);
+
+    echo json_encode([
+        'error' =>
+            'This Beauty Academy class is sold out. Please join the waiting list.'
+    ]);
+
+    exit;
+}
 
 
     /*
