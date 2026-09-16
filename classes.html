@@ -271,8 +271,47 @@ body{
   color:#111;
 }
 
-.course-detail span{
-  text-align:right;
+/* =========================================================
+   CLASS DATE SELECTION
+========================================================= */
+
+.class-date-selector{
+  margin-bottom:16px;
+}
+
+.class-date-selector label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.class-date-selector select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:7px;
+  background:white;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.class-date-selector select:focus{
+  outline:2px solid var(--teal);
+  outline-offset:1px;
+}
+
+.selected-class-details{
+  background:#f8f8f8;
+  border:1px solid #eee;
+  border-radius:8px;
+  padding:12px;
+  margin-bottom:16px;
+  font-size:13px;
+}
+
+.selected-class-details strong{
+  color:var(--gold);
 }
 
 
@@ -725,7 +764,7 @@ body{
   <div class="hero-highlights">
 
     <div class="hero-highlight">
-      4.5 Hour Hands On Classes
+    4–4.5 Hour Hands On Classes
     </div>
 
     <div class="hero-highlight">
@@ -765,13 +804,13 @@ body{
       Choose Your Masterclass
     </h2>
 
-    <p>
-      Classes are held on the last Saturday of each month
-      from 12:00 PM to 4:30 PM. Each session is limited to
-      seven students for a small, hands on learning
-      experience.
-    </p>
-
+  <p>
+  Classes are offered every Saturday with one featured
+  masterclass per Saturday. Choose the course you want
+  to learn, then select from the available class dates.
+  Each session is limited to only seven students for a
+  small, hands on learning experience.
+</p>
   </div>
 
   <div
@@ -780,6 +819,7 @@ body{
   ></div>
 
 </section>
+
 
 
 <!-- ======================================================
@@ -1306,14 +1346,29 @@ function renderClasses(){
 
   classGrid.innerHTML = "";
 
-  classSchedule.forEach(function(session){
+  Object.keys(academyCourses).forEach(function(courseId){
 
     const course =
-      getAcademyCourse(session.courseId);
+      getAcademyCourse(courseId);
 
     if(!course){
       return;
     }
+
+
+    const courseSessions =
+      classSchedule.filter(function(session){
+        return session.courseId === courseId;
+      });
+
+
+    if(courseSessions.length === 0){
+      return;
+    }
+
+
+    const firstSession =
+      courseSessions[0];
 
 
     const card =
@@ -1323,49 +1378,16 @@ function renderClasses(){
       "course-card";
 
 
-    const seatText =
-      getSeatMessage(session);
+    const dateOptions =
+      courseSessions.map(function(session){
 
+        return `
+          <option value="${session.id}">
+            ${session.date} • ${session.time}
+          </option>
+        `;
 
-    let seatClass =
-      "seat-message";
-
-    if(
-      session.seatsRemaining <= 3 &&
-      session.seatsRemaining > 0
-    ){
-      seatClass += " low";
-    }
-
-    if(
-      session.seatsRemaining <= 0 ||
-      session.status === "sold-out"
-    ){
-      seatClass += " sold";
-    }
-
-
-    const buttonText =
-      getRegistrationButtonText(session);
-
-
-    const waiting =
-      shouldShowWaitingList(session);
-
-
-    let buttonClass =
-      "register-button";
-
-    if(waiting){
-      buttonClass += " waiting-button";
-    }
-
-    if(
-      session.status === "closed" ||
-      session.status === "coming-soon"
-    ){
-      buttonClass += " disabled-button";
-    }
+      }).join("");
 
 
     card.innerHTML = `
@@ -1391,49 +1413,54 @@ function renderClasses(){
         </p>
 
 
-        <div class="course-details">
+        <div class="class-date-selector">
+
+          <label for="date-${course.id}">
+            Choose Class Date
+          </label>
+
+          <select
+            id="date-${course.id}"
+            class="course-date-select"
+            data-course="${course.id}"
+          >
+            ${dateOptions}
+          </select>
+
+        </div>
+
+
+        <div
+          class="selected-class-details"
+          id="details-${course.id}"
+        >
 
           <div class="course-detail">
-
             <strong>Date</strong>
-
-            <span>
-              ${session.date}
+            <span class="selected-date">
+              ${firstSession.date}
             </span>
-
           </div>
 
-
           <div class="course-detail">
-
             <strong>Time</strong>
-
-            <span>
-              ${session.time}
+            <span class="selected-time">
+              ${firstSession.time}
             </span>
-
           </div>
 
-
           <div class="course-detail">
-
             <strong>Duration</strong>
-
             <span>
               ${course.duration}
             </span>
-
           </div>
 
-
           <div class="course-detail">
-
             <strong>Class Size</strong>
-
             <span>
               Maximum 7 Students
             </span>
-
           </div>
 
         </div>
@@ -1469,25 +1496,21 @@ function renderClasses(){
         </div>
 
 
-        <div class="${seatClass}">
-          ${seatText}
+        <div
+          class="seat-message"
+          id="seats-${course.id}"
+        >
+          ${getSeatMessage(firstSession)}
         </div>
 
 
         <button
           type="button"
-          class="${buttonClass}"
-          data-session="${session.id}"
-          ${
-            (
-              session.status === "closed" ||
-              session.status === "coming-soon"
-            )
-            ? "disabled"
-            : ""
-          }
+          class="register-button"
+          id="button-${course.id}"
+          data-session="${firstSession.id}"
         >
-          ${buttonText}
+          ${getRegistrationButtonText(firstSession)}
         </button>
 
       </div>
@@ -1500,10 +1523,11 @@ function renderClasses(){
   });
 
 
+  attachDateSelectors();
+
   attachRegistrationButtons();
 
 }
-
 
 /* =========================================================
    RENDER INCLUDED BENEFITS
@@ -2069,6 +2093,7 @@ registrationForm.addEventListener(
   window.location.href =
     "waitlist-confirmation.html";
 
+
   })
 
   .catch(function(error){
@@ -2213,6 +2238,7 @@ window.BBBCart.add({
     parentEmail
 
 });
+
 
 
 
