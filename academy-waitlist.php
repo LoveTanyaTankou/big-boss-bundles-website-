@@ -226,7 +226,288 @@ if ($studentAge >= 10 && $studentAge <= 16) {
 
     exit;
 }
+/*
+|--------------------------------------------------------------------------
+| SAVE WAITING LIST RECORD TO PRIVATE STORAGE
+|--------------------------------------------------------------------------
+*/
 
+$waitlistFile =
+    '/home/nckm6n94jvjt/academy-private/academy-waitlist.json';
+
+
+$waitlistRecord = [
+
+    'id' =>
+        'WL-' .
+        date('Ymd-His') .
+        '-' .
+        bin2hex(random_bytes(3)),
+
+    'submittedAt' =>
+        date('c'),
+
+    'courseName' =>
+        $courseName,
+
+    'classSessionId' =>
+        $classSessionId,
+
+    'classDate' =>
+        $classDate,
+
+    'classTime' =>
+        $classTime,
+
+    'studentFirstName' =>
+        $studentFirstName,
+
+    'studentLastName' =>
+        $studentLastName,
+
+    'studentAge' =>
+        $studentAge,
+
+    'studentType' =>
+        $studentType,
+
+    'studentEmail' =>
+        $studentEmail,
+
+    'studentPhone' =>
+        $studentPhone,
+
+    'parentName' =>
+        $parentName,
+
+    'parentPhone' =>
+        $parentPhone,
+
+    'parentEmail' =>
+        $parentEmail,
+
+    'notifySeat' =>
+        $notifySeat,
+
+    'notifyNext' =>
+        $notifyNext,
+
+    'status' =>
+        'waiting'
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| OPEN AND LOCK WAITING LIST FILE
+|--------------------------------------------------------------------------
+*/
+
+$fileHandle = fopen(
+    $waitlistFile,
+    'c+'
+);
+
+if (!$fileHandle) {
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'error' =>
+            'Your waiting list request could not be saved. Please try again.'
+    ]);
+
+    exit;
+}
+
+
+if (!flock($fileHandle, LOCK_EX)) {
+
+    fclose($fileHandle);
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'error' =>
+            'Your waiting list request could not be saved. Please try again.'
+    ]);
+
+    exit;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| READ EXISTING WAITING LIST
+|--------------------------------------------------------------------------
+*/
+
+rewind($fileHandle);
+
+$currentJson =
+    stream_get_contents(
+        $fileHandle
+    );
+
+
+$waitingList = [];
+
+if (
+    $currentJson !== false &&
+    trim($currentJson) !== ''
+) {
+
+    $decoded =
+        json_decode(
+            $currentJson,
+            true
+        );
+
+    if (!is_array($decoded)) {
+
+        flock(
+            $fileHandle,
+            LOCK_UN
+        );
+
+        fclose(
+            $fileHandle
+        );
+
+        http_response_code(500);
+
+        echo json_encode([
+            'success' => false,
+            'error' =>
+                'The waiting list storage file could not be read safely.'
+        ]);
+
+        exit;
+    }
+
+    $waitingList =
+        $decoded;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ADD NEW RECORD
+|--------------------------------------------------------------------------
+*/
+
+$waitingList[] =
+    $waitlistRecord;
+
+
+$newJson =
+    json_encode(
+        $waitingList,
+        JSON_PRETTY_PRINT |
+        JSON_UNESCAPED_SLASHES
+    );
+
+
+if ($newJson === false) {
+
+    flock(
+        $fileHandle,
+        LOCK_UN
+    );
+
+    fclose(
+        $fileHandle
+    );
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'error' =>
+            'Your waiting list request could not be saved. Please try again.'
+    ]);
+
+    exit;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| WRITE UPDATED WAITING LIST
+|--------------------------------------------------------------------------
+*/
+
+rewind(
+    $fileHandle
+);
+
+if (!ftruncate($fileHandle, 0)) {
+
+    flock(
+        $fileHandle,
+        LOCK_UN
+    );
+
+    fclose(
+        $fileHandle
+    );
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'error' =>
+            'Your waiting list request could not be saved. Please try again.'
+    ]);
+
+    exit;
+}
+
+
+$bytesWritten =
+    fwrite(
+        $fileHandle,
+        $newJson
+    );
+
+
+if ($bytesWritten === false) {
+
+    flock(
+        $fileHandle,
+        LOCK_UN
+    );
+
+    fclose(
+        $fileHandle
+    );
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'error' =>
+            'Your waiting list request could not be saved. Please try again.'
+    ]);
+
+    exit;
+}
+
+
+fflush(
+    $fileHandle
+);
+
+flock(
+    $fileHandle,
+    LOCK_UN
+);
+
+fclose(
+    $fileHandle
+);
 
 /*
 |--------------------------------------------------------------------------
@@ -247,7 +528,7 @@ $nextPreference =
 |--------------------------------------------------------------------------
 */
 
-$to = '5129375119@txt.att.net';
+$to = 'tanyatankou@yahoo.com, 5129375119@txt.att.net';
 
 $subject =
     'Big Boss Beauty Academy Waiting List';
