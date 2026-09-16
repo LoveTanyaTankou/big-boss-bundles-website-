@@ -1,1 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Waiting List Confirmation | Big Boss Beauty Academy
+</title>
+
+<meta
+  name="description"
+  content="Big Boss Beauty Academy waiting list confirmation."
+>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --gold:#D4A622;
+  --teal:#00A6D6;
+  --black:#0A0A0A;
+  --white:#FFFFFF;
+  --light:#F7F7F7;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f7f7f7;
+  color:#0a0a0a;
+  line-height:1.6;
+}
+
+
+/* HEADER */
+
+.academy-header{
+  background:var(--black);
+  color:white;
+  text-align:center;
+  padding:22px 20px;
+}
+
+.academy-header h1{
+  color:var(--gold);
+  font-size:32px;
+  letter-spacing:2px;
+  margin-bottom:3px;
+}
+
+.academy-header p{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+
+/* NAVIGATION */
+
+.academy-nav{
+  background:white;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  padding:16px 20px;
+  flex-wrap:wrap;
+}
+
+.academy-nav a{
+  color:#111;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.academy-nav a:hover{
+  color:var(--gold);
+}
+
+
+/* PAGE */
+
+.confirmation-section{
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:70px 20px;
+}
+
+.confirmation-card{
+  width:100%;
+  max-width:760px;
+  background:white;
+  border-radius:16px;
+  padding:55px 45px;
+  text-align:center;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,.10);
+  border-top:6px solid var(--gold);
+}
+
+.check-circle{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 25px;
+  font-size:43px;
+  font-weight:bold;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.confirmation-card h2{
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:18px;
+}
+
+.intro{
+  font-size:18px;
+  color:#444;
+  max-width:610px;
+  margin:0 auto 28px;
+}
+
+.details-box{
+  background:#f7f7f7;
+  border-radius:10px;
+  padding:25px;
+  margin:28px 0;
+  text-align:left;
+}
+
+.details-box h3{
+  margin-bottom:12px;
+  font-size:19px;
+}
+
+.details-box p{
+  color:#555;
+  margin-bottom:12px;
+}
+
+.details-box p:last-child{
+  margin-bottom:0;
+}
+
+.important{
+  border-left:4px solid var(--gold);
+  background:#fff8df;
+  text-align:left;
+  padding:18px 20px;
+  margin:25px 0 32px;
+  border-radius:5px;
+}
+
+.important strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+
+/* BUTTONS */
+
+.button-row{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.button{
+  display:inline-block;
+  text-decoration:none;
+  padding:15px 24px;
+  border-radius:7px;
+  font-weight:bold;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.primary-button{
+  background:var(--teal);
+  color:white;
+}
+
+.secondary-button{
+  background:var(--black);
+  color:white;
+}
+
+.button:hover{
+  opacity:.88;
+}
+
+
+/* FOOTER */
+
+.academy-footer{
+  background:#050505;
+  color:#bbb;
+  text-align:center;
+  padding:35px 20px;
+}
+
+.academy-footer strong{
+  color:var(--gold);
+}
+
+.academy-footer p{
+  margin-top:5px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+  .confirmation-card{
+    padding:40px 22px;
+  }
+
+  .confirmation-card h2{
+    font-size:33px;
+  }
+
+  .academy-header h1{
+    font-size:26px;
+  }
+
+  .button-row{
+    flex-direction:column;
+  }
+
+  .button{
+    width:100%;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="academy-header">
+
+  <h1>
+    BIG BOSS BEAUTY ACADEMY
+  </h1>
+
+  <p>
+    Learn • Practice • Build • Boss Up
+  </p>
+
+</header>
+
+
+<nav class="academy-nav">
+
+  <a href="index.html">
+    Home
+  </a>
+
+  <a href="bundles.html">
+    Bundles
+  </a>
+
+  <a href="wigs.html">
+    Wigs
+  </a>
+
+  <a href="closures.html">
+    Closures
+  </a>
+
+  <a href="frontals.html">
+    Frontals
+  </a>
+
+  <a href="classes.html">
+    Classes
+  </a>
+
+</nav>
+
+
+<main class="confirmation-section">
+
+  <section class="confirmation-card">
+
+    <div class="check-circle">
+      ✓
+    </div>
+
+    <div class="eyebrow">
+      Big Boss Beauty Academy
+    </div>
+
+    <h2>
+      You're On The Waiting List!
+    </h2>
+
+    <p class="intro">
+      Your information has been successfully added
+      to the Big Boss Beauty Academy waiting list.
+    </p>
+
+
+    <div class="details-box">
+
+      <h3>
+        What Happens Next?
+      </h3>
+
+      <p>
+        If a seat becomes available for the class
+        you selected, we may contact you using the
+        phone number or email address provided.
+      </p>
+
+      <p>
+        If you selected notification for the next
+        available class, we'll also let you know
+        when a new session becomes available.
+      </p>
+
+    </div>
+
+
+    <div class="important">
+
+      <strong>
+        Important
+      </strong>
+
+      Being on the waiting list does not guarantee
+      a seat. Registration is confirmed only after
+      a seat becomes available and the required
+      tuition payment has been completed.
+
+    </div>
+
+
+    <div class="button-row">
+
+      <a
+        href="classes.html"
+        class="button primary-button"
+      >
+        View Other Classes
+      </a>
+
+      <a
+        href="index.html"
+        class="button secondary-button"
+      >
+        Return to Big Boss Bundles
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="academy-footer">
+
+  <strong>
+    BIG BOSS BEAUTY ACADEMY
+  </strong>
+
+  <p>
+    Skills • Confidence • Opportunity • Boss Mentality
+  </p>
+
+</footer>
+
+
+</body>
+
+</html>
