@@ -1528,6 +1528,153 @@ function renderClasses(){
   attachRegistrationButtons();
 
 }
+/* =========================================================
+   CLASS DATE SELECTORS
+========================================================= */
+
+function attachDateSelectors(){
+
+  const selectors =
+    document.querySelectorAll(
+      ".course-date-select"
+    );
+
+  selectors.forEach(function(selector){
+
+    selector.addEventListener(
+      "change",
+      function(){
+
+        const sessionId =
+          this.value;
+
+        const courseId =
+          this.dataset.course;
+
+        const session =
+          classSchedule.find(
+            function(item){
+              return item.id === sessionId;
+            }
+          );
+
+        if(!session){
+          return;
+        }
+
+        const details =
+          document.getElementById(
+            "details-" + courseId
+          );
+
+        const seatMessage =
+          document.getElementById(
+            "seats-" + courseId
+          );
+
+        const button =
+          document.getElementById(
+            "button-" + courseId
+          );
+
+        if(details){
+
+          const date =
+            details.querySelector(
+              ".selected-date"
+            );
+
+          const time =
+            details.querySelector(
+              ".selected-time"
+            );
+
+          if(date){
+            date.textContent =
+              session.date;
+          }
+
+          if(time){
+            time.textContent =
+              session.time;
+          }
+
+        }
+
+        if(seatMessage){
+
+          seatMessage.textContent =
+            getSeatMessage(session);
+
+          seatMessage.className =
+            "seat-message";
+
+          if(
+            session.seatsRemaining <= 3 &&
+            session.seatsRemaining > 0
+          ){
+            seatMessage.classList.add(
+              "low"
+            );
+          }
+
+          if(
+            session.seatsRemaining <= 0 ||
+            session.status === "sold-out"
+          ){
+            seatMessage.classList.add(
+              "sold"
+            );
+          }
+
+        }
+
+        if(button){
+
+          button.dataset.session =
+            session.id;
+
+          button.textContent =
+            getRegistrationButtonText(
+              session
+            );
+
+          button.className =
+            "register-button";
+
+          if(
+            shouldShowWaitingList(session)
+          ){
+            button.classList.add(
+              "waiting-button"
+            );
+          }
+
+          if(
+            session.status === "closed" ||
+            session.status === "coming-soon"
+          ){
+
+            button.classList.add(
+              "disabled-button"
+            );
+
+            button.disabled = true;
+
+          }else{
+
+            button.disabled = false;
+
+          }
+
+        }
+
+      }
+    );
+
+  });
+
+}
 
 /* =========================================================
    RENDER INCLUDED BENEFITS
