@@ -2464,9 +2464,89 @@ window.location.href = "cart.html";
    INITIALIZE PAGE
 ========================================================= */
 
-renderClasses();
+async function loadAcademySeats(){
 
-renderBenefits();
+  try{
+
+    const response =
+      await fetch(
+        "academy-seats.php",
+        {
+          cache: "no-store"
+        }
+      );
+
+
+    if(!response.ok){
+      throw new Error(
+        "Unable to load academy seat availability."
+      );
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      !data.success ||
+      !data.seats ||
+      typeof data.seats !== "object"
+    ){
+      throw new Error(
+        "Invalid academy seat availability response."
+      );
+    }
+
+
+    classSchedule.forEach(function(session){
+
+      if(
+        Object.prototype.hasOwnProperty.call(
+          data.seats,
+          session.id
+        )
+      ){
+
+        session.seatsRemaining =
+          Number(
+            data.seats[session.id]
+          );
+
+
+        if(session.seatsRemaining <= 0){
+
+          session.seatsRemaining = 0;
+          session.status = "sold-out";
+
+        }else{
+
+          session.status = "open";
+
+        }
+
+      }
+
+    });
+
+
+  }catch(error){
+
+    console.error(
+      "Academy seat availability error:",
+      error
+    );
+
+  }
+
+
+  renderClasses();
+  renderBenefits();
+
+}
+
+
+loadAcademySeats();
 
 </script>
 
