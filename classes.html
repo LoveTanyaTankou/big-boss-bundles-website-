@@ -2064,16 +2064,10 @@ registrationForm.addEventListener(
 
   })
 
-  .then(function(data){
+ .then(function(data){
 
-    alert(
-      data.message ||
-      "You have been added to the Big Boss Beauty Academy waiting list."
-    );
-
-    registrationForm.reset();
-
-    closeRegistration();
+  window.location.href =
+    "waitlist-confirmation.html";
 
   })
 
