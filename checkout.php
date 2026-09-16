@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 header('Content-Type: application/json');
 
@@ -192,6 +195,7 @@ $ACADEMY_CLASSES = [
     ]
 
 ];
+/*
 |--------------------------------------------------------------------------
 | Read cart
 |--------------------------------------------------------------------------
@@ -769,14 +773,20 @@ elseif (
         exit;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Merchandise subtotal
-    |--------------------------------------------------------------------------
-    */
+
+  /*
+|--------------------------------------------------------------------------
+| Merchandise subtotal
+|--------------------------------------------------------------------------
+| Academy classes do not count toward merchandise shipping.
+*/
+
+if (strpos($productId, 'academy-') !== 0) {
 
     $merchandiseSubtotal +=
         $unitAmount * $quantity;
+
+}
 
     /*
     |--------------------------------------------------------------------------
@@ -810,14 +820,20 @@ elseif (
     ] = $quantity;
 
     /*
-    |--------------------------------------------------------------------------
-    | Generic tangible-goods tax code
-    |--------------------------------------------------------------------------
-    */
+
+|--------------------------------------------------------------------------
+| Stripe tax code
+|--------------------------------------------------------------------------
+| Academy registrations are services, not tangible merchandise.
+*/
+
+if (strpos($productId, 'academy-') !== 0) {
 
     $stripeFields[
         "line_items[$lineIndex][price_data][product_data][tax_code]"
     ] = 'txcd_99999999';
+
+}
 
     $lineIndex++;
 }
@@ -840,9 +856,13 @@ $stripeFields['cancel_url'] =
 $stripeFields['billing_address_collection'] =
     'auto';
 
-$stripeFields[
-    'shipping_address_collection[allowed_countries][0]'
-] = 'US';
+if ($merchandiseSubtotal > 0) {
+
+    $stripeFields[
+        'shipping_address_collection[allowed_countries][0]'
+    ] = 'US';
+
+}
 
 $stripeFields[
     'phone_number_collection[enabled]'
@@ -876,6 +896,7 @@ $stripeFields[
 | Expedited $14.95
 |--------------------------------------------------------------------------
 */
+if ($merchandiseSubtotal > 0) {
 
 if (
     $merchandiseSubtotal >= 15000
@@ -997,7 +1018,7 @@ $stripeFields[
 $stripeFields[
     'shipping_options[1][shipping_rate_data][delivery_estimate][maximum][value]'
 ] = 3;
-
+}
 /*
 |--------------------------------------------------------------------------
 | Create Stripe Checkout Session
