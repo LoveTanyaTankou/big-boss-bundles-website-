@@ -1518,7 +1518,72 @@ function renderClasses(){
     `;
 
 
-    classGrid.appendChild(card);
+       classGrid.appendChild(card);
+
+
+    const initialSeatMessage =
+      document.getElementById(
+        "seats-" + course.id
+      );
+
+    const initialButton =
+      document.getElementById(
+        "button-" + course.id
+      );
+
+
+    if(initialSeatMessage){
+
+      if(
+        firstSession.seatsRemaining <= 3 &&
+        firstSession.seatsRemaining > 0
+      ){
+        initialSeatMessage.classList.add(
+          "low"
+        );
+      }
+
+
+      if(
+        firstSession.seatsRemaining <= 0 ||
+        firstSession.status === "sold-out"
+      ){
+        initialSeatMessage.classList.add(
+          "sold"
+        );
+      }
+
+    }
+
+
+    if(initialButton){
+
+      if(
+        shouldShowWaitingList(
+          firstSession
+        )
+      ){
+        initialButton.classList.add(
+          "waiting-button"
+        );
+      }
+
+
+      if(
+        firstSession.status === "closed" ||
+        firstSession.status === "coming-soon"
+      ){
+
+        initialButton.classList.add(
+          "disabled-button"
+        );
+
+        initialButton.disabled = true;
+
+      }
+
+    }
+
 
   });
 
