@@ -387,6 +387,7 @@ $lineIndex = 0;
 $merchandiseSubtotal = 0;
 
 $academySessionId = '';
+$academyReservationToken = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -1257,6 +1258,239 @@ $stripeFields[
     'shipping_options[1][shipping_rate_data][delivery_estimate][maximum][value]'
 ] = 3;
 }
+
+/*
+|--------------------------------------------------------------------------
+| RESERVE BEAUTY ACADEMY SEAT BEFORE STRIPE CHECKOUT
+|--------------------------------------------------------------------------
+*/
+
+if ($academySessionId !== '') {
+
+    $academySeatFile =
+        dirname(__DIR__, 2) .
+        '/academy-private/academy-seats.json';
+
+    $academyReservationFile =
+        dirname(__DIR__, 2) .
+        '/academy-private/academy-reservations.json';
+
+    $academyLockFile =
+        dirname(__DIR__, 2) .
+        '/academy-private/academy-seat-inventory.lock';
+
+    $academyLockHandle =
+        fopen(
+            $academyLockFile,
+            'c'
+        );
+
+    if ($academyLockHandle === false) {
+        http_response_code(500);
+        echo json_encode([
+            'error' =>
+                'Unable to access Academy seat inventory.'
+        ]);
+        exit;
+    }
+
+    if (!flock($academyLockHandle, LOCK_EX)) {
+        fclose($academyLockHandle);
+
+        http_response_code(500);
+        echo json_encode([
+            'error' =>
+                'Unable to lock Academy seat inventory.'
+        ]);
+        exit;
+    }
+
+    $academySeatContents =
+        file_get_contents(
+            $academySeatFile
+        );
+
+    $academyReservationContents =
+        file_get_contents(
+            $academyReservationFile
+        );
+
+    $academySeats =
+        json_decode(
+            $academySeatContents,
+            true
+        );
+
+    $academyReservations =
+        json_decode(
+            $academyReservationContents,
+            true
+        );
+
+    if (
+        !is_array($academySeats) ||
+        !is_array($academyReservations) ||
+        !array_key_exists(
+            $academySessionId,
+            $academySeats
+        )
+    ) {
+        flock(
+            $academyLockHandle,
+            LOCK_UN
+        );
+
+        fclose(
+            $academyLockHandle
+        );
+
+        http_response_code(500);
+
+        echo json_encode([
+            'error' =>
+                'Academy seat inventory could not be verified.'
+        ]);
+
+        exit;
+    }
+
+    $currentAcademySeats =
+        intval(
+            $academySeats[
+                $academySessionId
+            ]
+        );
+
+    if ($currentAcademySeats <= 0) {
+
+        flock(
+            $academyLockHandle,
+            LOCK_UN
+        );
+
+        fclose(
+            $academyLockHandle
+        );
+
+        http_response_code(409);
+
+        echo json_encode([
+            'error' =>
+                'This Beauty Academy class is sold out. Please join the waiting list.'
+        ]);
+
+        exit;
+    }
+
+    try {
+
+        $academyReservationToken =
+            bin2hex(
+                random_bytes(16)
+            );
+
+    } catch (Throwable $e) {
+
+        flock(
+            $academyLockHandle,
+            LOCK_UN
+        );
+
+        fclose(
+            $academyLockHandle
+        );
+
+        http_response_code(500);
+
+        echo json_encode([
+            'error' =>
+                'Unable to create Academy reservation.'
+        ]);
+
+        exit;
+    }
+
+    $academySeats[
+        $academySessionId
+    ] =
+        $currentAcademySeats - 1;
+
+    $academyReservations[
+        $academyReservationToken
+    ] = [
+        'academy_session_id' =>
+            $academySessionId,
+
+        'status' =>
+            'reserved',
+
+        'created_at' =>
+            gmdate('c'),
+
+        'stripe_session_id' =>
+            ''
+    ];
+
+    $academySeatsSaved =
+        file_put_contents(
+            $academySeatFile,
+            json_encode(
+                $academySeats,
+                JSON_PRETTY_PRINT |
+                JSON_UNESCAPED_SLASHES
+            ),
+            LOCK_EX
+        );
+
+    $academyReservationsSaved =
+        file_put_contents(
+            $academyReservationFile,
+            json_encode(
+                $academyReservations,
+                JSON_PRETTY_PRINT |
+                JSON_UNESCAPED_SLASHES
+            ),
+            LOCK_EX
+        );
+
+    if (
+        $academySeatsSaved === false ||
+        $academyReservationsSaved === false
+    ) {
+
+        flock(
+            $academyLockHandle,
+            LOCK_UN
+        );
+
+        fclose(
+            $academyLockHandle
+        );
+
+        http_response_code(500);
+
+        echo json_encode([
+            'error' =>
+                'Academy reservation could not be saved.'
+        ]);
+
+        exit;
+    }
+
+    flock(
+        $academyLockHandle,
+        LOCK_UN
+    );
+
+    fclose(
+        $academyLockHandle
+    );
+
+    $stripeFields[
+        'metadata[academy_reservation_id]'
+    ] =
+        $academyReservationToken;
+}
 /*
 |--------------------------------------------------------------------------
 | Create Stripe Checkout Session
@@ -1324,6 +1558,115 @@ if (
     $curlError
 ) {
 
+    /*
+    |--------------------------------------------------------------------------
+    | RETURN RESERVED ACADEMY SEAT
+    |--------------------------------------------------------------------------
+    */
+
+    if ($academyReservationToken !== '') {
+
+        $academyLockHandle =
+            fopen(
+                $academyLockFile,
+                'c'
+            );
+
+        if (
+            $academyLockHandle !== false &&
+            flock(
+                $academyLockHandle,
+                LOCK_EX
+            )
+        ) {
+
+            $academySeats =
+                json_decode(
+                    file_get_contents(
+                        $academySeatFile
+                    ),
+                    true
+                );
+
+            $academyReservations =
+                json_decode(
+                    file_get_contents(
+                        $academyReservationFile
+                    ),
+                    true
+                );
+
+            if (
+                is_array($academySeats) &&
+                is_array($academyReservations) &&
+                isset(
+                    $academyReservations[
+                        $academyReservationToken
+                    ]
+                ) &&
+                $academyReservations[
+                    $academyReservationToken
+                ]['status'] === 'reserved' &&
+                array_key_exists(
+                    $academySessionId,
+                    $academySeats
+                )
+            ) {
+
+                $academySeats[
+                    $academySessionId
+                ] =
+                    min(
+                        7,
+                        intval(
+                            $academySeats[
+                                $academySessionId
+                            ]
+                        ) + 1
+                    );
+
+                $academyReservations[
+                    $academyReservationToken
+                ]['status'] =
+                    'released';
+
+                $academyReservations[
+                    $academyReservationToken
+                ]['released_at'] =
+                    gmdate('c');
+
+                file_put_contents(
+                    $academySeatFile,
+                    json_encode(
+                        $academySeats,
+                        JSON_PRETTY_PRINT |
+                        JSON_UNESCAPED_SLASHES
+                    ),
+                    LOCK_EX
+                );
+
+                file_put_contents(
+                    $academyReservationFile,
+                    json_encode(
+                        $academyReservations,
+                        JSON_PRETTY_PRINT |
+                        JSON_UNESCAPED_SLASHES
+                    ),
+                    LOCK_EX
+                );
+            }
+
+            flock(
+                $academyLockHandle,
+                LOCK_UN
+            );
+
+            fclose(
+                $academyLockHandle
+            );
+        }
+    }
+
     http_response_code(500);
 
     echo json_encode([
@@ -1354,6 +1697,115 @@ if (
         $stripeResponse['url']
     )
 ) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | RETURN RESERVED ACADEMY SEAT
+    |--------------------------------------------------------------------------
+    */
+
+    if ($academyReservationToken !== '') {
+
+        $academyLockHandle =
+            fopen(
+                $academyLockFile,
+                'c'
+            );
+
+        if (
+            $academyLockHandle !== false &&
+            flock(
+                $academyLockHandle,
+                LOCK_EX
+            )
+        ) {
+
+            $academySeats =
+                json_decode(
+                    file_get_contents(
+                        $academySeatFile
+                    ),
+                    true
+                );
+
+            $academyReservations =
+                json_decode(
+                    file_get_contents(
+                        $academyReservationFile
+                    ),
+                    true
+                );
+
+            if (
+                is_array($academySeats) &&
+                is_array($academyReservations) &&
+                isset(
+                    $academyReservations[
+                        $academyReservationToken
+                    ]
+                ) &&
+                $academyReservations[
+                    $academyReservationToken
+                ]['status'] === 'reserved' &&
+                array_key_exists(
+                    $academySessionId,
+                    $academySeats
+                )
+            ) {
+
+                $academySeats[
+                    $academySessionId
+                ] =
+                    min(
+                        7,
+                        intval(
+                            $academySeats[
+                                $academySessionId
+                            ]
+                        ) + 1
+                    );
+
+                $academyReservations[
+                    $academyReservationToken
+                ]['status'] =
+                    'released';
+
+                $academyReservations[
+                    $academyReservationToken
+                ]['released_at'] =
+                    gmdate('c');
+
+                file_put_contents(
+                    $academySeatFile,
+                    json_encode(
+                        $academySeats,
+                        JSON_PRETTY_PRINT |
+                        JSON_UNESCAPED_SLASHES
+                    ),
+                    LOCK_EX
+                );
+
+                file_put_contents(
+                    $academyReservationFile,
+                    json_encode(
+                        $academyReservations,
+                        JSON_PRETTY_PRINT |
+                        JSON_UNESCAPED_SLASHES
+                    ),
+                    LOCK_EX
+                );
+            }
+
+            flock(
+                $academyLockHandle,
+                LOCK_UN
+            );
+
+            fclose(
+                $academyLockHandle
+            );
+        }
+    }
 
     $stripeMessage =
         'Stripe could not create the checkout session.';
@@ -1386,7 +1838,6 @@ if (
 
     exit;
 }
-
 /*
 |--------------------------------------------------------------------------
 | Return Stripe Checkout URL
