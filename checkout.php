@@ -726,6 +726,8 @@ elseif (
 
     $class =
         $ACADEMY_CLASSES[$classSessionId];
+        $academySessionId =
+    $classSessionId;
 
 
     /*
@@ -1001,6 +1003,14 @@ if (strpos($productId, 'academy-') !== 0) {
 
 $stripeFields['mode'] =
     'payment';
+    
+    if ($academySessionId !== '') {
+
+    $stripeFields[
+        'metadata[academy_session_id]'
+    ] = $academySessionId;
+
+}
 
 $stripeFields['success_url'] =
     'https://bigbossbundles.com/success.html?session_id={CHECKOUT_SESSION_ID}';
