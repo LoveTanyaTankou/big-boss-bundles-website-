@@ -134,6 +134,65 @@ $BURMESE_SPECIALTY_TEXTURES = [
 
 /*
 |--------------------------------------------------------------------------
+| BIG BOSS BEAUTY ACADEMY
+|--------------------------------------------------------------------------
+| Authoritative server-side class pricing.
+| Prices are in cents.
+|--------------------------------------------------------------------------
+*/
+
+$ACADEMY_CLASSES = [
+
+    'september-2026' => [
+        'course' => 'Stitch Braids',
+        'date' => 'September 26, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 24900,
+        'adultPrice' => 29900
+    ],
+
+    'october-2026' => [
+        'course' => 'Quick Weave',
+        'date' => 'October 31, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 24900,
+        'adultPrice' => 29900
+    ],
+
+    'november-2026' => [
+        'course' => 'Sew In Installation',
+        'date' => 'November 28, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 27500,
+        'adultPrice' => 32500
+    ],
+
+    'december-2026' => [
+        'course' => 'Box Braids',
+        'date' => 'December 26, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 22500,
+        'adultPrice' => 27500
+    ],
+
+    'january-2027' => [
+        'course' => 'Cornrows Fundamentals',
+        'date' => 'January 30, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 19900,
+        'adultPrice' => 24900
+    ],
+
+    'february-2027' => [
+        'course' => 'Feed In Braids',
+        'date' => 'February 27, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 22500,
+        'adultPrice' => 27500
+    ]
+
+];
+|--------------------------------------------------------------------------
 | Read cart
 |--------------------------------------------------------------------------
 */
@@ -425,13 +484,278 @@ foreach ($input['items'] as $item) {
             );
 
     }
+       
+
+   /*
+|--------------------------------------------------------------------------
+| BIG BOSS BEAUTY ACADEMY REGISTRATION
+|--------------------------------------------------------------------------
+*/
+
+elseif (
+    strpos($productId, 'academy-') === 0
+) {
+
+    $classSessionId =
+        trim(
+            $item['classSessionId'] ?? ''
+        );
+
+    $studentType =
+        trim(
+            $item['studentType'] ?? ''
+        );
+
+    $studentAge =
+        intval(
+            $item['studentAge'] ?? 0
+        );
+
+    $studentName =
+        trim(
+            $item['studentName'] ?? ''
+        );
+
+    $studentEmail =
+        trim(
+            $item['studentEmail'] ?? ''
+        );
+
+    $studentPhone =
+        trim(
+            $item['studentPhone'] ?? ''
+        );
+
+    $parentName =
+        trim(
+            $item['parentName'] ?? ''
+        );
+
+    $parentPhone =
+        trim(
+            $item['parentPhone'] ?? ''
+        );
+
+    $parentEmail =
+        trim(
+            $item['parentEmail'] ?? ''
+        );
+
 
     /*
     |--------------------------------------------------------------------------
-    | UNKNOWN PRODUCT
+    | VERIFY CLASS SESSION
     |--------------------------------------------------------------------------
     */
 
+    if (
+        !isset(
+            $ACADEMY_CLASSES[$classSessionId]
+        )
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'That Beauty Academy class is not available.'
+        ]);
+
+        exit;
+    }
+
+
+    $class =
+        $ACADEMY_CLASSES[$classSessionId];
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFY PRODUCT ID MATCHES CLASS SESSION
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        $productId !==
+        'academy-' . $classSessionId
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Invalid Beauty Academy registration.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFY STUDENT AGE AND REGISTRATION TYPE
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        $studentAge >= 10 &&
+        $studentAge <= 16
+    ) {
+
+        if (
+            $studentType !== 'youth'
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Students ages 10 through 16 must use Youth registration.'
+            ]);
+
+            exit;
+        }
+
+
+        $unitAmount =
+            intval(
+                $class['youthPrice']
+            );
+
+    } elseif (
+        $studentAge >= 17
+    ) {
+
+        if (
+            $studentType !== 'adult'
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Students age 17 and older must use Adult registration.'
+            ]);
+
+            exit;
+        }
+
+
+        $unitAmount =
+            intval(
+                $class['adultPrice']
+            );
+
+    } else {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Beauty Academy students must be at least 10 years old.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | REQUIRE STUDENT INFORMATION
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        $studentName === '' ||
+        $studentEmail === '' ||
+        $studentPhone === ''
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Student registration information is incomplete.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | REQUIRE PARENT/GUARDIAN INFORMATION FOR YOUTH
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        $studentType === 'youth' &&
+        (
+            $parentName === '' ||
+            $parentPhone === '' ||
+            $parentEmail === ''
+        )
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Parent or guardian information is required for Youth registration.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | ONE REGISTRATION = ONE CLASS SEAT
+    |--------------------------------------------------------------------------
+    */
+
+    $quantity = 1;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | STRIPE PRODUCT INFORMATION
+    |--------------------------------------------------------------------------
+    */
+
+    $productName =
+        $class['course'] .
+        ' Masterclass';
+
+
+    $descriptionParts = [
+
+        'Class Date: ' .
+        $class['date'],
+
+        'Time: ' .
+        $class['time'],
+
+        'Student: ' .
+        $studentName,
+
+        'Age: ' .
+        $studentAge,
+
+        $studentType === 'youth'
+            ? 'Youth Ages 10–16'
+            : 'Adult Ages 17+'
+
+    ];
+
+
+    $description =
+        implode(
+            ' • ',
+            $descriptionParts
+        );
+
+}
     else {
 
         http_response_code(400);
