@@ -1,5 +1,6 @@
 <?php
 
+
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -143,52 +144,207 @@ $BURMESE_SPECIALTY_TEXTURES = [
 
 $ACADEMY_CLASSES = [
 
-    'september-2026' => [
+    '2026-09-26-stitch-braids' => [
         'course' => 'Stitch Braids',
         'date' => 'September 26, 2026',
         'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 24900,
-        'adultPrice' => 29900
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
     ],
 
-    'october-2026' => [
+    '2026-10-03-quick-weave' => [
         'course' => 'Quick Weave',
-        'date' => 'October 31, 2026',
+        'date' => 'October 3, 2026',
         'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 24900,
-        'adultPrice' => 29900
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
     ],
 
-    'november-2026' => [
+    '2026-10-10-wig-installation' => [
+        'course' => 'Wig Installation',
+        'date' => 'October 10, 2026',
+        'time' => '12:00 PM – 4:00 PM',
+        'youthPrice' => 40000,
+        'adultPrice' => 45000
+    ],
+
+    '2026-10-17-sew-in-installation' => [
         'course' => 'Sew In Installation',
-        'date' => 'November 28, 2026',
+        'date' => 'October 17, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 32500,
+        'adultPrice' => 37500
+    ],
+
+    '2026-10-24-feed-in-braids' => [
+        'course' => 'Feed In Braids',
+        'date' => 'October 24, 2026',
         'time' => '12:00 PM – 4:30 PM',
         'youthPrice' => 27500,
         'adultPrice' => 32500
     ],
 
-    'december-2026' => [
+    '2026-10-31-box-braids' => [
         'course' => 'Box Braids',
-        'date' => 'December 26, 2026',
+        'date' => 'October 31, 2026',
         'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 22500,
-        'adultPrice' => 27500
+        'youthPrice' => 27500,
+        'adultPrice' => 32500
     ],
 
-    'january-2027' => [
+    '2026-11-07-cornrows-fundamentals' => [
         'course' => 'Cornrows Fundamentals',
-        'date' => 'January 30, 2027',
+        'date' => 'November 7, 2026',
         'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 19900,
-        'adultPrice' => 24900
+        'youthPrice' => 24900,
+        'adultPrice' => 29900
     ],
 
-    'february-2027' => [
+    '2026-11-14-stitch-braids' => [
+        'course' => 'Stitch Braids',
+        'date' => 'November 14, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
+    ],
+
+    '2026-11-21-quick-weave' => [
+        'course' => 'Quick Weave',
+        'date' => 'November 21, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
+    ],
+
+    '2026-11-28-wig-installation' => [
+        'course' => 'Wig Installation',
+        'date' => 'November 28, 2026',
+        'time' => '12:00 PM – 4:00 PM',
+        'youthPrice' => 40000,
+        'adultPrice' => 45000
+    ],
+
+    '2026-12-05-sew-in-installation' => [
+        'course' => 'Sew In Installation',
+        'date' => 'December 5, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 32500,
+        'adultPrice' => 37500
+    ],
+
+    '2026-12-12-feed-in-braids' => [
         'course' => 'Feed In Braids',
+        'date' => 'December 12, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 27500,
+        'adultPrice' => 32500
+    ],
+
+    '2026-12-19-box-braids' => [
+        'course' => 'Box Braids',
+        'date' => 'December 19, 2026',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 27500,
+        'adultPrice' => 32500
+    ],
+
+    /* December 26, 2026 — No Class */
+    /* January 2, 2027 — No Class */
+
+    '2027-01-09-cornrows-fundamentals' => [
+        'course' => 'Cornrows Fundamentals',
+        'date' => 'January 9, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 24900,
+        'adultPrice' => 29900
+    ],
+
+    '2027-01-16-stitch-braids' => [
+        'course' => 'Stitch Braids',
+        'date' => 'January 16, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
+    ],
+
+    '2027-01-23-quick-weave' => [
+        'course' => 'Quick Weave',
+        'date' => 'January 23, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
+    ],
+
+    '2027-01-30-wig-installation' => [
+        'course' => 'Wig Installation',
+        'date' => 'January 30, 2027',
+        'time' => '12:00 PM – 4:00 PM',
+        'youthPrice' => 40000,
+        'adultPrice' => 45000
+    ],
+
+    '2027-02-06-sew-in-installation' => [
+        'course' => 'Sew In Installation',
+        'date' => 'February 6, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 32500,
+        'adultPrice' => 37500
+    ],
+
+    '2027-02-13-feed-in-braids' => [
+        'course' => 'Feed In Braids',
+        'date' => 'February 13, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 27500,
+        'adultPrice' => 32500
+    ],
+
+    '2027-02-20-box-braids' => [
+        'course' => 'Box Braids',
+        'date' => 'February 20, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 27500,
+        'adultPrice' => 32500
+    ],
+
+    '2027-02-27-cornrows-fundamentals' => [
+        'course' => 'Cornrows Fundamentals',
         'date' => 'February 27, 2027',
         'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 22500,
-        'adultPrice' => 27500
+        'youthPrice' => 24900,
+        'adultPrice' => 29900
+    ],
+
+    '2027-03-06-stitch-braids' => [
+        'course' => 'Stitch Braids',
+        'date' => 'March 6, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
+    ],
+
+    '2027-03-13-quick-weave' => [
+        'course' => 'Quick Weave',
+        'date' => 'March 13, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 29900,
+        'adultPrice' => 34900
+    ],
+
+    '2027-03-20-wig-installation' => [
+        'course' => 'Wig Installation',
+        'date' => 'March 20, 2027',
+        'time' => '12:00 PM – 4:00 PM',
+        'youthPrice' => 40000,
+        'adultPrice' => 45000
+    ],
+
+    '2027-03-27-sew-in-installation' => [
+        'course' => 'Sew In Installation',
+        'date' => 'March 27, 2027',
+        'time' => '12:00 PM – 4:30 PM',
+        'youthPrice' => 32500,
+        'adultPrice' => 37500
     ]
 
 ];
@@ -229,6 +385,8 @@ $stripeFields = [];
 $lineIndex = 0;
 
 $merchandiseSubtotal = 0;
+
+$academySessionId = '';
 
 /*
 |--------------------------------------------------------------------------
