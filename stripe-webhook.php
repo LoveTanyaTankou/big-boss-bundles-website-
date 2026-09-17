@@ -249,13 +249,13 @@ if (
 
 /*
 |--------------------------------------------------------------------------
-| ONLY HANDLE CHECKOUT COMPLETION
+| HANDLE ACADEMY CHECKOUT COMPLETION AND EXPIRATION
 |--------------------------------------------------------------------------
 */
 
 if (
-    $event['type'] !==
-    'checkout.session.completed'
+    $event['type'] !== 'checkout.session.completed' &&
+    $event['type'] !== 'checkout.session.expired'
 ) {
 
     http_response_code(200);
@@ -266,6 +266,7 @@ if (
     ]);
 
     exit;
+
 }
 
 
