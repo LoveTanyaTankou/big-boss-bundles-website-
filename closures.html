@@ -233,7 +233,182 @@
       opacity: 0.72;
     }
 
-    .footer {
+      /* =========================
+       LACE PRODUCTS
+    ========================== */
+
+    .lace-product-grid {
+      width: min(1180px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .lace-product-card {
+      overflow: hidden;
+      background: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: 22px;
+    }
+
+    .lace-product-image {
+      position: relative;
+      background: var(--white);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lace-product-image img {
+      display: block;
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+    }
+
+    .hd-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--teal);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .lace-product-copy {
+      padding: 28px;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .lace-product-copy h3 {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+    }
+
+    .lace-product-copy p {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.74);
+    }
+
+       .lace-size {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--teal);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+        /* =========================
+       PRODUCT IMAGE ZOOM
+    ========================== */
+
+    .lace-product-image img {
+      cursor: zoom-in;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.92);
+      overflow: auto;
+    }
+
+    .image-lightbox.active {
+      display: flex;
+    }
+
+    .image-lightbox img {
+      display: block;
+      max-width: 92vw;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+      transform-origin: center center;
+    }
+
+    .image-lightbox img.zoomed {
+      transform: scale(2);
+      cursor: zoom-out;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      z-index: 10000;
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+        /* =========================
+       FRONTAL PRODUCT OPTIONS
+    ========================== */
+
+    .frontal-option {
+      margin-top: 24px;
+      margin-bottom: 18px;
+      width: 100%;
+    }
+
+    .frontal-option label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .frontal-option select {
+      display: block;
+      width: 100%;
+      min-height: 54px;
+      padding: 0 48px 0 16px;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .frontal-option select:focus {
+      outline: 3px solid rgba(0, 166, 214, 0.28);
+      outline-offset: 2px;
+      border-color: var(--teal);
+    }.footer {
       padding: 58px 5% 25px;
       background: #050505;
       color: var(--white);
@@ -300,9 +475,11 @@
         gap: 13px 17px;
       }
 
-      .compare-grid,
+        .compare-grid,
+      .lace-product-grid,
       .footer-grid {
         grid-template-columns: 1fr;
+       
       }
 
       .section {
@@ -366,7 +543,7 @@
 
       <div class="compare-grid">
 
-        <div class="compare-card">
+      <a class="compare-card" href="#closures">
           <h3>HD Lace Closures</h3>
           <span class="sizes">2×6 • 4×4 • 5×5 • 6×6</span>
           <p>
@@ -374,9 +551,9 @@
             installation. They offer a natural finished appearance with
             less lace coverage than a frontal.
           </p>
-        </div>
+     </a>
 
-        <div class="compare-card">
+     <a class="compare-card" href="#frontals">
           <h3>HD Lace Frontals</h3>
           <span class="sizes">13×4 • 13×6</span>
           <p>
@@ -384,7 +561,7 @@
             lace area for parting and styling across the front of the
             installation.
           </p>
-        </div>
+     </a>
 
       </div>
     </section>
@@ -395,11 +572,172 @@
         <h2>Shop Closures</h2>
         <p>Available in 2×6, 4×4, 5×5 and 6×6 HD lace sizes.</p>
       </div>
+      <div class="lace-product-grid">
 
-      <div class="product-placeholder">
-        <h3>HD Lace Closure Collection</h3>
-        <p>Product selections will appear here.</p>
+        <article class="lace-product-card">
+               <div class="lace-product-image">
+            <span class="hd-badge">HD Lace</span>
+
+            <img
+              src="images/closures/2x6-hd-lace-closure-body-wave-1.jpeg"
+              alt="2x6 HD Lace Closure Body Wave Front View"
+            >
+
+      
+          </div>
+
+          <div class="lace-product-copy">
+            <h3>2×6 HD Lace Closure</h3>
+            <span class="lace-size">2×6 • Body Wave</span>
+                       <div class="frontal-option">
+              <label for="closureTexture2x6">Texture</label>
+              <select id="closureTexture2x6">
+                <option value="body-wave">Body Wave</option>
+                <option value="straight">Straight</option>
+                <option value="kinky-straight">Kinky Straight</option>
+                <option value="deep-wave">Deep Wave</option>
+                <option value="curly">Curly</option>
+                <option value="kinky-curly">Kinky Curly</option>
+              </select>
+            </div>             <div class="frontal-option">
+              <label for="closureSize2x6">Lace Size</label>
+              <select id="closureSize2x6">
+                <option value="2x6">2×6 HD Lace Closure</option>
+                <option value="4x4">4×4 HD Lace Closure</option>
+                <option value="5x5">5×5 HD Lace Closure</option>
+                <option value="6x6">6×6 HD Lace Closure</option>
+              </select>
+            </div>            <div class="frontal-option">
+              <label for="closureLength2x6">Length</label>
+              <select id="closureLength2x6">
+                <option value="12">12″</option>
+                <option value="14">14″</option>
+                <option value="16">16″</option>
+                <option value="18">18″</option>
+                <option value="20">20″</option>
+                <option value="22">22″</option>
+                <option value="24">24″</option>
+                <option value="26">26″</option>
+                <option value="28">28″</option>
+              </select>
+            </div>                         <div class="frontal-option">
+              <label for="closureColor2x6">Color</label>
+              <select id="closureColor2x6">
+                <option value="1 Jet Black">1 Jet Black</option>
+                <option value="1B Natural Black" selected>1B Natural Black</option>
+                <option value="2 Dark Brown">2 Dark Brown</option>
+                <option value="4 Medium Brown">4 Medium Brown</option>
+                <option value="27 Honey Blonde">27 Honey Blonde</option>
+                <option value="30 Auburn">30 Auburn</option>
+                <option value="33 Dark Auburn">33 Dark Auburn</option>
+                <option value="99J Burgundy">99J Burgundy</option>
+                <option value="613 Blonde">613 Blonde</option>
+                <option value="Platinum Blonde">Platinum Blonde</option>
+                <option value="P4/27 Highlight">P4/27 Highlight</option>
+                <option value="P1B/27 Highlight">P1B/27 Highlight</option>
+                <option value="P1B/30 Highlight">P1B/30 Highlight</option>
+                <option value="P1B/99J Highlight">P1B/99J Highlight</option>
+                <option value="Custom Color Consultation">Custom Color Consultation</option>
+                      </select>
+            </div>            <div class="frontal-option">
+              <label for="closureQuantity2x6">Quantity</label>
+              <select id="closureQuantity2x6">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div id="closurePrice2x6" style="
+              margin-top: 22px;
+              color: var(--gold);
+              font-family: Georgia, 'Times New Roman', serif;
+              font-size: 2rem;
+              font-weight: 900;
+            ">
+              $51.00
+            </div>            <button
+              type="button"
+              id="addClosure2x6ToBag"
+              style="
+                width: 100%;
+                margin-top: 22px;
+                padding: 16px 22px;
+                border: 2px solid var(--gold);
+                border-radius: 10px;
+                background: var(--gold);
+                color: var(--black);
+                font-size: 0.9rem;
+                font-weight: 900;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                cursor: pointer;
+              "
+            >
+              Add to Bag
+            </button>
+
+            
+          </div>
+        </article>
+  <article class="lace-product-card">
+  <div class="lace-product-image">
+    <span class="hd-badge">Size Guide</span>
+
+    <img
+      src="images/closures/hd-lace-closure-size-guide.png"
+      alt="HD Lace Closure Size Guide showing 2x6, 4x4, 5x5 and 6x6 closures"
+   style="width: 100%; height: auto; object-fit: contain;">
+</div><div id="selectedClosureSizeDisplay" style="
+  min-height: 420px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px 20px;
+">
+
+  <img
+    id="selectedClosureSizeImage"
+    src="images/closures/closure-size-2x6.png"
+    alt="2x6 HD Lace Closure Size"
+   style="
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  object-fit: contain;
+"
+  >
+
+  <div id="selectedClosureSizeLabel" style="
+    margin-top: 15px;
+    color: #d4a622;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  ">
+    2×6 HD Lace Closure
+  </div>
+
+</div>
+  <div class="lace-product-copy">
+    <h3>Closure Size Guide</h3>
+    <span class="lace-size">2×6 • 4×4 • 5×5 • 6×6</span>
+
+    <p>
+      Compare our HD lace closure sizes to choose the coverage
+      and parting space that works best for your desired style.
+    </p>
+  </div>
+</article>
+
       </div>
+      
     </section>
 
     <section class="section section-light" id="frontals">
@@ -409,9 +747,120 @@
         <p>Available in 13×4 and 13×6 HD lace sizes.</p>
       </div>
 
-      <div class="product-placeholder">
-        <h3>HD Lace Frontal Collection</h3>
-        <p>Product selections will appear here.</p>
+           <div class="lace-product-grid">
+
+        <article class="lace-product-card">
+          <div class="lace-product-image">
+            <span class="hd-badge">HD Lace</span>
+
+            <img
+              src="images/Frontal/frontal-body-wave.png"
+              alt="HD Lace Frontal Body Wave"
+            >
+
+            <img
+              src="images/Frontal/frontal-body-wave2.png"
+              alt="HD Lace Frontal Body Wave Alternate View"
+            >
+          </div>
+
+          <div class="lace-product-copy">
+            <h3>HD Lace Frontal</h3>
+            <span class="lace-size">13×4 • 13×6</span>
+              <div class="frontal-option">
+              <label for="frontalTexture">Texture</label>
+              <select id="frontalTexture">
+                <option value="body-wave">Body Wave</option>
+                <option value="straight">Straight</option>
+                <option value="kinky-straight">Kinky Straight</option>
+                <option value="deep-wave">Deep Wave</option>
+                <option value="curly">Curly</option>
+                <option value="kinky-curly">Kinky Curly</option>
+              </select>
+            </div>
+
+                        <div class="frontal-option">
+              <label for="frontalSize">Lace Size</label>
+              <select id="frontalSize">
+                <option value="13x4">13×4 HD Lace Frontal</option>
+                <option value="13x6">13×6 HD Lace Frontal</option>
+              </select>
+          </div>
+
+            <div class="frontal-option">
+              <label for="frontalLength">Length</label>
+              <select id="frontalLength">
+                <option value="14">14″</option>
+                <option value="16">16″</option>
+                <option value="18">18″</option>
+                <option value="20">20″</option>
+                <option value="22">22″</option>
+              </select>
+        </div>
+
+            <div class="frontal-option">
+              <label for="frontalColor">Color</label>
+              <select id="frontalColor">
+                <option value="1 Jet Black">1 Jet Black</option>
+                <option value="1B Natural Black" selected>1B Natural Black</option>
+                <option value="2 Dark Brown">2 Dark Brown</option>
+                <option value="4 Medium Brown">4 Medium Brown</option>
+                <option value="27 Honey Blonde">27 Honey Blonde</option>
+                <option value="30 Auburn">30 Auburn</option>
+                <option value="33 Dark Auburn">33 Dark Auburn</option>
+                <option value="99J Burgundy">99J Burgundy</option>
+                <option value="613 Blonde">613 Blonde</option>
+                <option value="Platinum Blonde">Platinum Blonde</option>
+                <option value="P4/27 Highlight">P4/27 Highlight</option>
+                <option value="P1B/27 Highlight">P1B/27 Highlight</option>
+                <option value="P1B/30 Highlight">P1B/30 Highlight</option>
+                <option value="P1B/99J Highlight">P1B/99J Highlight</option>
+                <option value="Custom Color Consultation">Custom Color Consultation</option>
+              </select>
+            </div>            <div class="frontal-option">
+              <label for="frontalQuantity">Quantity</label>
+              <select id="frontalQuantity">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div id="frontalPrice" style="
+              margin-top: 22px;
+              color: var(--gold);
+              font-family: Georgia, 'Times New Roman', serif;
+              font-size: 2rem;
+              font-weight: 900;
+            ">
+              $138.00
+            </div>            <button
+              type="button"
+              id="addFrontalToBag"
+              style="
+                width: 100%;
+                margin-top: 22px;
+                padding: 16px 22px;
+                border: 2px solid var(--gold);
+                border-radius: 10px;
+                background: var(--gold);
+                color: var(--black);
+                font-size: 0.9rem;
+                font-weight: 900;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                cursor: pointer;
+              "
+            >
+              Add to Bag
+            </button>
+
+           
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -453,6 +902,416 @@
       © 2026 Big Boss Bundles. All rights reserved.
     </div>
   </footer>
+
+  <!-- Product Image Lightbox -->
+  <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      type="button"
+      aria-label="Close enlarged image"
+    >
+      &times;
+    </button>
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt="Enlarged product image"
+    >
+  </div>
+
+  <script>
+    const productImages = document.querySelectorAll(".lace-product-image img");
+    const imageLightbox = document.getElementById("imageLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    productImages.forEach((image) => {
+      image.addEventListener("click", () => {
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        lightboxImage.classList.remove("zoomed");
+        imageLightbox.classList.add("active");
+        imageLightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    lightboxImage.addEventListener("click", (event) => {
+      event.stopPropagation();
+      lightboxImage.classList.toggle("zoomed");
+    });
+
+    function closeLightbox() {
+      imageLightbox.classList.remove("active");
+      lightboxImage.classList.remove("zoomed");
+      imageLightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    imageLightbox.addEventListener("click", (event) => {
+      if (event.target === imageLightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+    });
+      /* =========================
+       FRONTAL TEXTURE IMAGE SWITCHER
+    ========================== */
+
+    const frontalTexture = document.getElementById("frontalTexture");
+
+    const frontalImages = document.querySelectorAll(
+      "#frontals .lace-product-image img"
+    );
+
+    const frontalTextureImages = {
+      "body-wave": [
+        "images/Frontal/frontal-body-wave.png",
+        "images/Frontal/frontal-body-wave2.png"
+      ],
+
+      "straight": [
+        "images/Frontal/frontal-straight.png",
+        "images/Frontal/frontal-straight2.png"
+      ],
+
+      "kinky-straight": [
+        "images/Frontal/frontal-kinky-straight.png",
+        "images/Frontal/frontal-kinky-straight2.jpg"
+      ],
+
+      "deep-wave": [
+        "images/Frontal/frontal-deep-wave.png",
+        "images/Frontal/frontal-deep-wave2.png"
+      ],
+
+      "curly": [
+        "images/Frontal/frontal-curly.png",
+        "images/Frontal/frontal-curly2.PNG"
+      ],
+
+      "kinky-curly": [
+        "images/Frontal/frontal-kinky-curly.png",
+        "images/Frontal/frontal-kinky-curly2.png"
+      ]
+    };
+
+    const frontalTextureNames = {
+      "body-wave": "Body Wave",
+      "straight": "Straight",
+      "kinky-straight": "Kinky Straight",
+      "deep-wave": "Deep Wave",
+      "curly": "Curly",
+      "kinky-curly": "Kinky Curly"
+    };
+
+    frontalTexture.addEventListener("change", () => {
+      const selectedTexture = frontalTexture.value;
+      const selectedImages = frontalTextureImages[selectedTexture];
+      const textureName = frontalTextureNames[selectedTexture];
+
+      frontalImages[0].src = selectedImages[0];
+      frontalImages[1].src = selectedImages[1];
+
+      frontalImages[0].alt = `HD Lace Frontal ${textureName}`;
+      frontalImages[1].alt = `HD Lace Frontal ${textureName} Alternate View`;
+    });
+    /* =========================
+       FRONTAL SIZE SELECTOR
+    ========================== */
+
+    const frontalSize = document.getElementById("frontalSize");
+    const frontalSizeDisplay = document.querySelector(
+      "#frontals .lace-size"
+    );
+
+    frontalSize.addEventListener("change", () => {
+      const selectedSize = frontalSize.value;
+
+      if (selectedSize === "13x4") {
+        frontalSizeDisplay.textContent = "13×4 HD Lace Frontal";
+      }
+
+      if (selectedSize === "13x6") {
+        frontalSizeDisplay.textContent = "13×6 HD Lace Frontal";
+      }
+    });     /* =========================
+       CLOSURE TEXTURE SELECTORS
+    ========================== */
+
+    const closureTexture2x6 = document.getElementById("closureTexture2x6");
+  
+
+    const closureSizeDisplays = document.querySelectorAll(
+      "#closures .lace-size"
+    );
+
+    const closureTextureNames = {
+      "body-wave": "Body Wave",
+      "straight": "Straight",
+      "kinky-straight": "Kinky Straight",
+      "deep-wave": "Deep Wave",
+      "curly": "Curly",
+      "kinky-curly": "Kinky Curly"
+    };
+    const closureTextureImages = {
+      "body-wave": "images/closures/2x6-hd-lace-closure-body-wave-1.jpeg",
+      "straight": "images/closures/cambodian-straight-closure.jpg",
+      "kinky-straight": "images/closures/burmese-kinky-straight-closure-product.jpg",
+      "deep-wave": "images/closures/burmese-deep-wave-closure-product.jpg",
+      "curly": "images/closures/burmese-curly-closure-product.jpg",
+      "kinky-curly": "images/closures/burmese-kinky-curly-closure.jpg"
+    };
+
+    const closureProductImages = document.querySelectorAll(
+      "#closures .lace-product-image img"
+    );
+      closureTexture2x6.addEventListener("change", () => {
+      const selectedTexture = closureTexture2x6.value;
+      const textureName = closureTextureNames[selectedTexture];
+      const selectedSize = closureSize2x6.value;
+
+      const sizeNames = {
+        "2x6": "2×6",
+        "4x4": "4×4",
+        "5x5": "5×5",
+        "6x6": "6×6"
+      };
+
+      closureSizeDisplays[0].textContent =
+        `${sizeNames[selectedSize]} • ${textureName}`;
+
+      closureProductImages[0].src = closureTextureImages[selectedTexture];
+      closureProductImages[0].alt =
+        `${sizeNames[selectedSize]} HD Lace Closure ${textureName}`;
+    });
+
+      
+       /* =========================
+       2X6 CARD CLOSURE SIZE SELECTOR
+    ========================== */
+
+       const closureSize2x6 = document.getElementById("closureSize2x6");
+    const selectedClosureSizeImage = document.getElementById("selectedClosureSizeImage");
+    const selectedClosureSizeLabel = document.getElementById("selectedClosureSizeLabel");
+
+    const closureSizeImages = {
+      "2x6": "images/closures/closure-size-2x6.png",
+      "4x4": "images/closures/closure-size-4x4.png",
+      "5x5": "images/closures/closure-size-5x5.png",
+      "6x6": "images/closures/closure-size-6x6.png"
+    };
+
+    closureSize2x6.addEventListener("change", () => {
+      const selectedSize = closureSize2x6.value;
+      const textureName = closureTextureNames[closureTexture2x6.value];
+
+      const closureSizeNames = {
+        "2x6": "2×6",
+        "4x4": "4×4",
+        "5x5": "5×5",
+        "6x6": "6×6"
+      };
+
+      closureSizeDisplays[0].textContent =
+        `${closureSizeNames[selectedSize]} • ${textureName}`;
+
+      selectedClosureSizeImage.src = closureSizeImages[selectedSize];
+      selectedClosureSizeImage.alt =
+        `${closureSizeNames[selectedSize]} HD Lace Closure Size`;
+
+      selectedClosureSizeLabel.textContent =
+        `${closureSizeNames[selectedSize]} HD Lace Closure`;
+    });
+          /* =========================
+       CLOSURE PRICE CALCULATOR
+    ========================== */
+
+  
+    const closurePrice2x6 = document.getElementById("closurePrice2x6");
+
+    const closurePrices = {
+      "2x6": {
+        "12": 51,
+        "14": 63,
+        "16": 75,
+        "18": 87,
+        "20": 99,
+        "22": 111,
+        "24": 123,
+        "26": 135,
+        "28": 147
+      },
+      "4x4": {
+        "12": 63,
+        "14": 75,
+        "16": 87,
+        "18": 99,
+        "20": 111,
+        "22": 123,
+        "24": 135,
+        "26": 147,
+        "28": 159
+      },
+      "5x5": {
+        "12": 87,
+        "14": 99,
+        "16": 111,
+        "18": 123,
+        "20": 135,
+        "22": 147,
+        "24": 159,
+        "26": 171,
+        "28": 183
+      },
+      "6x6": {
+        "12": 99,
+        "14": 111,
+        "16": 123,
+        "18": 135,
+        "20": 147,
+        "22": 159,
+        "24": 171,
+        "26": 183,
+        "28": 195
+      }
+    };
+
+    function updateClosurePrice2x6() {
+      const selectedSize = closureSize2x6.value;
+      const selectedLength = closureLength2x6.value;
+      const price = closurePrices[selectedSize][selectedLength];
+
+      closurePrice2x6.textContent = `$${price.toFixed(2)}`;
+    }
+
+    closureSize2x6.addEventListener("change", updateClosurePrice2x6);
+    closureLength2x6.addEventListener("change", updateClosurePrice2x6);
+
+       updateClosurePrice2x6();
+
+    /* =========================
+       FIRST CLOSURE ADD TO BAG
+    ========================== */
+
+    const addClosure2x6ToBag = document.getElementById("addClosure2x6ToBag");
+    const closureColor2x6 = document.getElementById("closureColor2x6");
+    const closureQuantity2x6 = document.getElementById("closureQuantity2x6");
+
+    addClosure2x6ToBag.addEventListener("click", () => {
+      const selectedTexture = closureTexture2x6.value;
+      const selectedSize = closureSize2x6.value;
+      const selectedLength = closureLength2x6.value;
+      const selectedColor = closureColor2x6.value;
+      const quantity = parseInt(closureQuantity2x6.value, 10);
+      const price = closurePrices[selectedSize][selectedLength];
+
+      const sizeNames = {
+        "2x6": "2×6",
+        "4x4": "4×4",
+        "5x5": "5×5",
+        "6x6": "6×6"
+      };
+
+      window.BBBCart.add({
+        productId: "hd-lace-closure",
+        name: `${sizeNames[selectedSize]} HD Lace Closure`,
+        texture: closureTextureNames[selectedTexture],
+        length: selectedLength + '"',
+        color: selectedColor,
+        density: "",
+        laceSize: sizeNames[selectedSize],
+        quantity: quantity,
+        price: price,
+    image: closureTextureImages[selectedTexture]
+      });
+
+      window.location.href = "cart.html";
+    });
+       /* =========================
+       FRONTAL PRICE CALCULATOR
+    ========================== */
+
+    const frontalLength = document.getElementById("frontalLength");
+    const frontalPrice = document.getElementById("frontalPrice");
+
+    const frontalPrices = {
+      "13x4": {
+        "14": 138,
+        "16": 153,
+        "18": 171,
+        "20": 189,
+        "22": 213
+      },
+      "13x6": {
+        "14": 180,
+        "16": 195,
+        "18": 213,
+        "20": 234,
+        "22": 264
+      }
+    };
+
+    function updateFrontalPrice() {
+      const selectedSize = frontalSize.value;
+      const selectedLength = frontalLength.value;
+      const price = frontalPrices[selectedSize][selectedLength];
+
+      frontalPrice.textContent = `$${price.toFixed(2)}`;
+    }
+
+    frontalSize.addEventListener("change", updateFrontalPrice);
+    frontalLength.addEventListener("change", updateFrontalPrice);
+
+    updateFrontalPrice();
+
+    /* =========================
+       FRONTAL ADD TO BAG
+    ========================== */
+
+    const addFrontalToBag = document.getElementById("addFrontalToBag");
+    const frontalColor = document.getElementById("frontalColor");
+    const frontalQuantity = document.getElementById("frontalQuantity");
+
+    addFrontalToBag.addEventListener("click", () => {
+      const selectedTexture = frontalTexture.value;
+      const selectedSize = frontalSize.value;
+      const selectedLength = frontalLength.value;
+      const selectedColor = frontalColor.value;
+      const quantity = parseInt(frontalQuantity.value, 10);
+      const price = frontalPrices[selectedSize][selectedLength];
+
+      const sizeNames = {
+        "13x4": "13×4",
+        "13x6": "13×6"
+      };
+
+      window.BBBCart.add({
+        productId: "hd-lace-frontal",
+        name: `${sizeNames[selectedSize]} HD Lace Frontal`,
+        texture: frontalTextureNames[selectedTexture],
+        length: selectedLength + '"',
+        color: selectedColor,
+        density: "",
+        laceSize: sizeNames[selectedSize],
+        quantity: quantity,
+        price: price,
+        image: frontalTextureImages[selectedTexture][0]
+      });
+
+      window.location.href = "cart.html";
+    });
+
+  </script><script src="cart.js"></script>
 
 </body>
 </html>
