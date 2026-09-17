@@ -132,7 +132,112 @@ $BURMESE_SPECIALTY_TEXTURES = [
     'Kinky Curly'
 
 ];
+/*
+|--------------------------------------------------------------------------
+| HD LACE CLOSURE PRICING
+|--------------------------------------------------------------------------
+| Authoritative retail prices in cents.
+|--------------------------------------------------------------------------
+*/
 
+$HD_CLOSURE_PRICES = [
+
+    '2x6' => [
+        12 => 5100,
+        14 => 6300,
+        16 => 7500,
+        18 => 8700,
+        20 => 9900,
+        22 => 11100,
+        24 => 12300,
+        26 => 13500,
+        28 => 14700
+    ],
+
+    '4x4' => [
+        12 => 6300,
+        14 => 7500,
+        16 => 8700,
+        18 => 9900,
+        20 => 11100,
+        22 => 12300,
+        24 => 13500,
+        26 => 14700,
+        28 => 15900
+    ],
+
+    '5x5' => [
+        12 => 8700,
+        14 => 9900,
+        16 => 11100,
+        18 => 12300,
+        20 => 13500,
+        22 => 14700,
+        24 => 15900,
+        26 => 15900,
+        28 => 18300
+    ],
+
+    '6x6' => [
+        12 => 9900,
+        14 => 11100,
+        16 => 12300,
+        18 => 13500,
+        20 => 14700,
+        22 => 15900,
+        24 => 17100,
+        26 => 18300,
+        28 => 19500
+    ]
+
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| HD LACE FRONTAL PRICING
+|--------------------------------------------------------------------------
+| Authoritative retail prices in cents.
+|--------------------------------------------------------------------------
+*/
+
+$HD_FRONTAL_PRICES = [
+
+    '13x4' => [
+        14 => 13800,
+        16 => 15300,
+        18 => 17100,
+        20 => 18900,
+        22 => 21300
+    ],
+
+    '13x6' => [
+        14 => 18000,
+        16 => 19500,
+        18 => 21300,
+        20 => 23400,
+        22 => 26400
+    ]
+
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| HD LACE ALLOWED TEXTURES
+|--------------------------------------------------------------------------
+*/
+
+$HD_LACE_TEXTURES = [
+
+    'Straight',
+    'Kinky Straight',
+    'Body Wave',
+    'Deep Wave',
+    'Curly',
+    'Kinky Curly'
+
+];
 /*
 |--------------------------------------------------------------------------
 | BIG BOSS BEAUTY ACADEMY
@@ -643,6 +748,251 @@ foreach ($input['items'] as $item) {
                 $variationParts
             );
 
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | HD LACE CLOSURES
+    |--------------------------------------------------------------------------
+    */
+
+    elseif ($productId === 'hd-lace-closure') {
+
+        $texture =
+            trim(
+                $item['texture'] ?? ''
+            );
+
+           $laceSize =
+            str_replace(
+                '×',
+                'x',
+                strtolower(
+                    trim(
+                        $item['laceSize'] ?? ''
+                    )
+                )
+            );
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+        if (
+            !in_array(
+                $texture,
+                $HD_LACE_TEXTURES,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid HD lace closure texture.'
+            ]);
+
+            exit;
+        }
+
+        if (
+            !isset(
+                $HD_CLOSURE_PRICES[$laceSize]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That HD lace closure size is not available.'
+            ]);
+
+            exit;
+        }
+
+        if (
+            !isset(
+                $HD_CLOSURE_PRICES[$laceSize][$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That HD lace closure length is not available for the selected size.'
+            ]);
+
+            exit;
+        }
+
+        $unitAmount =
+            $HD_CLOSURE_PRICES[
+                $laceSize
+            ][
+                $length
+            ];
+
+        $productName =
+            strtoupper($laceSize) .
+            ' HD Lace Closure';
+
+        $descriptionParts = [
+            $texture,
+            $length . '"',
+            strtoupper($laceSize)
+        ];
+
+        if (
+            !empty(
+                $item['color']
+            )
+        ) {
+
+            $descriptionParts[] =
+                trim(
+                    $item['color']
+                );
+        }
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | HD LACE FRONTALS
+    |--------------------------------------------------------------------------
+    */
+
+    elseif ($productId === 'hd-lace-frontal') {
+
+              $texture =
+            trim(
+                $item['texture'] ?? ''
+            );
+
+        $laceSize =
+            str_replace(
+                '×',
+                'x',
+                strtolower(
+                    trim(
+                        $item['laceSize'] ?? ''
+                    )
+                )
+            );
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+        if (
+            !in_array(
+                $texture,
+                $HD_LACE_TEXTURES,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid HD lace frontal texture.'
+            ]);
+
+            exit;
+        }
+
+        if (
+            !isset(
+                $HD_FRONTAL_PRICES[$laceSize]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That HD lace frontal size is not available.'
+            ]);
+
+            exit;
+        }
+
+        if (
+            !isset(
+                $HD_FRONTAL_PRICES[$laceSize][$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That HD lace frontal length is not available for the selected size.'
+            ]);
+
+            exit;
+        }
+
+        $unitAmount =
+            $HD_FRONTAL_PRICES[
+                $laceSize
+            ][
+                $length
+            ];
+
+        $productName =
+            strtoupper($laceSize) .
+            ' HD Lace Frontal';
+
+        $descriptionParts = [
+            $texture,
+            $length . '"',
+            strtoupper($laceSize)
+        ];
+
+        if (
+            !empty(
+                $item['color']
+            )
+        ) {
+
+            $descriptionParts[] =
+                trim(
+                    $item['color']
+                );
+        }
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
     }
        
 
