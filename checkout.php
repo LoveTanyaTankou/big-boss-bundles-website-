@@ -1077,6 +1077,19 @@ if (strpos($productId, 'academy-') !== 0) {
 
 $stripeFields['mode'] =
     'payment';
+    /*
+|--------------------------------------------------------------------------
+| CHECKOUT SESSION EXPIRATION
+|--------------------------------------------------------------------------
+| Academy seats are held for 30 minutes while the customer pays.
+*/
+
+if ($academySessionId !== '') {
+
+    $stripeFields['expires_at'] =
+        time() + (30 * 60);
+
+}
     
     if ($academySessionId !== '') {
 
