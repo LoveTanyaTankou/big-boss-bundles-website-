@@ -504,6 +504,56 @@ if (
     exit;
 }
 
+/*
+|--------------------------------------------------------------------------
+| VERIFY ACADEMY RESERVATION
+|--------------------------------------------------------------------------
+*/
+
+if (
+    $academyReservationId === '' ||
+    !array_key_exists(
+        $academyReservationId,
+        $reservations
+    ) ||
+    !is_array(
+        $reservations[$academyReservationId]
+    )
+) {
+
+    flock($lockHandle, LOCK_UN);
+    fclose($lockHandle);
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'error' => 'Academy reservation not found.'
+    ]);
+
+    exit;
+}
+
+$reservation =
+    $reservations[$academyReservationId];
+
+if (
+    ($reservation['academy_session_id'] ?? '') !==
+    $academySessionId
+) {
+
+    flock($lockHandle, LOCK_UN);
+    fclose($lockHandle);
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'error' => 'Academy reservation does not match class.'
+    ]);
+
+    exit;
+}
 
 /*
 |--------------------------------------------------------------------------
