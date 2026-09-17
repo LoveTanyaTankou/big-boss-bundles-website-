@@ -1431,51 +1431,86 @@ if ($academySessionId !== '') {
             ''
     ];
 
-    $academySeatsSaved =
-        file_put_contents(
-            $academySeatFile,
-            json_encode(
-                $academySeats,
-                JSON_PRETTY_PRINT |
-                JSON_UNESCAPED_SLASHES
-            ),
-            LOCK_EX
-        );
+   $academyReservationsSaved =
+    file_put_contents(
+        $academyReservationFile,
+        json_encode(
+            $academyReservations,
+            JSON_PRETTY_PRINT |
+            JSON_UNESCAPED_SLASHES
+        ),
+        LOCK_EX
+    );
 
-    $academyReservationsSaved =
-        file_put_contents(
-            $academyReservationFile,
-            json_encode(
-                $academyReservations,
-                JSON_PRETTY_PRINT |
-                JSON_UNESCAPED_SLASHES
-            ),
-            LOCK_EX
-        );
+if ($academyReservationsSaved === false) {
 
-    if (
-        $academySeatsSaved === false ||
-        $academyReservationsSaved === false
-    ) {
+    flock(
+        $academyLockHandle,
+        LOCK_UN
+    );
 
-        flock(
-            $academyLockHandle,
-            LOCK_UN
-        );
+    fclose(
+        $academyLockHandle
+    );
 
-        fclose(
-            $academyLockHandle
-        );
+    http_response_code(500);
 
-        http_response_code(500);
+    echo json_encode([
+        'error' =>
+            'Academy reservation could not be saved.'
+    ]);
 
-        echo json_encode([
-            'error' =>
-                'Academy reservation could not be saved.'
-        ]);
+    exit;
+}
 
-        exit;
-    }
+$academySeatsSaved =
+    file_put_contents(
+        $academySeatFile,
+        json_encode(
+            $academySeats,
+            JSON_PRETTY_PRINT |
+            JSON_UNESCAPED_SLASHES
+        ),
+        LOCK_EX
+    );
+
+if ($academySeatsSaved === false) {
+
+    unset(
+        $academyReservations[
+            $academyReservationToken
+        ]
+    );
+
+    file_put_contents(
+        $academyReservationFile,
+        json_encode(
+            $academyReservations,
+            JSON_PRETTY_PRINT |
+            JSON_UNESCAPED_SLASHES
+        ),
+        LOCK_EX
+    );
+
+    flock(
+        $academyLockHandle,
+        LOCK_UN
+    );
+
+    fclose(
+        $academyLockHandle
+    );
+
+    http_response_code(500);
+
+    echo json_encode([
+        'error' =>
+            'Academy seat reservation could not be completed.'
+    ]);
+
+    exit;
+}
+
 
     flock(
         $academyLockHandle,
@@ -1693,9 +1728,8 @@ $stripeResponse =
 if (
     $httpCode < 200 ||
     $httpCode >= 300 ||
-    empty(
-        $stripeResponse['url']
-    )
+    empty($stripeResponse['url']) ||
+    empty($stripeResponse['id'])
 ) {
 
     /*
