@@ -26,6 +26,9 @@ $seatFile =
 $processedFile =
     dirname(__DIR__, 2) .
     '/academy-private/stripe-processed-events.json';
+    $reservationFile =
+    dirname(__DIR__, 2) .
+    '/academy-private/academy-reservations.json';
 
 
 /*
@@ -292,7 +295,6 @@ if (
 }
 
 
-/*
 /*
 |--------------------------------------------------------------------------
 | GET ACADEMY SESSION ID FROM STRIPE METADATA
