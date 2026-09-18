@@ -408,7 +408,30 @@
       outline: 3px solid rgba(0, 166, 214, 0.28);
       outline-offset: 2px;
       border-color: var(--teal);
-    }.footer {
+    }/* =========================
+   HAIR COLOR SWATCHES
+========================== */
+
+.closure-color-swatch {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #d8d8d8;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.closure-color-swatch:hover {
+  transform: scale(1.12);
+}
+
+.closure-color-swatch.selected {
+  border: 3px solid #d4a622;
+  outline: 2px solid #0a0a0a;
+  outline-offset: 2px;
+}.footer {
       padding: 58px 5% 25px;
       background: #050505;
       color: var(--white);
@@ -639,7 +662,117 @@
                 <option value="P1B/99J Highlight">P1B/99J Highlight</option>
                 <option value="Custom Color Consultation">Custom Color Consultation</option>
                       </select>
-            </div>            <div class="frontal-option">
+          </div>
+                <div id="closureColorChart" style="
+  margin-top: 12px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 10px;
+">
+
+  <div style="
+    margin-bottom: 9px;
+    color: #0a0a0a;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  ">
+    Selected Color:
+    <span id="closureSelectedColorName">1B Natural Black</span>
+  </div>
+
+  <div style="
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    align-items: center;
+  ">
+
+    <span class="closure-color-swatch" data-color="1 Jet Black"
+      title="1 Jet Black"
+      style="background:#050505;"></span>
+
+    <span class="closure-color-swatch selected" data-color="1B Natural Black"
+      title="1B Natural Black"
+      style="background:#16100d;"></span>
+
+    <span class="closure-color-swatch" data-color="2 Dark Brown"
+      title="2 Dark Brown"
+      style="background:#352218;"></span>
+
+    <span class="closure-color-swatch" data-color="4 Medium Brown"
+      title="4 Medium Brown"
+      style="background:#654321;"></span>
+
+    <span class="closure-color-swatch" data-color="27 Honey Blonde"
+      title="27 Honey Blonde"
+      style="background:#c88a35;"></span>
+
+    <span class="closure-color-swatch" data-color="30 Auburn"
+      title="30 Auburn"
+      style="background:#9a4e27;"></span>
+
+    <span class="closure-color-swatch" data-color="33 Dark Auburn"
+      title="33 Dark Auburn"
+      style="background:#6e321f;"></span>
+
+    <span class="closure-color-swatch" data-color="99J Burgundy"
+      title="99J Burgundy"
+      style="background:#5b1627;"></span>
+
+    <span class="closure-color-swatch" data-color="613 Blonde"
+      title="613 Blonde"
+      style="background:#e8c879;"></span>
+
+    <span class="closure-color-swatch" data-color="Platinum Blonde"
+      title="Platinum Blonde"
+      style="background:#eee5cf;"></span>
+
+    <span class="closure-color-swatch" data-color="P4/27 Highlight"
+      title="P4/27 Highlight"
+      style="background:linear-gradient(90deg,#654321 50%,#c88a35 50%);"></span>
+
+    <span class="closure-color-swatch" data-color="P1B/27 Highlight"
+      title="P1B/27 Highlight"
+      style="background:linear-gradient(90deg,#16100d 50%,#c88a35 50%);"></span>
+
+    <span class="closure-color-swatch" data-color="P1B/30 Highlight"
+      title="P1B/30 Highlight"
+      style="background:linear-gradient(90deg,#16100d 50%,#9a4e27 50%);"></span>
+
+    <span class="closure-color-swatch" data-color="P1B/99J Highlight"
+      title="P1B/99J Highlight"
+      style="background:linear-gradient(90deg,#16100d 50%,#5b1627 50%);"></span>
+
+    <span class="closure-color-swatch" data-color="Custom Color Consultation"
+      title="Custom Color Consultation"
+      style="background:linear-gradient(90deg,#d4a622,#00a6d6,#9a4e27,#5b1627);"></span>
+
+   </div>
+
+  <div id="closureColorModelPreview" style="
+    margin-top: 14px;
+    text-align: center;
+  ">
+    <img
+      id="closureColorModelImage"
+    src="images/hair-colors/1b-natural-black.jpg"
+      alt="1B Natural Black Hair Color"
+      style="
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 10px;
+      "
+    >
+  </div>
+
+</div>
+
+<div class="frontal-option">
               <label for="closureQuantity2x6">Quantity</label>
               <select id="closureQuantity2x6">
                 <option value="1" selected>1</option>
@@ -1206,6 +1339,67 @@
     const addClosure2x6ToBag = document.getElementById("addClosure2x6ToBag");
     const closureColor2x6 = document.getElementById("closureColor2x6");
     const closureQuantity2x6 = document.getElementById("closureQuantity2x6");
+    /* =========================
+   CLOSURE COLOR CHART
+========================== */
+
+const closureSelectedColorName =
+  document.getElementById("closureSelectedColorName");
+
+const closureColorSwatches =
+  document.querySelectorAll("#closureColorChart .closure-color-swatch");
+
+const closureColorModelImage =
+  document.getElementById("closureColorModelImage");
+
+const closureColorModelImages = {
+  "1 Jet Black": "images/hair-colors/1-jet-black.jpg",
+  "1B Natural Black": "images/hair-colors/1b-natural-black.jpg",
+  "2 Dark Brown": "images/hair-colors/2-dark-brown.jpg",
+  "4 Medium Brown": "images/hair-colors/4-medium-brown.jpg",
+  "27 Honey Blonde": "images/hair-colors/27-honey-blonde.jpg",
+  "30 Auburn": "images/hair-colors/30-auburn.jpg",
+  "33 Dark Auburn": "images/hair-colors/33-dark-auburn.jpg",
+  "99J Burgundy": "images/hair-colors/99j-burgundy.jpg",
+  "613 Blonde": "images/hair-colors/613-blonde.jpg",
+  "Platinum Blonde": "images/hair-colors/platinum-blonde.jpg",
+  "P4/27 Highlight": "images/hair-colors/p4-27-highlight.jpg",
+  "P1B/27 Highlight": "images/hair-colors/p1b-27-highlight.jpg",
+  "P1B/30 Highlight": "images/hair-colors/p1b-30-highlight.jpg",
+  "P1B/99J Highlight": "images/hair-colors/p1b-99j-highlight.jpg"
+};
+
+function updateClosureColorChart() {
+  const selectedColor = closureColor2x6.value;
+
+  closureSelectedColorName.textContent = selectedColor;
+
+  closureColorSwatches.forEach((swatch) => {
+    swatch.classList.toggle(
+      "selected",
+      swatch.dataset.color === selectedColor
+    );
+  });
+
+  if (closureColorModelImages[selectedColor]) {
+    closureColorModelImage.src = closureColorModelImages[selectedColor];
+    closureColorModelImage.alt = `${selectedColor} Hair Color`;
+    closureColorModelImage.style.display = "block";
+  } else {
+    closureColorModelImage.style.display = "none";
+  }
+}
+
+closureColor2x6.addEventListener("change", updateClosureColorChart);
+
+closureColorSwatches.forEach((swatch) => {
+  swatch.addEventListener("click", () => {
+    closureColor2x6.value = swatch.dataset.color;
+    updateClosureColorChart();
+  });
+});
+
+updateClosureColorChart();
 
     addClosure2x6ToBag.addEventListener("click", () => {
       const selectedTexture = closureTexture2x6.value;
