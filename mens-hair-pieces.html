@@ -1,193 +1,1021 @@
-<!DOCTYPE html>
+
+     <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Men's Hair Pieces | Big Boss Bundles</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="style.css">
+    <title>
+        Men's Hair Pieces | Big Boss Bundles
+    </title>
 
-</head>
+    <link rel="stylesheet" href="style.css">
 
-<body>
+   <style>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    :root {
+        --boss-gold: #D4A622;
+        --boss-teal: #00A6D6;
+        --boss-black: #0A0A0A;
+        --boss-white: #FFFFFF;
+        --boss-cream: #FAF8F3;
+        --boss-gray: #6B6B6B;
+        --boss-border: #E9E4DA;
+    }
 
-<title>Men's Hair Pieces | Big Boss Bundles</title>
+body {
+    margin: 0;
+    background: var(--boss-black);
+    color: var(--boss-white);
+    font-family: Arial, Helvetica, sans-serif;
+}
+    h1,
+h2,
+h3 {
+    font-family: Georgia, "Times New Roman", serif;
+}
 
-<link rel="stylesheet" href="style.css">
+.mens-section-title,
+.hair-system-info > h2,
+.measure-guide h2 {
+    color: var(--boss-gold);
+}
 
+    .mens-hair-page {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px 80px;
+    }
+
+    /* HERO */
+
+    .mens-hero {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        margin: 35px 0 65px;
+        padding: 55px 30px 45px;
+        background:
+            linear-gradient(
+                135deg,
+                #0A0A0A 0%,
+                #181818 100%
+            );
+        border-radius: 24px;
+        color: #ffffff;
+    }
+
+    .mens-hero::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(212, 166, 34, .13);
+        top: -140px;
+        right: -70px;
+    }
+
+    .mens-hero::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: rgba(0, 166, 214, .10);
+        bottom: -120px;
+        left: -70px;
+    }
+
+    .mens-hero h1 {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 12px;
+        font-size: clamp(36px, 5vw, 58px);
+        line-height: 1.05;
+        letter-spacing: -.5px;
+    }
+
+    .mens-hero h1::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        margin: 20px auto;
+        background: var(--boss-gold);
+    }
+
+    .mens-hero p {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        margin: 0 auto 32px;
+        font-size: 18px;
+        line-height: 1.7;
+        color: #f2f2f2;
+    }
+
+    .mens-hero-image {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 900px;
+        display: block;
+        margin: 30px auto 0;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow:
+            0 20px 55px rgba(0, 0, 0, .28);
+    }
+
+    /* SECTION HEADING */
+
+    .mens-section-title {
+        text-align: center;
+        margin: 65px 0 10px;
+        font-size: clamp(30px, 4vw, 42px);
+        line-height: 1.15;
+    }
+
+    .mens-section-title::after {
+        content: "";
+        display: block;
+        width: 65px;
+        height: 3px;
+        margin: 17px auto;
+        background: var(--boss-gold);
+    }
+
+    .mens-section-intro {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 42px;
+        color: var(--boss-gray);
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    /* PRODUCT GRID */
+
+    .hair-piece-grid {
+        display: grid;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 34px;
+    }
+
+   .hair-piece-card {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--boss-gold);
+    border-radius: 22px;
+    padding: 20px 20px 25px;
+    background: #151515;
+    color: var(--boss-white);
+    text-align: center;
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, .35);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+    .hair-piece-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+            0 18px 45px rgba(0, 0, 0, .12);
+    }
+.hair-piece-card::before {
+    content: "100% HUMAN HAIR";
+    position: absolute;
+    z-index: 2;
+    top: 18px;
+    left: 18px;
+    padding: 8px 12px;
+    background: var(--boss-gold);
+    color: var(--boss-black);
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+}
+       
+    .hair-piece-image {
+        width: 100%;
+        height: 390px;
+        object-fit: contain;
+        padding: 15px;
+        box-sizing: border-box;
+        background:
+            linear-gradient(
+                145deg,
+                #ffffff,
+                #faf8f3
+            );
+        cursor: zoom-in;
+        border-radius: 16px;
+        transition: transform .25s ease;
+    }
+
+    .hair-piece-image:hover {
+        transform: scale(1.025);
+    }
+.hair-piece-card h3 {
+    margin: 22px 0 7px;
+    color: var(--boss-gold);
+    font-size: 25px;
+    line-height: 1.2;
+}
+
+    .hair-piece-card h3::after {
+        content: "Premium Hair System";
+        display: block;
+        margin-top: 7px;
+        color: var(--boss-gray);
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: .4px;
+    }
+.hair-piece-price {
+    margin: 16px 0 20px;
+    color: var(--boss-gold);
+    font-size: 29px;
+    font-weight: 800;
+    }
+
+    .hair-piece-card label {
+        display: block;
+        margin: 16px 0 8px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .hair-piece-card select {
+        width: 100%;
+        min-height: 50px;
+        padding: 0 14px;
+        border: 1px solid #d6d6d6;
+        border-radius: 10px;
+        background: #ffffff;
+        color: #111111;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .hair-piece-card select:focus {
+        outline: 2px solid
+            rgba(0, 166, 214, .22);
+        border-color: var(--boss-teal);
+    }
+
+    .hair-piece-card button {
+        width: 100%;
+        min-height: 52px;
+        margin-top: 20px;
+        padding: 14px 18px;
+        border: 0;
+        border-radius: 10px;
+        background: var(--boss-teal);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: .2px;
+        cursor: pointer;
+        transition:
+            transform .2s ease,
+            opacity .2s ease;
+    }
+
+    .hair-piece-card button:hover {
+        transform: translateY(-2px);
+        opacity: .92;
+    }
+
+    /* MEASUREMENT GUIDE */
+
+    .measure-guide {
+    margin-top: 85px;
+    padding: 55px 35px;
+    background: #151515;
+    border: 2px solid var(--boss-gold);
+    border-radius: 24px;
+    text-align: center;
+}
+
+    .measure-guide h2 {
+        margin: 0 0 14px;
+        font-size: clamp(28px, 4vw, 38px);
+    }
+
+    .measure-guide h2::after {
+        content: "";
+        display: block;
+        width: 65px;
+        height: 3px;
+        margin: 16px auto;
+        background: var(--boss-gold);
+    }
+.measure-guide p {
+    max-width: 760px;
+    margin: 0 auto 30px;
+    color: #BBBBBB;
+    font-size: 17px;
+    line-height: 1.75;
+}
+    
+
+    .measure-guide img {
+        width: 100%;
+        max-width: 850px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow:
+            0 12px 35px rgba(0, 0, 0, .09);
+    }
+
+    /* INFORMATION */
+
+    .hair-system-info {
+        max-width: 1100px;
+        margin: 80px auto 0;
+    }
+
+    .hair-system-info > h2 {
+        margin-bottom: 35px;
+        text-align: center;
+        font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .hair-system-info > h2::after {
+        content: "";
+        display: block;
+        width: 65px;
+        height: 3px;
+        margin: 17px auto;
+        background: var(--boss-gold);
+    }
+.info-block {
+    margin-bottom: 18px;
+    padding: 26px 28px;
+    border: 1px solid #333333;
+    border-left: 4px solid var(--boss-gold);
+    border-radius: 14px;
+    background: #151515;
+    color: var(--boss-white);
+    box-shadow:
+        0 7px 25px rgba(0, 0, 0, .30);
+}
+    
+
+  .info-block h3 {
+    margin: 0 0 8px;
+    color: var(--boss-gold);
+    font-size: 21px;
+}
+    
+
+   .info-block p {
+    margin: 0;
+    color: #BBBBBB;
+    line-height: 1.75;
+}
+    
+
+    /* IMAGE ZOOM */
+
+    .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        padding: 25px;
+        background: rgba(0, 0, 0, .92);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-modal img {
+        max-width: 95%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 12px;
+        background: #ffffff;
+    }
+
+    .image-modal-close {
+        position: absolute;
+        top: 18px;
+        right: 28px;
+        color: #ffffff;
+        font-size: 42px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 750px) {
+
+        .mens-hair-page {
+            padding: 0 14px 60px;
+        }
+
+        .mens-hero {
+            margin-top: 20px;
+            padding: 40px 18px 28px;
+            border-radius: 18px;
+        }
+
+        .hair-piece-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .hair-piece-image {
+            height: 320px;
+        }
+
+        .measure-guide {
+            padding: 38px 18px;
+            border-radius: 18px;
+        }
+
+    }
+/* BIG BOSS BUNDLES HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #050505;
+    border-bottom: 2px solid #D4A622;
+}
+
+.header-inner {
+    width: min(1450px, 95%);
+    min-height: 92px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.logo {
+    width: 120px;
+    height: 80px;
+    object-fit: contain;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+header nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+header nav a:hover,
+header nav .active {
+    color: #D4A622;
+}
+
+header nav .bag {
+    padding: 11px 18px;
+    border: 1px solid #D4A622;
+    border-radius: 999px;
+    color: #D4A622;
+}
+
+@media (max-width: 1100px) {
+
+    .header-inner {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    header nav {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 700px) {
+
+    header {
+        position: static;
+    }
+}
+/* BIG BOSS BUNDLES FOOTER */
+
+footer {
+    padding: 45px 20px;
+    border-top: 1px solid #D4A622;
+    background: #050505;
+    text-align: center;
+}
+
+footer h2 {
+    margin: 0;
+    color: #D4A622;
+    font-family: Georgia, serif;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+footer p {
+    margin: 8px 0 0;
+    color: #AAAAAA;
+}
+</style>
 </head>
 
 <body>
 
 <header>
 
-<h1>Men's Hair Pieces</h1>
+    <div class="header-inner">
 
-<p>Premium Hair Systems</p>
+        <a href="index.html">
+
+            <img
+                class="logo"
+                src="images/Homepage Images/Owner Images/Lifestyle Images/Store Images/Branding/BigBossBundles-logo.jpg"
+                alt="Big Boss Bundles"
+            >
+
+        </a>
+
+        <nav>
+
+      <a href="index.html">Home</a>
+<a href="bundles.html">Bundles</a>
+<a href="wigs.html">Wigs</a>
+<a href="closures.html">Closures & Frontals</a>
+<a class="active" href="mens-hair-pieces.html">Men's Hair</a>
+<a href="hair-care.html">Hair Care</a>
+<a href="classes.html">Beauty Academy</a>
+
+<a class="bag" href="cart.html">
+    Bag (<span data-cart-count>0</span>)
+</a>
+
+        </nav>
+
+    </div>
 
 </header>
 
-<nav>
 
-<a href="index.html">Home</a>
+<main class="mens-hair-page">
 
-</nav>
+    <!-- HERO -->
 
-<section>
+    <section class="mens-hero">
 
-<section id="shop-now">
+        <h1>Afro Men's Hair Piece</h1>
 
-<h2>Choose Your Hair System</h2>
+        <p>
+            Premium human hair systems designed for a
+            natural appearance, comfortable fit and
+            professional customization.
+        </p>
 
-<label><strong>Texture</strong></label>
+        <img
+            src="images/mens-hair-pieces/mens-afro-toupee-texture-reference.png"
+            alt="Afro Men's Hair Piece Collection"
+            class="mens-hero-image"
+        >
 
-<select>
+    </section>
 
-<option>Afro</option>
 
-<option>Wavy</option>
+    <!-- PRODUCTS -->
 
-<option>Curly</option>
+    <section>
 
-</select>
+        <h2 class="mens-section-title">
+            Choose Your Hair Piece
+        </h2>
 
-<br><br>
+        <p class="mens-section-intro">
+            Choose the hair appearance you prefer,
+            then select the base dimensions needed
+            for your coverage area.
+        </p>
 
-<label><strong>Size</strong></label>
 
-<select>
+        <div class="hair-piece-grid">
 
-<option>4×4</option>
+            <!-- PRODUCT 1 -->
 
-<option>6×6</option>
+            <article class="hair-piece-card">
 
-<option>8×8</option>
+                <img
+                   src="images/mens-hair-pieces/mens-afro-toupee-style-a-4mm-top.png"
+                    alt="Afro Men's Hair Piece"
+                    class="hair-piece-image zoomable"
+                >
 
-<option>10×10</option>
+                <h3>Afro Men's Hair Piece</h3>
 
-<option>12×12</option>
+                <div class="hair-piece-price">
+                    $279.99
+                </div>
 
-</select>
+                <label>
+                    Choose Base Size
+                </label>
 
-<br><br>
+                <select class="base-size">
 
-<label><strong>Hair Color</strong></label>
+                    <option value="">
+                        Select Size
+                    </option>
 
-<select>
+                    <option>4" × 4"</option>
+                    <option>4" × 5"</option>
+                    <option>5" × 5"</option>
+                    <option>5" × 7"</option>
+                    <option>5" × 8"</option>
+                    <option>6" × 8"</option>
+                    <option>6" × 9"</option>
+                    <option>7" × 8"</option>
+                    <option>7" × 9"</option>
+                    <option>7" × 10"</option>
+                    <option>8" × 10"</option>
+                    <option>8" × 11"</option>
+                    <option>9" × 11"</option>
+                    <option>Custom Size</option>
 
-<option>Natural Black</option>
+                </select>
 
-<option>Jet Black (#1)</option>
+                <button type="button">
+                    Add to Bag
+                </button>
 
-<option>Off Black (#1B)</option>
+            </article>
 
-<option>Dark Brown (#2)</option>
 
-<option>Medium Brown (#4)</option>
+            <!-- PRODUCT 2 -->
 
-<option>Light Brown (#6)</option>
+            <article class="hair-piece-card">
 
-<option>20% Gray</option>
+                <img
+                  src="images/mens-hair-pieces/mens-afro-toupee-style-b-6mm-top.png"
+                    alt="Afro Men's Hair Piece"
+                    class="hair-piece-image zoomable"
+                >
 
-<option>30% Gray</option>
+                <h3>Afro Men's Hair Piece</h3>
 
-<option>40% Gray</option>
+                <div class="hair-piece-price">
+                    $279.99
+                </div>
 
-<option>50% Gray</option>
+                <label>
+                    Choose Base Size
+                </label>
 
-<option>60% Gray</option>
+                <select class="base-size">
 
-<option>70% Gray</option>
+                    <option value="">
+                        Select Size
+                    </option>
 
-<option>80% Gray</option>
+                    <option>4" × 4"</option>
+                    <option>4" × 5"</option>
+                    <option>5" × 5"</option>
+                    <option>5" × 7"</option>
+                    <option>5" × 8"</option>
+                    <option>6" × 8"</option>
+                    <option>6" × 9"</option>
+                    <option>7" × 8"</option>
+                    <option>7" × 9"</option>
+                    <option>7" × 10"</option>
+                    <option>8" × 10"</option>
+                    <option>8" × 11"</option>
+                    <option>9" × 11"</option>
+                    <option>Custom Size</option>
 
-<option>90% Gray</option>
+                </select>
 
-<option>100% Gray</option>
+                <button type="button">
+                    Add to Bag
+                </button>
 
-</select>
+            </article>
 
-<br><br>
 
-<h2>$279.99</h2>
+            <!-- PRODUCT 3 -->
 
-<p>Any Texture • Any Size</p>
+            <article class="hair-piece-card">
 
-<button>Add to Cart</button>
+                <img
+                    src="images/mens-hair-pieces/mens-afro-toupee-style-c-8mm-top.png"
+                    alt="Afro Men's Hair Piece"
+                    class="hair-piece-image zoomable"
+                >
 
-</section>
+                <h3>Afro Men's Hair Piece</h3>
 
-<p>
-Every Hair System
-<br><br>
-$279.99
-</p>
+                <div class="hair-piece-price">
+                    $279.99
+                </div>
 
-</section>
+                <label>
+                    Choose Base Size
+                </label>
+
+                <select class="base-size">
+
+                    <option value="">
+                        Select Size
+                    </option>
+
+                    <option>4" × 4"</option>
+                    <option>4" × 5"</option>
+                    <option>5" × 5"</option>
+                    <option>5" × 7"</option>
+                    <option>5" × 8"</option>
+                    <option>6" × 8"</option>
+                    <option>6" × 9"</option>
+                    <option>7" × 8"</option>
+                    <option>7" × 9"</option>
+                    <option>7" × 10"</option>
+                    <option>8" × 10"</option>
+                    <option>8" × 11"</option>
+                    <option>9" × 11"</option>
+                    <option>Custom Size</option>
+
+                </select>
+
+                <button type="button">
+                    Add to Bag
+                </button>
+
+            </article>
+
+
+            <!-- PRODUCT 4 -->
+
+            <article class="hair-piece-card">
+
+                <img
+                    src="images/mens-hair-pieces/mens-afro-toupee-style-d-12mm-top.png"
+                    alt="Afro Men's Hair Piece"
+                    class="hair-piece-image zoomable"
+                >
+
+                <h3>Afro Men's Hair Piece</h3>
+
+                <div class="hair-piece-price">
+                    $279.99
+                </div>
+
+                <label>
+                    Choose Base Size
+                </label>
+
+                <select class="base-size">
+
+                    <option value="">
+                        Select Size
+                    </option>
+
+                    <option>4" × 4"</option>
+                    <option>4" × 5"</option>
+                    <option>5" × 5"</option>
+                    <option>5" × 7"</option>
+                    <option>5" × 8"</option>
+                    <option>6" × 8"</option>
+                    <option>6" × 9"</option>
+                    <option>7" × 8"</option>
+                    <option>7" × 9"</option>
+                    <option>7" × 10"</option>
+                    <option>8" × 10"</option>
+                    <option>8" × 11"</option>
+                    <option>9" × 11"</option>
+                    <option>Custom Size</option>
+
+                </select>
+
+                <button type="button">
+                    Add to Bag
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEASUREMENT GUIDE -->
+
+    <section class="measure-guide">
+
+        <h2>How to Measure Your Hair System</h2>
+
+        <p>
+            Measure the area that needs coverage rather
+            than your entire head. Measure from your
+            desired front hairline to the back of the
+            coverage area, then measure side to side
+            across the widest part.
+        </p>
+
+        <img
+            src="images/mens-hair-pieces/mens-hair-piece-how-to-measure.png"
+            alt="How to measure for a men's hair piece"
+        >
+
+    </section>
+
+
+    <!-- PRODUCT INFORMATION -->
+
+    <section class="hair-system-info">
+
+        <h2>
+            Customize Your Hair System
+        </h2>
+
+        <div class="info-block">
+
+            <h3>Cut & Blend</h3>
+
+            <p>
+                Human hair systems can be professionally
+                cut, shaped and blended with your existing
+                hair. Clippers and professional shears can
+                be used to create fades, tapers and other
+                finished styles after installation.
+            </p>
+
+        </div>
+
+        <div class="info-block">
+
+            <h3>Color & Dye</h3>
+
+            <p>
+                Human hair can be professionally colored
+                to help achieve the desired shade and
+                blend. Professional coloring is recommended
+                because aggressive bleaching or repeated
+                chemical processing may shorten the life
+                of the hair system.
+            </p>
+
+        </div>
+
+        <div class="info-block">
+
+            <h3>Application</h3>
+
+            <p>
+                Hair systems may be installed using
+                professional hair-system adhesive or
+                hair-system tape. The scalp should be
+                properly cleaned and prepared before
+                installation. Carefully position the
+                system at the desired hairline and secure
+                it according to the bonding product's
+                instructions.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- IMAGE ZOOM -->
+
+<div
+    class="image-modal"
+    id="imageModal"
+>
+
+    <span
+        class="image-modal-close"
+        id="imageModalClose"
+    >
+        &times;
+    </span>
+
+    <img
+        id="imageModalPhoto"
+        src=""
+        alt="Hair Piece Enlarged View"
+    >
+
+</div>
+
+
+
 
 <footer>
 
-<p>© Big Boss Bundles</p>
-
-</footer>
-
-</body>
-</html>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-</nav>
-
-<section>
-
-<h2>Luxury Men's Hair Systems</h2>
-
-<p>
-Every Hair System
-<br><br>
-$279.99
-</p>
-
-</section>
-
-<footer>
-
-<p>© Big Boss Bundles</p>
-
-  <section class="measure-guide">
-
-    <h2>How to Measure Your Hair System</h2>
+    <h2>
+        Big Boss Bundles
+    </h2>
 
     <p>
-        Use a flexible measuring tape to determine the size of the area that needs coverage.
-        Measure from front to back, then side to side for the most accurate fit.
+        Pflugerville, Texas • Luxury Hair • Boss Beauty
     </p>
-
-    <img src="images/mens-hair-measure-guide.jpg"
-         alt="Hair System Measurement Guide">
-
-    <h3>Available Sizes</h3>
-
-    <ul>
-        <li>4×4</li>
-        <li>6×6</li>
-        <li>8×8</li>
-        <li>10×10</li>
-        <li>12×12</li>
-    </ul>
-
-</section>
 
 </footer>
 
+
+<script>
+
+    const zoomImages =
+        document.querySelectorAll(
+            '.zoomable'
+        );
+
+    const imageModal =
+        document.getElementById(
+            'imageModal'
+        );
+
+    const imageModalPhoto =
+        document.getElementById(
+            'imageModalPhoto'
+        );
+
+    const imageModalClose =
+        document.getElementById(
+            'imageModalClose'
+        );
+
+
+    zoomImages.forEach(
+        function(image) {
+
+            image.addEventListener(
+                'click',
+                function() {
+
+                    imageModalPhoto.src =
+                        this.src;
+
+                    imageModal.style.display =
+                        'flex';
+
+                }
+            );
+
+        }
+    );
+
+
+    imageModalClose.addEventListener(
+        'click',
+        function() {
+
+            imageModal.style.display =
+                'none';
+
+        }
+    );
+
+
+    imageModal.addEventListener(
+        'click',
+        function(event) {
+
+            if (
+                event.target === imageModal
+            ) {
+
+                imageModal.style.display =
+                    'none';
+
+            }
+
+        }
+    );
+
+</script>
+
 </body>
+
 </html>
+   
