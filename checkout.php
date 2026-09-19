@@ -131,6 +131,111 @@ $BURMESE_SPECIALTY_TEXTURES = [
     'Kinky Straight',
     'Kinky Curly'
 
+];/*
+|--------------------------------------------------------------------------
+| LUXURY WIG PRICING
+|--------------------------------------------------------------------------
+| Server-authoritative pricing.
+| Mirrors the pricing used by wigs.html.
+|--------------------------------------------------------------------------
+*/
+
+$WIG_MARKUP = 2.5;
+
+$WIG_COSTS_180 = [
+
+    '4x4' => [
+        18 => 65,
+        20 => 75,
+        22 => 91,
+        24 => 108,
+        26 => 128,
+        28 => 148,
+        30 => 173,
+        32 => 217
+    ],
+
+    '5x5' => [
+        18 => 69,
+        20 => 79,
+        22 => 95,
+        24 => 112,
+        26 => 132,
+        28 => 152,
+        30 => 177,
+        32 => 221
+    ],
+
+    '13x4' => [
+        18 => 75,
+        20 => 85,
+        22 => 100,
+        24 => 118,
+        26 => 138,
+        28 => 158,
+        30 => 183,
+        32 => 227
+    ],
+
+    '13x6' => [
+        18 => 83,
+        20 => 93,
+        22 => 108,
+        24 => 126,
+        26 => 146,
+        28 => 169,
+        30 => 193,
+        32 => 237
+    ]
+
+];
+
+$WIG_LONG_LENGTH_INCREASES = [
+    34 => 30,
+    36 => 60,
+    38 => 95,
+    40 => 135
+];
+
+$WIG_DENSITY_MULTIPLIERS = [
+    '180%' => 1.00,
+    '200%' => 1.12,
+    '250%' => 1.30
+];
+
+$WIG_TEXTURE_ADJUSTMENTS = [
+    'Straight' => 0,
+    'Body Wave' => 0,
+    'Deep Wave' => 5,
+    'Curly' => 5,
+    'Kinky Straight' => 10,
+    'Kinky Curly' => 10
+];
+
+$WIG_BRANDS = [
+    'Burmese',
+    'Cambodian',
+    'Indian',
+    'LAOS',
+    'Vietnamese'
+];
+
+$WIG_STANDARD_COLORS = [
+    '1 Jet Black',
+    '1B Natural Black',
+    '2 Dark Brown',
+    '4 Medium Brown',
+    '27 Honey Blonde',
+    '30 Auburn',
+    '33 Dark Auburn',
+    '99J Burgundy',
+    '613 Blonde',
+    'Platinum Blonde',
+    'P4/27 Highlight',
+    'P1B/27 Highlight',
+    'P1B/30 Highlight',
+    'P1B/99J Highlight',
+    'Honey Caramel Balayage'
 ];
 /*
 |--------------------------------------------------------------------------
@@ -995,7 +1100,335 @@ foreach ($input['items'] as $item) {
             );
     }
        
+/*
+|--------------------------------------------------------------------------
+| LUXURY WIGS
+|--------------------------------------------------------------------------
+| Server calculates the authoritative wig price.
+|--------------------------------------------------------------------------
+*/
 
+elseif ($productId === 'burmese-wig') {
+
+    $brand =
+        trim(
+            $item['brand'] ?? ''
+        );
+
+    $texture =
+        trim(
+            $item['texture'] ?? ''
+        );
+
+    $density =
+        trim(
+            $item['density'] ?? ''
+        );
+
+    $laceSize =
+        str_replace(
+            '×',
+            'x',
+            strtolower(
+                trim(
+                    $item['laceSize'] ?? ''
+                )
+            )
+        );
+
+    $lengthRaw =
+        $item['length'] ?? '';
+
+    $length =
+        intval(
+            preg_replace(
+                '/[^0-9]/',
+                '',
+                (string)$lengthRaw
+            )
+        );
+
+    $color =
+        trim(
+            $item['color'] ?? ''
+        );
+
+    $capSize =
+        trim(
+            $item['capSize'] ?? ''
+        );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFY BRAND
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        !in_array(
+            $brand,
+            $WIG_BRANDS,
+            true
+        )
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Invalid wig brand.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFY TEXTURE
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        !array_key_exists(
+            $texture,
+            $WIG_TEXTURE_ADJUSTMENTS
+        )
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Invalid wig texture.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFY DENSITY
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        !array_key_exists(
+            $density,
+            $WIG_DENSITY_MULTIPLIERS
+        )
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Invalid wig density.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFY LACE SIZE
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        !isset(
+            $WIG_COSTS_180[$laceSize]
+        )
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Invalid wig lace size.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFY LENGTH AND GET BASE COST
+    |--------------------------------------------------------------------------
+    */
+
+    if ($length <= 32) {
+
+        if (
+            !isset(
+                $WIG_COSTS_180[
+                    $laceSize
+                ][
+                    $length
+                ]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That wig length is not available.'
+            ]);
+
+            exit;
+        }
+
+        $baseCost =
+            $WIG_COSTS_180[
+                $laceSize
+            ][
+                $length
+            ];
+
+    } else {
+
+        if (
+            !isset(
+                $WIG_LONG_LENGTH_INCREASES[
+                    $length
+                ]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That wig length is not available.'
+            ]);
+
+            exit;
+        }
+
+        $baseCost =
+            $WIG_COSTS_180[
+                $laceSize
+            ][32] +
+            $WIG_LONG_LENGTH_INCREASES[
+                $length
+            ];
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | CALCULATE AUTHORITATIVE RETAIL PRICE
+    |--------------------------------------------------------------------------
+    */
+
+    $wigPrice =
+        $baseCost *
+        $WIG_MARKUP;
+
+    $wigPrice *=
+        $WIG_DENSITY_MULTIPLIERS[
+            $density
+        ];
+
+    $wigPrice +=
+        $WIG_TEXTURE_ADJUSTMENTS[
+            $texture
+        ];
+
+    $wigPrice =
+        ceil(
+            $wigPrice / 5
+        ) * 5;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | COLOR
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        $color !== '' &&
+        $color !== '1B Natural Black'
+    ) {
+
+        if (
+            !in_array(
+                $color,
+                $WIG_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid wig color.'
+            ]);
+
+            exit;
+        }
+
+        $wigPrice += 18;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | CONVERT DOLLARS TO CENTS FOR STRIPE
+    |--------------------------------------------------------------------------
+    */
+
+    $unitAmount =
+        intval(
+            round(
+                $wigPrice * 100
+            )
+        );
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | STRIPE PRODUCT INFORMATION
+    |--------------------------------------------------------------------------
+    */
+
+    $productName =
+        $brand .
+        ' Luxury Wig';
+
+    $descriptionParts = [
+        $texture,
+        $length . '"',
+        $density,
+        strtoupper($laceSize) . ' HD Lace'
+    ];
+
+    if ($capSize !== '') {
+
+        $descriptionParts[] =
+            'Cap: ' .
+            $capSize;
+    }
+
+    if ($color !== '') {
+
+        $descriptionParts[] =
+            $color;
+    }
+
+    $description =
+        implode(
+            ' • ',
+            $descriptionParts
+        );
+}
    /*
 |--------------------------------------------------------------------------
 | BIG BOSS BEAUTY ACADEMY REGISTRATION
