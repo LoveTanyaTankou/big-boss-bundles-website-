@@ -13,16 +13,16 @@
 
   <meta
     name="description"
-    content="Big Boss Bundles shipping policy covering processing times, shipping, tracking, delivery and local pickup."
+    content="Read the Big Boss Bundles Shipping Policy, including processing times, shipping, tracking, delivery, local pickup, damaged packages, and international shipping."
   >
 
   <style>
 
     :root {
-      --black:#0A0A0A;
-      --soft:#131313;
       --gold:#D4A622;
       --teal:#00A6D6;
+      --black:#0A0A0A;
+      --soft:#131313;
       --white:#FFFFFF;
       --gray:#C9C9C9;
       --border:rgba(255,255,255,.12);
@@ -39,9 +39,9 @@
     }
 
     body {
-      font-family:Arial, Helvetica, sans-serif;
       background:var(--black);
       color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
       line-height:1.7;
     }
 
@@ -49,6 +49,7 @@
       color:inherit;
       text-decoration:none;
     }
+
 
     /* HEADER */
 
@@ -95,6 +96,7 @@
       color:var(--gold);
     }
 
+
     /* HERO */
 
     .hero {
@@ -120,7 +122,6 @@
 
     .hero h1 {
       margin-top:10px;
-
       color:var(--gold);
 
       font-family:Georgia, "Times New Roman", serif;
@@ -130,12 +131,11 @@
     }
 
     .hero p {
-      width:min(760px,100%);
+      width:min(780px,100%);
       margin:18px auto 0;
 
       color:#DEDEDE;
       font-size:1.05rem;
-      line-height:1.7;
     }
 
     .effective-date {
@@ -154,9 +154,10 @@
       text-transform:uppercase;
     }
 
-    /* LAYOUT */
 
-    .policy-section-wrapper {
+    /* MAIN LAYOUT */
+
+    .policy-wrapper {
       padding:60px 5% 85px;
     }
 
@@ -168,6 +169,7 @@
       grid-template-columns:260px minmax(0,1fr);
       gap:35px;
     }
+
 
     /* SIDE MENU */
 
@@ -213,7 +215,8 @@
       color:var(--teal);
     }
 
-    /* MAIN CARD */
+
+    /* CONTENT */
 
     .policy-card {
       padding:45px;
@@ -224,9 +227,7 @@
       background:var(--soft);
     }
 
-    /* SUMMARY */
-
-    .summary-box {
+    .intro-box {
       margin-bottom:35px;
       padding:28px;
 
@@ -234,10 +235,12 @@
       border-radius:16px;
 
       background:#0D0D0D;
+
+      color:#E5E5E5;
     }
 
-    .summary-box h2 {
-      margin-bottom:15px;
+    .intro-box h2 {
+      margin-bottom:14px;
 
       color:var(--gold);
 
@@ -245,16 +248,13 @@
       font-size:1.8rem;
     }
 
-    .summary-box p {
+    .intro-box p {
       margin-bottom:10px;
-      color:#E2E2E2;
     }
 
-    .summary-box p:last-child {
+    .intro-box p:last-child {
       margin-bottom:0;
     }
-
-    /* POLICY SECTIONS */
 
     .policy-section {
       padding:35px 0;
@@ -269,8 +269,8 @@
     }
 
     .policy-section:last-child {
-      border-bottom:0;
       padding-bottom:0;
+      border-bottom:0;
     }
 
     .policy-section h2 {
@@ -290,8 +290,8 @@
       color:var(--teal);
 
       font-size:1rem;
-      text-transform:uppercase;
       letter-spacing:.05em;
+      text-transform:uppercase;
     }
 
     .policy-section p {
@@ -309,13 +309,14 @@
       padding-left:4px;
     }
 
+
     /* NOTICE */
 
     .notice-box {
       margin:22px 0;
       padding:24px;
 
-      border-left:5px solid var(--teal);
+      border-left:5px solid var(--gold);
       border-radius:8px;
 
       background:#0D0D0D;
@@ -326,6 +327,7 @@
     .notice-box strong {
       color:var(--gold);
     }
+
 
     /* CONTACT */
 
@@ -364,6 +366,7 @@
       color:var(--gold);
     }
 
+
     /* FOOTER */
 
     footer {
@@ -400,6 +403,7 @@
       color:var(--gold);
     }
 
+
     /* MOBILE */
 
     @media(max-width:850px) {
@@ -428,7 +432,7 @@
         padding:55px 6% 40px;
       }
 
-      .policy-section-wrapper {
+      .policy-wrapper {
         padding:35px 4% 60px;
       }
 
@@ -449,6 +453,7 @@
 
 <body>
 
+
   <!-- HEADER -->
 
   <header>
@@ -457,11 +462,17 @@
 
       <nav>
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+          Home
+        </a>
 
-        <a href="bundles.html">Bundles</a>
+        <a href="bundles.html">
+          Bundles
+        </a>
 
-        <a href="wigs.html">Wigs</a>
+        <a href="wigs.html">
+          Wigs
+        </a>
 
         <a href="closures.html">
           Closures &amp; Frontals
@@ -495,7 +506,7 @@
   <section class="hero">
 
     <p class="eyebrow">
-      Order Fulfillment
+      Order Fulfillment &amp; Delivery
     </p>
 
     <h1>
@@ -503,9 +514,9 @@
     </h1>
 
     <p>
-      This policy explains our processing times, shipping methods,
-      delivery responsibilities, tracking procedures, and local
-      pickup requirements.
+      This Shipping Policy explains Big Boss Bundles processing
+      times, shipping procedures, tracking, delivery, local
+      pickup, damaged packages, and international shipping.
     </p>
 
     <span class="effective-date">
@@ -517,7 +528,7 @@
 
   <!-- POLICY -->
 
-  <main class="policy-section-wrapper">
+  <main class="policy-wrapper">
 
     <div class="policy-layout">
 
@@ -526,13 +537,15 @@
 
       <aside class="policy-menu">
 
-        <h2>On This Page</h2>
+        <h2>
+          On This Page
+        </h2>
 
         <a href="#processing">
           Processing Times
         </a>
 
-        <a href="#shipping-time">
+        <a href="#delivery">
           Shipping &amp; Delivery
         </a>
 
@@ -552,7 +565,7 @@
           Shipping Delays
         </a>
 
-        <a href="#lost-stolen">
+        <a href="#lost">
           Lost or Stolen Packages
         </a>
 
@@ -564,7 +577,7 @@
           Local Pickup
         </a>
 
-        <a href="#marketplaces">
+        <a href="#marketplace">
           Marketplace Orders
         </a>
 
@@ -584,11 +597,11 @@
       <article class="policy-card">
 
 
-        <!-- SUMMARY -->
+        <div class="intro-box">
 
-        <div class="summary-box">
-
-          <h2>Shipping Summary</h2>
+          <h2>
+            Shipping Summary
+          </h2>
 
           <p>
             Products currently available locally may be eligible
@@ -598,7 +611,8 @@
 
           <p>
             Orders not immediately available generally require
-            approximately <strong>7–10 business days</strong>
+            approximately
+            <strong>7–10 business days</strong>
             for processing and fulfillment.
           </p>
 
@@ -612,9 +626,14 @@
 
         <!-- 1 -->
 
-        <section class="policy-section" id="processing">
+        <section
+          class="policy-section"
+          id="processing"
+        >
 
-          <h2>1. Order Processing Times</h2>
+          <h2>
+            1. Order Processing Times
+          </h2>
 
           <p>
             Processing begins after payment has been successfully
@@ -666,7 +685,10 @@
 
         <!-- 2 -->
 
-        <section class="policy-section" id="shipping-time">
+        <section
+          class="policy-section"
+          id="delivery"
+        >
 
           <h2>
             2. Shipping and Estimated Delivery
@@ -705,9 +727,14 @@
 
         <!-- 3 -->
 
-        <section class="policy-section" id="tracking">
+        <section
+          class="policy-section"
+          id="tracking"
+        >
 
-          <h2>3. Tracking Information</h2>
+          <h2>
+            3. Tracking Information
+          </h2>
 
           <p>
             When tracking is available, the customer will receive
@@ -719,8 +746,8 @@
           <p>
             Tracking information may take time to update after a
             shipping label is created. A label created status
-            does not necessarily mean the carrier has physically
-            scanned or accepted the package.
+            does not necessarily mean that the carrier has
+            physically scanned or accepted the package.
           </p>
 
           <p>
@@ -734,9 +761,14 @@
 
         <!-- 4 -->
 
-        <section class="policy-section" id="address">
+        <section
+          class="policy-section"
+          id="address"
+        >
 
-          <h2>4. Shipping Address Accuracy</h2>
+          <h2>
+            4. Shipping Address Accuracy
+          </h2>
 
           <p>
             Customers are responsible for submitting a complete
@@ -776,9 +808,14 @@
 
         <!-- 5 -->
 
-        <section class="policy-section" id="signature">
+        <section
+          class="policy-section"
+          id="signature"
+        >
 
-          <h2>5. Signature Confirmation</h2>
+          <h2>
+            5. Signature Confirmation
+          </h2>
 
           <p>
             Big Boss Bundles may require signature confirmation
@@ -803,7 +840,10 @@
 
         <!-- 6 -->
 
-        <section class="policy-section" id="delays">
+        <section
+          class="policy-section"
+          id="delays"
+        >
 
           <h2>
             6. Unexpected Shipping or Fulfillment Delays
@@ -853,7 +893,10 @@
 
         <!-- 7 -->
 
-        <section class="policy-section" id="lost-stolen">
+        <section
+          class="policy-section"
+          id="lost"
+        >
 
           <h2>
             7. Lost, Missing, or Stolen Packages
@@ -892,7 +935,10 @@
 
         <!-- 8 -->
 
-        <section class="policy-section" id="damaged">
+        <section
+          class="policy-section"
+          id="damaged"
+        >
 
           <h2>
             8. Packages Damaged During Shipping
@@ -928,9 +974,14 @@
 
         <!-- 9 -->
 
-        <section class="policy-section" id="pickup">
+        <section
+          class="policy-section"
+          id="pickup"
+        >
 
-          <h2>9. Local Pickup</h2>
+          <h2>
+            9. Local Pickup
+          </h2>
 
           <p>
             Local pickup may be available at:
@@ -952,20 +1003,25 @@
 
             <p style="margin-top:12px;margin-bottom:0;">
               Placing an order online does not guarantee that the
-              selected item is currently available locally or
-              ready for immediate pickup. Customers must call
-              ahead and wait for confirmation that the order is
-              ready before arriving.
+              selected item, length, texture, color, or other
+              options are currently available locally or ready
+              for immediate pickup. Customers must call ahead and
+              wait for confirmation that the order is ready
+              before arriving.
             </p>
 
           </div>
 
           <p>
             Online local pickup orders may require approximately
-            <strong>7–10 business days</strong> for processing
-            and fulfillment. Custom colors, customized products,
-            specialty products, extended lengths, and other
-            selections may require additional preparation time.
+            <strong>7–10 business days</strong>
+            for processing and fulfillment.
+          </p>
+
+          <p>
+            Custom colors, customized products, specialty
+            products, extended lengths, and other selections may
+            require additional preparation time.
           </p>
 
           <p>
@@ -1006,7 +1062,10 @@
 
         <!-- 10 -->
 
-        <section class="policy-section" id="marketplaces">
+        <section
+          class="policy-section"
+          id="marketplace"
+        >
 
           <h2>
             10. Marketplace Orders
@@ -1031,9 +1090,14 @@
 
         <!-- 11 -->
 
-        <section class="policy-section" id="international">
+        <section
+          class="policy-section"
+          id="international"
+        >
 
-          <h2>11. International Shipping</h2>
+          <h2>
+            11. International Shipping
+          </h2>
 
           <p>
             International shipping may be offered only to
@@ -1067,7 +1131,9 @@
 
         <section class="policy-section">
 
-          <h2>12. Policy Updates</h2>
+          <h2>
+            12. Policy Updates
+          </h2>
 
           <p>
             Big Boss Bundles may update this Shipping Policy as
@@ -1086,9 +1152,14 @@
 
         <!-- 13 -->
 
-        <section class="policy-section" id="contact">
+        <section
+          class="policy-section"
+          id="contact"
+        >
 
-          <h2>13. Contact Big Boss Bundles</h2>
+          <h2>
+            13. Contact Big Boss Bundles
+          </h2>
 
           <p>
             Contact us with shipping, tracking, fulfillment, or
@@ -1097,7 +1168,9 @@
 
           <div class="contact-box">
 
-            <h3>Big Boss Bundles</h3>
+            <h3>
+              Big Boss Bundles
+            </h3>
 
             <p>
               301 W Pecan Street<br>
@@ -1123,6 +1196,7 @@
           </div>
 
         </section>
+
 
       </article>
 
@@ -1168,6 +1242,7 @@
     </div>
 
   </footer>
+
 
 </body>
 
