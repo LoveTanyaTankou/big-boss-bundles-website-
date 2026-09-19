@@ -1,65 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burmese Hair Collection | Big Boss Bundles</title>
-  <meta name="description" content="Shop luxury Burmese hair from Big Boss Bundles in straight, body wave, deep wave, curly, kinky straight and kinky curly textures.">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Burmese Hair Collection | Big Boss Bundles
+  </title>
+
+  <meta
+    name="description"
+    content="Shop premium double drawn Burmese hair bundles from Big Boss Bundles in Straight, Body Wave, Deep Wave, Curly, Kinky Straight and Kinky Curly."
+  >
+
   <style>
+
     :root {
-      --black:#0a0a0a;
-      --soft:#151515;
-      --gold:#d4a622;
-      --teal:#00a6d6;
-      --white:#ffffff;
-      --cream:#f7f5ef;
-      --muted:#bdbdbd;
+      --black:#0A0A0A;
+      --soft:#131313;
+      --soft2:#191919;
+      --gold:#D4A622;
+      --teal:#00A6D6;
+      --white:#FFFFFF;
+      --gray:#BDBDBD;
     }
 
-    * { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; }
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html {
+      scroll-behavior:smooth;
+    }
+
     body {
       font-family:Arial, Helvetica, sans-serif;
       background:var(--black);
       color:var(--white);
-      line-height:1.5;
     }
-    img { display:block; max-width:100%; }
-    a { color:inherit; text-decoration:none; }
-    button, select, input { font:inherit; }
+
+    img {
+      display:block;
+      max-width:100%;
+    }
+
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    select,
+    input {
+      font:inherit;
+    }
+
+
+    /* =====================================================
+       ANNOUNCEMENT
+    ===================================================== */
 
     .announcement {
-      padding:10px 5%;
-      background:var(--teal);
+      background:#050505;
+      color:var(--gold);
       text-align:center;
-      font-size:.76rem;
+
+      padding:10px 16px;
+
+      border-bottom:1px solid var(--gold);
+
+      font-size:.82rem;
       font-weight:900;
-      letter-spacing:.11em;
+      letter-spacing:.14em;
       text-transform:uppercase;
     }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
 
     header {
       position:sticky;
       top:0;
-      z-index:100;
-      background:rgba(10,10,10,.97);
+      z-index:1000;
+
+      background:rgba(5,5,5,.98);
+
       border-bottom:2px solid var(--gold);
-      backdrop-filter:blur(12px);
     }
 
     .header-inner {
-      width:min(1250px,92%);
+      width:min(1380px,94%);
       margin:auto;
-      padding:16px 0;
+
+      min-height:92px;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:28px;
+
+      gap:30px;
     }
 
     .logo {
-      width:180px;
-      max-height:72px;
+      width:115px;
+      height:82px;
+
       object-fit:contain;
     }
 
@@ -67,1378 +121,2321 @@
       display:flex;
       align-items:center;
       justify-content:flex-end;
-      gap:20px;
+
       flex-wrap:wrap;
-      font-size:.76rem;
+
+      gap:28px;
+
+      font-size:.82rem;
       font-weight:900;
+
       letter-spacing:.07em;
       text-transform:uppercase;
     }
 
-    nav a:hover { color:var(--teal); }
+    nav a {
+      transition:.2s ease;
+    }
+
+    nav a:hover {
+      color:var(--gold);
+    }
 
     .cart-pill {
-      padding:9px 14px;
-      border:1px solid var(--gold);
+      border:2px solid var(--gold);
+
       border-radius:999px;
+
+      padding:11px 18px;
+
       color:var(--gold);
     }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .hero {
-      min-height:650px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      align-items:center;
-      background:
-        radial-gradient(circle at 73% 28%, rgba(0,166,214,.20), transparent 33%),
-        linear-gradient(135deg, #040404, #111);
-      overflow:hidden;
-    }
+      text-align:center;
 
-    .hero-copy { padding:72px max(5vw,40px); }
+      padding:55px 5% 38px;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(0,166,214,.14),
+          transparent 32%
+        ),
+        #080808;
+    }
 
     .eyebrow {
+      display:block;
+
       color:var(--teal);
-      font-size:.78rem;
+
+      font-size:.82rem;
       font-weight:900;
-      letter-spacing:.2em;
+
+      letter-spacing:.25em;
       text-transform:uppercase;
     }
 
-    h1, h2 {
+    .hero h1 {
+      margin-top:9px;
+
       font-family:Georgia, "Times New Roman", serif;
-      text-transform:uppercase;
-    }
 
-    h1 {
-      margin-top:10px;
       color:var(--gold);
-      font-size:clamp(3.2rem,7vw,7.3rem);
-      line-height:.9;
-    }
 
-    .hero-copy p {
-      max-width:640px;
-      margin-top:24px;
-      color:#dddddd;
-      font-size:1.08rem;
-    }
+      font-size:clamp(3rem,6vw,5.5rem);
 
-    .hero-actions {
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:28px;
-    }
+      letter-spacing:.08em;
 
-    .button, .add-cart {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border:2px solid var(--gold);
-      border-radius:999px;
-      padding:14px 23px;
-      background:var(--gold);
-      color:var(--black);
-      font-weight:900;
       text-transform:uppercase;
-      letter-spacing:.06em;
-      cursor:pointer;
-      transition:transform .2s ease, box-shadow .2s ease;
     }
 
-    .button:hover, .add-cart:hover {
-      transform:translateY(-2px);
-      box-shadow:0 10px 24px rgba(212,166,34,.22);
+    .hero p {
+      width:min(840px,100%);
+
+      margin:16px auto 0;
+
+      color:#E4E4E4;
+
+      font-size:1.05rem;
+
+      line-height:1.6;
     }
 
-    .button.secondary {
-      background:transparent;
-      color:var(--white);
-      border-color:var(--white);
+    .hero strong {
+      color:var(--gold);
     }
 
-    .hero-image {
-      height:650px;
+
+    /* =====================================================
+       MAIN PRODUCT BUILDER
+    ===================================================== */
+
+    .builder-section {
+      padding:20px 5% 70px;
+    }
+
+    .builder {
+      width:min(1380px,100%);
+      margin:auto;
+
+      display:grid;
+
+      grid-template-columns:
+        minmax(360px,.9fr)
+        minmax(520px,1.4fr);
+
+      overflow:hidden;
+
+      border:2px solid var(--gold);
+
+      border-radius:26px;
+
+      background:linear-gradient(
+        145deg,
+        #111,
+        #080808
+      );
+
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.4);
+    }
+
+
+    /* =====================================================
+       IMAGE
+    ===================================================== */
+
+    .product-image-area {
+      position:relative;
+
+      background:#111;
+
+      min-height:760px;
+    }
+
+    .main-image {
       width:100%;
+      height:100%;
+
+      min-height:760px;
+
       object-fit:cover;
       object-position:top center;
     }
 
-    .category-bar {
-      background:var(--cream);
-      color:var(--black);
-      padding:22px 5%;
+    .image-actions {
+      position:absolute;
+
+      right:20px;
+      bottom:20px;
+
       display:flex;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
+      gap:10px;
     }
 
-    .category-bar a {
-      padding:10px 18px;
-      border:1px solid var(--black);
+    .image-btn {
+      border:1px solid var(--gold);
+
+      background:rgba(0,0,0,.9);
+
+      color:#FFF;
+
       border-radius:999px;
+
+      padding:11px 18px;
+
       font-weight:900;
+
+      cursor:pointer;
+    }
+
+
+    /* =====================================================
+       PRODUCT CONFIGURATION
+    ===================================================== */
+
+    .config {
+      padding:38px 38px 34px;
+    }
+
+    .collection-label {
+      color:var(--teal);
+
+      font-size:.8rem;
+      font-weight:900;
+
+      letter-spacing:.18em;
       text-transform:uppercase;
-      font-size:.76rem;
     }
 
-    .category-bar a:hover {
+    .product-title {
+      margin-top:6px;
+
+      color:var(--gold);
+
+      font-family:Georgia, "Times New Roman", serif;
+
+      font-size:clamp(2rem,3.4vw,3rem);
+
+      text-transform:uppercase;
+    }
+
+    .product-description {
+      margin-top:10px;
+
+      color:#D0D0D0;
+
+      line-height:1.6;
+
+      font-size:1rem;
+    }
+
+    .divider {
+      margin:26px 0;
+
+      height:1px;
+
+      background:#353535;
+    }
+
+
+    /* =====================================================
+       OPTION GROUPS
+    ===================================================== */
+
+    .option-group {
+      margin-top:24px;
+    }
+
+    .option-heading {
+      margin-bottom:11px;
+
+      display:flex;
+      align-items:center;
+
+      gap:9px;
+
+      color:#FFF;
+
+      font-size:.85rem;
+      font-weight:900;
+
+      text-transform:uppercase;
+    }
+
+    .step-number {
+      width:25px;
+      height:25px;
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      background:var(--gold);
+      color:#000;
+
+      border-radius:50%;
+
+      font-size:.75rem;
+    }
+
+
+    /* =====================================================
+       TEXTURE BUTTONS
+    ===================================================== */
+
+    .texture-grid {
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+      gap:10px;
+    }
+
+    .texture-btn {
+      min-height:54px;
+
+      border:1px solid #6B5413;
+
+      border-radius:10px;
+
+      background:#0B0B0B;
+
+      color:#FFF;
+
+      padding:10px;
+
+      font-size:.83rem;
+      font-weight:900;
+
+      cursor:pointer;
+
+      text-transform:uppercase;
+
+      transition:.2s ease;
+    }
+
+    .texture-btn:hover {
+      border-color:var(--gold);
+
+      transform:translateY(-1px);
+    }
+
+    .texture-btn.active {
+      background:var(--gold);
+      color:#000;
+
+      border-color:var(--gold);
+    }
+
+
+    /* =====================================================
+       LENGTH BUTTONS
+    ===================================================== */
+
+    .length-grid {
+      display:grid;
+
+      grid-template-columns:
+        repeat(6,minmax(0,1fr));
+
+      gap:10px;
+    }
+
+    .length-btn {
+      min-height:50px;
+
+      border:1px solid #555;
+
+      border-radius:9px;
+
+      background:#090909;
+
+      color:#FFF;
+
+      font-size:.95rem;
+      font-weight:900;
+
+      cursor:pointer;
+
+      transition:.2s ease;
+    }
+
+    .length-btn:hover {
+      border-color:var(--gold);
+    }
+
+    .length-btn.active {
+      background:var(--gold);
+
+      border-color:var(--gold);
+
+      color:#000;
+    }
+
+
+    /* =====================================================
+       COLOR
+    ===================================================== */
+
+    .color-select {
+      width:100%;
+
+      padding:15px 16px;
+
+      border:1px solid #555;
+
+      border-radius:10px;
+
+      background:#090909;
+
+      color:#FFF;
+    }
+
+
+    /* =====================================================
+       QUANTITY
+    ===================================================== */
+
+    .quantity-control {
+      width:190px;
+
+      display:grid;
+
+      grid-template-columns:
+        52px 1fr 52px;
+
+      border:1px solid #555;
+
+      border-radius:10px;
+
+      overflow:hidden;
+    }
+
+    .qty-btn {
+      border:0;
+
+      background:#111;
+
+      color:var(--gold);
+
+      font-size:1.7rem;
+
+      font-weight:900;
+
+      cursor:pointer;
+    }
+
+    .qty-value {
+      border:0;
+
+      border-left:1px solid #333;
+      border-right:1px solid #333;
+
+      background:#090909;
+
+      color:#FFF;
+
+      text-align:center;
+
+      font-size:1.15rem;
+
+      font-weight:900;
+
+      width:100%;
+    }
+
+
+    /* =====================================================
+       PRICE AND BAG
+    ===================================================== */
+
+    .purchase-row {
+      margin-top:34px;
+
+      display:grid;
+
+      grid-template-columns:
+        190px 1fr;
+
+      align-items:center;
+
+      gap:20px;
+    }
+
+    .price {
+      color:var(--gold);
+
+      font-size:2.4rem;
+
+      font-weight:900;
+    }
+
+    .per-bundle {
+      color:#AFAFAF;
+
+      font-size:.8rem;
+      margin-top:3px;
+    }
+
+    .add-cart {
+      min-height:62px;
+
+      border:0;
+
+      border-radius:11px;
+
       background:var(--teal);
-      border-color:var(--teal);
-      color:white;
+
+      color:#FFF;
+
+      font-size:1rem;
+      font-weight:900;
+
+      text-transform:uppercase;
+
+      cursor:pointer;
+
+      transition:.2s ease;
     }
 
-    .section { padding:82px 5%; }
+    .add-cart:hover {
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 12px 30px rgba(0,166,214,.25);
+    }
+
+    .pricing-note {
+      margin-top:18px;
+
+      padding-top:15px;
+
+      border-top:1px solid #303030;
+
+      color:#C5C5C5;
+
+      text-align:center;
+
+      font-size:.82rem;
+    }
+
+
+    /* =====================================================
+       TEXTURE COLLECTION
+    ===================================================== */
+
+    .texture-section {
+      padding:70px 5%;
+
+      background:#050505;
+    }
 
     .section-heading {
-      width:min(860px,100%);
-      margin:0 auto 42px;
+      width:min(820px,100%);
+      margin:0 auto 35px;
+
       text-align:center;
     }
 
     .section-heading h2 {
       margin-top:8px;
+
       color:var(--gold);
-      font-size:clamp(2.4rem,5vw,4.7rem);
-      line-height:1;
+
+      font-family:Georgia, "Times New Roman", serif;
+
+      font-size:clamp(2.3rem,5vw,4rem);
+
+      text-transform:uppercase;
     }
 
-    .section-heading p {
-      max-width:720px;
-      margin:18px auto 0;
-      color:var(--muted);
-    }
+    .texture-showcase {
+      width:min(1380px,100%);
 
-    .product-grid {
-      width:min(1240px,100%);
       margin:auto;
+
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:26px;
+
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+      gap:24px;
     }
 
-    .product-card {
+    .texture-card {
       overflow:hidden;
-      border:2px solid var(--gold);
-      border-radius:24px;
-      background:var(--soft);
-      box-shadow:0 16px 40px rgba(0,0,0,.25);
-      transition:transform .25s ease;
-    }
 
-    .product-card:hover { transform:translateY(-5px); }
+      border:1px solid rgba(212,166,34,.75);
 
-    .image-wrap {
-      position:relative;
-      height:430px;
+      border-radius:20px;
+
       background:#111;
-      overflow:hidden;
+
+      cursor:pointer;
+
+      transition:.25s ease;
     }
 
-    .display-image {
+    .texture-card:hover {
+      transform:translateY(-5px);
+
+      border-color:var(--teal);
+    }
+
+    .texture-card img {
       width:100%;
-      height:100%;
+      height:330px;
+
       object-fit:cover;
       object-position:top center;
-      transition:transform .35s ease;
     }
 
-    .product-card:hover .display-image { transform:scale(1.09); }
-
-    .image-error {
-      position:absolute;
-      inset:0;
-      place-items:center;
-      padding:25px;
-      color:#aaa;
-      text-align:center;
-      background:#111;
+    .texture-card-copy {
+      padding:22px;
     }
 
-    .image-error:not([hidden]) { display:grid; }
-
-    .image-toggle {
-      position:absolute;
-      right:14px;
-      bottom:14px;
-      padding:10px 14px;
-      border:0;
-      border-radius:999px;
-      background:rgba(10,10,10,.88);
-      color:white;
-      font-weight:800;
-      cursor:pointer;
-    }
-
-    .product-copy { padding:24px; }
-
-    .collection-label {
-      color:var(--teal)!important;
-      font-size:.7rem!important;
-      font-weight:900;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-    }
-
-    .product-copy h3 {
-      margin-top:5px;
+    .texture-card h3 {
       color:var(--gold);
-      font-size:1.45rem;
+
+      font-size:1.25rem;
+
       text-transform:uppercase;
     }
 
-    .product-copy > p {
-      margin-top:8px;
-      color:var(--muted);
-      font-size:.92rem;
+    .texture-card p {
+      margin-top:7px;
+
+      color:#BDBDBD;
+
+      line-height:1.5;
     }
 
-    label {
-      display:block;
-      margin-top:15px;
-      color:#eeeeee;
-      font-size:.78rem;
-      font-weight:800;
+    .select-texture {
+      display:inline-block;
+
+      margin-top:14px;
+
+      color:var(--teal);
+
+      font-size:.82rem;
+
+      font-weight:900;
+
       text-transform:uppercase;
     }
 
-    select, input {
-      width:100%;
-      margin-top:6px;
-      padding:12px;
-      border:1px solid #454545;
-      border-radius:10px;
-      background:#0e0e0e;
-      color:white;
+
+    /* =====================================================
+       BENEFITS
+    ===================================================== */
+
+    .benefits {
+      padding:65px 5%;
+
+      background:#FFF;
+
+      color:#000;
     }
 
-    .hidden { display:none!important; }
+    .benefit-grid {
+      width:min(1100px,100%);
 
-    .buy-row {
-      display:grid;
-      grid-template-columns:85px 1fr;
-      gap:12px;
-      align-items:end;
-      margin-top:18px;
-    }
-
-    .buy-row label { margin:0; }
-
-    .add-cart {
-      width:100%;
-      border-radius:10px;
-      padding:13px;
-    }
-
-    .pricing-note {
-      margin-top:12px!important;
-      color:#888!important;
-      font-size:.74rem!important;
-      text-align:center;
-    }
-
-    .story-grid {
-      width:min(1120px,100%);
       margin:auto;
+
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:24px;
     }
 
-    .story-card {
+    .benefit-card {
       padding:30px;
-      border:1px solid rgba(212,166,34,.65);
-      border-radius:20px;
-      background:var(--soft);
+
+      border:1px solid #E3E3E3;
+
+      border-radius:18px;
+
       text-align:center;
     }
 
-    .story-card strong {
-      display:block;
-      color:var(--gold);
-      font-size:1.05rem;
+    .benefit-card h3 {
+      color:#9B7415;
+
       text-transform:uppercase;
     }
 
-    .story-card p {
+    .benefit-card p {
       margin-top:10px;
-      color:var(--muted);
+
+      color:#444;
+
+      line-height:1.6;
     }
 
-    .care-grid {
-      width:min(1050px,100%);
-      margin:auto;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-    }
 
-    .care-box {
-      padding:28px;
-      border-radius:18px;
-      background:var(--cream);
-      color:var(--black);
-    }
-
-    .care-box h3 {
-      color:#8b6814;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-
-    .care-box p { color:#333; }
-
-    .faq {
-      width:min(900px,100%);
-      margin:auto;
-    }
-
-    details {
-      margin-bottom:12px;
-      border:1px solid rgba(212,166,34,.55);
-      border-radius:14px;
-      background:var(--soft);
-      padding:18px 20px;
-    }
-
-    summary {
-      color:var(--gold);
-      font-weight:900;
-      cursor:pointer;
-    }
-
-    details p {
-      margin-top:12px;
-      color:#d3d3d3;
-    }
+    /* =====================================================
+       FOOTER
+    ===================================================== */
 
     footer {
-      padding:50px 5% 25px;
-      border-top:1px solid rgba(212,166,34,.45);
+      padding:45px 5%;
+
       background:#050505;
-    }
 
-    .footer-grid {
-      width:min(1150px,100%);
-      margin:auto;
-      display:grid;
-      grid-template-columns:1.4fr 1fr 1fr;
-      gap:35px;
-    }
+      border-top:1px solid rgba(212,166,34,.4);
 
-    footer h3, footer h4 {
-      color:var(--gold);
-      margin-bottom:10px;
-    }
-
-    footer p, footer a {
-      display:block;
-      color:#aaaaaa;
-      margin:7px 0;
-    }
-
-    .copyright {
-      width:min(1150px,100%);
-      margin:30px auto 0;
-      padding-top:18px;
-      border-top:1px solid #222;
       text-align:center;
-      color:#777;
-      font-size:.78rem;
     }
+
+    footer strong {
+      color:var(--gold);
+
+      font-size:1.1rem;
+    }
+
+    footer p {
+      margin-top:10px;
+
+      color:#999;
+
+      line-height:1.7;
+    }
+
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
 
     .toast {
       position:fixed;
-      right:20px;
-      bottom:20px;
-      z-index:300;
+
+      right:22px;
+      bottom:22px;
+
+      z-index:3000;
+
       display:none;
-      padding:15px 19px;
+
+      max-width:360px;
+
+      padding:17px 21px;
+
       border:2px solid var(--gold);
+
       border-radius:12px;
+
       background:#050505;
-      color:white;
-      font-weight:800;
+
+      color:#FFF;
+
+      font-weight:900;
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.45);
     }
 
-    .toast.show { display:block; }
-
-    @media(max-width:980px) {
-      .header-inner { flex-direction:column; }
-      .hero { grid-template-columns:1fr; }
-      .hero-image { height:540px; }
-      .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .story-grid { grid-template-columns:1fr; }
+    .toast.show {
+      display:block;
     }
 
-    @media(max-width:650px) {
-      header { position:static; }
-      nav { justify-content:center; gap:12px 16px; }
-      .hero-copy { padding:55px 6%; }
-      .hero-image { height:430px; }
-      .product-grid, .footer-grid, .care-grid { grid-template-columns:1fr; }
-      .image-wrap { height:470px; }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media(max-width:1050px) {
+
+      .header-inner {
+        flex-direction:column;
+
+        padding:15px 0;
+      }
+
+      nav {
+        justify-content:center;
+      }
+
+      .builder {
+        grid-template-columns:1fr;
+      }
+
+      .product-image-area,
+      .main-image {
+        min-height:580px;
+      }
+
+      .texture-showcase {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
     }
+
+
+    @media(max-width:700px) {
+
+      header {
+        position:static;
+      }
+
+      nav {
+        gap:14px;
+      }
+
+      .config {
+        padding:28px 20px;
+      }
+
+      .texture-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .length-grid {
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+
+      .purchase-row {
+        grid-template-columns:1fr;
+      }
+
+      .quantity-control {
+        width:100%;
+      }
+
+      .texture-showcase,
+      .benefit-grid {
+        grid-template-columns:1fr;
+      }
+
+      .texture-card img {
+        height:380px;
+      }
+
+    }
+
   </style>
+
 </head>
+
+
 <body>
-  <div class="announcement">Luxury Burmese Hair • Bundles • Wigs • Closures</div>
+
+
+  <!-- =====================================================
+       ANNOUNCEMENT
+  ====================================================== -->
+
+  <div class="announcement">
+
+    Double Drawn • Extra Full • Luxury Hair
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
 
   <header>
+
     <div class="header-inner">
-      <a href="index.html" aria-label="Big Boss Bundles home">
-        <img class="logo" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Homepage%20Images/Owner%20Images/Lifestyle%20Images/Store%20Images/Branding/BigBossBundles-logo.jpg" alt="Big Boss Bundles">
+
+      <a
+        href="index.html"
+        aria-label="Big Boss Bundles Home"
+      >
+
+        <img
+          class="logo"
+          src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Homepage%20Images/Owner%20Images/Lifestyle%20Images/Store%20Images/Branding/BigBossBundles-logo.jpg"
+          alt="Big Boss Bundles BB Logo"
+        >
+
       </a>
 
-      <nav aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="bundles.html">Bundles</a>
-        <a href="wigs.html">Wigs</a>
-        <a href="closures.html">Closures</a>
-        <a href="hair-care.html">Hair Care</a>
-        <a class="cart-pill" href="cart.html">Bag (<span id="cart-count">0</span>)</a>
-      </nav>
+
+     <nav>
+
+  <a href="index.html">
+    Home
+  </a>
+
+  <a href="bundles.html">
+    Bundles
+  </a>
+
+  <a href="wigs.html">
+    Wigs
+  </a>
+
+  <a href="closures.html">
+    Closures &amp; Frontals
+  </a>
+
+  <a href="mens-hair-pieces.html">
+    Men's Hair
+  </a>
+
+  <a href="hair-care.html">
+    Hair Care
+  </a>
+
+  <a href="classes.html">
+    Beauty Academy
+  </a>
+
+  <a
+    href="cart.html"
+    class="cart-pill"
+  >
+    Bag (
+    <span
+      id="cart-count"
+      data-cart-count
+    >
+      0
+    </span>
+    )
+  </a>
+
+</nav>
     </div>
+
   </header>
 
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <section class="hero">
+
+    <span class="eyebrow">
+
+      Luxury Burmese Hair
+
+    </span>
+
+    <h1>
+
+      Burmese Bundles
+
+    </h1>
+
+    <p>
+
+      Shop our premium Burmese bundle collection.
+      Choose your texture, length, color and quantity.
+
+      <br>
+
+      All bundles are
+      <strong>
+        Double Drawn
+      </strong>
+      for maximum fullness from top to ends.
+
+    </p>
+
+  </section>
+
+
+  <!-- =====================================================
+       PRODUCT BUILDER
+  ====================================================== -->
+
   <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">Big Boss Bundles Raw Luxury Collection</span>
-        <h1>Burmese Hair</h1>
-        <p>Discover premium Burmese hair celebrated for its natural fullness, soft texture, beautiful movement and styling versatility. Each texture is selected to create a polished luxury look with lasting body and effortless elegance.</p>
 
-        <div class="hero-actions">
-          <a class="button" href="#shop">Shop Burmese</a>
-          <a class="button secondary" href="index.html#origins">View All Origins</a>
+    <section class="builder-section">
+
+      <div class="builder">
+
+
+        <!-- IMAGE -->
+
+        <div class="product-image-area">
+
+          <img
+            id="main-product-image"
+            class="main-image"
+            src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-model.png"
+            alt="Burmese Body Wave Hair"
+          >
+
+          <div class="image-actions">
+
+            <button
+              class="image-btn"
+              id="view-toggle"
+              type="button"
+            >
+
+              View Product
+
+            </button>
+
+          </div>
+
         </div>
+
+
+        <!-- CONFIGURATION -->
+
+        <div class="config">
+
+          <p class="collection-label">
+
+            Big Boss Bundles Luxury Collection
+
+          </p>
+
+          <h2
+            class="product-title"
+            id="product-title"
+          >
+
+            Burmese Body Wave
+
+          </h2>
+
+          <p
+            class="product-description"
+            id="product-description"
+          >
+
+            Soft, flowing waves with natural volume,
+            bounce and effortless versatility.
+
+          </p>
+
+
+          <div class="divider"></div>
+
+
+          <!-- TEXTURE -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                1
+              </span>
+
+              Choose Texture
+
+            </div>
+
+            <div
+              class="texture-grid"
+              id="texture-grid"
+            >
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Straight"
+              >
+                Straight
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn active"
+                data-texture="Body Wave"
+              >
+                Body Wave
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Deep Wave"
+              >
+                Deep Wave
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Curly"
+              >
+                Curly
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Kinky Straight"
+              >
+                Kinky Straight
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Kinky Curly"
+              >
+                Kinky Curly
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- LENGTH -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                2
+              </span>
+
+              Choose Length
+
+            </div>
+
+            <div
+              class="length-grid"
+              id="length-grid"
+            >
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="10"
+              >
+                10"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn active"
+                data-length="12"
+              >
+                12"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="14"
+              >
+                14"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="16"
+              >
+                16"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="18"
+              >
+                18"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="20"
+              >
+                20"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="22"
+              >
+                22"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="24"
+              >
+                24"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="26"
+              >
+                26"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="28"
+              >
+                28"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="30"
+              >
+                30"
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- COLOR -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                3
+              </span>
+
+              Choose Color
+
+            </div>
+
+            <select
+              id="color-select"
+              class="color-select"
+            >
+
+              <option>
+                Natural Black
+              </option>
+
+              <option>
+                Natural Brown
+              </option>
+
+              <option>
+                Custom Color Consultation
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- QUANTITY -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                4
+              </span>
+
+              Quantity
+
+            </div>
+
+            <div class="quantity-control">
+
+              <button
+                type="button"
+                class="qty-btn"
+                id="qty-minus"
+              >
+                −
+              </button>
+
+              <input
+                id="quantity"
+                class="qty-value"
+                type="number"
+                value="1"
+                min="1"
+                max="20"
+                readonly
+              >
+
+              <button
+                type="button"
+                class="qty-btn"
+                id="qty-plus"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- PRICE AND CART -->
+
+          <div class="purchase-row">
+
+            <div>
+
+              <div
+                class="price"
+                id="price"
+              >
+                $57.00
+              </div>
+
+              <div class="per-bundle">
+
+                per bundle
+
+              </div>
+
+            </div>
+
+
+            <button
+              id="add-to-bag"
+              class="add-cart"
+              type="button"
+            >
+
+              Add to Bag
+
+            </button>
+
+          </div>
+
+
+          <div
+            class="pricing-note"
+            id="pricing-note"
+          >
+
+            $57.00 per bundle
+            • Double Drawn
+            • Extra Full
+
+          </div>
+
+        </div>
+
       </div>
 
-      <img class="hero-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-model.png" alt="Burmese Body Wave model">
     </section>
 
-    <nav class="category-bar" aria-label="Burmese product categories">
-      <a href="bundles.html">Bundles</a>
-      <a href="wigs.html">Wigs</a>
-      <a href="closures.html">Closures</a>
-      <a href="#shop">All Textures</a>
-    </nav>
 
-    <section class="section" id="shop">
+    <!-- =====================================================
+         ALL SIX TEXTURES
+    ====================================================== -->
+
+    <section class="texture-section">
+
       <div class="section-heading">
-        <span class="eyebrow">Shop by Texture</span>
-        <h2>Burmese Collection</h2>
-        <p>Select Bundle, Closure or Wig. The product image changes automatically based on the type selected, and the View Model button lets customers switch between the styled look and product view.</p>
-      </div>
 
-      <div class="product-grid">
-        
-      <article class="product-card" data-product="Burmese Straight" data-bundle-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-model.png" data-bundle-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-product.png" data-wig-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-wig-model.jpg" data-wig-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-wig-product.png" data-closure="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/indian-straight-closure.png">
-        <div class="image-wrap">
-          <img class="display-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-model.png" alt="Burmese Straight model">
-          <div class="image-error" hidden>Image unavailable</div>
-          <button class="image-toggle" type="button">View Product</button>
-        </div>
+        <span class="eyebrow">
 
-        <div class="product-copy">
-          <p class="collection-label">Luxury Burmese Hair</p>
-          <h3>Burmese Straight</h3>
-          <p>Naturally sleek strands with soft movement, body and a polished luxury finish.</p>
+          Shop Your Texture
 
-          <label>Shop Type
-            <select class="type-select">
-              <option value="Bundle">Bundle</option>
-              <option value="Closure">Closure</option>
-                  <option value="Wig">Wig</option>
-            </select>
-          </label>
+        </span>
 
-          <label>Length
-            <select class="length-select">
-              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
-              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
-              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
-              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
-              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
-            </select>
-          </label>
+        <h2>
 
-          <label class="density-field hidden">Wig Density
-            <select class="density-select">
-              <option>180%</option><option>200%</option><option>220%</option>
-              <option selected>250%</option><option>300%</option>
-            </select>
-          </label>
+          Available Textures
 
-          <label>Color
-            <select class="color-select">
-              <option>Natural Black</option>
-              <option>Natural Brown</option>
-              <option>Custom Color Consultation</option>
-            </select>
-          </label>
-
-          <div class="buy-row">
-            <label>Qty
-              <input class="quantity" type="number" value="1" min="1" max="10">
-            </label>
-            <button class="add-cart" type="button">Add to Bag</button>
-          </div>
-          <p class="pricing-note">Pricing will be added during the dynamic pricing phase.</p>
-        </div>
-      </article>
-
-      <article class="product-card" data-product="Burmese Body Wave" data-bundle-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-model.png" data-bundle-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-product.png" data-wig-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-wig-model.jpg" data-wig-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-wig-product.png" data-closure="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-closure.png">
-        <div class="image-wrap">
-          <img class="display-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-model.png" alt="Burmese Body Wave model">
-          <div class="image-error" hidden>Image unavailable</div>
-          <button class="image-toggle" type="button">View Product</button>
-        </div>
-
-        <div class="product-copy">
-          <p class="collection-label">Luxury Burmese Hair</p>
-          <h3>Burmese Body Wave</h3>
-          <p>Soft, flowing waves with natural volume, bounce and effortless versatility.</p>
-
-          <label>Shop Type
-            <select class="type-select">
-              <option value="Bundle">Bundle</option>
-              <option value="Closure">Closure</option>
-                  <option value="Wig">Wig</option>
-            </select>
-          </label>
-
-          <label>Length
-            <select class="length-select">
-              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
-              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
-              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
-              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
-              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
-            </select>
-          </label>
-
-          <label class="density-field hidden">Wig Density
-            <select class="density-select">
-              <option>180%</option><option>200%</option><option>220%</option>
-              <option selected>250%</option><option>300%</option>
-            </select>
-          </label>
-
-          <label>Color
-            <select class="color-select">
-              <option>Natural Black</option>
-              <option>Natural Brown</option>
-              <option>Custom Color Consultation</option>
-            </select>
-          </label>
-
-          <div class="buy-row">
-            <label>Qty
-              <input class="quantity" type="number" value="1" min="1" max="10">
-            </label>
-            <button class="add-cart" type="button">Add to Bag</button>
-          </div>
-          <p class="pricing-note">Pricing will be added during the dynamic pricing phase.</p>
-        </div>
-      </article>
-
-      <article class="product-card" data-product="Burmese Deep Wave" data-bundle-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-model.png" data-bundle-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-product.png" data-wig-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-model.png" data-wig-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-product.png" data-closure="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-closure.png">
-        <div class="image-wrap">
-          <img class="display-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-model.png" alt="Burmese Deep Wave model">
-          <div class="image-error" hidden>Image unavailable</div>
-          <button class="image-toggle" type="button">View Product</button>
-        </div>
-
-        <div class="product-copy">
-          <p class="collection-label">Luxury Burmese Hair</p>
-          <h3>Burmese Deep Wave</h3>
-          <p>Defined waves with rich texture, glamorous volume and long-lasting movement.</p>
-
-          <label>Shop Type
-            <select class="type-select">
-              <option value="Bundle">Bundle</option>
-              <option value="Closure">Closure</option>
-                  <option value="Wig">Wig</option>
-            </select>
-          </label>
-
-          <label>Length
-            <select class="length-select">
-              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
-              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
-              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
-              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
-              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
-            </select>
-          </label>
-
-          <label class="density-field hidden">Wig Density
-            <select class="density-select">
-              <option>180%</option><option>200%</option><option>220%</option>
-              <option selected>250%</option><option>300%</option>
-            </select>
-          </label>
-
-          <label>Color
-            <select class="color-select">
-              <option>Natural Black</option>
-              <option>Natural Brown</option>
-              <option>Custom Color Consultation</option>
-            </select>
-          </label>
-
-          <div class="buy-row">
-            <label>Qty
-              <input class="quantity" type="number" value="1" min="1" max="10">
-            </label>
-            <button class="add-cart" type="button">Add to Bag</button>
-          </div>
-          <p class="pricing-note">Pricing will be added during the dynamic pricing phase.</p>
-        </div>
-      </article>
-
-      <article class="product-card" data-product="Burmese Curly" data-bundle-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-model.png" data-bundle-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-product.png" data-wig-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-wig-model.jpg" data-wig-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-wig-product.jpg" data-closure="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-closure.png">
-        <div class="image-wrap">
-          <img class="display-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-model.png" alt="Burmese Curly model">
-          <div class="image-error" hidden>Image unavailable</div>
-          <button class="image-toggle" type="button">View Product</button>
-        </div>
-
-        <div class="product-copy">
-          <p class="collection-label">Luxury Burmese Hair</p>
-          <h3>Burmese Curly</h3>
-          <p>Soft, defined curls with beautiful bounce, fullness and natural-looking movement.</p>
-
-          <label>Shop Type
-            <select class="type-select">
-              <option value="Bundle">Bundle</option>
-              <option value="Closure">Closure</option>
-                  <option value="Wig">Wig</option>
-            </select>
-          </label>
-
-          <label>Length
-            <select class="length-select">
-              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
-              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
-              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
-              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
-              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
-            </select>
-          </label>
-
-          <label class="density-field hidden">Wig Density
-            <select class="density-select">
-              <option>180%</option><option>200%</option><option>220%</option>
-              <option selected>250%</option><option>300%</option>
-            </select>
-          </label>
-
-          <label>Color
-            <select class="color-select">
-              <option>Natural Black</option>
-              <option>Natural Brown</option>
-              <option>Custom Color Consultation</option>
-            </select>
-          </label>
-
-          <div class="buy-row">
-            <label>Qty
-              <input class="quantity" type="number" value="1" min="1" max="10">
-            </label>
-            <button class="add-cart" type="button">Add to Bag</button>
-          </div>
-          <p class="pricing-note">Pricing will be added during the dynamic pricing phase.</p>
-        </div>
-      </article>
-
-      <article class="product-card" data-product="Burmese Kinky Straight" data-bundle-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-model.png" data-bundle-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-product.png" data-wig-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-wig-model.jpg" data-wig-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-wig-product.png" data-closure="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-closure.png">
-        <div class="image-wrap">
-          <img class="display-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-model.png" alt="Burmese Kinky Straight model">
-          <div class="image-error" hidden>Image unavailable</div>
-          <button class="image-toggle" type="button">View Product</button>
-        </div>
-
-        <div class="product-copy">
-          <p class="collection-label">Luxury Burmese Hair</p>
-          <h3>Burmese Kinky Straight</h3>
-          <p>A full, natural blown-out texture with softness, body and realistic movement.</p>
-
-          <label>Shop Type
-            <select class="type-select">
-              <option value="Bundle">Bundle</option>
-              <option value="Closure">Closure</option>
-                  <option value="Wig">Wig</option>
-            </select>
-          </label>
-
-          <label>Length
-            <select class="length-select">
-              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
-              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
-              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
-              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
-              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
-            </select>
-          </label>
-
-          <label class="density-field hidden">Wig Density
-            <select class="density-select">
-              <option>180%</option><option>200%</option><option>220%</option>
-              <option selected>250%</option><option>300%</option>
-            </select>
-          </label>
-
-          <label>Color
-            <select class="color-select">
-              <option>Natural Black</option>
-              <option>Natural Brown</option>
-              <option>Custom Color Consultation</option>
-            </select>
-          </label>
-
-          <div class="buy-row">
-            <label>Qty
-              <input class="quantity" type="number" value="1" min="1" max="10">
-            </label>
-            <button class="add-cart" type="button">Add to Bag</button>
-          </div>
-          <p class="pricing-note">Pricing will be added during the dynamic pricing phase.</p>
-        </div>
-      </article>
-
-      <article class="product-card" data-product="Burmese Kinky Curly" data-bundle-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-model.jpg" data-bundle-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-product.png" data-wig-model="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-wig-model.jpg" data-wig-product="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-wig-product.png" data-closure="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-closure.png">
-        <div class="image-wrap">
-          <img class="display-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-model.jpg" alt="Burmese Kinky Curly model">
-          <div class="image-error" hidden>Image unavailable</div>
-          <button class="image-toggle" type="button">View Product</button>
-        </div>
-
-        <div class="product-copy">
-          <p class="collection-label">Luxury Burmese Hair</p>
-          <h3>Burmese Kinky Curly</h3>
-          <p>Bold, naturally textured curls with rich fullness and a soft luxury feel.</p>
-
-          <label>Shop Type
-            <select class="type-select">
-              <option value="Bundle">Bundle</option>
-              <option value="Closure">Closure</option>
-                  <option value="Wig">Wig</option>
-            </select>
-          </label>
-
-          <label>Length
-            <select class="length-select">
-              <option>12 inches</option><option>14 inches</option><option>16 inches</option>
-              <option>18 inches</option><option>20 inches</option><option>22 inches</option>
-              <option>24 inches</option><option>26 inches</option><option>28 inches</option>
-              <option>30 inches</option><option>32 inches</option><option>34 inches</option>
-              <option>36 inches</option><option>38 inches</option><option>40 inches</option>
-            </select>
-          </label>
-
-          <label class="density-field hidden">Wig Density
-            <select class="density-select">
-              <option>180%</option><option>200%</option><option>220%</option>
-              <option selected>250%</option><option>300%</option>
-            </select>
-          </label>
-
-          <label>Color
-            <select class="color-select">
-              <option>Natural Black</option>
-              <option>Natural Brown</option>
-              <option>Custom Color Consultation</option>
-            </select>
-          </label>
-
-          <div class="buy-row">
-            <label>Qty
-              <input class="quantity" type="number" value="1" min="1" max="10">
-            </label>
-            <button class="add-cart" type="button">Add to Bag</button>
-          </div>
-          <p class="pricing-note">Pricing will be added during the dynamic pricing phase.</p>
-        </div>
-      </article>
+        </h2>
 
       </div>
+
+
+      <div class="texture-showcase">
+
+
+        <!-- STRAIGHT -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Straight"
+        >
+
+          <img
+            src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-model.png"
+            alt="Burmese Straight"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Straight
+            </h3>
+
+            <p>
+              Naturally sleek strands with soft movement,
+              body and a polished luxury finish.
+            </p>
+
+            <span class="select-texture">
+              Select Straight
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- BODY WAVE -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Body Wave"
+        >
+
+          <img
+            src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-model.png"
+            alt="Burmese Body Wave"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Body Wave
+            </h3>
+
+            <p>
+              Soft flowing waves with natural volume,
+              bounce and effortless versatility.
+            </p>
+
+            <span class="select-texture">
+              Select Body Wave
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- DEEP WAVE -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Deep Wave"
+        >
+
+          <img
+            src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-model.png"
+            alt="Burmese Deep Wave"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Deep Wave
+            </h3>
+
+            <p>
+              Defined waves with rich texture,
+              glamorous volume and long lasting movement.
+            </p>
+
+            <span class="select-texture">
+              Select Deep Wave
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- CURLY -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Curly"
+        >
+
+          <img
+            src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-model.png"
+            alt="Burmese Curly"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Curly
+            </h3>
+
+            <p>
+              Soft defined curls with beautiful bounce,
+              fullness and natural movement.
+            </p>
+
+            <span class="select-texture">
+              Select Curly
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- KINKY STRAIGHT -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Kinky Straight"
+        >
+
+          <img
+            src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-model.png"
+            alt="Burmese Kinky Straight"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Kinky Straight
+            </h3>
+
+            <p>
+              A full natural blown out texture
+              with softness, body and realistic movement.
+            </p>
+
+            <span class="select-texture">
+              Select Kinky Straight
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- KINKY CURLY -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Kinky Curly"
+        >
+
+          <img
+            src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-model.jpg"
+            alt="Burmese Kinky Curly"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Kinky Curly
+            </h3>
+
+            <p>
+              Bold naturally textured curls
+              with rich fullness and a soft luxury feel.
+            </p>
+
+            <span class="select-texture">
+              Select Kinky Curly
+            </span>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
     </section>
 
-    <section class="section" style="background:#111">
-      <div class="section-heading">
-        <span class="eyebrow">Naturally Luxurious</span>
-        <h2>Why Choose Burmese Hair?</h2>
+
+    <!-- =====================================================
+         BENEFITS
+    ====================================================== -->
+
+    <section class="benefits">
+
+      <div class="benefit-grid">
+
+
+        <div class="benefit-card">
+
+          <h3>
+            Double Drawn
+          </h3>
+
+          <p>
+            Fuller density from top to ends
+            with less tapering for a luxurious,
+            full appearance.
+          </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+          <h3>
+            Six Textures
+          </h3>
+
+          <p>
+            Choose Straight, Body Wave, Deep Wave,
+            Curly, Kinky Straight or Kinky Curly.
+          </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+          <h3>
+            10" to 30"
+          </h3>
+
+          <p>
+            Select your preferred Burmese bundle length
+            from 10 inches through 30 inches.
+          </p>
+
+        </div>
+
+
       </div>
 
-      <div class="story-grid">
-        <article class="story-card">
-          <strong>Natural Character</strong>
-          <p>Burmese hair offers naturally full body, soft movement and a rich texture that creates an elevated finish.</p>
-        </article>
-
-        <article class="story-card">
-          <strong>Styling Versatility</strong>
-          <p>Create sleek, waved or curled looks while maintaining softness, body and movement.</p>
-        </article>
-
-        <article class="story-card">
-          <strong>Premium Longevity</strong>
-          <p>Consistent care helps preserve the hair’s texture, manageability and beautiful appearance.</p>
-        </article>
-      </div>
     </section>
 
-    <section class="section">
-      <div class="section-heading">
-        <span class="eyebrow">Protect Your Investment</span>
-        <h2>Burmese Hair Care</h2>
-      </div>
-
-      <div class="care-grid">
-        <article class="care-box">
-          <h3>Wash and Condition</h3>
-          <p>Use moisturizing, sulfate-free products. Detangle gently from the ends upward and avoid aggressive rubbing or twisting.</p>
-        </article>
-
-        <article class="care-box">
-          <h3>Protect at Night</h3>
-          <p>Wrap or braid the hair loosely and use a satin bonnet or pillowcase to reduce friction, tangling and dryness.</p>
-        </article>
-
-        <article class="care-box">
-          <h3>Use Heat Carefully</h3>
-          <p>Apply a heat protectant before styling and keep temperatures moderate to help protect the natural integrity of the hair.</p>
-        </article>
-
-        <article class="care-box">
-          <h3>Maintain the Texture</h3>
-          <p>Use lightweight products and avoid heavy buildup. Curly and wavy textures benefit from gentle hydration and finger styling.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" style="background:#111">
-      <div class="section-heading">
-        <span class="eyebrow">Before You Order</span>
-        <h2>Burmese FAQ</h2>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>What makes Burmese hair different?</summary>
-          <p>Burmese hair is known for its natural density, softness, strength and ability to hold styles while maintaining beautiful movement.</p>
-        </details>
-
-        <details>
-          <summary>Which lengths are available?</summary>
-          <p>Bundles are offered from 12 to 32 inches. Select wig styles may be offered up to 40 inches, depending on availability.</p>
-        </details>
-
-        <details>
-          <summary>What lace is used?</summary>
-          <p>Big Boss Bundles wigs and closures use HD lace for a natural-looking finish.</p>
-        </details>
-
-        <details>
-          <summary>How long does fulfillment take?</summary>
-          <p>Unless an item is confirmed for local pickup, allow approximately 7 to 10 business days for fulfillment.</p>
-        </details>
-
-        <details>
-          <summary>What is the return policy?</summary>
-          <p>All sales are final. Eligible exchanges must be requested within five days after receiving the order, and the hair must remain unused and unaltered.</p>
-        </details>
-      </div>
-    </section>
   </main>
 
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
   <footer>
-    <div class="footer-grid">
-      <div>
-        <h3>Big Boss Bundles</h3>
-        <p>Luxury hair, wigs, closures, men’s hair pieces and professional hair care.</p>
-      </div>
 
-      <div>
-        <h4>Customer Care</h4>
-        <a href="contact.html">Contact</a>
-        <a href="shipping-policy.html">Shipping Policy</a>
-        <a href="return-policy.html">Return and Exchange Policy</a>
-      </div>
+    <strong>
+      BIG BOSS BUNDLES
+    </strong>
 
-      <div>
-        <h4>Visit or Contact</h4>
-        <p>301 W Pecan Street</p>
-        <p>Pflugerville, TX 78660</p>
-        <a href="tel:+15122762366">(512) 276-2366</a>
-        <a href="mailto:support@bigbossbundles.com">support@bigbossbundles.com</a>
-      </div>
-    </div>
+    <p>
+      Pflugerville, Texas
+      <br>
+      Luxury Hair • Boss Beauty
+    </p>
 
-    <div class="copyright">© 2026 Big Boss Bundles. All rights reserved.</div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script src="cart.js"></script>
-
-<script>
-  const toast = document.getElementById("toast");
-  const countEl = document.getElementById("cart-count");
-
-  /*
-  |--------------------------------------------------------------------------
-  | BURMESE DOUBLE DRAWN BUNDLE RETAIL PRICING
-  |--------------------------------------------------------------------------
-  | Retail = supplier cost × 3
-  |
-  | Straight and Body Wave use base pricing.
-  | Deep Wave, Curly, Kinky Straight and Kinky Curly use the
-  | specialty-texture pricing.
-  |--------------------------------------------------------------------------
-  */
-
-  const burmeseBasePrices = {
-    10: 51,
-    12: 57,
-    14: 63,
-    16: 78,
-    18: 96,
-    20: 114,
-    22: 132,
-    24: 150,
-    26: 174,
-    28: 201,
-    30: 228
-  };
-
-  const burmeseSpecialtyPrices = {
-    10: 57,
-    12: 63,
-    14: 69,
-    16: 84,
-    18: 102,
-    20: 120,
-    22: 138,
-    24: 156,
-    26: 180,
-    28: 207,
-    30: 234
-  };
-
-  const specialtyTextures = new Set([
-    "Deep Wave",
-    "Curly",
-    "Kinky Straight",
-    "Kinky Curly"
-  ]);
-
-  const bundleLengths = [
-    10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30
-  ];
-
-  const closureLengths = [
-    12, 14, 16, 18, 20, 22
-  ];
-
-  const wigLengths = [
-    18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40
-  ];
-
-  function money(value) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD"
-    }).format(value);
-  }
-
-  function updateCartCount() {
-    if (window.BBBCart && countEl) {
-      countEl.textContent = window.BBBCart.count();
-    }
-  }
-
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2400);
-  }
-
-  function textureFromCard(card) {
-    return card.dataset.product.replace(/^Burmese\s+/i, "").trim();
-  }
-
-  function getBundlePrice(texture, length) {
-    const table = specialtyTextures.has(texture)
-      ? burmeseSpecialtyPrices
-      : burmeseBasePrices;
-
-    return table[Number(length)] || null;
-  }
-
-  function populateLengths(select, lengths) {
-    const previous = parseInt(select.value, 10);
 
-    select.innerHTML = "";
+  <div
+    class="toast"
+    id="toast"
+  ></div>
 
-    lengths.forEach(length => {
-      const option = document.createElement("option");
 
-      option.value = String(length);
-      option.textContent = length + ' inches';
+  <!-- =====================================================
+       UNIVERSAL CART
+  ====================================================== -->
 
-      if (length === previous) {
-        option.selected = true;
-      }
+  <script src="cart.js"></script>
 
-      select.appendChild(option);
-    });
-  }
 
-  function imageFor(card, type, view) {
-    const keyMap = {
-      Bundle: view === "model"
-        ? "bundleModel"
-        : "bundleProduct",
+  <!-- =====================================================
+       BURMESE PRODUCT LOGIC
+  ====================================================== -->
 
-      Closure: "closure",
+  <script>
 
-      Wig: view === "model"
-        ? "wigModel"
-        : "wigProduct"
-    };
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
 
-    return card.dataset[keyMap[type]];
-  }
 
-  document.querySelectorAll(".product-card").forEach(card => {
+        /* ===================================================
+           PRICING
 
-    const image = card.querySelector(".display-image");
-    const imageError = card.querySelector(".image-error");
-    const toggle = card.querySelector(".image-toggle");
+           Retail = Supplier Cost × 3
+        =================================================== */
 
-    const typeSelect = card.querySelector(".type-select");
-    const lengthSelect = card.querySelector(".length-select");
 
-    const densityField = card.querySelector(".density-field");
-    const densitySelect = card.querySelector(".density-select");
+        const basePrices = {
 
-    const colorSelect = card.querySelector(".color-select");
-    const quantityInput = card.querySelector(".quantity");
+          10: 51,
+          12: 57,
+          14: 63,
+          16: 78,
+          18: 96,
+          20: 114,
+          22: 132,
+          24: 150,
+          26: 174,
+          28: 201,
+          30: 228
 
-    const addButton = card.querySelector(".add-cart");
-    const pricingNote = card.querySelector(".pricing-note");
+        };
 
-    const texture = textureFromCard(card);
 
-    let view = "model";
+        const specialtyPrices = {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Image switching
-    |--------------------------------------------------------------------------
-    */
+          10: 57,
+          12: 63,
+          14: 69,
+          16: 84,
+          18: 102,
+          20: 120,
+          22: 138,
+          24: 156,
+          26: 180,
+          28: 207,
+          30: 234
 
-    function loadImage() {
+        };
 
-      const selectedType = typeSelect.value;
 
-      if (selectedType === "Closure") {
+        const specialtyTextures =
+          new Set([
 
-        view = "product";
+            "Deep Wave",
+            "Curly",
+            "Kinky Straight",
+            "Kinky Curly"
 
-        toggle.textContent = "Closure View";
-        toggle.disabled = true;
+          ]);
 
-      } else {
 
-        toggle.disabled = false;
+        /* ===================================================
+           TEXTURE DATA
+        =================================================== */
 
-        toggle.textContent =
-          view === "model"
-            ? "View Product"
-            : "View Model";
-      }
 
-      const nextImage =
-        imageFor(card, selectedType, view);
+        const textures = {
 
-      imageError.hidden = true;
-      image.hidden = false;
-      image.src = nextImage;
 
-      image.alt =
-        card.dataset.product +
-        " " +
-        selectedType +
-        " " +
-        view;
-    }
+          "Straight": {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Price display
-    |--------------------------------------------------------------------------
-    */
+            description:
+              "Naturally sleek strands with soft movement, body and a polished luxury finish.",
 
-    function updatePrice() {
+            model:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-model.png",
 
-      const selectedType = typeSelect.value;
+            product:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-straight-product.png"
 
-      /*
-      | Bundles are being activated first.
-      | Closures and wigs will receive their own secure pricing next.
-      */
+          },
 
-      if (selectedType !== "Bundle") {
 
-        pricingNote.textContent =
-          selectedType +
-          " pricing is being added next.";
+          "Body Wave": {
 
-        addButton.disabled = true;
-        addButton.textContent = "Coming Next";
+            description:
+              "Soft, flowing waves with natural volume, bounce and effortless versatility.",
 
-        return;
-      }
+            model:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-model.png",
 
-      const length =
-        Number(lengthSelect.value);
+            product:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-body-wave-product.png"
 
-      const price =
-        getBundlePrice(texture, length);
+          },
 
-      if (!price) {
 
-        pricingNote.textContent =
-          "Please select another length.";
+          "Deep Wave": {
 
-        addButton.disabled = true;
-        addButton.textContent = "Unavailable";
+            description:
+              "Defined waves with rich texture, glamorous volume and long-lasting movement.",
 
-        return;
-      }
+            model:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-model.png",
 
-      pricingNote.textContent =
-        money(price) +
-        " per bundle • Double Drawn • Extra Full";
+            product:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-deep-wave-product.png"
 
-      addButton.disabled = false;
-      addButton.textContent = "Add to Bag";
-    }
+          },
 
-    /*
-    |--------------------------------------------------------------------------
-    | Product type selection
-    |--------------------------------------------------------------------------
-    */
 
-    function syncProductType() {
+          "Curly": {
 
-      const selectedType = typeSelect.value;
+            description:
+              "Soft, defined curls with beautiful bounce, fullness and natural-looking movement.",
 
-      if (selectedType === "Bundle") {
+            model:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-model.png",
 
-        populateLengths(
-          lengthSelect,
-          bundleLengths
+            product:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-curly-product.png"
+
+          },
+
+
+          "Kinky Straight": {
+
+            description:
+              "A full, natural blown-out texture with softness, body and realistic movement.",
+
+            model:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-model.png",
+
+            product:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-straight-product.png"
+
+          },
+
+
+          "Kinky Curly": {
+
+            description:
+              "Bold, naturally textured curls with rich fullness and a soft luxury feel.",
+
+            model:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-model.jpg",
+
+            product:
+              "https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Burmese%20Hair%20Images/burmese-kinky-curly-product.png"
+
+          }
+
+        };
+
+
+        /* ===================================================
+           ELEMENTS
+        =================================================== */
+
+
+        const textureButtons =
+          document.querySelectorAll(
+            ".texture-btn"
+          );
+
+
+        const lengthButtons =
+          document.querySelectorAll(
+            ".length-btn"
+          );
+
+
+        const textureCards =
+          document.querySelectorAll(
+            "[data-select-texture]"
+          );
+
+
+        const mainImage =
+          document.getElementById(
+            "main-product-image"
+          );
+
+
+        const productTitle =
+          document.getElementById(
+            "product-title"
+          );
+
+
+        const productDescription =
+          document.getElementById(
+            "product-description"
+          );
+
+
+        const colorSelect =
+          document.getElementById(
+            "color-select"
+          );
+
+
+        const quantityInput =
+          document.getElementById(
+            "quantity"
+          );
+
+
+        const priceElement =
+          document.getElementById(
+            "price"
+          );
+
+
+        const pricingNote =
+          document.getElementById(
+            "pricing-note"
+          );
+
+
+        const viewToggle =
+          document.getElementById(
+            "view-toggle"
+          );
+
+
+        const addToBag =
+          document.getElementById(
+            "add-to-bag"
+          );
+
+
+        const toast =
+          document.getElementById(
+            "toast"
+          );
+
+
+        let selectedTexture =
+          "Body Wave";
+
+
+        let selectedLength =
+          12;
+
+
+        let imageView =
+          "model";
+
+
+        /* ===================================================
+           HELPERS
+        =================================================== */
+
+
+        function money(amount) {
+
+          return new Intl.NumberFormat(
+            "en-US",
+            {
+              style:"currency",
+              currency:"USD"
+            }
+          ).format(amount);
+
+        }
+
+
+        function getPrice() {
+
+          const table =
+            specialtyTextures.has(
+              selectedTexture
+            )
+              ? specialtyPrices
+              : basePrices;
+
+
+          return table[
+            selectedLength
+          ];
+
+        }
+
+
+        function showToast(message) {
+
+          toast.textContent =
+            message;
+
+
+          toast.classList.add(
+            "show"
+          );
+
+
+          setTimeout(
+            function () {
+
+              toast.classList.remove(
+                "show"
+              );
+
+            },
+            2400
+          );
+
+        }
+
+
+        /* ===================================================
+           UPDATE DISPLAY
+        =================================================== */
+
+
+        function updateDisplay() {
+
+          const texture =
+            textures[
+              selectedTexture
+            ];
+
+
+          productTitle.textContent =
+            "Burmese " +
+            selectedTexture;
+
+
+          productDescription.textContent =
+            texture.description;
+
+
+          mainImage.src =
+            imageView === "model"
+              ? texture.model
+              : texture.product;
+
+
+          viewToggle.textContent =
+            imageView === "model"
+              ? "View Product"
+              : "View Model";
+
+
+          const price =
+            getPrice();
+
+
+          priceElement.textContent =
+            money(price);
+
+
+          pricingNote.textContent =
+            money(price) +
+            " per bundle • Double Drawn • Extra Full";
+
+
+          textureButtons.forEach(
+            function (button) {
+
+              button.classList.toggle(
+                "active",
+                button.dataset.texture
+                  === selectedTexture
+              );
+
+            }
+          );
+
+
+          lengthButtons.forEach(
+            function (button) {
+
+              button.classList.toggle(
+                "active",
+                Number(
+                  button.dataset.length
+                )
+                  === selectedLength
+              );
+
+            }
+          );
+
+        }
+
+
+        /* ===================================================
+           TEXTURE BUTTONS
+        =================================================== */
+
+
+        textureButtons.forEach(
+          function (button) {
+
+            button.addEventListener(
+              "click",
+              function () {
+
+                selectedTexture =
+                  button.dataset.texture;
+
+
+                imageView =
+                  "model";
+
+
+                updateDisplay();
+
+              }
+            );
+
+          }
         );
 
-        densityField.classList.add("hidden");
 
-        view = "model";
+        /* ===================================================
+           TEXTURE CARDS
+        =================================================== */
 
-      } else if (selectedType === "Closure") {
 
-        populateLengths(
-          lengthSelect,
-          closureLengths
+        textureCards.forEach(
+          function (card) {
+
+            card.addEventListener(
+              "click",
+              function () {
+
+                selectedTexture =
+                  card.dataset.selectTexture;
+
+
+                imageView =
+                  "model";
+
+
+                updateDisplay();
+
+
+                document
+                  .querySelector(
+                    ".builder-section"
+                  )
+                  .scrollIntoView({
+                    behavior:"smooth"
+                  });
+
+              }
+            );
+
+          }
         );
 
-        densityField.classList.add("hidden");
 
-        view = "product";
+        /* ===================================================
+           LENGTH BUTTONS
+        =================================================== */
 
-      } else {
 
-        populateLengths(
-          lengthSelect,
-          wigLengths
+        lengthButtons.forEach(
+          function (button) {
+
+            button.addEventListener(
+              "click",
+              function () {
+
+                selectedLength =
+                  Number(
+                    button.dataset.length
+                  );
+
+
+                updateDisplay();
+
+              }
+            );
+
+          }
         );
 
-        densityField.classList.remove("hidden");
 
-        view = "model";
-      }
+        /* ===================================================
+           IMAGE TOGGLE
+        =================================================== */
 
-      loadImage();
-      updatePrice();
-    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Image error handling
-    |--------------------------------------------------------------------------
-    */
+        viewToggle.addEventListener(
+          "click",
+          function () {
 
-    image.addEventListener("error", () => {
+            imageView =
+              imageView === "model"
+                ? "product"
+                : "model";
 
-      image.hidden = true;
 
-      imageError.hidden = false;
+            updateDisplay();
 
-      imageError.textContent =
-        "This product image is not available yet.";
-    });
-
-    image.addEventListener("load", () => {
-
-      image.hidden = false;
-      imageError.hidden = true;
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | View Product / View Model
-    |--------------------------------------------------------------------------
-    */
-
-    toggle.addEventListener("click", () => {
-
-      if (typeSelect.value === "Closure") {
-        return;
-      }
-
-      view =
-        view === "model"
-          ? "product"
-          : "model";
-
-      loadImage();
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type and length changes
-    |--------------------------------------------------------------------------
-    */
-
-    typeSelect.addEventListener(
-      "change",
-      syncProductType
-    );
-
-    lengthSelect.addEventListener(
-      "change",
-      updatePrice
-    );
-
-    /*
-    |--------------------------------------------------------------------------
-    | Add Burmese Bundle to universal bag
-    |--------------------------------------------------------------------------
-    */
-
-    addButton.addEventListener("click", () => {
-
-      if (typeSelect.value !== "Bundle") {
-
-        showToast(
-          "We are adding secure " +
-          typeSelect.value +
-          " checkout next."
+          }
         );
 
-        return;
-      }
 
-      if (!window.BBBCart) {
+        /* ===================================================
+           QUANTITY
+        =================================================== */
 
-        showToast(
-          "Shopping bag is temporarily unavailable."
-        );
 
-        return;
-      }
-
-      const length =
-        Number(lengthSelect.value);
-
-      const price =
-        getBundlePrice(texture, length);
-
-      if (!price) {
-
-        showToast(
-          "Please select an available length."
-        );
-
-        return;
-      }
-
-      const quantity =
-        Math.min(
-          20,
-          Math.max(
-            1,
-            Number(quantityInput.value) || 1
+        document
+          .getElementById(
+            "qty-minus"
           )
+          .addEventListener(
+            "click",
+            function () {
+
+              let quantity =
+                Number(
+                  quantityInput.value
+                ) || 1;
+
+
+              quantity =
+                Math.max(
+                  1,
+                  quantity - 1
+                );
+
+
+              quantityInput.value =
+                quantity;
+
+            }
+          );
+
+
+        document
+          .getElementById(
+            "qty-plus"
+          )
+          .addEventListener(
+            "click",
+            function () {
+
+              let quantity =
+                Number(
+                  quantityInput.value
+                ) || 1;
+
+
+              quantity =
+                Math.min(
+                  20,
+                  quantity + 1
+                );
+
+
+              quantityInput.value =
+                quantity;
+
+            }
+          );
+
+
+        /* ===================================================
+           ADD TO UNIVERSAL BAG
+        =================================================== */
+
+
+        addToBag.addEventListener(
+          "click",
+          function () {
+
+
+            if (
+              !window.BBBCart
+            ) {
+
+              showToast(
+                "Shopping bag is temporarily unavailable."
+              );
+
+              return;
+
+            }
+
+
+            const quantity =
+              Math.max(
+                1,
+                Math.min(
+                  20,
+                  Number(
+                    quantityInput.value
+                  ) || 1
+                )
+              );
+
+
+            const price =
+              getPrice();
+
+
+            const texture =
+              textures[
+                selectedTexture
+              ];
+
+
+            window.BBBCart.add({
+
+              productId:
+                "burmese-bundle",
+
+              name:
+                "Burmese Double Drawn Bundle",
+
+              texture:
+                selectedTexture,
+
+              length:
+                selectedLength + '"',
+
+              color:
+                colorSelect.value,
+
+              density:"",
+
+              laceSize:"",
+
+              quantity:
+                quantity,
+
+              price:
+                price,
+
+              image:
+                texture.product
+
+            });
+
+
+            showToast(
+
+              quantity +
+              " × Burmese " +
+              selectedTexture +
+              " " +
+              selectedLength +
+              '" bundle' +
+              (
+                quantity > 1
+                  ? "s"
+                  : ""
+              ) +
+              " added to your bag."
+
+            );
+
+          }
         );
 
-      const item = {
 
-        productId: "burmese-bundle",
+        /* ===================================================
+           INITIALIZE
+        =================================================== */
 
-        name:
-          "Burmese Double Drawn Bundle",
 
-        texture: texture,
+        updateDisplay();
 
-        length:
-          length + '"',
+      }
+    );
 
-        color:
-          colorSelect.value,
+  </script>
 
-        density: "",
 
-        laceSize: "",
+</body>
 
-        quantity: quantity,
-
-        price: price,
-
-        image: image.src
-      };
-
-      window.BBBCart.add(item);
-
-      updateCartCount();
-
-      showToast(
-        "Burmese " +
-        texture +
-        " " +
-        length +
-        '" bundle added to your bag.'
-      );
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Initialize card
-    |--------------------------------------------------------------------------
-    */
-
-    syncProductType();
-  });
-
-  updateCartCount();
-</script>
+</html>
