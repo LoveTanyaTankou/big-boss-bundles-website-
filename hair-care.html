@@ -8,7 +8,7 @@
 
 <meta
   name="description"
-  content="Shop Big Boss Bundles Edge Control, lace tint mousse, wig glue, wax sticks, lace melting spray, Hair Accelerator Oil, pressing combs and wig bands."
+  content="Shop Big Boss Bundles Edge Control, lace tint mousse, wig glue, wax sticks and lace melting spray."
 >
 
 <style>
@@ -240,6 +240,27 @@ nav a.active{
   height:100%;
   object-fit:contain;
   background:#fff;
+}
+
+.lace-tint-images{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:12px;
+  background:#fff;
+}
+
+.lace-tint-images img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#fff;
+}
+
+.lace-tint-images .shade-preview{
+  transition:.2s ease;
 }
 
 .placeholder{
@@ -687,33 +708,37 @@ const products = [
       "Smooth, shape and control your edges with a polished, long-lasting finish.",
 
     featured:true
+  },{
+  productId:"lace-tint-mousse",
+
+  name:"Lace Tint Mousse",
+
+  price:11.99,
+
+  image:"images/Hair Care Products/lace-tint-shades.png",
+
+  shadeImages:{
+    "Light Brown":"images/Hair Care Products/lace-tint-light-brown.png",
+    "Medium Brown":"images/Hair Care Products/lace-tint-medium-brown.png",
+    "Dark Brown":"images/Hair Care Products/lace-tint-dark-brown.png"
   },
 
+  description:
+    "Blends and tints lace for a more natural-looking finish.",
 
-  {
-    productId:"lace-tint-mousse",
+  options:[
+    {
+      label:"Shade",
 
-    name:"Lace Tint Mousse",
+      values:[
+        "Light Brown",
+        "Medium Brown",
+        "Dark Brown"
+      ]
+    }
+  ]
+},
 
-    price:11.99,
-
-    image:"images/Hair Care Products/lace-tint-mousse.png",
-
-    description:
-      "Blends and tints lace for a more natural-looking finish.",
-
-    options:[
-      {
-        label:"Shade",
-
-        values:[
-          "Light Brown",
-          "Medium Brown",
-          "Dark Brown"
-        ]
-      }
-    ]
-  },
 
 
   {
@@ -743,8 +768,7 @@ const products = [
       "Smooth flyaways and create sleek, polished styles."
   },
 
-
-  {
+     {
     productId:"lace-melting-spray",
 
     name:"Lace Melting Spray",
@@ -758,54 +782,12 @@ const products = [
   },
 
 
-  {
-    productId:"hair-accelerator-oil",
-
-    name:"Hair Accelerator Oil",
-
-    price:15.00,
-
-    image:"hair-accelerator-oil.png",
-
-    description:
-      "Nourishes the scalp and hair, supports healthy growth, and helps keep ends moisturized and healthy-looking."
-  },
-
-
-  {
-    productId:"pressing-comb",
-
-    name:"Pressing Comb",
-
-    price:49.99,
-
-    image:"images/Hair Care Products/pressing-comb.png",
-
-    description:
-      "Professional styling tool for smoothing roots, wigs and installs."
-  },
-
-
-  {
-    productId:"wig-bands",
-
-    name:"Wig Bands",
-
-    price:1.99,
-
-    image:"images/Hair Care Products/wig-band.png",
-
-    description:
-      "A styling essential for helping secure and set lace during installation."
-  }
-
-
 ];
-
 
 
 const grid =
   document.getElementById("product-grid");
+  
 
 
 const toast =
@@ -903,30 +885,49 @@ grid.innerHTML =
         }
 
 
-        <div class="pic">
+     <div class="pic">
 
+  ${
+    product.shadeImages
+    ?
+    `
+      <div class="lace-tint-images">
 
-          <img
-            src="${product.image}"
-            alt="${product.name}"
-            onerror="
-              this.style.display='none';
-              this.nextElementSibling.style.display='block';
-            "
-          >
+        <img
+          class="bottle-image"
+          src="${product.image}"
+          alt="${product.name}"
+        >
 
+        <img
+          class="shade-preview"
+          src="${product.shadeImages["Light Brown"]}"
+          alt="Light Brown Lace Tint Mousse"
+        >
 
-          <div
-            class="placeholder"
-            style="display:none"
-          >
+      </div>
+    `
+    :
+    `
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+        onerror="
+          this.style.display='none';
+          this.nextElementSibling.style.display='block';
+        "
+      >
 
-            Product photo coming soon
+      <div
+        class="placeholder"
+        style="display:none"
+      >
+        Product photo coming soon
+      </div>
+    `
+  }
 
-          </div>
-
-
-        </div>
+</div>
 
 
 
@@ -1009,7 +1010,41 @@ document
 
   const button =
     card.querySelector(".add");
+const shadeSelect =
+  card.querySelector(
+    '.product-option[data-label="Shade"]'
+  );
 
+const shadePreview =
+  card.querySelector(".shade-preview");
+
+if(
+  shadeSelect &&
+  shadePreview &&
+  product.shadeImages
+){
+
+  const updateShadeImage = () => {
+
+    const selectedShade =
+      shadeSelect.value;
+
+    shadePreview.src =
+      product.shadeImages[selectedShade];
+
+    shadePreview.alt =
+      selectedShade + " Lace Tint Mousse";
+
+  };
+
+  updateShadeImage();
+
+  shadeSelect.addEventListener(
+    "change",
+    updateShadeImage
+  );
+
+}
 
   button.addEventListener(
     "click",
