@@ -942,7 +942,7 @@ footer p {
 
 </footer>
 
-
+<script src="cart.js"></script>
 <script>
 
     const zoomImages =
@@ -1012,7 +1012,86 @@ footer p {
 
         }
     );
+/* =========================================================
+   MEN'S HAIR PIECES - ADD TO BAG
+========================================================= */
 
+const hairPieceCards =
+    document.querySelectorAll('.hair-piece-card');
+
+hairPieceCards.forEach(
+    function(card, index) {
+
+        const button =
+            card.querySelector('button');
+
+        button.addEventListener(
+            'click',
+            function() {
+
+                const baseSize =
+                    card.querySelector('.base-size').value;
+
+                if (!baseSize) {
+
+                    alert('Please select a base size.');
+
+                    return;
+                }
+
+                const image =
+                    card.querySelector('.hair-piece-image');
+
+                const productIds = [
+                    'mens-afro-style-a',
+                    'mens-afro-style-b',
+                    'mens-afro-style-c',
+                    'mens-afro-style-d'
+                ];
+
+                window.BBBCart.add({
+
+                    productId:
+                        productIds[index],
+
+                    name:
+                        "Afro Men's Hair Piece",
+
+                    price:
+                        279.99,
+
+                    quantity:
+                        1,
+
+                    image:
+                        image.getAttribute('src'),
+
+                    baseSize:
+                        baseSize,
+
+                    itemType:
+                        'product'
+
+                });
+
+                button.textContent =
+                    'Added to Bag ✓';
+
+                setTimeout(
+                    function() {
+
+                        button.textContent =
+                            'Add to Bag';
+
+                    },
+                    1500
+                );
+
+            }
+        );
+
+    }
+);
 </script>
 
 </body>
