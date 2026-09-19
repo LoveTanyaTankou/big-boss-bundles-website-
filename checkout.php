@@ -1454,6 +1454,82 @@ if (
             $descriptionParts
         );
 }
+/*
+|--------------------------------------------------------------------------
+| MEN'S HAIR PIECES
+|--------------------------------------------------------------------------
+| Server-authoritative price: $279.99
+|--------------------------------------------------------------------------
+*/
+
+elseif (
+    in_array(
+        $productId,
+        [
+            'mens-afro-style-a',
+            'mens-afro-style-b',
+            'mens-afro-style-c',
+            'mens-afro-style-d'
+        ],
+        true
+    )
+) {
+
+    $allowedBaseSizes = [
+        '4" × 4"',
+        '4" × 5"',
+        '5" × 5"',
+        '5" × 7"',
+        '5" × 8"',
+        '6" × 8"',
+        '6" × 9"',
+        '7" × 8"',
+        '7" × 9"',
+        '7" × 10"',
+        '8" × 10"',
+        '8" × 11"',
+        '9" × 11"',
+        'Custom Size'
+    ];
+
+    $baseSize =
+        trim(
+            $item['baseSize'] ?? ''
+        );
+
+    if (
+        !in_array(
+            $baseSize,
+            $allowedBaseSizes,
+            true
+        )
+    ) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Please select a valid Men\'s Hair Piece base size.'
+        ]);
+
+        exit;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | AUTHORITATIVE PRODUCT PRICE
+    |--------------------------------------------------------------------------
+    */
+
+    $unitAmount = 27999;
+
+    $productName =
+        "Afro Men's Hair Piece";
+
+    $description =
+        'Base Size: ' .
+        $baseSize;
+}
    /*
 |--------------------------------------------------------------------------
 | BIG BOSS BEAUTY ACADEMY REGISTRATION
