@@ -171,21 +171,22 @@ nav .active{
 }
 
 .builder{
-  width:min(1450px,100%);
+  width:min(1200px,100%);
 
   margin:auto;
 
-  display:grid;
+  display:flex;
 
-  grid-template-columns:
-    minmax(400px,.9fr)
-    minmax(600px,1.25fr);
+  flex-direction:column;
 
-  gap:18px;
-
-  align-items:start;
+  gap:24px;
 }
-
+.visual-column{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  min-width:0;
+}
 /* =========================================================
    MODEL / PRODUCT IMAGE
 ========================================================= */
@@ -345,7 +346,8 @@ nav .active{
   gap:11px;
 }
 
-.texture-btn{
+.texture-btn,
+.brand-btn{
   min-height:58px;
 
   padding:10px;
@@ -363,11 +365,13 @@ nav .active{
   text-transform:uppercase;
 }
 
-.texture-btn:hover{
+.texture-btn:hover,
+.brand-btn:hover{
   border-color:var(--gold);
 }
 
-.texture-btn.active{
+.texture-btn.active,
+.brand-btn.active{
   background:var(--gold);
 
   border-color:var(--gold);
@@ -454,6 +458,122 @@ nav .active{
 }
 
 /* =========================================================
+   INTERACTIVE WIG DENSITY GUIDE
+========================================================= */
+
+.density-guide{
+  margin-top:18px;
+  padding:18px;
+
+  border:2px solid var(--gold);
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #121212,
+      #050505
+    );
+
+  text-align:center;
+}
+
+.density-guide-title{
+  color:var(--gold);
+
+  font-family:Georgia,serif;
+  font-size:1.45rem;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.density-guide-subtitle{
+  margin:7px 0 15px;
+
+  color:#BBB;
+
+  font-size:.8rem;
+  line-height:1.5;
+}
+
+.density-guide-image{
+  width:100%;
+  max-height:720px;
+
+  object-fit:contain;
+
+  border-radius:14px;
+
+  background:#111;
+
+  cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease;
+}
+
+.density-guide-image:hover{
+  transform:scale(1.01);
+}
+
+.density-guide-label{
+  margin-top:14px;
+
+  color:var(--gold);
+
+  font-size:1rem;
+  font-weight:900;
+
+  text-transform:uppercase;
+}
+
+.density-guide-description{
+  margin-top:6px;
+
+  color:#CCC;
+
+  font-size:.82rem;
+  line-height:1.5;
+}
+
+.density-guide-click{
+  margin-top:10px;
+
+  color:var(--teal);
+
+  font-size:.68rem;
+  font-weight:900;
+
+  letter-spacing:.08em;
+
+   text-transform:uppercase;
+}
+
+/* =========================================================
+   OPTION + GUIDE SIDE-BY-SIDE LAYOUT
+========================================================= */
+
+.option-guide-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(420px,1fr);
+  gap:24px;
+  align-items:start;
+  margin-top:30px;
+}
+
+.option-guide-row .option-group,
+.option-guide-row .density-guide{
+  margin-top:0;
+}
+
+@media(max-width:900px){
+  .option-guide-row{
+    grid-template-columns:1fr;
+
+}
+}/* =========================================================
    LACE SIZE
 ========================================================= */
 
@@ -588,7 +708,74 @@ nav .active{
 
   color:#000;
 }
+/* =========================================================
+   CAP SIZE + HAIR COLOR SIDE-BY-SIDE
+========================================================= */
 
+.two-column{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(420px,1fr);
+  gap:24px;
+  align-items:start;
+  margin-top:30px;
+}
+
+.two-column .option-group,
+.two-column .color-model-preview{
+  margin-top:0;
+}
+
+.cap-measure-guide{
+  padding:18px;
+  border:2px solid var(--gold);
+  border-radius:22px;
+  background:#FFFFFF;
+  text-align:center;
+}
+
+.cap-measure-guide img{
+  width:100%;
+  height:auto;
+  border-radius:14px;
+}
+
+.hair-color-row .color-option-group{
+  order:1;
+}
+
+.hair-color-row .color-model-preview{
+  order:2;
+}
+
+@media(max-width:900px){
+  .two-column{
+    grid-template-columns:1fr;
+  }
+}
+/* LARGE CAP SIZE SELECTOR */
+
+#cap-size{
+  width:100%;
+  min-height:68px;
+  padding:0 20px;
+
+  border:2px solid var(--gold);
+  border-radius:12px;
+
+  background:#080808;
+  color:#FFFFFF;
+
+  font-size:1.15rem;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+#cap-size:hover,
+#cap-size:focus{
+  border-color:var(--teal);
+  outline:none;
+}
 /* =========================================================
    CAP + COLOR
 ========================================================= */
@@ -1269,8 +1456,8 @@ Bag (
 
 <section class="page-heading">
 
-<div class="eyebrow">
-Luxury Burmese Hair
+<div class="eyebrow" id="page-brand-label">
+Luxury Raw Hair
 </div>
 
 <h1>
@@ -1290,7 +1477,7 @@ length, density, lace size, cap size and color.
 <div class="builder">
 
 
-<div class="image-panel">
+<div class="visual-column"><div class="image-panel">
 
 <img
   id="main-wig-image"
@@ -1317,11 +1504,10 @@ See Product
 
 </div>
 
-
 <div class="options-panel">
 
-<div class="collection-label">
-Luxury Burmese Hair
+<div class="collection-label" id="collection-brand-label">
+Luxury Raw Hair
 </div>
 
 <h2
@@ -1339,11 +1525,43 @@ Soft flowing waves with natural volume,
 movement and effortless versatility.
 </p>
 
+<!-- BRAND / ORIGIN -->
 
 <div class="option-group">
 
+  <div class="option-title">
+    1. Choose Brand / Origin
+  </div>
+
+  <div class="texture-grid">
+
+    <button type="button" class="brand-btn active" data-brand="Burmese">
+      Burmese
+    </button>
+
+    <button type="button" class="brand-btn" data-brand="Cambodian">
+      Cambodian
+    </button>
+
+    <button type="button" class="brand-btn" data-brand="Indian">
+      Indian
+    </button>
+
+    <button type="button" class="brand-btn" data-brand="LAOS">
+      LAOS
+    </button>
+
+    <button type="button" class="brand-btn" data-brand="Vietnamese">
+      Vietnamese
+    </button>
+
+  </div>
+
+</div>
+<div class="option-group">
+
 <div class="option-title">
-1. Choose Texture
+2. Choose Texture
 </div>
 
 <div class="texture-grid">
@@ -1380,7 +1598,7 @@ Kinky Curly
 <div class="option-group">
 
 <div class="option-title">
-2. Choose Length
+3. Choose Length
 </div>
 
 <div class="length-grid">
@@ -1399,82 +1617,120 @@ Kinky Curly
 <button type="button" class="length-btn" data-length="40">40"</button>
 
 </div>
-
 </div>
 
 
+
+<div class="option-guide-row">
+
+  <div class="option-group">
+
+    <div class="option-title">
+4. Choose Density
+    </div>
+
+    <div class="density-grid">
+
+      <button
+        type="button"
+        class="density-btn active"
+        data-density="180%"
+      >
+        180%
+      </button>
+
+      <button
+        type="button"
+        class="density-btn"
+        data-density="200%"
+      >
+        200%
+      </button>
+
+      <button
+        type="button"
+        class="density-btn"
+        data-density="250%"
+      >
+        250%
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="density-guide">
+
+    <div class="density-guide-title">
+      Wig Density Guide
+    </div>
+
+    <div class="density-guide-subtitle">
+      Compare our luxury wig densities and choose the fullness that fits your look.
+    </div>
+
+    <img
+      id="density-guide-image"
+      class="density-guide-image"
+      src="images/Wig Density/wig-density-all-180-200-250.png"
+      alt="Big Boss Bundles 180 200 and 250 percent wig density comparison"
+    >
+
+    <div
+      id="density-guide-label"
+      class="density-guide-label"
+    >
+      Compare All Densities
+    </div>
+
+    <div
+      id="density-guide-description"
+      class="density-guide-description"
+    >
+      180% Natural Fullness • 200% Fuller &amp; Glamorous • 250% Maximum Fullness
+    </div>
+
+    <div class="density-guide-click">
+      Click Image to Explore Densities
+    </div>
+
+  </div>
+
+</div>
 <div class="option-group">
 
-<div class="option-title">
-3. Choose Density
-</div>
+  <div class="option-title">
+5. Choose Lace Size
+  </div>
 
-<div class="density-grid">
+  <div class="lace-intro">
+    Choose your preferred lace coverage and parting space.
+  </div>
 
-<button
-  type="button"
-  class="density-btn active"
-  data-density="180%"
->
-180%
-</button>
+  <div class="lace-grid">
 
-<button
-  type="button"
-  class="density-btn"
-  data-density="200%"
->
-200%
-</button>
+    <div
+      class="lace-card"
+      data-lace-card="4x4"
+    >
 
-<button
-  type="button"
-  class="density-btn"
-  data-density="250%"
->
-250%
-</button>
+      <div class="lace-image-wrap">
 
-</div>
+        <img
+          src="images/4x4-lace-wig.jpeg"
+          alt="4x4 Lace Size Wig"
+        >
 
-</div>
+        <button
+          type="button"
+          class="enlarge-btn"
+          data-enlarge="images/4x4-lace-wig.jpeg"
+        >
+          Click to Enlarge
+        </button>
 
-
-<div class="option-group">
-
-<div class="option-title">
-4. Choose Lace Size
-</div>
-
-<p class="lace-intro">
-Select your lace size. Click to enlarge each image to see the lace construction.
-</p>
-
-<div class="lace-grid">
-
-
-<div
-  class="lace-card"
-  data-lace-card="4x4"
->
-
-<div class="lace-image-wrap">
-
-<img
-  src="images/4x4-lace-wig.jpeg"
-  alt="4x4 Lace Size Wig"
->
-
-<button
-  type="button"
-  class="enlarge-btn"
-  data-enlarge="images/4x4-lace-wig.jpeg"
->
-Click to Enlarge
-</button>
-
-</div>
-
+      </div>
 <div class="lace-copy">
 
 <strong>
@@ -1643,29 +1899,41 @@ Select 13×6
 <div class="option-group">
 
 <div class="option-title">
-5. Cap Size
+6. Choose Cap Size
 </div>
 
 <select
   id="cap-size"
   class="select-box"
 >
+  <option value="Small">
+    Small
+  </option>
 
-<option>
-Small
-</option>
+  <option value="Medium" selected>
+    Medium
+  </option>
 
-<option selected>
-Medium
-</option>
-
-<option>
-Large
-</option>
-
+  <option value="Large">
+    Large
+  </option>
 </select>
 
 </div>
+
+<div class="cap-measure-guide">
+
+  <img
+    src="images/Wig Cap Guide/wig-cap-how-to-measure-head-guide.png"
+    alt="How to measure your head for the perfect wig fit"
+  >
+
+</div>
+
+</div>
+
+<div class="two-column hair-color-row">
+    
 <!-- HAIR COLOR MODEL PREVIEW -->
 
 <div class="color-model-preview">
@@ -1723,7 +1991,7 @@ Large
 <div class="option-group color-option-group">
 
   <div class="option-title">
-    6. Choose Hair Color
+  7. Choose Hair Color
   </div>
 
   <div class="selected-color-display">
@@ -1817,7 +2085,12 @@ Large
       <small>Highlight</small>
     </button>
 
-<button
+<button type="button" class="hair-color-btn" data-color="Honey Caramel Balayage">
+  <span class="color-swatch"
+    style="background:linear-gradient(90deg,#8b5a2b 0%,#c99552 45%,#e4bd78 75%,#9a6535 100%);"></span>
+  <span>HONEY</span>
+  <small>Caramel Balayage</small>
+</button><button
   type="button"
   class="hair-color-btn"
   data-color="Custom Color"
@@ -1831,11 +2104,13 @@ Large
 
 </div>
 
+</div>
+
 
 <div class="option-group">
 
 <div class="option-title">
-7. Quantity
+8. Quantity
 </div>
 
 <div class="quantity-control">
@@ -2186,83 +2461,217 @@ if(
 
 const wigTextures = {
 
-  "Straight":{
-    model:
-      "images/Burmese Hair Images/burmese-straight-wig-model.png",
+  "Burmese": {
 
-    product:
-      "images/Burmese Hair Images/burmese-straight-wig-product.jpeg",
+    "Straight":{
+      model:"images/Burmese Hair Images/burmese-straight-wig-model.png",
+      product:"images/Burmese Hair Images/burmese-straight-wig-product.jpeg",
+      description:"Smooth, sleek and polished with luxurious natural movement."
+    },
 
-    description:
-      "Smooth, sleek and polished with luxurious natural movement."
+    "Body Wave":{
+      model:"images/Burmese Hair Images/burmese-body-wave-wig-model.png",
+      product:"images/Burmese Hair Images/burmese-body-wave-wig-product.png",
+      description:"Soft flowing waves with natural volume, movement and effortless versatility."
+    },
+
+    "Deep Wave":{
+      model:"images/Burmese Hair Images/burmese-deep-wave-model.png",
+      product:"images/Burmese Hair Images/burmese-deep-wave-product.png",
+      description:"Defined waves with rich texture, glamorous volume and beautiful movement."
+    },
+
+    "Curly":{
+      model:"images/Burmese Hair Images/burmese-curly-wig-model.jpg",
+      product:"images/Burmese Hair Images/burmese-curly-wig-product.jpg",
+      description:"Beautiful defined curls with bounce, softness and natural fullness."
+    },
+
+    "Kinky Straight":{
+      model:"images/Burmese Hair Images/burmese-kinky-straight-wig-model.jpg",
+      product:"images/Burmese Hair Images/burmese-kinky-straight-wig-product.jpg",
+      description:"A natural blown out texture with softness, body and realistic movement."
+    },
+
+    "Kinky Curly":{
+      model:"images/Burmese Hair Images/burmese-kinky-curly-model.jpg",
+      product:"images/Burmese Hair Images/burmese-kinky-curly-wig-product.jpg",
+      description:"Bold naturally textured curls with rich fullness and luxurious volume."
+    }
+
   },
 
 
-  "Body Wave":{
-    model:
-      "images/Burmese Hair Images/burmese-body-wave-wig-model.png",
+  "Cambodian": {
 
-    product:
-      "images/Burmese Hair Images/burmese-body-wave-wig-product.png",
+    "Straight":{
+      model:"images/Cambodian Hair Images/cambodian-straight-wig-model.png",
+      product:"images/Cambodian Hair Images/cambodian-straight-wig-product.jpg",
+      description:"Smooth, sleek and polished with luxurious natural movement."
+    },
 
-    description:
-      "Soft flowing waves with natural volume, movement and effortless versatility."
+    "Body Wave":{
+      model:"images/Cambodian Hair Images/cambodian-body-wave-wig-model.png",
+      product:"images/Cambodian Hair Images/cambodian-body-wave-wig-product.png",
+      description:"Soft flowing waves with natural volume, movement and effortless versatility."
+    },
+
+    "Deep Wave":{
+      model:"images/Cambodian Hair Images/cambodian-deep-wave-wig-model.png",
+      product:"images/Cambodian Hair Images/cambodian-deep-wave-wig-product.png",
+      description:"Defined waves with rich texture, glamorous volume and beautiful movement."
+    },
+
+    "Curly":{
+      model:"images/Cambodian Hair Images/cambodian-curly-wig-model.png",
+      product:"images/Cambodian Hair Images/cambodian-curly-wig-product.png",
+      description:"Beautiful defined curls with bounce, softness and natural fullness."
+    },
+
+    "Kinky Straight":{
+      model:"images/Cambodian Hair Images/cambodian-kinky-straight-model.png",
+      product:"images/Cambodian Hair Images/cambodian-kinky-straight-wig-product.png",
+      description:"A natural blown out texture with softness, body and realistic movement."
+    },
+
+    "Kinky Curly":{
+      model:"images/Cambodian Hair Images/cambodian-kinky-curly-wig-model.png",
+      product:"images/Cambodian Hair Images/cambodian-kinky-curly-product.jpg",
+      description:"Bold naturally textured curls with rich fullness and luxurious volume."
+    }
+
   },
 
 
-  "Deep Wave":{
-    model:
-      "images/Burmese Hair Images/burmese-deep-wave-model.png",
+  "Indian": {
 
-    product:
-      "images/Burmese Hair Images/burmese-deep-wave-product.png",
+    "Straight":{
+      model:"images/Indian Raw Hair Images/indian-raw-straight-wig-model.jpg",
+      product:"images/Indian Raw Hair Images/indian-raw-straight-wig-product.png",
+      description:"Smooth, sleek and polished with luxurious natural movement."
+    },
 
-    description:
-      "Defined waves with rich texture, glamorous volume and beautiful movement."
+    "Body Wave":{
+      model:"images/Indian Raw Hair Images/indian-raw-body-wave-wig-model.jpg",
+      product:"images/Indian Raw Hair Images/indian-raw-body-wave-wig-product.png",
+      description:"Soft flowing waves with natural volume, movement and effortless versatility."
+    },
+
+    "Deep Wave":{
+      model:"images/Indian Raw Hair Images/indian-raw-deep-wave-model.png",
+      product:"images/Indian Raw Hair Images/indian-raw-deep-wave-product.png",
+      description:"Defined waves with rich texture, glamorous volume and beautiful movement."
+    },
+
+    "Curly":{
+      model:"images/Indian Raw Hair Images/indian-raw-curly-wig-model.jpg",
+      product:"images/Indian Raw Hair Images/indian-raw-curly-wig-product.jpg",
+      description:"Beautiful defined curls with bounce, softness and natural fullness."
+    },
+
+    "Kinky Straight":{
+      model:"images/Indian Raw Hair Images/indian-raw-kinky-straight-wig-model.jpg",
+      product:"images/Indian Raw Hair Images/indian-raw-kinky-straight-wig-product.png",
+      description:"A natural blown out texture with softness, body and realistic movement."
+    },
+
+    "Kinky Curly":{
+      model:"images/Indian Raw Hair Images/indian-raw-kinky-curly-wig-model.jpg",
+      product:"images/Indian Raw Hair Images/indian-raw-kinky-curly-wig-product.png",
+      description:"Bold naturally textured curls with rich fullness and luxurious volume."
+    }
+
   },
 
 
-  "Curly":{
-    model:
-      "images/Burmese Hair Images/burmese-curly-wig-model.jpg",
+  "LAOS": {
 
-    product:
-      "images/Burmese Hair Images/burmese-curly-wig-product.jpg",
+    "Straight":{
+      model:"images/LAOS Hair Images/laos-straight-wig-model.png",
+      product:"images/LAOS Hair Images/laos-straight-wig-product.png",
+      description:"Smooth, sleek and polished with luxurious natural movement."
+    },
 
-    description:
-      "Beautiful defined curls with bounce, softness and natural fullness."
+    "Body Wave":{
+      model:"images/LAOS Hair Images/laos-body-wave-wig-model.png",
+      product:"images/LAOS Hair Images/laos-body-wave-wig-product.png",
+      description:"Soft flowing waves with natural volume, movement and effortless versatility."
+    },
+
+    "Deep Wave":{
+      model:"images/LAOS Hair Images/laos-deep-wave-wig-model.png",
+      product:"images/LAOS Hair Images/laos-deep-wave-wig-product.png",
+      description:"Defined waves with rich texture, glamorous volume and beautiful movement."
+    },
+
+    "Curly":{
+      model:"images/LAOS Hair Images/laos-curley-wig-model.png",
+      product:"images/LAOS Hair Images/laos-curley-wig-product.png",
+      description:"Beautiful defined curls with bounce, softness and natural fullness."
+    },
+
+    "Kinky Straight":{
+      model:"images/LAOS Hair Images/laos-kinky-straight-wig-model.png",
+      product:"images/LAOS Hair Images/laos-kinky-straight-wig-product.png",
+      description:"A natural blown out texture with softness, body and realistic movement."
+    },
+
+    "Kinky Curly":{
+      model:"images/LAOS Hair Images/laos-kinky-curly-wig-model.png",
+      product:"images/LAOS Hair Images/laos-kinky-curly-product.png",
+      description:"Bold naturally textured curls with rich fullness and luxurious volume."
+    }
+
   },
 
 
-  "Kinky Straight":{
-    model:
-      "images/Burmese Hair Images/burmese-kinky-straight-wig-model.jpg",
+  "Vietnamese": {
 
-    product:
-      "images/Burmese Hair Images/burmese-kinky-straight-wig-product.jpg",
+    "Straight":{
+      model:"images/Vietnamese Hair Images/vietnamese-straight-wig-model.png",
+      product:"images/Vietnamese Hair Images/vietnamese-straight-wig-product.png",
+      description:"Smooth, sleek and polished with luxurious natural movement."
+    },
 
-    description:
-      "A natural blown out texture with softness, body and realistic movement."
-  },
+    "Body Wave":{
+      model:"images/Vietnamese Hair Images/vietnamese-body-wave-wig-model.png",
+      product:"images/Vietnamese Hair Images/vietnamese-body-wave-wig-product.png",
+      description:"Soft flowing waves with natural volume, movement and effortless versatility."
+    },
 
+    "Deep Wave":{
+      model:"images/Vietnamese Hair Images/vietnamese-deep-wave-wig-model.png",
+      product:"images/Vietnamese Hair Images/vietnamese-deep-wave-wig-product.png",
+      description:"Defined waves with rich texture, glamorous volume and beautiful movement."
+    },
 
-  "Kinky Curly":{
-    model:
-      "images/Burmese Hair Images/burmese-kinky-curly-model.jpg",
+    "Curly":{
+      model:"images/Vietnamese Hair Images/vietnamese-curley-wig-model.png",
+      product:"images/Vietnamese Hair Images/vietnamese-curley-wig-product.png",
+      description:"Beautiful defined curls with bounce, softness and natural fullness."
+    },
 
-    product:
-      "images/Burmese Hair Images/burmese-kinky-curly-wig-product.jpg",
+    "Kinky Straight":{
+      model:"images/Vietnamese Hair Images/vietnamese-kinky-straight-wig-model.png",
+      product:"images/Vietnamese Hair Images/vietnamese-kinky-straight-wig-product.png",
+      description:"A natural blown out texture with softness, body and realistic movement."
+    },
 
-    description:
-      "Bold naturally textured curls with rich fullness and luxurious volume."
+    "Kinky Curly":{
+      model:"images/Vietnamese Hair Images/vietnamese-kinky-curly-wig-model.png",
+      product:"images/Vietnamese Hair Images/vietnamese-kinky-curly-wig-product.png",
+      description:"Bold naturally textured curls with rich fullness and luxurious volume."
+    }
+
   }
 
 };
 
-
 /* =========================================================
    DEFAULT SELECTION
 ========================================================= */
+
+let selectedBrand = "Burmese";
 
 let selectedTexture = "Body Wave";
 
@@ -2328,9 +2737,10 @@ const colorModelImages = {
     "images/Hair Color Models/color-1-jet-black-white-model.png"
   ],
 
-  "1B Natural Black": [
-    "images/Hair Color Models/color-1b-natural-black-black-white-models.png"
-  ],
+ "1B Natural Black": [
+  "images/Hair Color Models/color-1b-natural-black.png",
+  "images/Hair Color Models/color-1b-natural-black-white-model.png"
+],
 
   "2 Dark Brown": [
     "images/Hair Color Models/color-2-dark-brown.png",
@@ -2366,9 +2776,9 @@ const colorModelImages = {
     "images/Hair Color Models/color-613-blonde-white-model.png"
   ],
 
-  "Platinum Blonde": [
-    "images/Hair Color Models/color-platinum-blonde.png"
-  ],
+ "Platinum Blonde": [
+  "images/Hair Color Models/color-platinum-blonde-black-white-models.png"
+],
 
   "P4/27 Highlight": [
     "images/Hair Color Models/color-p4-27-highlight-black-model.png",
@@ -2384,12 +2794,15 @@ const colorModelImages = {
     "images/Hair Color Models/color-p1b-30-highlight-black-white-models.png"
   ],
 
-  "P1B/99J Highlight": [
-    "images/Hair Color Models/color-p1b-99j-highlight-black-white-models.png"
-  ]
+"P1B/99J Highlight": [
+  "images/Hair Color Models/color-p1b-99j-highlight-black-white-models.png"
+],
+"Honey Caramel Balayage": [
+  "images/Hair Color Models/honey-caramel-balayage-black-model.png",
+  "images/Hair Color Models/honey-caramel-balayage-white-model.png"
+]
 
 };
-
 const priceDisplay =
   document.getElementById("price");
 
@@ -2405,12 +2818,142 @@ const lightboxImage =
 const lightboxClose =
   document.getElementById("lightbox-close");
 
+/* =========================================================
+   INTERACTIVE DENSITY GUIDE
+========================================================= */
 
+const densityGuideImage =
+  document.getElementById("density-guide-image");
+
+const densityGuideLabel =
+  document.getElementById("density-guide-label");
+
+const densityGuideDescription =
+  document.getElementById("density-guide-description");
+
+const densityGuideData = {
+
+  "180%":{
+    image:
+      "images/Wig Density/wig-density-180-model.png",
+
+    label:
+      "180% Density",
+
+    description:
+      "Natural fullness with lightweight movement."
+  },
+
+  "200%":{
+    image:
+      "images/Wig Density/wig-density-200-model.png",
+
+    label:
+      "200% Density",
+
+    description:
+      "Fuller volume while maintaining natural movement."
+  },
+
+  "250%":{
+    image:
+      "images/Wig Density/wig-density-250-model.png",
+
+    label:
+      "250% Density",
+
+    description:
+      "Maximum fullness for a bold, luxurious look."
+  }
+
+};
+
+function updateDensityGuide(density){
+
+  const guide =
+    densityGuideData[density];
+
+  if(!guide || !densityGuideImage){
+    return;
+  }
+
+  densityGuideImage.src =
+    guide.image;
+
+  densityGuideImage.alt =
+    density +
+    " Big Boss Bundles Wig Density";
+
+  if(densityGuideLabel){
+    densityGuideLabel.textContent =
+      guide.label;
+  }
+
+  if(densityGuideDescription){
+    densityGuideDescription.textContent =
+      guide.description;
+  }
+
+}
 /* =========================================================
    UPDATE PRODUCT
 ========================================================= */
 
 function updateProduct(){
+
+  const texture =
+    wigTextures[selectedBrand][selectedTexture];
+
+  const pageBrandLabel =
+    document.getElementById("page-brand-label");
+
+  const collectionBrandLabel =
+    document.getElementById("collection-brand-label");
+
+  if(pageBrandLabel){
+    pageBrandLabel.textContent =
+      "Luxury " + selectedBrand + " Hair";
+  }
+
+  if(collectionBrandLabel){
+    collectionBrandLabel.textContent =
+      "Luxury " + selectedBrand + " Hair";
+  }
+
+  mainImage.src =
+    imageView === "model"
+      ? texture.model
+      : texture.product;
+
+ mainImage.alt =
+  selectedBrand +
+  " " +
+  selectedTexture +
+  " Wig";
+
+ productTitle.textContent =
+  selectedBrand +
+  " " +
+  selectedTexture +
+  " Wig";
+  productDescription.textContent =
+    texture.description;
+
+  if(imageView === "model"){
+
+    imageSwitch.textContent = "→";
+
+    imageHint.textContent =
+      "See Product";
+
+  }else{
+
+    imageSwitch.textContent = "←";
+
+    imageHint.textContent =
+      "See Model";
+
+  }
     
 /* Update Hair Color Model Preview */
 
@@ -2450,7 +2993,20 @@ if(selectedColor === "Custom Color"){
     selectedColor;
 
 }
-
+selectionText.textContent =
+  selectedBrand +
+  " • " +
+  selectedTexture +
+  " • " +
+  selectedLength +
+  "\" • " +
+  selectedDensity +
+  " Density • " +
+  selectedLace.replace("x", "×") +
+  " Lace Size • " +
+  capSize.value +
+  " Cap • " +
+  selectedColor;
   const unitPrice =
     calculateWigPrice();
 
@@ -2494,7 +3050,37 @@ function(){
 
 });
 
+/* =========================================================
+   BRAND / ORIGIN BUTTONS
+========================================================= */
 
+document
+.querySelectorAll(".brand-btn")
+.forEach(function(button){
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      selectedBrand =
+        button.dataset.brand;
+
+      document
+      .querySelectorAll(".brand-btn")
+      .forEach(function(item){
+
+        item.classList.remove("active");
+
+      });
+
+      button.classList.add("active");
+
+      updateProduct();
+
+    }
+  );
+
+});
 /* =========================================================
    TEXTURE BUTTONS
 ========================================================= */
@@ -2611,6 +3197,7 @@ document
       );
 
 
+        updateDensityGuide(selectedDensity);
       updateProduct();
 
     }
@@ -2618,7 +3205,63 @@ document
 
 });
 
+/* =========================================================
+   CLICKABLE DENSITY GUIDE IMAGE
+========================================================= */
 
+const densityGuideOrder = [
+  "all",
+  "180%",
+  "200%",
+  "250%"
+];
+
+let densityGuidePosition = 0;
+
+function showAllDensities(){
+
+  densityGuideImage.src =
+    "images/Wig Density/wig-density-all-180-200-250.png";
+
+  densityGuideImage.alt =
+    "Big Boss Bundles 180 200 and 250 percent wig density comparison";
+
+  densityGuideLabel.textContent =
+    "Compare All Densities";
+
+  densityGuideDescription.textContent =
+    "180% Natural Fullness • 200% Fuller & Glamorous • 250% Maximum Fullness";
+
+}
+
+densityGuideImage.addEventListener(
+  "click",
+  function(){
+
+    densityGuidePosition++;
+
+    if(
+      densityGuidePosition >=
+      densityGuideOrder.length
+    ){
+      densityGuidePosition = 0;
+    }
+
+    const density =
+      densityGuideOrder[densityGuidePosition];
+
+    if(density === "all"){
+
+      showAllDensities();
+
+    }else{
+
+      updateDensityGuide(density);
+
+    }
+
+  }
+);
 /* =========================================================
    LACE SELECTION
 ========================================================= */
@@ -2881,96 +3524,121 @@ function(){
 
    const cartItem = {
 
-  productId:
-    "burmese-wig",
+productId:
+  selectedBrand
+    .toLowerCase()
+    .replace(/\s+/g,"-") +
+  "-wig",
 
-  id:
-    "burmese-wig-" +
+id:
+  selectedBrand
+    .toLowerCase()
+    .replace(/\s+/g,"-") +
+  "-wig-" +
+  selectedTexture
+    .toLowerCase()
+    .replace(/\s+/g,"-") +
+  "-" +
+  selectedLength +
+  "-" +
+  selectedDensity +
+  "-" +
+  selectedLace +
+  "-" +
+  capSize.value
+    .toLowerCase()
+    .replace(/\s+/g,"-") +
+  "-" +
+  selectedColor
+    .toLowerCase()
+    .replace(/\s+/g,"-"),
+
+name:
+  selectedBrand +
+  " " +
+  selectedTexture +
+  " Wig",
+
+price:
+  unitPrice,
+
+quantity:
+  quantity,
+
+image:
+  wigTextures[
+    selectedBrand
+  ][
     selectedTexture
-      .toLowerCase()
-      .replace(/\s+/g,"-") +
-    "-" +
-    selectedLength +
-    "-" +
-    selectedDensity +
-    "-" +
-    selectedLace +
-    "-" +
-    capSize.value
-      .toLowerCase()
-      .replace(/\s+/g,"-") +
-    "-" +
-    selectedColor
-      .toLowerCase()
-      .replace(/\s+/g,"-"),
+  ].product,
 
-  name:
-    "Burmese " +
-    selectedTexture +
-    " Wig",
+brand:
+  selectedBrand,
 
-  price:
-    unitPrice,
+texture:
+  selectedTexture,
 
-  quantity:
-    quantity,
+length:
+  selectedLength + "\"",
 
-  image:
-    wigTextures[
-      selectedTexture
-    ].product,
+density:
+  selectedDensity,
 
-  texture:
+laceSize:
+  selectedLace.replace(
+    "x",
+    "×"
+  ),
+
+capSize:
+  capSize.value,
+
+color:
+  selectedColor,
+
+options:{
+
+  Brand:
+    selectedBrand,
+
+  Texture:
     selectedTexture,
 
-  length:
+  Length:
     selectedLength + "\"",
 
-  density:
+  Density:
     selectedDensity,
 
-  laceSize:
+  Lace:
     selectedLace.replace(
       "x",
       "×"
     ),
 
-  capSize:
+  "Cap Size":
     capSize.value,
 
-  color:
-    selectedColor,
+  Color:
+    selectedColor
+}
 
-  options:{
-
-    Texture:
-      selectedTexture,
-
-    Length:
-      selectedLength + "\"",
-
-    Density:
-      selectedDensity,
-
-    Lace:
-      selectedLace.replace(
-        "x",
-        "×"
-      ),
-
-    "Cap Size":
-      capSize.value,
-
-    Color:
-      selectedColor
-  }
-
-};
-if(
+};if(
   window.BBBCart &&
   typeof window.BBBCart.add === "function"
 ){
   window.BBBCart.add(cartItem);
+
+  addButton.textContent =
+    "Added to Bag ✓";
+
+  window.BBBCart.updateCount();
+window.location.href = "cart.html";
+}else{
+
+  addButton.textContent =
+    "Cart Error";
+
 }
 
 
