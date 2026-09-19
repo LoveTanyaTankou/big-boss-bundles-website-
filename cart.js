@@ -48,7 +48,9 @@ window.BBBCart = (() => {
 
     return [
 
-      item.productId || item.name || "",
+     item.productId || item.name || "",
+
+item.brand || "",
 
       item.texture || "",
 
@@ -97,15 +99,17 @@ window.BBBCart = (() => {
       price:
         Number(item.price || 0),
 
-      quantity:
-        Math.max(
-          1,
-          Number(item.quantity || 1)
-        ),
+  quantity:
+  Math.max(
+    1,
+    Number(item.quantity || 1)
+  ),
 
-      image:
-        item.image || "",
+image:
+  item.image || "",
 
+brand:
+  item.brand || "",
 
       /* HAIR PRODUCT OPTIONS */
 
@@ -511,7 +515,8 @@ window.BBBCart = (() => {
 
 
         /* HAIR OPTIONS */
-
+brand:
+  item.brand,
         texture:
           item.texture,
 
