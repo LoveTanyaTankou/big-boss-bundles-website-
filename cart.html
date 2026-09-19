@@ -498,7 +498,9 @@ function optionText(item){
   if(item.capSize){
     options.push(item.capSize);
   }
-
+if(item.baseSize){
+  options.push("Base Size: " + item.baseSize);
+}
   return options.join(" • ");
 }
 
@@ -797,31 +799,34 @@ checkoutBtn.addEventListener(
         await response.text();
 
 
-      let data;
+let data;
 
-      try{
+try{
 
-        data =
-          JSON.parse(text);
+  data =
+    JSON.parse(text);
 
-      }
-      catch(parseError){
+}
+catch(parseError){
 
-        throw new Error(
-          "The checkout server returned an invalid response."
-        );
+  console.error("RAW CHECKOUT RESPONSE:", text);
 
-      }
+  throw new Error(
+    "Server response: " + text
+  );
 
+}
 
-      if(!response.ok){
+if(!response.ok){
 
-        throw new Error(
-          data.error ||
-          "Unable to start checkout."
-        );
+  throw new Error(
+    data.error ||
+    "Unable to start checkout."
+  );
 
-      }
+}
+
+     
 
 
       if(!data.url){
