@@ -60,11 +60,13 @@ item.brand || "",
 
       item.laceSize || "",
 
-      item.color || "",
+   item.color || "",
 
-      item.capSize || "",
+item.capSize || "",
 
-      item.itemType || "",
+item.baseSize || "",
+
+item.itemType || "",
 
       item.classSessionId || "",
 
@@ -111,28 +113,31 @@ image:
 brand:
   item.brand || "",
 
-      /* HAIR PRODUCT OPTIONS */
+   /* HAIR PRODUCT OPTIONS */
 
-      texture:
-        item.texture || "",
+texture:
+  item.texture || "",
 
-      length:
-        item.length || "",
+length:
+  item.length || "",
 
-      density:
-        item.density || "",
+density:
+  item.density || "",
 
-      laceSize:
-        item.laceSize || "",
+laceSize:
+  item.laceSize || "",
 
-      color:
-        item.color || "",
+color:
+  item.color || "",
 
-      capSize:
-        item.capSize || "",
+capSize:
+  item.capSize || "",
 
+baseSize:
+  item.baseSize || "",
 
-      /* ITEM TYPE */
+/* ITEM TYPE */
+
 
       itemType:
         item.itemType || "product",
@@ -514,29 +519,34 @@ brand:
           item.itemType || "product",
 
 
-        /* HAIR OPTIONS */
+  /* HAIR OPTIONS */
+
 brand:
   item.brand,
-        texture:
-          item.texture,
 
-        length:
-          item.length,
+texture:
+  item.texture,
 
-        density:
-          item.density,
+length:
+  item.length,
 
-        laceSize:
-          item.laceSize,
+density:
+  item.density,
 
-        color:
-          item.color,
+laceSize:
+  item.laceSize,
 
-        capSize:
-          item.capSize,
+color:
+  item.color,
+
+capSize:
+  item.capSize,
+
+baseSize:
+  item.baseSize,
 
 
-        /* CLASS INFORMATION */
+/* CLASS INFORMATION */
 
         classSessionId:
           item.classSessionId,
