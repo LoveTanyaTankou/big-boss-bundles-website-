@@ -1108,12 +1108,32 @@ foreach ($input['items'] as $item) {
 |--------------------------------------------------------------------------
 */
 
-elseif ($productId === 'burmese-wig') {
+elseif (
+    in_array(
+        $productId,
+        [
+            'burmese-wig',
+            'cambodian-wig',
+            'indian-wig',
+            'laos-wig',
+            'vietnamese-wig'
+        ],
+        true
+    )
+) {
 
-    $brand =
-        trim(
-            $item['brand'] ?? ''
-        );
+ $wigBrandByProductId = [
+    'burmese-wig' => 'Burmese',
+    'cambodian-wig' => 'Cambodian',
+    'indian-wig' => 'Indian',
+    'laos-wig' => 'LAOS',
+    'vietnamese-wig' => 'Vietnamese'
+];
+
+$brand =
+    $wigBrandByProductId[
+        $productId
+    ];
 
     $texture =
         trim(
@@ -1326,24 +1346,26 @@ elseif ($productId === 'burmese-wig') {
     |--------------------------------------------------------------------------
     */
 
-    $wigPrice =
-        $baseCost *
-        $WIG_MARKUP;
+  $wigCost = $baseCost;
 
-    $wigPrice *=
-        $WIG_DENSITY_MULTIPLIERS[
-            $density
-        ];
+$wigCost *=
+    $WIG_DENSITY_MULTIPLIERS[
+        $density
+    ];
 
-    $wigPrice +=
-        $WIG_TEXTURE_ADJUSTMENTS[
-            $texture
-        ];
+$wigCost +=
+    $WIG_TEXTURE_ADJUSTMENTS[
+        $texture
+    ];
 
-    $wigPrice =
-        ceil(
-            $wigPrice / 5
-        ) * 5;
+$wigPrice =
+    $wigCost *
+    $WIG_MARKUP;
+
+$wigPrice =
+    ceil(
+        $wigPrice / 5
+    ) * 5;
 
 
     /*
@@ -1353,30 +1375,33 @@ elseif ($productId === 'burmese-wig') {
     */
 
     if (
-        $color !== '' &&
-        $color !== '1B Natural Black'
-    ) {
+    $color !== '' &&
+    $color !== 'Custom Color' &&
+    !in_array(
+        $color,
+        $WIG_STANDARD_COLORS,
+        true
+    )
+) {
 
-        if (
-            !in_array(
-                $color,
-                $WIG_STANDARD_COLORS,
-                true
-            )
-        ) {
+    http_response_code(400);
 
-            http_response_code(400);
+    echo json_encode([
+        'error' =>
+            'Invalid wig color.'
+    ]);
 
-            echo json_encode([
-                'error' =>
-                    'Invalid wig color.'
-            ]);
+    exit;
+}
 
-            exit;
-        }
+if (
+    $color !== '' &&
+    $color !== '1B Natural Black' &&
+    $color !== 'Custom Color'
+) {
 
-        $wigPrice += 18;
-    }
+    $wigPrice += 18;
+}
 
 
     /*
