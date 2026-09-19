@@ -1,955 +1,1174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <title>Shipping Policy | Big Boss Bundles</title>
+  <title>Shipping Policy | Big Boss Bundles</title>
 
-    <meta
-        name="description"
-        content="Read the Big Boss Bundles processing, shipping, tracking, delivery, and local pickup policy."
-    >
+  <meta
+    name="description"
+    content="Big Boss Bundles shipping policy covering processing times, shipping, tracking, delivery and local pickup."
+  >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet"
-    >
+    :root {
+      --black:#0A0A0A;
+      --soft:#131313;
+      --gold:#D4A622;
+      --teal:#00A6D6;
+      --white:#FFFFFF;
+      --gray:#C9C9C9;
+      --border:rgba(255,255,255,.12);
+    }
 
-    <style>
-        :root {
-            --gold: #D4A622;
-            --teal: #00A6D6;
-            --black: #0A0A0A;
-            --white: #FFFFFF;
-            --cream: #F7F5F0;
-            --gray: #555555;
-            --border: #E6E1D7;
-        }
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    html {
+      scroll-behavior:smooth;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    body {
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--black);
+      color:var(--white);
+      line-height:1.7;
+    }
 
-        body {
-            background: var(--white);
-            color: var(--black);
-            font-family: "DM Sans", Arial, sans-serif;
-            line-height: 1.75;
-        }
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+    /* HEADER */
 
-        .announcement {
-            padding: 11px 20px;
-            background: var(--teal);
-            color: var(--white);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-align: center;
-            text-transform: uppercase;
-        }
+    header {
+      background:#050505;
+      border-bottom:2px solid var(--gold);
+    }
 
-        .header {
-            background: var(--black);
-            color: var(--white);
-        }
+    .header-inner {
+      width:min(1380px,94%);
+      min-height:92px;
+      margin:auto;
 
-        .brand-row {
-            padding: 27px 20px 20px;
-            text-align: center;
-        }
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
 
-        .brand-name {
-            display: block;
-            color: var(--gold);
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            line-height: 1;
-        }
+    nav {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:28px;
 
-        .brand-tagline {
-            display: block;
-            margin-top: 8px;
-            color: var(--teal);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-        }
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
 
-        .navigation {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            padding: 15px 20px;
-            overflow-x: auto;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            white-space: nowrap;
-        }
+    nav a {
+      transition:.2s ease;
+    }
 
-        .navigation a {
-            font-size: 0.73rem;
-            font-weight: 700;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-        }
+    nav a:hover {
+      color:var(--gold);
+    }
 
-        .navigation a:hover {
-            color: var(--gold);
-        }
+    .bag {
+      border:2px solid var(--gold);
+      border-radius:999px;
+      padding:11px 18px;
+      color:var(--gold);
+    }
 
-        .page-hero {
-            padding: 85px 7%;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(212, 166, 34, 0.14),
-                    transparent 55%
-                ),
-                var(--cream);
-            text-align: center;
-        }
+    /* HERO */
 
-        .eyebrow {
-            margin-bottom: 12px;
-            color: var(--teal);
-            font-size: 0.74rem;
-            font-weight: 800;
-            letter-spacing: 0.19em;
-            text-transform: uppercase;
-        }
+    .hero {
+      padding:75px 5% 55px;
+      text-align:center;
 
-        .page-hero h1 {
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: clamp(2.7rem, 6vw, 5rem);
-            line-height: 1.05;
-        }
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(0,166,214,.15),
+          transparent 35%
+        ),
+        #080808;
+    }
 
-        .page-hero p {
-            max-width: 760px;
-            margin: 20px auto 0;
-            color: var(--gray);
-        }
+    .eyebrow {
+      color:var(--teal);
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
 
-        .effective-date {
-            display: inline-block;
-            margin-top: 23px;
-            padding: 8px 14px;
-            border: 1px solid var(--gold);
-            background: var(--white);
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
+    .hero h1 {
+      margin-top:10px;
 
-        .policy-layout {
-            display: grid;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 75px 6%;
-            grid-template-columns: 270px minmax(0, 1fr);
-            gap: 55px;
-        }
+      color:var(--gold);
 
-        .policy-menu {
-            position: sticky;
-            top: 25px;
-            height: fit-content;
-            padding: 24px;
-            background: var(--black);
-            color: var(--white);
-        }
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(2.7rem,7vw,5rem);
 
-        .policy-menu h2 {
-            margin-bottom: 15px;
-            color: var(--gold);
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: 1.3rem;
-        }
+      text-transform:uppercase;
+    }
 
-        .policy-menu a {
-            display: block;
-            padding: 9px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-            color: rgba(255, 255, 255, 0.78);
-            font-size: 0.84rem;
-        }
+    .hero p {
+      width:min(760px,100%);
+      margin:18px auto 0;
 
-        .policy-menu a:hover {
-            color: var(--teal);
-        }
+      color:#DEDEDE;
+      font-size:1.05rem;
+      line-height:1.7;
+    }
 
-        .summary-box {
-            margin-bottom: 42px;
-            padding: 30px;
-            border: 2px solid var(--gold);
-            background: var(--black);
-            color: var(--white);
-        }
+    .effective-date {
+      display:inline-block;
 
-        .summary-box h2 {
-            margin-bottom: 12px;
-            color: var(--gold);
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: 2rem;
-        }
+      margin-top:22px;
+      padding:8px 15px;
 
-        .summary-box p {
-            margin-bottom: 10px;
-            color: rgba(255, 255, 255, 0.84);
-        }
+      border:1px solid var(--gold);
+      border-radius:999px;
 
-        .policy-section {
-            padding: 35px 0;
-            border-bottom: 1px solid var(--border);
-            scroll-margin-top: 25px;
-        }
+      color:var(--gold);
 
-        .policy-section:first-of-type {
-            padding-top: 0;
-        }
+      font-size:.78rem;
+      font-weight:800;
+      text-transform:uppercase;
+    }
 
-        .policy-section h2 {
-            margin-bottom: 15px;
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: 1.8rem;
-            line-height: 1.25;
-        }
+    /* LAYOUT */
 
-        .policy-section h3 {
-            margin: 24px 0 9px;
-            color: var(--teal);
-            font-size: 1rem;
-        }
+    .policy-section-wrapper {
+      padding:60px 5% 85px;
+    }
 
-        .policy-section p {
-            margin-bottom: 14px;
-            color: #444444;
-        }
+    .policy-layout {
+      width:min(1180px,100%);
+      margin:auto;
 
-        .policy-section ul,
-        .policy-section ol {
-            margin: 10px 0 18px 24px;
-        }
+      display:grid;
+      grid-template-columns:260px minmax(0,1fr);
+      gap:35px;
+    }
 
-        .policy-section li {
-            margin-bottom: 9px;
-            color: #444444;
-        }
+    /* SIDE MENU */
 
-        .notice-box {
-            margin: 22px 0;
-            padding: 22px;
-            border-left: 5px solid var(--teal);
-            background: var(--cream);
-        }
+    .policy-menu {
+      position:sticky;
+      top:25px;
+      height:fit-content;
 
-        .contact-box {
-            margin-top: 28px;
-            padding: 30px;
-            background: var(--black);
-            color: var(--white);
-        }
+      padding:25px;
 
-        .contact-box h3 {
-            margin-bottom: 14px;
-            color: var(--gold);
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: 1.6rem;
-        }
+      border:1px solid rgba(0,166,214,.55);
+      border-radius:18px;
 
-        .contact-box p,
-        .contact-box a {
-            display: block;
-            margin-bottom: 7px;
-            color: rgba(255, 255, 255, 0.82);
-        }
+      background:var(--soft);
+    }
 
-        .contact-box a:hover {
-            color: var(--teal);
-        }
+    .policy-menu h2 {
+      margin-bottom:15px;
 
-        .footer {
-            padding: 60px 6% 25px;
-            background: var(--black);
-            color: var(--white);
-        }
+      color:var(--gold);
 
-        .footer-grid {
-            display: grid;
-            max-width: 1250px;
-            margin: 0 auto;
-            grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
-            gap: 40px;
-        }
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.35rem;
+    }
 
-        .footer h3 {
-            margin-bottom: 12px;
-            color: var(--gold);
-            font-family: "Playfair Display", Georgia, serif;
-            font-size: 1.65rem;
-        }
+    .policy-menu a {
+      display:block;
 
-        .footer h4 {
-            margin-bottom: 14px;
-            color: var(--teal);
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
+      padding:9px 0;
 
-        .footer p,
-        .footer a {
-            display: block;
-            margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.73);
-            font-size: 0.86rem;
-        }
+      border-bottom:1px solid var(--border);
 
-        .footer a:hover {
-            color: var(--gold);
-        }
+      color:#CCCCCC;
 
-        .copyright {
-            max-width: 1250px;
-            margin: 40px auto 0;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.14);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.75rem;
-            text-align: center;
-        }
+      font-size:.83rem;
+    }
 
-        @media (max-width: 850px) {
-            .policy-layout {
-                grid-template-columns: 1fr;
-            }
+    .policy-menu a:last-child {
+      border-bottom:0;
+    }
 
-            .policy-menu {
-                position: static;
-            }
+    .policy-menu a:hover {
+      color:var(--teal);
+    }
 
-            .footer-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
+    /* MAIN CARD */
 
-        @media (max-width: 600px) {
-            .navigation {
-                justify-content: flex-start;
-            }
+    .policy-card {
+      padding:45px;
 
-            .page-hero {
-                padding: 65px 7%;
-            }
+      border:1px solid rgba(212,166,34,.65);
+      border-radius:22px;
 
-            .policy-layout {
-                padding: 55px 6%;
-            }
+      background:var(--soft);
+    }
 
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* SUMMARY */
+
+    .summary-box {
+      margin-bottom:35px;
+      padding:28px;
+
+      border:2px solid var(--gold);
+      border-radius:16px;
+
+      background:#0D0D0D;
+    }
+
+    .summary-box h2 {
+      margin-bottom:15px;
+
+      color:var(--gold);
+
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.8rem;
+    }
+
+    .summary-box p {
+      margin-bottom:10px;
+      color:#E2E2E2;
+    }
+
+    .summary-box p:last-child {
+      margin-bottom:0;
+    }
+
+    /* POLICY SECTIONS */
+
+    .policy-section {
+      padding:35px 0;
+
+      border-bottom:1px solid var(--border);
+
+      scroll-margin-top:30px;
+    }
+
+    .policy-section:first-of-type {
+      padding-top:0;
+    }
+
+    .policy-section:last-child {
+      border-bottom:0;
+      padding-bottom:0;
+    }
+
+    .policy-section h2 {
+      margin-bottom:15px;
+
+      color:var(--gold);
+
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.65rem;
+
+      line-height:1.3;
+    }
+
+    .policy-section h3 {
+      margin:24px 0 10px;
+
+      color:var(--teal);
+
+      font-size:1rem;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .policy-section p {
+      margin-bottom:14px;
+      color:#DDDDDD;
+    }
+
+    .policy-section ul {
+      margin:12px 0 18px 25px;
+      color:#DDDDDD;
+    }
+
+    .policy-section li {
+      margin-bottom:8px;
+      padding-left:4px;
+    }
+
+    /* NOTICE */
+
+    .notice-box {
+      margin:22px 0;
+      padding:24px;
+
+      border-left:5px solid var(--teal);
+      border-radius:8px;
+
+      background:#0D0D0D;
+
+      color:#EEEEEE;
+    }
+
+    .notice-box strong {
+      color:var(--gold);
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      margin-top:25px;
+      padding:28px;
+
+      border-left:5px solid var(--teal);
+      border-radius:8px;
+
+      background:#0D0D0D;
+    }
+
+    .contact-box h3 {
+      margin:0 0 15px;
+
+      color:var(--gold);
+
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.5rem;
+
+      text-transform:none;
+      letter-spacing:normal;
+    }
+
+    .contact-box p {
+      margin-bottom:8px;
+    }
+
+    .contact-box a {
+      color:var(--teal);
+      font-weight:700;
+    }
+
+    .contact-box a:hover {
+      color:var(--gold);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding:42px 5%;
+
+      border-top:1px solid rgba(212,166,34,.4);
+
+      background:#050505;
+
+      text-align:center;
+    }
+
+    footer strong {
+      color:var(--gold);
+    }
+
+    footer p {
+      margin-top:9px;
+      color:#999999;
+    }
+
+    .footer-links {
+      margin-top:15px;
+
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+
+      font-size:.82rem;
+    }
+
+    .footer-links a:hover {
+      color:var(--gold);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:850px) {
+
+      .header-inner {
+        padding:20px 0;
+      }
+
+      nav {
+        gap:15px;
+      }
+
+      .policy-layout {
+        grid-template-columns:1fr;
+      }
+
+      .policy-menu {
+        position:static;
+      }
+
+    }
+
+    @media(max-width:600px) {
+
+      .hero {
+        padding:55px 6% 40px;
+      }
+
+      .policy-section-wrapper {
+        padding:35px 4% 60px;
+      }
+
+      .policy-card {
+        padding:28px 22px;
+        border-radius:16px;
+      }
+
+      .policy-section h2 {
+        font-size:1.4rem;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-    <div class="announcement">
-        Premium Raw Hair • Boss Beauty • Pflugerville, Texas
-    </div>
+  <!-- HEADER -->
 
-    <header class="header">
+  <header>
 
-        <div class="brand-row">
-            <a href="index.html">
-                <span class="brand-name">BIG BOSS BUNDLES</span>
-                <span class="brand-tagline">Boss Beauty.</span>
-            </a>
-        </div>
+    <div class="header-inner">
 
-        <nav class="navigation" aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="laos.html">LAOS</a>
-            <a href="cambodian.html">Cambodian</a>
-            <a href="vietnamese.html">Vietnamese</a>
-            <a href="indian%20Raw.html">Indian Raw</a>
-            <a href="burmese.html">Burmese</a>
-            <a href="bulkhair.html">Bulk Hair</a>
-            <a href="feather-crochet.html">Feather Crochet</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-
-    </header>
-
-    <main>
-
-        <section class="page-hero">
-
-            <p class="eyebrow">Order Fulfillment</p>
-
-            <h1>Shipping Policy</h1>
-
-            <p>
-                This policy explains our processing times, shipping methods,
-                delivery responsibilities, tracking procedures, and local
-                pickup requirements.
-            </p>
-
-            <span class="effective-date">
-                Effective Date: July 14, 2026
-            </span>
-
-        </section>
-
-        <div class="policy-layout">
-
-            <aside class="policy-menu">
-
-                <h2>On This Page</h2>
-
-                <a href="#processing">Processing Times</a>
-                <a href="#shipping-time">Shipping and Delivery</a>
-                <a href="#tracking">Tracking Information</a>
-                <a href="#address">Address Accuracy</a>
-                <a href="#signature">Signature Confirmation</a>
-                <a href="#delays">Shipping Delays</a>
-                <a href="#lost-stolen">Lost or Stolen Packages</a>
-                <a href="#damaged">Damaged Packages</a>
-                <a href="#pickup">Local Pickup</a>
-                <a href="#marketplaces">Marketplace Orders</a>
-                <a href="#international">International Shipping</a>
-                <a href="#contact">Contact Us</a>
-
-            </aside>
-
-            <article>
-
-                <div class="summary-box">
-
-                    <h2>Shipping Summary</h2>
-
-                    <p>
-                        Products available locally may be eligible for
-                        pickup after confirmation.
-                    </p>
-
-                    <p>
-                        Orders not immediately available generally require
-                        approximately 7 to 10 business days for processing
-                        and fulfillment.
-                    </p>
-
-                    <p>
-                        Local pickup customers must call ahead and wait for
-                        confirmation that the order is ready.
-                    </p>
-
-                </div>
-
-                <section class="policy-section" id="processing">
-
-                    <h2>1. Order Processing Times</h2>
-
-                    <p>
-                        Processing begins after payment has been successfully
-                        authorized and the order has been accepted.
-                    </p>
-
-                    <p>
-                        Most orders not immediately available for local pickup
-                        generally require approximately
-                        <strong>7 to 10 business days</strong>
-                        for processing and fulfillment.
-                    </p>
-
-                    <p>
-                        Processing time is separate from carrier transit time.
-                        The delivery estimate begins after the carrier accepts
-                        the shipment.
-                    </p>
-
-                    <h3>Orders That May Require Additional Time</h3>
-
-                    <p>
-                        Additional processing time may be required for:
-                    </p>
-
-                    <ul>
-                        <li>Extended hair lengths</li>
-                        <li>High-density wigs</li>
-                        <li>Special lace sizes</li>
-                        <li>Customized products</li>
-                        <li>Large-quantity orders</li>
-                        <li>Specially sourced hair origins or textures</li>
-                        <li>Items affected by supplier or carrier delays</li>
-                        <li>Orders placed during holidays or major promotions</li>
-                    </ul>
-
-                    <p>
-                        Business days do not include Saturdays, Sundays,
-                        federal holidays, or days when Big Boss Bundles or
-                        applicable carriers are closed.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="shipping-time">
-
-                    <h2>2. Shipping and Estimated Delivery</h2>
-
-                    <p>
-                        Delivery estimates shown during checkout are estimates
-                        and are not guaranteed arrival dates unless Big Boss
-                        Bundles expressly states otherwise in writing.
-                    </p>
-
-                    <p>
-                        Final delivery timing depends on:
-                    </p>
-
-                    <ul>
-                        <li>Order processing time</li>
-                        <li>Selected shipping method</li>
-                        <li>Customer location</li>
-                        <li>Carrier operations</li>
-                        <li>Weather and emergency conditions</li>
-                        <li>Holiday shipping volume</li>
-                        <li>Address accuracy</li>
-                    </ul>
-
-                    <p>
-                        Expedited shipping, when offered, speeds up carrier
-                        transit after processing. It does not necessarily
-                        shorten product processing or sourcing time.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="tracking">
-
-                    <h2>3. Tracking Information</h2>
-
-                    <p>
-                        When tracking is available, the customer will receive
-                        tracking information using the email address,
-                        telephone number, customer account, or marketplace
-                        associated with the order.
-                    </p>
-
-                    <p>
-                        Tracking information may take time to update after the
-                        shipping label is created. A label-created status does
-                        not always mean that the carrier has physically
-                        scanned or accepted the package.
-                    </p>
-
-                    <p>
-                        Customers are responsible for monitoring tracking and
-                        making reasonable arrangements to receive the package.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="address">
-
-                    <h2>4. Shipping Address Accuracy</h2>
-
-                    <p>
-                        Customers are responsible for submitting a complete
-                        and accurate shipping address before payment.
-                    </p>
-
-                    <p>
-                        Review the following carefully:
-                    </p>
-
-                    <ul>
-                        <li>Recipient name</li>
-                        <li>Street address</li>
-                        <li>Apartment, suite, or unit number</li>
-                        <li>City</li>
-                        <li>State</li>
-                        <li>ZIP code</li>
-                        <li>Telephone number</li>
-                    </ul>
-
-                    <p>
-                        Address changes are not guaranteed after an order is
-                        placed. Big Boss Bundles may require identity or
-                        payment verification before approving an address
-                        change.
-                    </p>
-
-                    <p>
-                        The customer may be responsible for additional
-                        shipping costs when a package is returned, delayed,
-                        or redirected because of an incomplete, incorrect,
-                        or undeliverable address.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="signature">
-
-                    <h2>5. Signature Confirmation</h2>
-
-                    <p>
-                        Big Boss Bundles may require signature confirmation
-                        on orders to protect the customer and reduce delivery
-                        fraud.
-                    </p>
-
-                    <p>
-                        The customer is responsible for ensuring that an
-                        authorized person is available to receive and sign
-                        for the package when required.
-                    </p>
-
-                    <p>
-                        Carrier instructions, missed-delivery notices,
-                        redelivery attempts, and pickup deadlines are governed
-                        by the carrier’s procedures.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="delays">
-
-                    <h2>6. Unexpected Shipping or Fulfillment Delays</h2>
-
-                    <p>
-                        We make reasonable efforts to ship orders within the
-                        time stated on the website, at checkout, or in the
-                        order confirmation.
-                    </p>
-
-                    <p>
-                        If Big Boss Bundles learns that an order cannot ship
-                        within the promised period, we may provide a revised
-                        shipping date and allow the customer to accept the
-                        delay or cancel the unshipped merchandise as required
-                        by applicable law.
-                    </p>
-
-                    <p>
-                        If no specific shipping period is stated, applicable
-                        federal rules generally require online sellers to have
-                        a reasonable basis to expect shipment within 30 days.
-                         [oai_citation:1‡Federal Trade Commission](https://www.ftc.gov/legal-library/browse/rules/mail-internet-or-telephone-order-merchandise-rule?utm_source=chatgpt.com)
-                    </p>
-
-                    <p>
-                        Big Boss Bundles is not responsible for delays caused
-                        by events outside our reasonable control, including:
-                    </p>
-
-                    <ul>
-                        <li>Carrier service disruptions</li>
-                        <li>Severe weather</li>
-                        <li>Natural disasters</li>
-                        <li>Government restrictions</li>
-                        <li>Labor disruptions</li>
-                        <li>Customs delays</li>
-                        <li>Supplier interruptions</li>
-                        <li>Transportation emergencies</li>
-                        <li>Incorrect customer information</li>
-                    </ul>
-
-                </section>
-
-                <section class="policy-section" id="lost-stolen">
-
-                    <h2>7. Lost, Missing, or Stolen Packages</h2>
-
-                    <p>
-                        Contact Big Boss Bundles promptly if tracking shows
-                        unusual inactivity, delivery to an incorrect location,
-                        or a package that cannot be located.
-                    </p>
-
-                    <p>
-                        Customers may also need to contact the carrier, submit
-                        a carrier claim, speak with household members or
-                        neighbors, check building management, review security
-                        footage, or contact local authorities when theft is
-                        suspected.
-                    </p>
-
-                    <p>
-                        A carrier’s delivered scan does not automatically
-                        establish that Big Boss Bundles caused a package to be
-                        lost or stolen after delivery.
-                    </p>
-
-                    <p>
-                        We will reasonably assist with available shipment
-                        information and applicable carrier-claim procedures,
-                        but replacement or reimbursement is not guaranteed
-                        when the carrier confirms delivery to the address
-                        provided by the customer.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="damaged">
-
-                    <h2>8. Packages Damaged During Shipping</h2>
-
-                    <p>
-                        Photograph the shipping box, label, interior packaging,
-                        and product before discarding any materials if an order
-                        arrives visibly damaged.
-                    </p>
-
-                    <p>
-                        Contact Big Boss Bundles within five calendar days
-                        after receiving the order and provide:
-                    </p>
-
-                    <ul>
-                        <li>Customer name</li>
-                        <li>Order number</li>
-                        <li>Description of the damage</li>
-                        <li>Photographs of the packaging and product</li>
-                        <li>Video when reasonably requested</li>
-                    </ul>
-
-                    <p>
-                        Do not install, wear, open, alter, color, wash, or use
-                        a disputed product while the claim is being reviewed.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="pickup">
-
-                    <h2>9. Local Pickup</h2>
-
-                    <p>
-                        Local pickup may be available at:
-                    </p>
-
-                    <p>
-                        <strong>
-                            Big Boss Bundles<br>
-                            301 W Pecan Street<br>
-                            Pflugerville, TX 78660
-                        </strong>
-                    </p>
-
-                    <div class="notice-box">
-                        Customers must call ahead and wait for confirmation
-                        that the order is ready before arriving for pickup.
-                    </div>
-
-                    <p>
-                        An order confirmation does not automatically mean that
-                        the order is ready for pickup.
-                    </p>
-
-                    <p>
-                        The customer may be required to show:
-                    </p>
-
-                    <ul>
-                        <li>Government-issued photo identification</li>
-                        <li>Order confirmation</li>
-                        <li>Payment-card verification</li>
-                        <li>Written authorization for another pickup person</li>
-                    </ul>
-
-                    <p>
-                        Orders will not be released when identity, payment,
-                        authorization, or fraud-prevention requirements cannot
-                        be reasonably verified.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="marketplaces">
-
-                    <h2>10. TikTok Shop, Amazon, and Facebook Orders</h2>
-
-                    <p>
-                        Purchases made through TikTok Shop, Amazon, Facebook
-                        Shop, or another marketplace may also be subject to
-                        that platform’s processing, tracking, delivery,
-                        cancellation, buyer-protection, and dispute procedures.
-                    </p>
-
-                    <p>
-                        When marketplace requirements conflict with this
-                        policy, the applicable marketplace rules may control
-                        the transaction processed through that platform.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="international">
-
-                    <h2>11. International Shipping</h2>
-
-                    <p>
-                        International shipping may be offered only to selected
-                        destinations and may be unavailable for certain
-                        products or orders.
-                    </p>
-
-                    <p>
-                        International customers are responsible for customs
-                        duties, import taxes, brokerage fees, destination
-                        charges, and local requirements unless checkout
-                        clearly states otherwise.
-                    </p>
-
-                    <p>
-                        Customs clearance may delay delivery. Big Boss Bundles
-                        does not control customs agencies or destination-country
-                        processing.
-                    </p>
-
-                    <p>
-                        Packages refused because of unpaid duties, taxes, or
-                        customs charges may be subject to return shipping,
-                        carrier charges, and other costs permitted by law.
-                    </p>
-
-                </section>
-
-                <section class="policy-section">
-
-                    <h2>12. Policy Updates</h2>
-
-                    <p>
-                        Big Boss Bundles may update this Shipping Policy as
-                        carriers, fulfillment procedures, products, sales
-                        channels, or legal requirements change.
-                    </p>
-
-                    <p>
-                        The policy in effect when the order is submitted
-                        generally governs that order, subject to applicable
-                        law and marketplace requirements.
-                    </p>
-
-                </section>
-
-                <section class="policy-section" id="contact">
-
-                    <h2>13. Contact Big Boss Bundles</h2>
-
-                    <p>
-                        Contact us with shipping, tracking, fulfillment, or
-                        local pickup questions.
-                    </p>
-
-                    <div class="contact-box">
-
-                        <h3>Big Boss Bundles</h3>
-
-                        <p>301 W Pecan Street</p>
-                        <p>Pflugerville, TX 78660</p>
-
-                        <a href="tel:+15122762366">
-                            Company: (512) 276-2366
-                        </a>
-
-                        <a href="tel:+15129375119">
-                            Cell: (512) 937-5119
-                        </a>
-
-                        <a href="mailto:support@bigbossbundles.com">
-                            support@bigbossbundles.com
-                        </a>
-
-                    </div>
-
-                </section>
-
-            </article>
-
-        </div>
-
-    </main>
-
-    <footer class="footer">
-
-        <div class="footer-grid">
-
-            <div>
-                <h3>Big Boss Bundles</h3>
-                <p>
-                    Luxury raw hair and professional hair-care essentials.
-                </p>
-                <p>Boss Beauty.</p>
-            </div>
-
-            <div>
-                <h4>Shop Hair</h4>
-                <a href="laos.html">LAOS</a>
-                <a href="cambodian.html">Cambodian</a>
-                <a href="vietnamese.html">Vietnamese</a>
-                <a href="indian%20Raw.html">Indian Raw</a>
-                <a href="burmese.html">Burmese</a>
-            </div>
-
-            <div>
-                <h4>Customer Care</h4>
-                <a href="faq.html">Frequently Asked Questions</a>
-                <a href="shipping-policy.html">Shipping Policy</a>
-                <a href="return-policy.html">Return & Exchange Policy</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-and-conditions.html">
-                    Terms and Conditions
-                </a>
-            </div>
-
-            <div>
-                <h4>Visit or Contact Us</h4>
-
-                <p>301 W Pecan Street</p>
-                <p>Pflugerville, TX 78660</p>
-
-                <a href="tel:+15122762366">
-                    Company: (512) 276-2366
-                </a>
-
-                <a href="tel:+15129375119">
-                    Cell: (512) 937-5119
-                </a>
-
-                <a href="contact.html">Contact Us</a>
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            © 2026 Big Boss Bundles. All rights reserved.
-        </div>
-
-    </footer>
+      <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="bundles.html">Bundles</a>
+
+        <a href="wigs.html">Wigs</a>
+
+        <a href="closures.html">
+          Closures &amp; Frontals
+        </a>
+
+        <a href="mens-hair-pieces.html">
+          Men's Hair
+        </a>
+
+        <a href="hair-care.html">
+          Hair Care
+        </a>
+
+        <a href="classes.html">
+          Beauty Academy
+        </a>
+
+        <a href="cart.html" class="bag">
+          Bag
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <p class="eyebrow">
+      Order Fulfillment
+    </p>
+
+    <h1>
+      Shipping Policy
+    </h1>
+
+    <p>
+      This policy explains our processing times, shipping methods,
+      delivery responsibilities, tracking procedures, and local
+      pickup requirements.
+    </p>
+
+    <span class="effective-date">
+      Effective Date: September 19, 2026
+    </span>
+
+  </section>
+
+
+  <!-- POLICY -->
+
+  <main class="policy-section-wrapper">
+
+    <div class="policy-layout">
+
+
+      <!-- SIDE MENU -->
+
+      <aside class="policy-menu">
+
+        <h2>On This Page</h2>
+
+        <a href="#processing">
+          Processing Times
+        </a>
+
+        <a href="#shipping-time">
+          Shipping &amp; Delivery
+        </a>
+
+        <a href="#tracking">
+          Tracking Information
+        </a>
+
+        <a href="#address">
+          Address Accuracy
+        </a>
+
+        <a href="#signature">
+          Signature Confirmation
+        </a>
+
+        <a href="#delays">
+          Shipping Delays
+        </a>
+
+        <a href="#lost-stolen">
+          Lost or Stolen Packages
+        </a>
+
+        <a href="#damaged">
+          Damaged Packages
+        </a>
+
+        <a href="#pickup">
+          Local Pickup
+        </a>
+
+        <a href="#marketplaces">
+          Marketplace Orders
+        </a>
+
+        <a href="#international">
+          International Shipping
+        </a>
+
+        <a href="#contact">
+          Contact Us
+        </a>
+
+      </aside>
+
+
+      <!-- CONTENT -->
+
+      <article class="policy-card">
+
+
+        <!-- SUMMARY -->
+
+        <div class="summary-box">
+
+          <h2>Shipping Summary</h2>
+
+          <p>
+            Products currently available locally may be eligible
+            for pickup after you receive confirmation that your
+            order is ready.
+          </p>
+
+          <p>
+            Orders not immediately available generally require
+            approximately <strong>7–10 business days</strong>
+            for processing and fulfillment.
+          </p>
+
+          <p>
+            Local pickup customers must call ahead and wait for
+            confirmation that the order is ready before arriving.
+          </p>
+
+        </div>
+
+
+        <!-- 1 -->
+
+        <section class="policy-section" id="processing">
+
+          <h2>1. Order Processing Times</h2>
+
+          <p>
+            Processing begins after payment has been successfully
+            authorized and the order has been accepted.
+          </p>
+
+          <p>
+            Most orders that are not immediately available
+            generally require approximately
+            <strong>7–10 business days</strong>
+            for processing and fulfillment.
+          </p>
+
+          <p>
+            Processing time is separate from carrier transit
+            time. The estimated delivery period begins after the
+            order has completed processing and the carrier accepts
+            the shipment.
+          </p>
+
+          <h3>
+            Orders That May Require Additional Time
+          </h3>
+
+          <p>
+            Additional processing time may be required for:
+          </p>
+
+          <ul>
+            <li>Extended hair lengths</li>
+            <li>High density wigs</li>
+            <li>Special lace sizes</li>
+            <li>Custom colors</li>
+            <li>Customized products</li>
+            <li>Large quantity orders</li>
+            <li>Specially sourced hair origins or textures</li>
+            <li>Items affected by supplier or carrier delays</li>
+            <li>Orders placed during holidays or major promotions</li>
+          </ul>
+
+          <p>
+            Business days do not include Saturdays, Sundays,
+            federal holidays, or days when Big Boss Bundles or
+            applicable carriers are closed.
+          </p>
+
+        </section>
+
+
+        <!-- 2 -->
+
+        <section class="policy-section" id="shipping-time">
+
+          <h2>
+            2. Shipping and Estimated Delivery
+          </h2>
+
+          <p>
+            Delivery estimates shown during checkout are
+            estimates and are not guaranteed arrival dates unless
+            Big Boss Bundles expressly states otherwise in
+            writing.
+          </p>
+
+          <p>
+            Final delivery timing may depend on:
+          </p>
+
+          <ul>
+            <li>Order processing time</li>
+            <li>Selected shipping method</li>
+            <li>Customer location</li>
+            <li>Carrier operations</li>
+            <li>Weather and emergency conditions</li>
+            <li>Holiday shipping volume</li>
+            <li>Address accuracy</li>
+          </ul>
+
+          <p>
+            Expedited shipping, when offered, speeds up carrier
+            transit after processing. It does not necessarily
+            shorten product processing, customization, or
+            sourcing time.
+          </p>
+
+        </section>
+
+
+        <!-- 3 -->
+
+        <section class="policy-section" id="tracking">
+
+          <h2>3. Tracking Information</h2>
+
+          <p>
+            When tracking is available, the customer will receive
+            tracking information through the email address,
+            telephone number, customer account, or marketplace
+            associated with the order.
+          </p>
+
+          <p>
+            Tracking information may take time to update after a
+            shipping label is created. A label created status
+            does not necessarily mean the carrier has physically
+            scanned or accepted the package.
+          </p>
+
+          <p>
+            Customers are responsible for monitoring tracking and
+            making reasonable arrangements to receive their
+            package.
+          </p>
+
+        </section>
+
+
+        <!-- 4 -->
+
+        <section class="policy-section" id="address">
+
+          <h2>4. Shipping Address Accuracy</h2>
+
+          <p>
+            Customers are responsible for submitting a complete
+            and accurate shipping address before payment.
+          </p>
+
+          <p>
+            Please carefully review:
+          </p>
+
+          <ul>
+            <li>Recipient name</li>
+            <li>Street address</li>
+            <li>Apartment, suite, or unit number</li>
+            <li>City</li>
+            <li>State</li>
+            <li>ZIP code</li>
+            <li>Telephone number</li>
+          </ul>
+
+          <p>
+            Address changes are not guaranteed after an order is
+            placed. Big Boss Bundles may require identity or
+            payment verification before approving an address
+            change.
+          </p>
+
+          <p>
+            The customer may be responsible for additional
+            shipping costs when a package is returned, delayed,
+            or redirected because of an incomplete, incorrect,
+            or undeliverable address.
+          </p>
+
+        </section>
+
+
+        <!-- 5 -->
+
+        <section class="policy-section" id="signature">
+
+          <h2>5. Signature Confirmation</h2>
+
+          <p>
+            Big Boss Bundles may require signature confirmation
+            on orders to help protect customers and reduce
+            delivery fraud.
+          </p>
+
+          <p>
+            When a signature is required, the customer is
+            responsible for ensuring that an authorized person is
+            available to receive and sign for the package.
+          </p>
+
+          <p>
+            Carrier instructions, missed delivery notices,
+            redelivery attempts, and pickup deadlines are subject
+            to the carrier's procedures.
+          </p>
+
+        </section>
+
+
+        <!-- 6 -->
+
+        <section class="policy-section" id="delays">
+
+          <h2>
+            6. Unexpected Shipping or Fulfillment Delays
+          </h2>
+
+          <p>
+            We make reasonable efforts to ship orders within the
+            time stated on the website, at checkout, or in the
+            order confirmation.
+          </p>
+
+          <p>
+            If Big Boss Bundles learns that an order cannot ship
+            within the stated or promised period, we may provide
+            a revised shipping date and, when required by
+            applicable law, give the customer an opportunity to
+            accept the delay or cancel the affected unshipped
+            merchandise.
+          </p>
+
+          <p>
+            When no specific shipping period has been stated, we
+            process and ship orders within the time required by
+            applicable law.
+          </p>
+
+          <p>
+            Big Boss Bundles is not responsible for delays caused
+            by circumstances outside our reasonable control,
+            including:
+          </p>
+
+          <ul>
+            <li>Carrier service disruptions</li>
+            <li>Severe weather</li>
+            <li>Natural disasters</li>
+            <li>Government restrictions</li>
+            <li>Labor disruptions</li>
+            <li>Customs delays</li>
+            <li>Supplier interruptions</li>
+            <li>Transportation emergencies</li>
+            <li>Incorrect customer information</li>
+          </ul>
+
+        </section>
+
+
+        <!-- 7 -->
+
+        <section class="policy-section" id="lost-stolen">
+
+          <h2>
+            7. Lost, Missing, or Stolen Packages
+          </h2>
+
+          <p>
+            Contact Big Boss Bundles promptly if tracking shows
+            unusual inactivity, delivery to an incorrect
+            location, or a package that cannot be located.
+          </p>
+
+          <p>
+            Customers may also need to contact the carrier,
+            submit a carrier claim, speak with household members
+            or neighbors, check building management, review
+            available security footage, or contact local
+            authorities when theft is suspected.
+          </p>
+
+          <p>
+            A carrier's delivered scan does not automatically
+            establish that Big Boss Bundles caused a package to
+            become lost or stolen after delivery.
+          </p>
+
+          <p>
+            We will reasonably assist with available shipment
+            information and applicable carrier claim procedures,
+            but replacement or reimbursement is not guaranteed
+            when the carrier confirms delivery to the address
+            provided by the customer.
+          </p>
+
+        </section>
+
+
+        <!-- 8 -->
+
+        <section class="policy-section" id="damaged">
+
+          <h2>
+            8. Packages Damaged During Shipping
+          </h2>
+
+          <p>
+            If an order arrives visibly damaged, photograph the
+            shipping box, shipping label, interior packaging, and
+            product before discarding any materials.
+          </p>
+
+          <p>
+            Contact Big Boss Bundles within
+            <strong>five calendar days</strong>
+            after receiving the order and provide:
+          </p>
+
+          <ul>
+            <li>Customer name</li>
+            <li>Order number</li>
+            <li>Description of the damage</li>
+            <li>Photographs of the packaging and product</li>
+            <li>Video when reasonably requested</li>
+          </ul>
+
+          <p>
+            Do not install, wear, alter, color, wash, or use a
+            disputed product while the claim is being reviewed.
+          </p>
+
+        </section>
+
+
+        <!-- 9 -->
+
+        <section class="policy-section" id="pickup">
+
+          <h2>9. Local Pickup</h2>
+
+          <p>
+            Local pickup may be available at:
+          </p>
+
+          <p>
+            <strong>
+              Big Boss Bundles<br>
+              301 W Pecan Street<br>
+              Pflugerville, TX 78660
+            </strong>
+          </p>
+
+          <div class="notice-box">
+
+            <strong>
+              Call Before Coming to the Store
+            </strong>
+
+            <p style="margin-top:12px;margin-bottom:0;">
+              Placing an order online does not guarantee that the
+              selected item is currently available locally or
+              ready for immediate pickup. Customers must call
+              ahead and wait for confirmation that the order is
+              ready before arriving.
+            </p>
+
+          </div>
+
+          <p>
+            Online local pickup orders may require approximately
+            <strong>7–10 business days</strong> for processing
+            and fulfillment. Custom colors, customized products,
+            specialty products, extended lengths, and other
+            selections may require additional preparation time.
+          </p>
+
+          <p>
+            An order confirmation does not automatically mean
+            that the order is ready for pickup.
+          </p>
+
+          <p>
+            Customers should call
+            <a
+              href="tel:+15122762366"
+              style="color:var(--teal);font-weight:700;"
+            >
+              (512) 276-2366
+            </a>
+            to confirm availability and pickup readiness.
+          </p>
+
+          <p>
+            The customer may be required to show:
+          </p>
+
+          <ul>
+            <li>Government issued photo identification</li>
+            <li>Order confirmation</li>
+            <li>Payment card verification</li>
+            <li>Written authorization for another pickup person</li>
+          </ul>
+
+          <p>
+            Orders will not be released when identity, payment,
+            authorization, or fraud prevention requirements cannot
+            be reasonably verified.
+          </p>
+
+        </section>
+
+
+        <!-- 10 -->
+
+        <section class="policy-section" id="marketplaces">
+
+          <h2>
+            10. Marketplace Orders
+          </h2>
+
+          <p>
+            Purchases made through an approved third party
+            marketplace or sales platform may also be subject to
+            that platform's processing, tracking, delivery,
+            cancellation, buyer protection, and dispute
+            procedures.
+          </p>
+
+          <p>
+            When marketplace requirements conflict with this
+            policy, the applicable marketplace rules may control
+            the transaction processed through that platform.
+          </p>
+
+        </section>
+
+
+        <!-- 11 -->
+
+        <section class="policy-section" id="international">
+
+          <h2>11. International Shipping</h2>
+
+          <p>
+            International shipping may be offered only to
+            selected destinations and may be unavailable for
+            certain products or orders.
+          </p>
+
+          <p>
+            International customers are responsible for customs
+            duties, import taxes, brokerage fees, destination
+            charges, and local requirements unless checkout
+            clearly states otherwise.
+          </p>
+
+          <p>
+            Customs clearance may delay delivery. Big Boss
+            Bundles does not control customs agencies or
+            destination country processing.
+          </p>
+
+          <p>
+            Packages refused because of unpaid duties, taxes, or
+            customs charges may be subject to return shipping,
+            carrier charges, and other costs permitted by law.
+          </p>
+
+        </section>
+
+
+        <!-- 12 -->
+
+        <section class="policy-section">
+
+          <h2>12. Policy Updates</h2>
+
+          <p>
+            Big Boss Bundles may update this Shipping Policy as
+            carriers, fulfillment procedures, products, sales
+            channels, or legal requirements change.
+          </p>
+
+          <p>
+            The policy in effect when an order is submitted
+            generally governs that order, subject to applicable
+            law and marketplace requirements.
+          </p>
+
+        </section>
+
+
+        <!-- 13 -->
+
+        <section class="policy-section" id="contact">
+
+          <h2>13. Contact Big Boss Bundles</h2>
+
+          <p>
+            Contact us with shipping, tracking, fulfillment, or
+            local pickup questions.
+          </p>
+
+          <div class="contact-box">
+
+            <h3>Big Boss Bundles</h3>
+
+            <p>
+              301 W Pecan Street<br>
+              Pflugerville, TX 78660
+            </p>
+
+            <p>
+              <strong>Phone:</strong><br>
+
+              <a href="tel:+15122762366">
+                (512) 276-2366
+              </a>
+            </p>
+
+            <p>
+              <strong>Email:</strong><br>
+
+              <a href="mailto:support@bigbossbundles.com">
+                support@bigbossbundles.com
+              </a>
+            </p>
+
+          </div>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <strong>
+      BIG BOSS BUNDLES
+    </strong>
+
+    <p>
+      Pflugerville, Texas • Luxury Hair • Boss Beauty
+    </p>
+
+    <div class="footer-links">
+
+      <a href="privacy-policy.html">
+        Privacy Policy
+      </a>
+
+      <a href="terms-and-conditions.html">
+        Terms &amp; Conditions
+      </a>
+
+      <a href="shipping-policy.html">
+        Shipping Policy
+      </a>
+
+      <a href="return-policy.html">
+        Return &amp; Exchange Policy
+      </a>
+
+      <a href="contact.html">
+        Contact Us
+      </a>
+
+    </div>
+
+  </footer>
 
 </body>
+
 </html>
