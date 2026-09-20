@@ -787,10 +787,10 @@
   <strong style="color:#d4a622;">
     Custom Color Consultation:
   </strong>
-  Text a photo of your desired hair color to
- <strong>(512) 276-2366</strong>.
-  We will review your photo and confirm your requested custom color.
- Custom color pricing will be confirmed during your consultation.
+ Text a photo of your desired hair color to
+<strong>(512) 937-5119</strong>.
+We will review your photo and confirm your requested custom color.
+The standard <strong>$18 color upgrade</strong> applies to custom colors.
 </div>
 
 <div class="frontal-option">
@@ -1344,14 +1344,15 @@
   function updateClosurePrice2x6() {
   const selectedSize = closureSize2x6.value;
   const selectedLength = closureLength2x6.value;
-  const selectedColor = closureColor2x6.value;
+ const selectedColor =
+  document.getElementById("closureColor2x6").value;
 
   let price =
     closurePrices[selectedSize][selectedLength];
 
-  if (selectedColor !== "1B Natural Black") {
-    price += 18;
-  }
+if (selectedColor !== "1B Natural Black") {
+  price += 18;
+}
 
   closurePrice2x6.textContent =
     `$${price.toFixed(2)}`;
@@ -1405,6 +1406,9 @@ const closureColorModelImages = {
 function updateClosureColorChart() {
   const selectedColor = closureColor2x6.value;
 
+  const customColorMessage =
+    document.getElementById("closureCustomColorMessage");
+
   closureSelectedColorName.textContent = selectedColor;
 
   closureColorSwatches.forEach((swatch) => {
@@ -1414,21 +1418,36 @@ function updateClosureColorChart() {
     );
   });
 
-  if (closureColorModelImages[selectedColor]) {
-    closureColorModelImage.src = closureColorModelImages[selectedColor];
-    closureColorModelImage.alt = `${selectedColor} Hair Color`;
-    closureColorModelImage.style.display = "block";
-  } else {
+  if (selectedColor === "Custom Color Consultation") {
     closureColorModelImage.style.display = "none";
+    customColorMessage.style.display = "block";
+  } else {
+    customColorMessage.style.display = "none";
+
+    if (closureColorModelImages[selectedColor]) {
+      closureColorModelImage.src =
+        closureColorModelImages[selectedColor];
+
+      closureColorModelImage.alt =
+        `${selectedColor} Hair Color`;
+
+      closureColorModelImage.style.display = "block";
+    } else {
+      closureColorModelImage.style.display = "none";
+    }
   }
 }
 
-closureColor2x6.addEventListener("change", updateClosureColorChart);
+closureColor2x6.addEventListener("change", () => {
+  updateClosureColorChart();
+  updateClosurePrice2x6();
+});
 
 closureColorSwatches.forEach((swatch) => {
   swatch.addEventListener("click", () => {
     closureColor2x6.value = swatch.dataset.color;
     updateClosureColorChart();
+    updateClosurePrice2x6();
   });
 });
 
@@ -1440,7 +1459,11 @@ updateClosureColorChart();
       const selectedLength = closureLength2x6.value;
       const selectedColor = closureColor2x6.value;
       const quantity = parseInt(closureQuantity2x6.value, 10);
-      const price = closurePrices[selectedSize][selectedLength];
+        let price = closurePrices[selectedSize][selectedLength];
+
+      if (selectedColor !== "1B Natural Black") {
+        price += 18;
+      }
 
       const sizeNames = {
         "2x6": "2×6",
