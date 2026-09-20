@@ -129,9 +129,76 @@ $BURMESE_SPECIALTY_TEXTURES = [
     'Deep Wave',
     'Curly',
     'Kinky Straight',
+    'Kinky Curly'];
+/*
+|--------------------------------------------------------------------------
+| CAMBODIAN PREMIUM LUXURY BUNDLE PRICING
+|--------------------------------------------------------------------------
+| Retail prices in cents.
+|--------------------------------------------------------------------------
+*/
+
+$CAMBODIAN_BASE = [
+
+    10 => 10200,
+    12 => 11400,
+    14 => 13200,
+    16 => 15300,
+    18 => 18000,
+    20 => 21000,
+    22 => 24300,
+    24 => 27000,
+    26 => 29700,
+    28 => 32700,
+    30 => 35100
+
+];
+
+$CAMBODIAN_SPECIALTY = [
+
+    10 => 10800,
+    12 => 12000,
+    14 => 13800,
+    16 => 15900,
+    18 => 18600,
+    20 => 21600,
+    22 => 24900,
+    24 => 27600,
+    26 => 30300,
+    28 => 33300,
+    30 => 35700
+
+];
+
+$CAMBODIAN_SPECIALTY_TEXTURES = [
+
+    'Deep Wave',
+    'Curly',
+    'Kinky Straight',
     'Kinky Curly'
 
-];/*
+];
+
+$CAMBODIAN_STANDARD_COLORS = [
+
+    '1 Jet Black',
+    '1B Natural Black',
+    '2 Dark Brown',
+    '4 Medium Brown',
+    '27 Honey Blonde',
+    '30 Auburn',
+    '33 Dark Auburn',
+    '99J Burgundy',
+    '613 Blonde',
+    'Platinum Blonde',
+    'P4/27 Highlight',
+    'P1B/27 Highlight',
+    'P1B/30 Highlight',
+    'P1B/99J Highlight',
+     'Honey Caramel Balayage'
+];
+
+/*
 |--------------------------------------------------------------------------
 | LUXURY WIG PRICING
 |--------------------------------------------------------------------------
@@ -769,6 +836,163 @@ foreach ($input['items'] as $item) {
                 ' • ',
                 $descriptionParts
             );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CAMBODIAN PREMIUM LUXURY BUNDLES
+    |--------------------------------------------------------------------------
+    */
+
+    elseif ($productId === 'cambodian-bundle') {
+
+        $texture =
+            trim(
+                $item['texture'] ?? ''
+            );
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
+
+        $allowedTextures = [
+            'Straight',
+            'Body Wave',
+            'Deep Wave',
+            'Curly',
+            'Kinky Straight',
+            'Kinky Curly'
+        ];
+
+        if (
+            !in_array(
+                $texture,
+                $allowedTextures,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Cambodian bundle texture.'
+            ]);
+
+            exit;
+        }
+
+        if (
+            in_array(
+                $texture,
+                $CAMBODIAN_SPECIALTY_TEXTURES,
+                true
+            )
+        ) {
+
+            $priceTable =
+                $CAMBODIAN_SPECIALTY;
+
+        } else {
+
+            $priceTable =
+                $CAMBODIAN_BASE;
+        }
+
+        if (
+            !isset(
+                $priceTable[$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That Cambodian bundle length is not available.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY COLOR
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== 'Custom Color Consultation' &&
+            !in_array(
+                $color,
+                $CAMBODIAN_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Cambodian bundle color.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORITATIVE SERVER PRICE
+        |--------------------------------------------------------------------------
+        */
+
+        $unitAmount =
+            $priceTable[$length];
+
+        /*
+        |--------------------------------------------------------------------------
+        | STANDARD COLOR UPGRADE — $18
+        |--------------------------------------------------------------------------
+        | 1B Natural Black remains base price.
+        | Custom Color Consultation remains base price until consultation.
+        */
+
+        if (
+            $color !== '1B Natural Black' &&
+            $color !== 'Custom Color Consultation'
+        ) {
+
+            $unitAmount += 1800;
+        }
+
+        $productName =
+            'Cambodian Premium Luxury Bundle';
+
+        $descriptionParts = [
+            $texture,
+            $length . '"',
+            $color,
+            'Premium Luxury'
+        ];
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+        );
 
     }
 
