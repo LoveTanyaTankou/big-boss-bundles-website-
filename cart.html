@@ -522,9 +522,9 @@ function renderCart(){
       <div class="empty">
         <h2>Your bag is empty.</h2>
         <p>Add your favorite Big Boss Bundles products to get started.</p>
-        <a href="hair-care.html">
-          Continue Shopping
-        </a>
+     <a href="#" id="continue-shopping">
+  Continue Shopping
+</a>
       </div>
     `;
 
@@ -867,6 +867,48 @@ if(!response.ok){
 );
 
 
+/* =====================================================
+   CONTINUE SHOPPING — RETURN TO LAST SHOPPING PAGE
+===================================================== */
+
+const continueShoppingUrl =
+  sessionStorage.getItem("bbbLastShoppingPage") ||
+  document.referrer ||
+  "bundles.html";
+
+if (
+  document.referrer &&
+  !document.referrer.includes("cart.html") &&
+  !document.referrer.includes("checkout")
+) {
+  sessionStorage.setItem(
+    "bbbLastShoppingPage",
+    document.referrer
+  );
+}
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const continueShopping =
+      event.target.closest("#continue-shopping");
+
+    if(!continueShopping){
+      return;
+    }
+
+    event.preventDefault();
+
+    const destination =
+      sessionStorage.getItem("bbbLastShoppingPage") ||
+      document.referrer ||
+      "bundles.html";
+
+    window.location.href =
+      destination;
+  }
+);
 renderCart();
 
 </script>
