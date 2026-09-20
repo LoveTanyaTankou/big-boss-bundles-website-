@@ -1114,7 +1114,10 @@ foreach ($input['items'] as $item) {
                     (string)$lengthRaw
                 )
             );
-
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
         if (
             !in_array(
                 $texture,
@@ -1164,13 +1167,50 @@ foreach ($input['items'] as $item) {
 
             exit;
         }
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY CLOSURE COLOR
+        |--------------------------------------------------------------------------
+        */
 
+        if (
+            $color !== 'Custom Color Consultation' &&
+            !in_array(
+                $color,
+                $CAMBODIAN_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid HD lace closure color.'
+            ]);
+
+            exit;
+        }
         $unitAmount =
             $HD_CLOSURE_PRICES[
                 $laceSize
             ][
                 $length
-            ];
+            ];        /*
+        |--------------------------------------------------------------------------
+        | STANDARD COLOR UPGRADE — $18
+        |--------------------------------------------------------------------------
+        | 1B Natural Black remains base price.
+        | Custom Color Consultation remains base price until consultation.
+        */
+
+        if (
+            $color !== '1B Natural Black' &&
+            $color !== 'Custom Color Consultation'
+        ) {
+
+            $unitAmount += 1800;
+        }
 
         $productName =
             strtoupper($laceSize) .
