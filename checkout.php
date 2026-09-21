@@ -1203,6 +1203,157 @@ foreach ($input['items'] as $item) {
 
     /*
     |--------------------------------------------------------------------------
+    | BULK BRAIDING HAIR
+    |--------------------------------------------------------------------------
+    | Server-authoritative Bulk Hair pricing.
+    | Retail price = supplier cost × 3.
+    | Available lengths: 10" through 32".
+    |--------------------------------------------------------------------------
+    */
+
+    elseif ($productId === 'bulk-hair') {
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
+
+        /*
+        |--------------------------------------------------------------------------
+        | BULK HAIR SUPPLIER COST
+        |--------------------------------------------------------------------------
+        */
+
+        $BULK_HAIR_SUPPLIER = [
+            10 => 15,
+            12 => 19,
+            14 => 23,
+            16 => 28,
+            18 => 33,
+            20 => 38,
+            22 => 43,
+            24 => 48,
+            26 => 56,
+            28 => 62,
+            30 => 73,
+            32 => 77
+        ];
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY LENGTH
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            !isset(
+                $BULK_HAIR_SUPPLIER[$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That Bulk Hair length is not available.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY COLOR
+        |--------------------------------------------------------------------------
+        | Bulk Hair uses the same standard color selections.
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== 'Custom Color Consultation' &&
+            !in_array(
+                $color,
+                $CAMBODIAN_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Bulk Hair color.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORITATIVE SERVER PRICE
+        |--------------------------------------------------------------------------
+        | Supplier cost × 3.
+        | Bulk Hair colors are included at the same price.
+        |--------------------------------------------------------------------------
+        */
+
+        $unitAmount =
+            intval(
+                (
+                    $BULK_HAIR_SUPPLIER[$length] * 3
+                ) * 100
+            );
+
+        /*
+        |--------------------------------------------------------------------------
+        | STRIPE PRODUCT INFORMATION
+        |--------------------------------------------------------------------------
+        */
+
+        $productName =
+            'Premium Bulk Braiding Hair';
+
+        $descriptionParts = [
+            $length . '"',
+            $color,
+            'Bulk Braiding Hair'
+        ];
+
+        if (
+            !empty(
+                $item['texture']
+            )
+        ) {
+
+            array_unshift(
+                $descriptionParts,
+                trim(
+                    $item['texture']
+                )
+            );
+        }
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | HAIR CARE PRODUCTS
     |--------------------------------------------------------------------------
     */
