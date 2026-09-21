@@ -141,7 +141,7 @@
     }
 
     .section {
-      padding: 80px 5%;
+    padding: 76px 5%;
     }
 
     .section-light {
@@ -159,7 +159,7 @@
 
     .heading {
       width: min(850px, 100%);
-      margin: 0 auto 45px;
+    margin: 0 auto 42px;
       text-align: center;
     }
 
@@ -167,14 +167,14 @@
       margin-top: 8px;
       color: var(--gold);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
+     font-size: clamp(2.2rem, 5vw, 4.2rem);
       line-height: 1;
       text-transform: uppercase;
     }
 
     .heading p {
       max-width: 720px;
-      margin: 18px auto 0;
+    margin: 16px auto 0;
       color: var(--gray);
     }
 
@@ -233,100 +233,323 @@
       opacity: 0.72;
     }
 
-      /* =========================
-       LACE PRODUCTS
-    ========================== */
+   
+/* =========================
+   BURMESE PRODUCT DESIGN
+   MATCHES BURMESE.HTML
+========================= */
 
-    .lace-product-grid {
-      width: min(1180px, 100%);
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
-    }
 
-    .lace-product-card {
-      overflow: hidden;
-      background: var(--white);
-      border: 2px solid var(--gold);
-      border-radius: 22px;
-    }
+.shop-layout {
+  width: min(1160px, 100%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr .92fr;
+  gap: 36px;
+  align-items: start;
+}
 
-    .lace-product-image {
-      position: relative;
-      background: var(--white);
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+/* LEFT PRODUCT PHOTO */
 
-    .lace-product-image img {
-      display: block;
-      width: 100%;
-      height: 420px;
-      object-fit: contain;
-    }
+.product-photo {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.10);
+}
 
-    .hd-badge {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--teal);
-      color: var(--white);
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
+.closure-product-gallery,
+.frontal-product-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ gap: 12px;
+}.closure-product-gallery {
+  grid-template-columns: 1.35fr .65fr;
+}
 
-    .lace-product-copy {
-      padding: 28px;
-      background: var(--black);
-      color: var(--white);
-    }
+.gallery-panel {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 18px;
+  overflow: hidden;
+}
 
-    .lace-product-copy h3 {
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.8rem;
-      text-transform: uppercase;
-    }
+.gallery-panel img {
+  display: block;
+  width: 100%;
+ height: 560px;
+  padding: 18px;
+  object-fit: contain !important;
+  object-position: center !important;
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  background: #ffffff;
+  cursor: zoom-in;
 
-    .lace-product-copy p {
-      margin-top: 10px;
-      color: rgba(255,255,255,0.74);
-    }
+}
 
-       .lace-size {
-      display: inline-block;
-      margin-top: 16px;
-      color: var(--teal);
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-        /* =========================
-       PRODUCT IMAGE ZOOM
-    ========================== */
+.gallery-label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 6;
+  background: rgba(10,10,10,.92);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
 
-    .lace-product-image img {
-      cursor: zoom-in;
-    }
+/* HD LACE BADGE */
 
-    .image-lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.92);
-      overflow: auto;
-    }
+.hd-badge {
+  position: absolute;
+  right: 12px;
+  left: auto;
+  top: 12px;
+  z-index: 6;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #ffffff;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* SIZE GUIDE */
+
+.size-guide-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.selected-size-label {
+  padding: 12px 14px;
+  background: #ffffff;
+  color: var(--black);
+  border-top: 1px solid #ececec;
+  text-align: center;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.size-guide-panel p {
+  margin: 0;
+  padding: 0 16px 16px;
+  background: #ffffff;
+  color: var(--gray);
+  text-align: center;
+  font-size: .84rem;
+}
+
+/* Frontal has two product photos.
+   Size guide sits below them. */
+
+.frontal-product-gallery .size-guide-panel {
+  grid-column: 1 / -1;
+}
+.frontal-product-gallery .size-guide-panel img {
+  height: 280px;
+  padding: 18px;
+  object-fit: contain !important;
+}
+.closure-product-gallery .size-guide-panel img {
+  height: 280px;
+  padding: 18px;
+  object-fit: contain !important;
+}
+
+.closure-product-gallery .size-guide-panel {
+  min-height: auto;
+  align-items: center;
+  padding: 18px;
+
+}
+
+
+.closure-product-gallery .size-guide-panel .gallery-label {
+  align-self: flex-start;
+}
+
+.frontal-product-gallery .size-guide-panel {
+  min-height: auto;
+}
+
+/* RIGHT PRODUCT BUILDER
+   Matches .builder on Burmese page */
+
+.lace-product-copy {
+  width: 100%;
+  background: var(--black);
+  color: #ffffff;
+  border: 2px solid var(--gold);
+  border-radius: 24px;
+  padding: 32px;
+  position: sticky;
+  top: 110px;
+}
+
+.lace-product-copy h3 {
+  margin: 0;
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.3rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lace-product-copy .lace-size {
+  display: block;
+  margin-top: 10px;
+  color: #bcbcbc;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+/* FORM CONTROLS
+   Matches Burmese builder */
+
+.lace-product-copy .frontal-option {
+  margin: 0;
+}
+
+.lace-product-copy .frontal-option label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: .77rem;
+  font-weight: 900;
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+.lace-product-copy .frontal-option select {
+  width: 100%;
+  min-height: 0;
+  margin-top: 6px;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 1rem;
+}
+/* PRICE BOX — BURMESE DESIGN */
+
+.price-box {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--soft-black);
+  border: 1px solid rgba(212,166,34,.65);
+  border-radius: 16px;
+}
+
+.price-box small {
+  display: block;
+  color: #aaa;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.price {
+  margin-top: 4px;
+  color: var(--gold);
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+
+.price-note {
+  margin-top: 5px;
+  color: var(--teal);
+  font-size: .88rem;
+  font-weight: 800;
+}
+
+.add {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 20px;
+  border: 2px solid var(--teal);
+  border-radius: 999px;
+  background: var(--teal);
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.add:hover {
+  background: transparent;
+  color: var(--teal);
+}
+/* MOBILE
+   Same breakpoints used by Burmese page */
+
+@media (max-width: 900px) {
+
+  .shop-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lace-product-copy {
+    position: static;
+  }
+}
+@media (max-width: 650px) {
+
+  .closure-product-gallery,
+  .frontal-product-gallery {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .product-photo {
+    padding: 12px;
+  }
+
+  .frontal-product-gallery .size-guide-panel {
+    grid-column: auto;
+  }
+
+  .gallery-panel img {
+    height: 340px;
+    padding: 12px;
+  }
+.closure-product-gallery .size-guide-panel {
+  min-height: auto;
+}
+
+  .shop-layout {
+    gap: 24px;
+  }
+}
+
+  .image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.92);
+  overflow: auto;
+}
 
     .image-lightbox.active {
       display: flex;
@@ -370,45 +593,7 @@
       color: var(--black);
     }
 
-        /* =========================
-       FRONTAL PRODUCT OPTIONS
-    ========================== */
-
-    .frontal-option {
-      margin-top: 24px;
-      margin-bottom: 18px;
-      width: 100%;
-    }
-
-    .frontal-option label {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--white);
-      font-size: 0.85rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .frontal-option select {
-      display: block;
-      width: 100%;
-      min-height: 54px;
-      padding: 0 48px 0 16px;
-      border: 2px solid var(--gold);
-      border-radius: 10px;
-      background: var(--white);
-      color: var(--black);
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .frontal-option select:focus {
-      outline: 3px solid rgba(0, 166, 214, 0.28);
-      outline-offset: 2px;
-      border-color: var(--teal);
-    }/* =========================
+     
    HAIR COLOR SWATCHES
 ========================== */
 
@@ -431,7 +616,394 @@
   border: 3px solid #d4a622;
   outline: 2px solid #0a0a0a;
   outline-offset: 2px;
-}.footer {
+}
+/* =========================================================
+   BIG BOSS BUNDLES
+   CLOSURES + FRONTALS FINAL PRODUCT PAGE POLISH
+   Burmese Product Page Design
+========================================================= */
+
+/* PRODUCT SHOPPING SECTIONS */
+
+#closures,
+#frontals {
+  overflow: visible;
+}
+
+#closures .shop-layout,
+#frontals .shop-layout {
+  align-items: start;
+}
+
+
+/* PRODUCT IMAGE CARD */
+
+#closures .product-photo,
+#frontals .product-photo {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.10);
+}
+
+
+/* CLOSURE GALLERY */
+
+#closures .closure-product-gallery {
+  grid-template-columns: minmax(0, 1.35fr) minmax(190px, .65fr);
+  gap: 14px;
+}
+
+#closures .gallery-panel {
+  background: #ffffff;
+}
+
+#closures .gallery-panel.product img {
+  width: 100%;
+  height: 560px;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+#closures .size-guide-panel {
+  min-height: auto;
+  align-self: start;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 18px;
+}
+
+#closures .size-guide-panel img {
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  height: auto;
+  max-height: 420px;
+  margin: auto;
+  padding: 8px;
+  object-fit: contain !important;
+}
+
+
+#closures .size-guide-panel .selected-size-label {
+  width: 100%;
+  margin-top: auto;
+}
+
+
+/* FRONTAL GALLERY */
+
+#frontals .frontal-product-gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+#frontals .gallery-panel.product img {
+  width: 100%;
+  height: 560px;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+#frontals .size-guide-panel {
+  grid-column: 1 / -1;
+  min-height: auto;
+  padding: 18px;
+}
+#frontals .size-guide-panel img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  padding: 8px;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+
+/* PRODUCT BUILDERS */
+
+#closures .lace-product-copy,
+#frontals .lace-product-copy {
+  width: 100%;
+  background: var(--black);
+  color: #ffffff;
+  border: 2px solid var(--gold);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.12);
+}
+
+#closures .lace-product-copy h3,
+#frontals .lace-product-copy h3 {
+  margin: 0;
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 3vw, 2.3rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#closures .lace-size,
+#frontals .lace-size {
+  display: block;
+  margin: 10px 0 22px;
+  color: #bcbcbc;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+
+/* PRODUCT OPTIONS */
+
+#closures .frontal-option,
+#frontals .frontal-option {
+  margin-top: 16px;
+}
+
+#closures .frontal-option:first-of-type,
+#frontals .frontal-option:first-of-type {
+  margin-top: 0;
+}
+
+#closures .frontal-option label,
+#frontals .frontal-option label {
+  display: block;
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: .77rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+#closures .frontal-option select,
+#frontals .frontal-option select {
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 11px 42px 11px 13px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+
+/* COLOR SELECTION BOXES */
+
+#closureColorChart,
+#frontalColorChart {
+  margin-top: 18px !important;
+  padding: 18px !important;
+  background: var(--soft-black) !important;
+  border: 1px solid rgba(212,166,34,.65) !important;
+  border-radius: 16px !important;
+}
+
+#closureColorModelPreview,
+#frontalColorModelPreview {
+  margin-top: 18px !important;
+}
+
+#closureColorModelImage,
+#frontalColorModelImage {
+  display: block !important;
+  width: 100% !important;
+  max-width: 240px !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  border: 1px solid rgba(212,166,34,.55) !important;
+  border-radius: 14px !important;
+}
+
+
+/* COLOR SWATCHES */
+
+#closures .closure-color-swatch,
+#frontals .closure-color-swatch {
+  width: 29px;
+  height: 29px;
+  border: 2px solid #d8d8d8;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease;
+}
+
+#closures .closure-color-swatch:hover,
+#frontals .closure-color-swatch:hover {
+  transform: scale(1.12);
+}
+
+#closures .closure-color-swatch.selected,
+#frontals .closure-color-swatch.selected {
+  border: 3px solid var(--gold);
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+
+/* CUSTOM COLOR MESSAGE */
+
+#closureCustomColorMessage,
+#frontalCustomColorMessage {
+  margin-top: 16px !important;
+  padding: 16px !important;
+  border: 1px solid var(--teal) !important;
+  border-radius: 12px !important;
+  background: rgba(0,166,214,.10) !important;
+  color: #ffffff !important;
+}
+
+
+/* PRICE */
+
+#closures .price-box,
+#frontals .price-box {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--soft-black);
+  border: 1px solid rgba(212,166,34,.65);
+  border-radius: 16px;
+}
+
+#closures .price,
+#frontals .price {
+  color: var(--gold);
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+#closures .price-note,
+#frontals .price-note {
+  margin-top: 7px;
+  color: var(--teal);
+  font-size: .86rem;
+  font-weight: 800;
+}
+
+
+/* ADD TO BAG */
+
+#closures .add,
+#frontals .add {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 20px;
+  border: 2px solid var(--teal);
+  border-radius: 999px;
+  background: var(--teal);
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+#closures .add:hover,
+#frontals .add:hover {
+  background: transparent;
+  color: var(--teal);
+  transform: translateY(-1px);
+}
+
+
+/* LABELS */
+
+#closures .gallery-label,
+#frontals .gallery-label {
+  z-index: 6;
+}
+
+#closures .hd-badge,
+#frontals .hd-badge {
+  z-index: 6;
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  #closures .shop-layout,
+  #frontals .shop-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  #closures .lace-product-copy,
+  #frontals .lace-product-copy {
+    position: static;
+  }
+
+  #closures .closure-product-gallery {
+    grid-template-columns: 1.35fr .65fr;
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  #closures .closure-product-gallery,
+  #frontals .frontal-product-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  #closures .product-photo,
+  #frontals .product-photo {
+    padding: 12px;
+  }
+
+  #closures .gallery-panel.product img,
+  #frontals .gallery-panel.product img {
+    height: 390px;
+    padding: 12px;
+  }
+
+  #closures .size-guide-panel,
+  #frontals .size-guide-panel {
+    grid-column: auto;
+    min-height: auto;
+  }
+
+   #closures .size-guide-panel img,
+  #frontals .size-guide-panel img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    max-height: 360px;
+    margin: auto;
+    padding: 8px;
+  }
+
+  #closures .lace-product-copy,
+  #frontals .lace-product-copy {
+    padding: 24px 20px;
+  }
+
+  #closures .lace-product-copy h3,
+  #frontals .lace-product-copy h3 {
+    font-size: 1.9rem;
+  }
+
+  #closureColorModelImage,
+  #frontalColorModelImage {
+    max-width: 210px !important;
+  }
+}
+.footer {
       padding: 58px 5% 25px;
       background: #050505;
       color: var(--white);
@@ -498,9 +1070,8 @@
         gap: 13px 17px;
       }
 
-        .compare-grid,
-      .lace-product-grid,
-      .footer-grid {
+       .compare-grid,
+.footer-grid {
         grid-template-columns: 1fr;
        
       }
@@ -567,7 +1138,7 @@
 
       <a class="compare-card" href="#closures">
           <h3>HD Lace Closures</h3>
-          <span class="sizes">2×6 • 4×4 • 5×5 • 6×6</span>
+    
           <p>
             Closures cover a smaller portion of the top or front of the
             installation. They offer a natural finished appearance with
@@ -588,30 +1159,53 @@
       </div>
     </section>
 
-    <section class="section section-dark" id="closures">
+    <section class="section section-light" id="closures">
       <div class="heading">
         <span class="eyebrow">Luxury HD Lace</span>
         <h2>Shop Closures</h2>
         <p>Available in 2×6, 4×4, 5×5 and 6×6 HD lace sizes.</p>
       </div>
-      <div class="lace-product-grid">
+    <div class="shop-layout">
 
-        <article class="lace-product-card">
-               <div class="lace-product-image">
-            <span class="hd-badge">HD Lace</span>
 
-            <img
-              src="images/closures/2x6-hd-lace-closure-body-wave-1.jpeg"
-              alt="2x6 HD Lace Closure Body Wave Front View"
-            >
+   <div class="product-photo closure-product-gallery">
 
-      
-          </div>
+  <div class="gallery-panel product">
+    <span class="gallery-label">Closure Product</span>
+    <span class="hd-badge">HD Lace</span>
 
-          <div class="lace-product-copy">
-            <h3>2×6 HD Lace Closure</h3>
-            <span class="lace-size">2×6 • Body Wave</span>
-                       <div class="frontal-option">
+    <img
+      class="zoomable"
+      id="closureMainProductImage"
+      src="images/closures/2x6-hd-lace-closure-body-wave-1.jpeg"
+      alt="2x6 HD Lace Closure Body Wave Front View"
+    >
+  </div>
+
+  <div class="gallery-panel size-guide-panel">
+    <span class="gallery-label">Lace Size Guide</span>
+
+    <img
+      class="zoomable"
+      id="selectedClosureSizeImage"
+      src="images/closures/closure-size-2x6.png"
+      alt="2x6 HD Lace Closure Size"
+    >
+
+    <div
+      class="selected-size-label"
+      id="selectedClosureSizeLabel"
+    >
+      2×6 HD Lace Closure
+    </div>
+  </div>
+
+</div>
+     <div class="builder lace-product-copy">
+  <h3>HD Lace Closure</h3>
+  <span class="lace-size">2×6 • Body Wave</span>
+
+  <div class="frontal-option">
               <label for="closureTexture2x6">Texture</label>
               <select id="closureTexture2x6">
                 <option value="body-wave">Body Wave</option>
@@ -663,21 +1257,22 @@
 <option value="Custom Color Consultation">Custom Color Consultation</option>
                       </select>
           </div>
-                <div id="closureColorChart" style="
-  margin-top: 12px;
-  padding: 12px;
-  background: #ffffff;
-  border-radius: 10px;
+  <div id="closureColorChart" style="
+  margin-top: 16px;
+  padding: 16px;
+  background: #141414;
+  border: 1px solid rgba(212,166,34,.65);
+  border-radius: 16px;
 ">
-
-  <div style="
-    margin-bottom: 9px;
-    color: #0a0a0a;
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  ">
+<div style="
+  margin-bottom: 12px;
+  color: #d4a622;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+">
+ 
     Selected Color:
     <span id="closureSelectedColorName">1B Natural Black</span>
   </div>
@@ -764,11 +1359,12 @@
       alt="1B Natural Black Hair Color"
       style="
         display: block;
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        margin: 0 auto;
-        border-radius: 10px;
+    width: 100%;
+max-width: 220px;
+height: auto;
+margin: 0 auto;
+border-radius: 14px;
+border: 1px solid rgba(212,166,34,.55);
       "
     >
   </div>
@@ -804,126 +1400,96 @@ The standard <strong>$18 color upgrade</strong> applies to custom colors.
               </select>
             </div>
 
-            <div id="closurePrice2x6" style="
-              margin-top: 22px;
-              color: var(--gold);
-              font-family: Georgia, 'Times New Roman', serif;
-              font-size: 2rem;
-              font-weight: 900;
-            ">
-              $51.00
-            </div>            <button
-              type="button"
-              id="addClosure2x6ToBag"
-              style="
-                width: 100%;
-                margin-top: 22px;
-                padding: 16px 22px;
-                border: 2px solid var(--gold);
-                border-radius: 10px;
-                background: var(--gold);
-                color: var(--black);
-                font-size: 0.9rem;
-                font-weight: 900;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                cursor: pointer;
-              "
-            >
-              Add to Bag
-            </button>
+     <div class="price-box">
+  <small>Price</small>
+
+  <div class="price" id="closurePrice2x6">
+    $51.00
+  </div>
+
+  <div class="price-note">
+    1B Natural Black included • Specialty colors +$18
+  </div>
+</div>
+
+<button
+  type="button"
+  id="addClosure2x6ToBag"
+  class="add"
+>
+  Add to Bag
+</button>
 
             
-          </div>
-        </article>
-  <article class="lace-product-card">
-  <div class="lace-product-image">
-    <span class="hd-badge">Size Guide</span>
-
-    <img
-      src="images/closures/hd-lace-closure-size-guide.png"
-      alt="HD Lace Closure Size Guide showing 2x6, 4x4, 5x5 and 6x6 closures"
-   style="width: 100%; height: auto; object-fit: contain;">
-</div><div id="selectedClosureSizeDisplay" style="
-  min-height: 420px;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 25px 20px;
-">
-
-  <img
-    id="selectedClosureSizeImage"
-    src="images/closures/closure-size-2x6.png"
-    alt="2x6 HD Lace Closure Size"
-   style="
-  width: 100%;
-  max-width: 360px;
-  height: auto;
-  object-fit: contain;
-"
-  >
-
-  <div id="selectedClosureSizeLabel" style="
-    margin-top: 15px;
-    color: #d4a622;
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  ">
-    2×6 HD Lace Closure
-  </div>
+     </div>
 
 </div>
-  <div class="lace-product-copy">
-    <h3>Closure Size Guide</h3>
-    <span class="lace-size">2×6 • 4×4 • 5×5 • 6×6</span>
-
-    <p>
-      Compare our HD lace closure sizes to choose the coverage
-      and parting space that works best for your desired style.
-    </p>
-  </div>
-</article>
-
-      </div>
       
     </section>
 
-    <section class="section section-light" id="frontals">
+   <section class="section section-cream" id="frontals">
       <div class="heading">
         <span class="eyebrow">Maximum Front Coverage</span>
         <h2>Shop Frontals</h2>
         <p>Available in 13×4 and 13×6 HD lace sizes.</p>
       </div>
 
-           <div class="lace-product-grid">
+         <div class="shop-layout">
+  <div class="product-photo frontal-product-gallery">
+  <div class="gallery-panel product">
+    <span class="gallery-label">Frontal Product</span>
+    <span class="hd-badge">HD Lace</span>
 
-        <article class="lace-product-card">
-          <div class="lace-product-image">
-            <span class="hd-badge">HD Lace</span>
+    <img
+      class="zoomable"
+      id="frontalMainProductImage"
+      src="images/Frontal/frontal-body-wave.png"
+      alt="HD Lace Frontal Body Wave"
+    >
+  </div>
 
-            <img
-              src="images/Frontal/frontal-body-wave.png"
-              alt="HD Lace Frontal Body Wave"
-            >
+  <div class="gallery-panel product">
+    <span class="gallery-label">Alternate View</span>
 
-            <img
-              src="images/Frontal/frontal-body-wave2.png"
-              alt="HD Lace Frontal Body Wave Alternate View"
-            >
-          </div>
+    <img
+      class="zoomable"
+      id="frontalAlternateProductImage"
+      src="images/Frontal/frontal-body-wave2.png"
+      alt="HD Lace Frontal Body Wave Alternate View"
+    >
+  </div>
 
-          <div class="lace-product-copy">
-            <h3>HD Lace Frontal</h3>
-            <span class="lace-size">13×4 • 13×6</span>
-              <div class="frontal-option">
-              <label for="frontalTexture">Texture</label>
-              <select id="frontalTexture">
+  <div class="gallery-panel size-guide-panel">
+    <span class="gallery-label">Lace Size Guide</span>
+
+    <img
+      class="zoomable"
+      id="selectedFrontalSizeImage"
+      src="images/Frontal/frontal-size-13x4.png"
+      alt="13x4 HD Lace Frontal Size Guide"
+    >
+
+    <div
+      class="selected-size-label"
+      id="selectedFrontalSizeLabel"
+    >
+      13×4 HD Lace Frontal
+    </div>
+
+    <p id="selectedFrontalSizeDescription">
+      13 inches across the hairline with approximately 4 inches of parting depth.
+    </p>
+  </div>
+
+</div>
+
+        <div class="builder lace-product-copy">
+  <h3>HD Lace Frontal</h3>
+  <span class="lace-size">13×4 • 13×6</span>
+
+  <div class="frontal-option">
+    <label for="frontalTexture">Texture</label>
+    <select id="frontalTexture">
                 <option value="body-wave">Body Wave</option>
                 <option value="straight">Straight</option>
                 <option value="kinky-straight">Kinky Straight</option>
@@ -981,15 +1547,16 @@ The standard <strong>$18 color upgrade</strong> applies to custom colors.
 ========================== -->
 
 <div id="frontalColorChart" style="
-  margin-top: 12px;
-  padding: 12px;
-  background: #ffffff;
-  border-radius: 10px;
+  margin-top: 16px;
+  padding: 16px;
+  background: #141414;
+  border: 1px solid rgba(212,166,34,.65);
+  border-radius: 16px;
 ">
 
   <div style="
-    margin-bottom: 9px;
-    color: #0a0a0a;
+    margin-bottom: 12px;
+    color: #d4a622;
     font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 0.08em;
@@ -1095,15 +1662,15 @@ The standard <strong>$18 color upgrade</strong> applies to custom colors.
     <img
       id="frontalColorModelImage"
       src="images/hair-colors/1b-natural-black.jpg"
-      alt="1B Natural Black Hair Color"
-      style="
-        display: block;
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        margin: 0 auto;
-        border-radius: 10px;
-      "
+     style="
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid rgba(212,166,34,.55);
+"
     >
   </div>
 
@@ -1141,75 +1708,32 @@ The standard <strong>$18 color upgrade</strong> applies to custom colors.
               </select>
             </div>
 
-            <div id="frontalPrice" style="
-              margin-top: 22px;
-              color: var(--gold);
-              font-family: Georgia, 'Times New Roman', serif;
-              font-size: 2rem;
-              font-weight: 900;
-            ">
-              $138.00
-            </div>            <button
-              type="button"
-              id="addFrontalToBag"
-              style="
-                width: 100%;
-                margin-top: 22px;
-                padding: 16px 22px;
-                border: 2px solid var(--gold);
-                border-radius: 10px;
-                background: var(--gold);
-                color: var(--black);
-                font-size: 0.9rem;
-                font-weight: 900;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                cursor: pointer;
-              "
-            >
-              Add to Bag
-            </button>
+       <div class="price-box">
+  <small>Price</small>
+
+  <div class="price" id="frontalPrice">
+    $138.00
+  </div>
+
+  <div class="price-note">
+    1B Natural Black included • Specialty colors +$18
+  </div>
+</div>
+
+<button
+  type="button"
+  id="addFrontalToBag"
+  class="add"
+>
+  Add to Bag
+</button>
 
            
           </div>
-        </article>
-<article class="lace-product-card">
 
-  <div class="lace-product-image">
-    <span class="hd-badge">Size Guide</span>
-
-    <img
-      id="selectedFrontalSizeImage"
-      src="images/Frontal/frontal-size-13x4.png"
-      alt="13x4 HD Lace Frontal Size Guide"
-      style="
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      "
-    >
-  </div>
-
-  <div class="lace-product-copy">
-    <h3>Frontal Size Guide</h3>
-
-    <span
-      class="lace-size"
-      id="selectedFrontalSizeLabel"
-    >
-      13×4 HD Lace Frontal
-    </span>
-
-    <p id="selectedFrontalSizeDescription">
-      13 inches across the hairline with approximately
-      4 inches of parting depth.
-    </p>
-  </div>
-
-</article>
       </div>
-    </section>
 
+</section>
   </main>
 
   <footer class="footer">
@@ -1268,7 +1792,7 @@ The standard <strong>$18 color upgrade</strong> applies to custom colors.
   </div>
 
   <script>
-    const productImages = document.querySelectorAll(".lace-product-image img");
+    const productImages = document.querySelectorAll(".zoomable");
     const imageLightbox = document.getElementById("imageLightbox");
     const lightboxImage = document.getElementById("lightboxImage");
     const lightboxClose = document.getElementById("lightboxClose");
@@ -1313,64 +1837,73 @@ The standard <strong>$18 color upgrade</strong> applies to custom colors.
        FRONTAL TEXTURE IMAGE SWITCHER
     ========================== */
 
-    const frontalTexture = document.getElementById("frontalTexture");
+   /* =========================
+   FRONTAL TEXTURE IMAGE SWITCHER
+========================== */
 
-    const frontalImages = document.querySelectorAll(
-      "#frontals .lace-product-image img"
-    );
+const frontalTexture = document.getElementById("frontalTexture");
 
-    const frontalTextureImages = {
-      "body-wave": [
-        "images/Frontal/frontal-body-wave.png",
-        "images/Frontal/frontal-body-wave2.png"
-      ],
+const frontalMainProductImage =
+  document.getElementById("frontalMainProductImage");
 
-      "straight": [
-        "images/Frontal/frontal-straight.png",
-        "images/Frontal/frontal-straight2.png"
-      ],
+const frontalAlternateProductImage =
+  document.getElementById("frontalAlternateProductImage");
 
-      "kinky-straight": [
-        "images/Frontal/frontal-kinky-straight.png",
-        "images/Frontal/frontal-kinky-straight2.jpg"
-      ],
+const frontalTextureImages = {
+  "body-wave": [
+    "images/Frontal/frontal-body-wave.png",
+    "images/Frontal/frontal-body-wave2.png"
+  ],
 
-      "deep-wave": [
-        "images/Frontal/frontal-deep-wave.png",
-        "images/Frontal/frontal-deep-wave2.png"
-      ],
+  "straight": [
+    "images/Frontal/frontal-straight.png",
+    "images/Frontal/frontal-straight2.png"
+  ],
 
-      "curly": [
-        "images/Frontal/frontal-curly.png",
-        "images/Frontal/frontal-curly2.PNG"
-      ],
+  "kinky-straight": [
+    "images/Frontal/frontal-kinky-straight.png",
+    "images/Frontal/frontal-kinky-straight2.jpg"
+  ],
 
-      "kinky-curly": [
-        "images/Frontal/frontal-kinky-curly.png",
-        "images/Frontal/frontal-kinky-curly2.png"
-      ]
-    };
+  "deep-wave": [
+    "images/Frontal/frontal-deep-wave.png",
+    "images/Frontal/frontal-deep-wave2.png"
+  ],
 
-    const frontalTextureNames = {
-      "body-wave": "Body Wave",
-      "straight": "Straight",
-      "kinky-straight": "Kinky Straight",
-      "deep-wave": "Deep Wave",
-      "curly": "Curly",
-      "kinky-curly": "Kinky Curly"
-    };
+  "curly": [
+    "images/Frontal/frontal-curly.png",
+    "images/Frontal/frontal-curly2.PNG"
+  ],
 
-    frontalTexture.addEventListener("change", () => {
-      const selectedTexture = frontalTexture.value;
-      const selectedImages = frontalTextureImages[selectedTexture];
-      const textureName = frontalTextureNames[selectedTexture];
+  "kinky-curly": [
+    "images/Frontal/frontal-kinky-curly.png",
+    "images/Frontal/frontal-kinky-curly2.png"
+  ]
+};
 
-      frontalImages[0].src = selectedImages[0];
-      frontalImages[1].src = selectedImages[1];
+const frontalTextureNames = {
+  "body-wave": "Body Wave",
+  "straight": "Straight",
+  "kinky-straight": "Kinky Straight",
+  "deep-wave": "Deep Wave",
+  "curly": "Curly",
+  "kinky-curly": "Kinky Curly"
+};
 
-      frontalImages[0].alt = `HD Lace Frontal ${textureName}`;
-      frontalImages[1].alt = `HD Lace Frontal ${textureName} Alternate View`;
-    });
+frontalTexture.addEventListener("change", () => {
+  const selectedTexture = frontalTexture.value;
+  const selectedImages = frontalTextureImages[selectedTexture];
+  const textureName = frontalTextureNames[selectedTexture];
+
+  frontalMainProductImage.src = selectedImages[0];
+  frontalAlternateProductImage.src = selectedImages[1];
+
+  frontalMainProductImage.alt =
+    `HD Lace Frontal ${textureName}`;
+
+  frontalAlternateProductImage.alt =
+    `HD Lace Frontal ${textureName} Alternate View`;
+});
  /* =========================
    FRONTAL SIZE SELECTOR
 ========================== */
@@ -1464,9 +1997,8 @@ updateFrontalSizeGuide();
       "kinky-curly": "images/closures/burmese-kinky-curly-closure.jpg"
     };
 
-    const closureProductImages = document.querySelectorAll(
-      "#closures .lace-product-image img"
-    );
+   const closureMainProductImage =
+  document.getElementById("closureMainProductImage");
       closureTexture2x6.addEventListener("change", () => {
       const selectedTexture = closureTexture2x6.value;
       const textureName = closureTextureNames[selectedTexture];
@@ -1481,10 +2013,11 @@ updateFrontalSizeGuide();
 
       closureSizeDisplays[0].textContent =
         `${sizeNames[selectedSize]} • ${textureName}`;
+closureMainProductImage.src =
+  closureTextureImages[selectedTexture];
 
-      closureProductImages[0].src = closureTextureImages[selectedTexture];
-      closureProductImages[0].alt =
-        `${sizeNames[selectedSize]} HD Lace Closure ${textureName}`;
+closureMainProductImage.alt =
+  `${sizeNames[selectedSize]} HD Lace Closure ${textureName}`;
     });
 
       
