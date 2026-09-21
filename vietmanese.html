@@ -1,3653 +1,1205 @@
-<?php
-
-
-header('Content-Type: application/json');
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode([
-        'error' => 'Method not allowed.'
-    ]);
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Load Stripe secret key from private file
-|--------------------------------------------------------------------------
-*/
-
-require_once dirname(__DIR__, 2) . '/stripe-config.php';
-
-if (empty($stripeSecretKey)) {
-    http_response_code(500);
-    echo json_encode([
-        'error' => 'Stripe is not configured on the server yet.'
-    ]);
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| HAIR CARE PRODUCT CATALOG
-|--------------------------------------------------------------------------
-| Prices are in cents.
-|--------------------------------------------------------------------------
-*/
-
-$PRODUCTS = [
-
-    'edge-control' => [
-        'name' => 'Big Boss Bundles Edge Control',
-        'price' => 1299
-    ],
-
-    'lace-tint-mousse' => [
-        'name' => 'Big Boss Bundles Lace Tint Mousse',
-        'price' => 1199
-    ],
-
-    'wig-glue' => [
-        'name' => 'Big Boss Bundles Wig Glue',
-        'price' => 1499
-    ],
-
-    'wax-stick' => [
-        'name' => 'Big Boss Bundles Wax Stick',
-        'price' => 999
-    ],
-
-    'lace-melting-spray' => [
-        'name' => 'Big Boss Bundles Lace Melting Spray',
-        'price' => 1299
-    ],
-
-    'hair-accelerator-oil' => [
-        'name' => 'Big Boss Bundles Hair Accelerator Oil',
-        'price' => 1500
-    ],
-
-    'pressing-comb' => [
-        'name' => 'Big Boss Bundles Pressing Comb',
-        'price' => 4999
-    ],
-
-    'wig-bands' => [
-        'name' => 'Big Boss Bundles Wig Bands',
-        'price' => 199
-    ],
-
-    'protective-shield' => [
-        'name' => 'Protective Shield',
-        'price' => 1499
-    ]
-
-];
-
-/*
-|--------------------------------------------------------------------------
-| BURMESE DOUBLE DRAWN BUNDLE PRICING
-|--------------------------------------------------------------------------
-| Retail prices in cents.
-|--------------------------------------------------------------------------
-*/
-
-$BURMESE_BASE = [
-
-    10 => 5100,
-    12 => 5700,
-    14 => 6300,
-    16 => 7800,
-    18 => 9600,
-    20 => 11400,
-    22 => 13200,
-    24 => 15000,
-    26 => 17400,
-    28 => 20100,
-    30 => 22800
-
-];
-
-$BURMESE_SPECIALTY = [
-
-    10 => 5700,
-    12 => 6300,
-    14 => 6900,
-    16 => 8400,
-    18 => 10200,
-    20 => 12000,
-    22 => 13800,
-    24 => 15600,
-    26 => 18000,
-    28 => 20700,
-    30 => 23400
-
-];
-
-$BURMESE_SPECIALTY_TEXTURES = [
-
-    'Deep Wave',
-    'Curly',
-    'Kinky Straight',
-    'Kinky Curly'];
-/*
-|--------------------------------------------------------------------------
-| CAMBODIAN PREMIUM LUXURY BUNDLE PRICING
-|--------------------------------------------------------------------------
-| Retail prices in cents.
-|--------------------------------------------------------------------------
-*/
-
-$CAMBODIAN_BASE = [
-
-    10 => 10200,
-    12 => 11400,
-    14 => 13200,
-    16 => 15300,
-    18 => 18000,
-    20 => 21000,
-    22 => 24300,
-    24 => 27000,
-    26 => 29700,
-    28 => 32700,
-    30 => 35100
-
-];
-
-$CAMBODIAN_SPECIALTY = [
-
-    10 => 10800,
-    12 => 12000,
-    14 => 13800,
-    16 => 15900,
-    18 => 18600,
-    20 => 21600,
-    22 => 24900,
-    24 => 27600,
-    26 => 30300,
-    28 => 33300,
-    30 => 35700
-
-];
-
-$CAMBODIAN_SPECIALTY_TEXTURES = [
-
-    'Deep Wave',
-    'Curly',
-    'Kinky Straight',
-    'Kinky Curly'
-
-];
-
-$CAMBODIAN_STANDARD_COLORS = [
-
-    '1 Jet Black',
-    '1B Natural Black',
-    '2 Dark Brown',
-    '4 Medium Brown',
-    '27 Honey Blonde',
-    '30 Auburn',
-    '33 Dark Auburn',
-    '99J Burgundy',
-    '613 Blonde',
-    'Platinum Blonde',
-    'P4/27 Highlight',
-    'P1B/27 Highlight',
-    'P1B/30 Highlight',
-    'P1B/99J Highlight',
-     'Honey Caramel Balayage'
-];
-
-/*
-|--------------------------------------------------------------------------
-| LUXURY WIG PRICING
-|--------------------------------------------------------------------------
-| Server-authoritative pricing.
-| Mirrors the pricing used by wigs.html.
-|--------------------------------------------------------------------------
-*/
-
-$WIG_MARKUP = 2.5;
-
-$WIG_COSTS_180 = [
-
-    '4x4' => [
-        18 => 65,
-        20 => 75,
-        22 => 91,
-        24 => 108,
-        26 => 128,
-        28 => 148,
-        30 => 173,
-        32 => 217
-    ],
-
-    '5x5' => [
-        18 => 69,
-        20 => 79,
-        22 => 95,
-        24 => 112,
-        26 => 132,
-        28 => 152,
-        30 => 177,
-        32 => 221
-    ],
-
-    '13x4' => [
-        18 => 75,
-        20 => 85,
-        22 => 100,
-        24 => 118,
-        26 => 138,
-        28 => 158,
-        30 => 183,
-        32 => 227
-    ],
-
-    '13x6' => [
-        18 => 83,
-        20 => 93,
-        22 => 108,
-        24 => 126,
-        26 => 146,
-        28 => 169,
-        30 => 193,
-        32 => 237
-    ]
-
-];
-
-$WIG_LONG_LENGTH_INCREASES = [
-    34 => 30,
-    36 => 60,
-    38 => 95,
-    40 => 135
-];
-
-$WIG_DENSITY_MULTIPLIERS = [
-    '180%' => 1.00,
-    '200%' => 1.12,
-    '250%' => 1.30
-];
-
-$WIG_TEXTURE_ADJUSTMENTS = [
-    'Straight' => 0,
-    'Body Wave' => 0,
-    'Deep Wave' => 5,
-    'Curly' => 5,
-    'Kinky Straight' => 10,
-    'Kinky Curly' => 10
-];
-
-$WIG_BRANDS = [
-    'Burmese',
-    'Cambodian',
-    'Indian',
-    'LAOS',
-    'Vietnamese'
-];
-
-$WIG_STANDARD_COLORS = [
-    '1 Jet Black',
-    '1B Natural Black',
-    '2 Dark Brown',
-    '4 Medium Brown',
-    '27 Honey Blonde',
-    '30 Auburn',
-    '33 Dark Auburn',
-    '99J Burgundy',
-    '613 Blonde',
-    'Platinum Blonde',
-    'P4/27 Highlight',
-    'P1B/27 Highlight',
-    'P1B/30 Highlight',
-    'P1B/99J Highlight',
-    'Honey Caramel Balayage'
-];
-/*
-|--------------------------------------------------------------------------
-| HD LACE CLOSURE PRICING
-|--------------------------------------------------------------------------
-| Authoritative retail prices in cents.
-|--------------------------------------------------------------------------
-*/
-
-$HD_CLOSURE_PRICES = [
-
-    '2x6' => [
-        12 => 5100,
-        14 => 6300,
-        16 => 7500,
-        18 => 8700,
-        20 => 9900,
-        22 => 11100,
-        24 => 12300,
-        26 => 13500,
-        28 => 14700
-    ],
-
-    '4x4' => [
-        12 => 6300,
-        14 => 7500,
-        16 => 8700,
-        18 => 9900,
-        20 => 11100,
-        22 => 12300,
-        24 => 13500,
-        26 => 14700,
-        28 => 15900
-    ],
-
-    '5x5' => [
-        12 => 8700,
-        14 => 9900,
-        16 => 11100,
-        18 => 12300,
-        20 => 13500,
-        22 => 14700,
-        24 => 15900,
-        26 => 15900,
-        28 => 18300
-    ],
-
-    '6x6' => [
-        12 => 9900,
-        14 => 11100,
-        16 => 12300,
-        18 => 13500,
-        20 => 14700,
-        22 => 15900,
-        24 => 17100,
-        26 => 18300,
-        28 => 19500
-    ]
-
-];
-
-
-/*
-|--------------------------------------------------------------------------
-| HD LACE FRONTAL PRICING
-|--------------------------------------------------------------------------
-| Authoritative retail prices in cents.
-|--------------------------------------------------------------------------
-*/
-
-$HD_FRONTAL_PRICES = [
-
-    '13x4' => [
-        14 => 13800,
-        16 => 15300,
-        18 => 17100,
-        20 => 18900,
-        22 => 21300
-    ],
-
-    '13x6' => [
-        14 => 18000,
-        16 => 19500,
-        18 => 21300,
-        20 => 23400,
-        22 => 26400
-    ]
-
-];
-
-
-/*
-|--------------------------------------------------------------------------
-| HD LACE ALLOWED TEXTURES
-|--------------------------------------------------------------------------
-*/
-
-$HD_LACE_TEXTURES = [
-
-    'Straight',
-    'Kinky Straight',
-    'Body Wave',
-    'Deep Wave',
-    'Curly',
-    'Kinky Curly'
-
-];
-/*
-|--------------------------------------------------------------------------
-| BIG BOSS BEAUTY ACADEMY
-|--------------------------------------------------------------------------
-| Authoritative server-side class pricing.
-| Prices are in cents.
-|--------------------------------------------------------------------------
-*/
-
-$ACADEMY_CLASSES = [
-
-    '2026-09-26-stitch-braids' => [
-        'course' => 'Stitch Braids',
-        'date' => 'September 26, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2026-10-03-quick-weave' => [
-        'course' => 'Quick Weave',
-        'date' => 'October 3, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2026-10-10-wig-installation' => [
-        'course' => 'Wig Installation',
-        'date' => 'October 10, 2026',
-        'time' => '12:00 PM – 4:00 PM',
-        'youthPrice' => 40000,
-        'adultPrice' => 45000
-    ],
-
-    '2026-10-17-sew-in-installation' => [
-        'course' => 'Sew In Installation',
-        'date' => 'October 17, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 32500,
-        'adultPrice' => 37500
-    ],
-
-    '2026-10-24-feed-in-braids' => [
-        'course' => 'Feed In Braids',
-        'date' => 'October 24, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 27500,
-        'adultPrice' => 32500
-    ],
-
-    '2026-10-31-box-braids' => [
-        'course' => 'Box Braids',
-        'date' => 'October 31, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 27500,
-        'adultPrice' => 32500
-    ],
-
-    '2026-11-07-cornrows-fundamentals' => [
-        'course' => 'Cornrows Fundamentals',
-        'date' => 'November 7, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 24900,
-        'adultPrice' => 29900
-    ],
-
-    '2026-11-14-stitch-braids' => [
-        'course' => 'Stitch Braids',
-        'date' => 'November 14, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2026-11-21-quick-weave' => [
-        'course' => 'Quick Weave',
-        'date' => 'November 21, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2026-11-28-wig-installation' => [
-        'course' => 'Wig Installation',
-        'date' => 'November 28, 2026',
-        'time' => '12:00 PM – 4:00 PM',
-        'youthPrice' => 40000,
-        'adultPrice' => 45000
-    ],
-
-    '2026-12-05-sew-in-installation' => [
-        'course' => 'Sew In Installation',
-        'date' => 'December 5, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 32500,
-        'adultPrice' => 37500
-    ],
-
-    '2026-12-12-feed-in-braids' => [
-        'course' => 'Feed In Braids',
-        'date' => 'December 12, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 27500,
-        'adultPrice' => 32500
-    ],
-
-    '2026-12-19-box-braids' => [
-        'course' => 'Box Braids',
-        'date' => 'December 19, 2026',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 27500,
-        'adultPrice' => 32500
-    ],
-
-    /* December 26, 2026 — No Class */
-    /* January 2, 2027 — No Class */
-
-    '2027-01-09-cornrows-fundamentals' => [
-        'course' => 'Cornrows Fundamentals',
-        'date' => 'January 9, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 24900,
-        'adultPrice' => 29900
-    ],
-
-    '2027-01-16-stitch-braids' => [
-        'course' => 'Stitch Braids',
-        'date' => 'January 16, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2027-01-23-quick-weave' => [
-        'course' => 'Quick Weave',
-        'date' => 'January 23, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2027-01-30-wig-installation' => [
-        'course' => 'Wig Installation',
-        'date' => 'January 30, 2027',
-        'time' => '12:00 PM – 4:00 PM',
-        'youthPrice' => 40000,
-        'adultPrice' => 45000
-    ],
-
-    '2027-02-06-sew-in-installation' => [
-        'course' => 'Sew In Installation',
-        'date' => 'February 6, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 32500,
-        'adultPrice' => 37500
-    ],
-
-    '2027-02-13-feed-in-braids' => [
-        'course' => 'Feed In Braids',
-        'date' => 'February 13, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 27500,
-        'adultPrice' => 32500
-    ],
-
-    '2027-02-20-box-braids' => [
-        'course' => 'Box Braids',
-        'date' => 'February 20, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 27500,
-        'adultPrice' => 32500
-    ],
-
-    '2027-02-27-cornrows-fundamentals' => [
-        'course' => 'Cornrows Fundamentals',
-        'date' => 'February 27, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 24900,
-        'adultPrice' => 29900
-    ],
-
-    '2027-03-06-stitch-braids' => [
-        'course' => 'Stitch Braids',
-        'date' => 'March 6, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2027-03-13-quick-weave' => [
-        'course' => 'Quick Weave',
-        'date' => 'March 13, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 29900,
-        'adultPrice' => 34900
-    ],
-
-    '2027-03-20-wig-installation' => [
-        'course' => 'Wig Installation',
-        'date' => 'March 20, 2027',
-        'time' => '12:00 PM – 4:00 PM',
-        'youthPrice' => 40000,
-        'adultPrice' => 45000
-    ],
-
-    '2027-03-27-sew-in-installation' => [
-        'course' => 'Sew In Installation',
-        'date' => 'March 27, 2027',
-        'time' => '12:00 PM – 4:30 PM',
-        'youthPrice' => 32500,
-        'adultPrice' => 37500
-    ]
-
-];
-/*
-|--------------------------------------------------------------------------
-| Read cart
-|--------------------------------------------------------------------------
-*/
-
-$input = json_decode(
-    file_get_contents('php://input'),
-    true
-);
-
-if (
-    !$input ||
-    empty($input['items']) ||
-    !is_array($input['items'])
-) {
-
-    http_response_code(400);
-
-    echo json_encode([
-        'error' => 'Your bag is empty.'
-    ]);
-
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Prepare Stripe line items
-|--------------------------------------------------------------------------
-*/
-
-$stripeFields = [];
-
-$lineIndex = 0;
-
-$merchandiseSubtotal = 0;
-
-$academySessionId = '';
-$academyReservationToken = '';
-
-/*
-|--------------------------------------------------------------------------
-| Build secure Stripe line items
-|--------------------------------------------------------------------------
-*/
-
-foreach ($input['items'] as $item) {
-
-    $productId =
-        $item['productId'] ?? '';
-
-    $quantity =
-        intval(
-            $item['quantity'] ?? 1
-        );
-
-    if ($quantity < 1) {
-        $quantity = 1;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Vietnamese Raw Collection | Big Boss Bundles</title>
+
+  <meta
+    name="description"
+    content="Shop Big Boss Bundles Vietnamese Raw hair bundles in six signature textures with live length and quantity pricing."
+  >
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --soft: #151515;
+      --gold: #d4a622;
+      --teal: #00a6d6;
+      --white: #ffffff;
+      --gray: #777777;
     }
 
-    if ($quantity > 20) {
-        $quantity = 20;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | BURMESE BUNDLES
-    |--------------------------------------------------------------------------
-    */
-
-    if ($productId === 'burmese-bundle') {
-
-        $texture =
-            trim(
-                $item['texture'] ?? ''
-            );
-
-        $lengthRaw =
-            $item['length'] ?? '';
-
-        /*
-        | Handles:
-        | 12"
-        | 12 inches
-        | 12
-        */
-
-        $length =
-            intval(
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    (string)$lengthRaw
-                )
-            );
-
-        $allowedTextures = [
-
-            'Straight',
-            'Body Wave',
-            'Deep Wave',
-            'Curly',
-            'Kinky Straight',
-            'Kinky Curly'
-
-        ];
-
-        if (
-            !in_array(
-                $texture,
-                $allowedTextures,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid Burmese bundle texture.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | Select secure price table
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            in_array(
-                $texture,
-                $BURMESE_SPECIALTY_TEXTURES,
-                true
-            )
-        ) {
-
-            $priceTable =
-                $BURMESE_SPECIALTY;
-
-        } else {
-
-            $priceTable =
-                $BURMESE_BASE;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | Verify length exists
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            !isset(
-                $priceTable[$length]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That Burmese bundle length is not available.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | Authoritative server price
-        |--------------------------------------------------------------------------
-        */
-
-        $unitAmount =
-            $priceTable[$length];
-
-        $productName =
-            'Burmese Double Drawn Bundle';
-
-        $descriptionParts = [
-
-            $texture,
-            $length . '"'
-
-        ];
-
-        if (
-            !empty(
-                $item['color']
-            )
-        ) {
-
-            $descriptionParts[] =
-                $item['color'];
-        }
-
-        $descriptionParts[] =
-            'Double Drawn';
-
-        $descriptionParts[] =
-            'Extra Full';
-
-        $description =
-            implode(
-                ' • ',
-                $descriptionParts
-            );
+    html {
+      scroll-behavior: smooth;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | CAMBODIAN PREMIUM LUXURY BUNDLES
-    |--------------------------------------------------------------------------
-    */
-
-    elseif ($productId === 'cambodian-bundle') {
-
-        $texture =
-            trim(
-                $item['texture'] ?? ''
-            );
-
-        $lengthRaw =
-            $item['length'] ?? '';
-
-        $length =
-            intval(
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    (string)$lengthRaw
-                )
-            );
-
-        $color =
-            trim(
-                $item['color'] ?? ''
-            );
-
-        $allowedTextures = [
-            'Straight',
-            'Body Wave',
-            'Deep Wave',
-            'Curly',
-            'Kinky Straight',
-            'Kinky Curly'
-        ];
-
-        if (
-            !in_array(
-                $texture,
-                $allowedTextures,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid Cambodian bundle texture.'
-            ]);
-
-            exit;
-        }
-
-        if (
-            in_array(
-                $texture,
-                $CAMBODIAN_SPECIALTY_TEXTURES,
-                true
-            )
-        ) {
-
-            $priceTable =
-                $CAMBODIAN_SPECIALTY;
-
-        } else {
-
-            $priceTable =
-                $CAMBODIAN_BASE;
-        }
-
-        if (
-            !isset(
-                $priceTable[$length]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That Cambodian bundle length is not available.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY COLOR
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            $color !== 'Custom Color Consultation' &&
-            !in_array(
-                $color,
-                $CAMBODIAN_STANDARD_COLORS,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid Cambodian bundle color.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | AUTHORITATIVE SERVER PRICE
-        |--------------------------------------------------------------------------
-        */
-
-        $unitAmount =
-            $priceTable[$length];
-
-        /*
-        |--------------------------------------------------------------------------
-        | STANDARD COLOR UPGRADE — $18
-        |--------------------------------------------------------------------------
-        | 1B Natural Black remains base price.
-        | Custom Color Consultation remains base price until consultation.
-        */
-
-        if (
-            $color !== '1B Natural Black' &&
-            $color !== 'Custom Color Consultation'
-        ) {
-
-            $unitAmount += 1800;
-        }
-
-        $productName =
-            'Cambodian Premium Luxury Bundle';
-
-        $descriptionParts = [
-            $texture,
-            $length . '"',
-            $color,
-            'Premium Luxury'
-        ];
-
-        $description =
-            implode(
-                ' • ',
-                $descriptionParts
-        );
-
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.5;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | LAOS PREMIUM LUXURY BUNDLES
-    |--------------------------------------------------------------------------
-    | Supplier base cost × 3 + $25 LAOS premium.
-    | Body Wave, Deep Wave, Kinky Straight and Kinky Curly
-    | receive a $4 supplier texture charge before the × 3 markup.
-    | Standard specialty colors add $18 retail.
-    | Custom Color Consultation remains base price until consultation.
-    |--------------------------------------------------------------------------
-    */
-
-    elseif ($productId === 'laos-bundle') {
-
-        $texture =
-            trim(
-                $item['texture'] ?? ''
-            );
-
-        $lengthRaw =
-            $item['length'] ?? '';
-
-        $color =
-            trim(
-                $item['color'] ?? ''
-            );
-
-        $length =
-            intval(
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    (string)$lengthRaw
-                )
-            );
-
-        $LAOS_ALLOWED_TEXTURES = [
-            'Straight',
-            'Body Wave',
-            'Deep Wave',
-            'Curly',
-            'Kinky Straight',
-            'Kinky Curly'
-        ];
-
-        if (
-            !in_array(
-                $texture,
-                $LAOS_ALLOWED_TEXTURES,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid LAOS bundle texture.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | LAOS SUPPLIER BASE COST
-        |--------------------------------------------------------------------------
-        */
-
-        $LAOS_SUPPLIER_BASE = [
-            10 => 34,
-            12 => 38,
-            14 => 44,
-            16 => 51,
-            18 => 60,
-            20 => 70,
-            22 => 81,
-            24 => 90,
-            26 => 99,
-            28 => 109,
-            30 => 117,
-            32 => 125
-        ];
-
-        if (
-            !isset(
-                $LAOS_SUPPLIER_BASE[$length]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That LAOS bundle length is not available.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | SPECIALTY TEXTURES
-        |--------------------------------------------------------------------------
-        */
-
-        $LAOS_SPECIALTY_TEXTURES = [
-            'Body Wave',
-            'Deep Wave',
-            'Kinky Straight',
-            'Kinky Curly'
-        ];
-
-        $supplierCost =
-            $LAOS_SUPPLIER_BASE[$length];
-
-        if (
-            in_array(
-                $texture,
-                $LAOS_SPECIALTY_TEXTURES,
-                true
-            )
-        ) {
-
-            $supplierCost += 4;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY COLOR
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            $color !== 'Custom Color Consultation' &&
-            !in_array(
-                $color,
-                $CAMBODIAN_STANDARD_COLORS,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid LAOS bundle color.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | AUTHORITATIVE LAOS PRICE
-        |--------------------------------------------------------------------------
-        | (supplier cost × 3) + $25
-        |--------------------------------------------------------------------------
-        */
-
-        $unitAmount =
-            intval(
-                (
-                    ($supplierCost * 3)
-                    + 25
-                ) * 100
-            );
-
-        /*
-        |--------------------------------------------------------------------------
-        | STANDARD COLOR UPGRADE — $18
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            $color !== '1B Natural Black' &&
-            $color !== 'Custom Color Consultation'
-        ) {
-
-            $unitAmount += 1800;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | STRIPE PRODUCT INFORMATION
-        |--------------------------------------------------------------------------
-        */
-
-        $productName =
-            'LAOS Premium Luxury Bundle';
-
-        $descriptionParts = [
-            $texture,
-            $length . '"',
-            $color,
-            'Premium Luxury LAOS Hair'
-        ];
-
-        $description =
-            implode(
-                ' • ',
-                $descriptionParts
-            );
-    }
-    /*
-    |--------------------------------------------------------------------------
-    | VIETNAMESE RAW BUNDLES
-    |--------------------------------------------------------------------------
-    | Server-authoritative Vietnamese Raw bundle pricing.
-    | Prices below match the Vietnamese product page.
-    | Curly, Deep Wave, Kinky Curly and Kinky Straight add $5 retail.
-    |--------------------------------------------------------------------------
-    */
-
-    elseif ($productId === 'vietnamese-bundle') {
-
-        $texture =
-            trim(
-                $item['texture'] ?? ''
-            );
-
-        $lengthRaw =
-            $item['length'] ?? '';
-
-        $length =
-            intval(
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    (string)$lengthRaw
-                )
-            );
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY TEXTURE
-        |--------------------------------------------------------------------------
-        */
-
-        $VIETNAMESE_ALLOWED_TEXTURES = [
-
-            'Straight',
-            'Kinky Straight',
-            'Body Wave',
-            'Deep Wave',
-            'Curly',
-            'Kinky Curly'
-
-        ];
-
-        if (
-            !in_array(
-                $texture,
-                $VIETNAMESE_ALLOWED_TEXTURES,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid Vietnamese Raw bundle texture.'
-            ]);
-
-            exit;
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | VIETNAMESE RAW BASE PRICES
-        |--------------------------------------------------------------------------
-        | Retail prices in cents.
-        |--------------------------------------------------------------------------
-        */
-
-        $VIETNAMESE_BASE = [
-
-            10 => 7200,
-            12 => 9300,
-            14 => 11100,
-            16 => 14100,
-            18 => 16500,
-            20 => 19200,
-            22 => 21600,
-            24 => 27600,
-            26 => 33300
-
-        ];
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY LENGTH
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            !isset(
-                $VIETNAMESE_BASE[$length]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That Vietnamese Raw bundle length is not available.'
-            ]);
-
-            exit;
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | AUTHORITATIVE SERVER PRICE
-        |--------------------------------------------------------------------------
-        */
-
-        $unitAmount =
-            $VIETNAMESE_BASE[$length];
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | PREMIUM TEXTURE UPGRADE — $5
-        |--------------------------------------------------------------------------
-        | Matches the current Vietnamese product page.
-        |--------------------------------------------------------------------------
-        */
-
-        $VIETNAMESE_PREMIUM_TEXTURES = [
-
-            'Curly',
-            'Deep Wave',
-            'Kinky Curly',
-            'Kinky Straight'
-
-        ];
-
-        if (
-            in_array(
-                $texture,
-                $VIETNAMESE_PREMIUM_TEXTURES,
-                true
-            )
-        ) {
-
-            $unitAmount += 500;
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | STRIPE PRODUCT INFORMATION
-        |--------------------------------------------------------------------------
-        */
-
-        $productName =
-            'Vietnamese Raw Bundle';
-
-        $descriptionParts = [
-
-            $texture,
-            $length . '"',
-            'Vietnamese Raw Hair'
-
-        ];
-
-        $description =
-            implode(
-                ' • ',
-                $descriptionParts
-            );
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | BULK BRAIDING HAIR
-    |--------------------------------------------------------------------------
-    | Server-authoritative Bulk Hair pricing.
-    | Retail price = supplier cost × 3.
-    | Available lengths: 10" through 32".
-    |--------------------------------------------------------------------------
-    */
-
-    elseif ($productId === 'bulk-hair') {
-
-        $lengthRaw =
-            $item['length'] ?? '';
-
-        $length =
-            intval(
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    (string)$lengthRaw
-                )
-            );
-
-        $color =
-            trim(
-                $item['color'] ?? ''
-            );
-
-        /*
-        |--------------------------------------------------------------------------
-        | BULK HAIR SUPPLIER COST
-        |--------------------------------------------------------------------------
-        */
-
-        $BULK_HAIR_SUPPLIER = [
-            10 => 15,
-            12 => 19,
-            14 => 23,
-            16 => 28,
-            18 => 33,
-            20 => 38,
-            22 => 43,
-            24 => 48,
-            26 => 56,
-            28 => 62,
-            30 => 73,
-            32 => 77
-        ];
-
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY LENGTH
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            !isset(
-                $BULK_HAIR_SUPPLIER[$length]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That Bulk Hair length is not available.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY COLOR
-        |--------------------------------------------------------------------------
-        | Bulk Hair uses the same standard color selections.
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            $color !== 'Custom Color Consultation' &&
-            !in_array(
-                $color,
-                $CAMBODIAN_STANDARD_COLORS,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid Bulk Hair color.'
-            ]);
-
-            exit;
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | AUTHORITATIVE SERVER PRICE
-        |--------------------------------------------------------------------------
-        | Supplier cost × 3.
-        | Bulk Hair colors are included at the same price.
-        |--------------------------------------------------------------------------
-        */
-
-        $unitAmount =
-            intval(
-                (
-                    $BULK_HAIR_SUPPLIER[$length] * 3
-                ) * 100
-            );
-
-        /*
-        |--------------------------------------------------------------------------
-        | STRIPE PRODUCT INFORMATION
-        |--------------------------------------------------------------------------
-        */
-
-        $productName =
-            'Premium Bulk Braiding Hair';
-
-        $descriptionParts = [
-            $length . '"',
-            $color,
-            'Bulk Braiding Hair'
-        ];
-
-        if (
-            !empty(
-                $item['texture']
-            )
-        ) {
-
-            array_unshift(
-                $descriptionParts,
-                trim(
-                    $item['texture']
-                )
-            );
-        }
-
-        $description =
-            implode(
-                ' • ',
-                $descriptionParts
-            );
+    button,
+    select,
+    input {
+      font: inherit;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | HAIR CARE PRODUCTS
-    |--------------------------------------------------------------------------
-    */
-
-    elseif (
-        isset(
-            $PRODUCTS[$productId]
-        )
-    ) {
-
-        $product =
-            $PRODUCTS[$productId];
-
-        $unitAmount =
-            intval(
-                $product['price']
-            );
-
-        $productName =
-            $product['name'];
-
-        $variationParts = [];
-
-        if (
-            !empty(
-                $item['texture']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['texture'];
-        }
-
-        if (
-            !empty(
-                $item['length']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['length'];
-        }
-
-        if (
-            !empty(
-                $item['density']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['density'];
-        }
-
-        if (
-            !empty(
-                $item['laceSize']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['laceSize'];
-        }
-
-        if (
-            !empty(
-                $item['color']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['color'];
-        }
-
-        $description =
-            implode(
-                ' • ',
-                $variationParts
-            );
-
+    .announcement {
+      background: var(--teal);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | HD LACE CLOSURES
-    |--------------------------------------------------------------------------
-    */
-
-    elseif ($productId === 'hd-lace-closure') {
-
-        $texture =
-            trim(
-                $item['texture'] ?? ''
-            );
-
-           $laceSize =
-            str_replace(
-                '×',
-                'x',
-                strtolower(
-                    trim(
-                        $item['laceSize'] ?? ''
-                    )
-                )
-            );
-
-        $lengthRaw =
-            $item['length'] ?? '';
-
-        $length =
-            intval(
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    (string)$lengthRaw
-                )
-            );
-        $color =
-            trim(
-                $item['color'] ?? ''
-            );
-        if (
-            !in_array(
-                $texture,
-                $HD_LACE_TEXTURES,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid HD lace closure texture.'
-            ]);
-
-            exit;
-        }
-
-        if (
-            !isset(
-                $HD_CLOSURE_PRICES[$laceSize]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That HD lace closure size is not available.'
-            ]);
-
-            exit;
-        }
-
-        if (
-            !isset(
-                $HD_CLOSURE_PRICES[$laceSize][$length]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That HD lace closure length is not available for the selected size.'
-            ]);
-
-            exit;
-        }
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY CLOSURE COLOR
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            $color !== 'Custom Color Consultation' &&
-            !in_array(
-                $color,
-                $CAMBODIAN_STANDARD_COLORS,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid HD lace closure color.'
-            ]);
-
-            exit;
-        }
-        $unitAmount =
-            $HD_CLOSURE_PRICES[
-                $laceSize
-            ][
-                $length
-            ];        /*
-        |--------------------------------------------------------------------------
-        | STANDARD COLOR UPGRADE — $18
-        |--------------------------------------------------------------------------
-        | 1B Natural Black remains base price.
-        | Custom Color Consultation remains base price until consultation.
-        */
-
-        if (
-            $color !== '1B Natural Black' &&
-            $color !== 'Custom Color Consultation'
-        ) {
-
-            $unitAmount += 1800;
-        }
-
-        $productName =
-            strtoupper($laceSize) .
-            ' HD Lace Closure';
-
-        $descriptionParts = [
-            $texture,
-            $length . '"',
-            strtoupper($laceSize)
-        ];
-
-        if (
-            !empty(
-                $item['color']
-            )
-        ) {
-
-            $descriptionParts[] =
-                trim(
-                    $item['color']
-                );
-        }
-
-        $description =
-            implode(
-                ' • ',
-                $descriptionParts
-            );
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(10, 10, 10, .97);
+      border-bottom: 2px solid var(--gold);
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | HD LACE FRONTALS
-    |--------------------------------------------------------------------------
-    */
-
-    elseif ($productId === 'hd-lace-frontal') {
-
-              $texture =
-            trim(
-                $item['texture'] ?? ''
-            );
-
-        $laceSize =
-            str_replace(
-                '×',
-                'x',
-                strtolower(
-                    trim(
-                        $item['laceSize'] ?? ''
-                    )
-                )
-            );
-
-        $lengthRaw =
-            $item['length'] ?? '';
-
-        $length =
-            intval(
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    (string)$lengthRaw
-                )
-            );
-
-        if (
-            !in_array(
-                $texture,
-                $HD_LACE_TEXTURES,
-                true
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Invalid HD lace frontal texture.'
-            ]);
-
-            exit;
-        }
-
-        if (
-            !isset(
-                $HD_FRONTAL_PRICES[$laceSize]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That HD lace frontal size is not available.'
-            ]);
-
-            exit;
-        }
-
-        if (
-            !isset(
-                $HD_FRONTAL_PRICES[$laceSize][$length]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That HD lace frontal length is not available for the selected size.'
-            ]);
-
-            exit;
-        }
-
-        $unitAmount =
-            $HD_FRONTAL_PRICES[
-                $laceSize
-            ][
-                $length
-            ];
-
-        $productName =
-            strtoupper($laceSize) .
-            ' HD Lace Frontal';
-
-        $descriptionParts = [
-            $texture,
-            $length . '"',
-            strtoupper($laceSize)
-        ];
-
-        if (
-            !empty(
-                $item['color']
-            )
-        ) {
-
-            $descriptionParts[] =
-                trim(
-                    $item['color']
-                );
-        }
-
-        $description =
-            implode(
-                ' • ',
-                $descriptionParts
-            );
-    }
-       
-/*
-|--------------------------------------------------------------------------
-| LUXURY WIGS
-|--------------------------------------------------------------------------
-| Server calculates the authoritative wig price.
-|--------------------------------------------------------------------------
-*/
-
-elseif (
-    in_array(
-        $productId,
-        [
-            'burmese-wig',
-            'cambodian-wig',
-            'indian-wig',
-            'laos-wig',
-            'vietnamese-wig'
-        ],
-        true
-    )
-) {
-
- $wigBrandByProductId = [
-    'burmese-wig' => 'Burmese',
-    'cambodian-wig' => 'Cambodian',
-    'indian-wig' => 'Indian',
-    'laos-wig' => 'LAOS',
-    'vietnamese-wig' => 'Vietnamese'
-];
-
-$brand =
-    $wigBrandByProductId[
-        $productId
-    ];
-
-    $texture =
-        trim(
-            $item['texture'] ?? ''
-        );
-
-    $density =
-        trim(
-            $item['density'] ?? ''
-        );
-
-    $laceSize =
-        str_replace(
-            '×',
-            'x',
-            strtolower(
-                trim(
-                    $item['laceSize'] ?? ''
-                )
-            )
-        );
-
-    $lengthRaw =
-        $item['length'] ?? '';
-
-    $length =
-        intval(
-            preg_replace(
-                '/[^0-9]/',
-                '',
-                (string)$lengthRaw
-            )
-        );
-
-    $color =
-        trim(
-            $item['color'] ?? ''
-        );
-
-    $capSize =
-        trim(
-            $item['capSize'] ?? ''
-        );
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY BRAND
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        !in_array(
-            $brand,
-            $WIG_BRANDS,
-            true
-        )
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Invalid wig brand.'
-        ]);
-
-        exit;
+    .header-inner {
+      width: min(1360px, 94%);
+      margin: auto;
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY TEXTURE
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        !array_key_exists(
-            $texture,
-            $WIG_TEXTURE_ADJUSTMENTS
-        )
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Invalid wig texture.'
-        ]);
-
-        exit;
+    .brand {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      white-space: nowrap;
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY DENSITY
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        !array_key_exists(
-            $density,
-            $WIG_DENSITY_MULTIPLIERS
-        )
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Invalid wig density.'
-        ]);
-
-        exit;
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY LACE SIZE
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        !isset(
-            $WIG_COSTS_180[$laceSize]
-        )
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Invalid wig lace size.'
-        ]);
-
-        exit;
+    nav a {
+      color: var(--white);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY LENGTH AND GET BASE COST
-    |--------------------------------------------------------------------------
-    */
-
-    if ($length <= 32) {
-
-        if (
-            !isset(
-                $WIG_COSTS_180[
-                    $laceSize
-                ][
-                    $length
-                ]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That wig length is not available.'
-            ]);
-
-            exit;
-        }
-
-        $baseCost =
-            $WIG_COSTS_180[
-                $laceSize
-            ][
-                $length
-            ];
-
-    } else {
-
-        if (
-            !isset(
-                $WIG_LONG_LENGTH_INCREASES[
-                    $length
-                ]
-            )
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'That wig length is not available.'
-            ]);
-
-            exit;
-        }
-
-        $baseCost =
-            $WIG_COSTS_180[
-                $laceSize
-            ][32] +
-            $WIG_LONG_LENGTH_INCREASES[
-                $length
-            ];
+    nav a:hover {
+      color: var(--teal);
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | CALCULATE AUTHORITATIVE RETAIL PRICE
-    |--------------------------------------------------------------------------
-    */
-
-  $wigCost = $baseCost;
-
-$wigCost *=
-    $WIG_DENSITY_MULTIPLIERS[
-        $density
-    ];
-
-$wigCost +=
-    $WIG_TEXTURE_ADJUSTMENTS[
-        $texture
-    ];
-
-$wigPrice =
-    $wigCost *
-    $WIG_MARKUP;
-
-$wigPrice =
-    ceil(
-        $wigPrice / 5
-    ) * 5;
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | COLOR
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-    $color !== '' &&
-    $color !== 'Custom Color' &&
-    !in_array(
-        $color,
-        $WIG_STANDARD_COLORS,
-        true
-    )
-) {
-
-    http_response_code(400);
-
-    echo json_encode([
-        'error' =>
-            'Invalid wig color.'
-    ]);
-
-    exit;
-}
-
-if (
-    $color !== '' &&
-    $color !== '1B Natural Black' &&
-    $color !== 'Custom Color'
-) {
-
-    $wigPrice += 18;
-}
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | CONVERT DOLLARS TO CENTS FOR STRIPE
-    |--------------------------------------------------------------------------
-    */
-
-    $unitAmount =
-        intval(
-            round(
-                $wigPrice * 100
-            )
-        );
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | STRIPE PRODUCT INFORMATION
-    |--------------------------------------------------------------------------
-    */
-
-    $productName =
-        $brand .
-        ' Luxury Wig';
-
-    $descriptionParts = [
-        $texture,
-        $length . '"',
-        $density,
-        strtoupper($laceSize) . ' HD Lace'
-    ];
-
-    if ($capSize !== '') {
-
-        $descriptionParts[] =
-            'Cap: ' .
-            $capSize;
+    .cart-pill {
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      padding: 8px 13px;
+      color: var(--gold) !important;
     }
 
-    if ($color !== '') {
-
-        $descriptionParts[] =
-            $color;
-    }
-
-    $description =
-        implode(
-            ' • ',
-            $descriptionParts
-        );
-}
-/*
-|--------------------------------------------------------------------------
-| MEN'S HAIR PIECES
-|--------------------------------------------------------------------------
-| Server-authoritative price: $279.99
-|--------------------------------------------------------------------------
-*/
-
-elseif (
-    in_array(
-        $productId,
-        [
-            'mens-afro-style-a',
-            'mens-afro-style-b',
-            'mens-afro-style-c',
-            'mens-afro-style-d'
-        ],
-        true
-    )
-) {
-
-    $allowedBaseSizes = [
-        '4" × 4"',
-        '4" × 5"',
-        '5" × 5"',
-        '5" × 7"',
-        '5" × 8"',
-        '6" × 8"',
-        '6" × 9"',
-        '7" × 8"',
-        '7" × 9"',
-        '7" × 10"',
-        '8" × 10"',
-        '8" × 11"',
-        '9" × 11"',
-        'Custom Size'
-    ];
-
-    $baseSize =
-        trim(
-            $item['baseSize'] ?? ''
-        );
-
-    if (
-        !in_array(
-            $baseSize,
-            $allowedBaseSizes,
-            true
-        )
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Please select a valid Men\'s Hair Piece base size.'
-        ]);
-
-        exit;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | AUTHORITATIVE PRODUCT PRICE
-    |--------------------------------------------------------------------------
-    */
-
-    $unitAmount = 27999;
-
-    $productName =
-        "Afro Men's Hair Piece";
-
-    $description =
-        'Base Size: ' .
-        $baseSize;
-}
-   /*
-|--------------------------------------------------------------------------
-| BIG BOSS BEAUTY ACADEMY REGISTRATION
-|--------------------------------------------------------------------------
-*/
-
-elseif (
-    strpos($productId, 'academy-') === 0
-) {
-
-    $classSessionId =
-        trim(
-            $item['classSessionId'] ?? ''
-        );
-
-    $studentType =
-        trim(
-            $item['studentType'] ?? ''
-        );
-
-    $studentAge =
-        intval(
-            $item['studentAge'] ?? 0
-        );
-
-    $studentName =
-        trim(
-            $item['studentName'] ?? ''
-        );
-
-    $studentEmail =
-        trim(
-            $item['studentEmail'] ?? ''
-        );
-
-    $studentPhone =
-        trim(
-            $item['studentPhone'] ?? ''
-        );
-
-    $parentName =
-        trim(
-            $item['parentName'] ?? ''
-        );
-
-    $parentPhone =
-        trim(
-            $item['parentPhone'] ?? ''
-        );
-
-    $parentEmail =
-        trim(
-            $item['parentEmail'] ?? ''
-        );
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY CLASS SESSION
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        !isset(
-            $ACADEMY_CLASSES[$classSessionId]
-        )
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'That Beauty Academy class is not available.'
-        ]);
-
-        exit;
-    }
-
-
-    $class =
-        $ACADEMY_CLASSES[$classSessionId];
-        $academySessionId =
-    $classSessionId;
-    /*
-|--------------------------------------------------------------------------
-| VERIFY CLASS HAS AVAILABLE SEATS
-|--------------------------------------------------------------------------
-*/
-
-$academySeatFile =
-    dirname(__DIR__, 2) .
-    '/academy-private/academy-seats.json';
-
-
-if (!is_file($academySeatFile)) {
-
-    http_response_code(500);
-
-    echo json_encode([
-        'error' =>
-            'Academy seat availability is temporarily unavailable.'
-    ]);
-
-    exit;
-}
-
-
-$academySeatContents =
-    file_get_contents(
-        $academySeatFile
-    );
-
-
-$academySeats =
-    json_decode(
-        $academySeatContents,
-        true
-    );
-
-
-if (
-    !is_array($academySeats) ||
-    !array_key_exists(
-        $classSessionId,
-        $academySeats
-    )
-) {
-
-    http_response_code(500);
-
-    echo json_encode([
-        'error' =>
-            'Academy seat availability could not be verified.'
-    ]);
-
-    exit;
-}
-
-
-$seatsRemaining =
-    intval(
-        $academySeats[$classSessionId]
-    );
-
-
-if ($seatsRemaining <= 0) {
-
-    http_response_code(409);
-
-    echo json_encode([
-        'error' =>
-            'This Beauty Academy class is sold out. Please join the waiting list.'
-    ]);
-
-    exit;
-}
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY PRODUCT ID MATCHES CLASS SESSION
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        $productId !==
-        'academy-' . $classSessionId
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Invalid Beauty Academy registration.'
-        ]);
-
-        exit;
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFY STUDENT AGE AND REGISTRATION TYPE
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        $studentAge >= 10 &&
-        $studentAge <= 16
-    ) {
-
-        if (
-            $studentType !== 'youth'
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Students ages 10 through 16 must use Youth registration.'
-            ]);
-
-            exit;
-        }
-
-
-        $unitAmount =
-            intval(
-                $class['youthPrice']
-            );
-
-    } elseif (
-        $studentAge >= 17
-    ) {
-
-        if (
-            $studentType !== 'adult'
-        ) {
-
-            http_response_code(400);
-
-            echo json_encode([
-                'error' =>
-                    'Students age 17 and older must use Adult registration.'
-            ]);
-
-            exit;
-        }
-
-
-        $unitAmount =
-            intval(
-                $class['adultPrice']
-            );
-
-    } else {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Beauty Academy students must be at least 10 years old.'
-        ]);
-
-        exit;
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | REQUIRE STUDENT INFORMATION
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        $studentName === '' ||
-        $studentEmail === '' ||
-        $studentPhone === ''
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Student registration information is incomplete.'
-        ]);
-
-        exit;
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | REQUIRE PARENT/GUARDIAN INFORMATION FOR YOUTH
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        $studentType === 'youth' &&
-        (
-            $parentName === '' ||
-            $parentPhone === '' ||
-            $parentEmail === ''
-        )
-    ) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'Parent or guardian information is required for Youth registration.'
-        ]);
-
-        exit;
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | ONE REGISTRATION = ONE CLASS SEAT
-    |--------------------------------------------------------------------------
-    */
-
-    $quantity = 1;
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | STRIPE PRODUCT INFORMATION
-    |--------------------------------------------------------------------------
-    */
-
-    $productName =
-        $class['course'] .
-        ' Masterclass';
-
-
-    $descriptionParts = [
-
-        'Class Date: ' .
-        $class['date'],
-
-        'Time: ' .
-        $class['time'],
-
-        'Student: ' .
-        $studentName,
-
-        'Age: ' .
-        $studentAge,
-
-        $studentType === 'youth'
-            ? 'Youth Ages 10–16'
-            : 'Adult Ages 17+'
-
-    ];
-
-
-    $description =
-        implode(
-            ' • ',
-            $descriptionParts
-        );
-
-}
-    else {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'error' =>
-                'One of the products in your bag is not available for checkout yet: ' .
-                $productId
-        ]);
-
-        exit;
-    }
-
-
-  /*
-|--------------------------------------------------------------------------
-| Merchandise subtotal
-|--------------------------------------------------------------------------
-| Academy classes do not count toward merchandise shipping.
-*/
-
-if (strpos($productId, 'academy-') !== 0) {
-
-    $merchandiseSubtotal +=
-        $unitAmount * $quantity;
-
-}
-
-    /*
-    |--------------------------------------------------------------------------
-    | Stripe line item
-    |--------------------------------------------------------------------------
-    */
-
-    $stripeFields[
-        "line_items[$lineIndex][price_data][currency]"
-    ] = 'usd';
-
-    $stripeFields[
-        "line_items[$lineIndex][price_data][product_data][name]"
-    ] = $productName;
-
-    if (
-        $description !== ''
-    ) {
-
-        $stripeFields[
-            "line_items[$lineIndex][price_data][product_data][description]"
-        ] = $description;
-    }
-
-    $stripeFields[
-        "line_items[$lineIndex][price_data][unit_amount]"
-    ] = $unitAmount;
-
-    $stripeFields[
-        "line_items[$lineIndex][quantity]"
-    ] = $quantity;
-
-    /*
-
-|--------------------------------------------------------------------------
-| Stripe tax code
-|--------------------------------------------------------------------------
-| Academy registrations are services, not tangible merchandise.
-*/
-
-if (strpos($productId, 'academy-') !== 0) {
-
-    $stripeFields[
-        "line_items[$lineIndex][price_data][product_data][tax_code]"
-    ] = 'txcd_99999999';
-
-}
-
-    $lineIndex++;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Stripe Checkout settings
-|--------------------------------------------------------------------------
-*/
-
-$stripeFields['mode'] =
-    'payment';
-    /*
-|--------------------------------------------------------------------------
-| CHECKOUT SESSION EXPIRATION
-|--------------------------------------------------------------------------
-| Academy seats are held for 30 minutes while the customer pays.
-*/
-
-if ($academySessionId !== '') {
-
-    $stripeFields['expires_at'] =
-        time() + (30 * 60);
-
-}
-    
-    if ($academySessionId !== '') {
-
-    $stripeFields[
-        'metadata[academy_session_id]'
-    ] = $academySessionId;
-
-}
-
-$stripeFields['success_url'] =
-    'https://bigbossbundles.com/success.html?session_id={CHECKOUT_SESSION_ID}';
-
-$stripeFields['cancel_url'] =
-    'https://bigbossbundles.com/cart.html';
-
-$stripeFields['billing_address_collection'] =
-    'auto';
-
-if ($merchandiseSubtotal > 0) {
-
-    $stripeFields[
-        'shipping_address_collection[allowed_countries][0]'
-    ] = 'US';
-
-}
-
-$stripeFields[
-    'phone_number_collection[enabled]'
-] = 'true';
-
-$stripeFields[
-    'allow_promotion_codes'
-] = 'true';
-
-/*
-|--------------------------------------------------------------------------
-| Automatic Stripe Tax
-|--------------------------------------------------------------------------
-*/
-
-$stripeFields[
-    'automatic_tax[enabled]'
-] = 'true';
-
-/*
-|--------------------------------------------------------------------------
-| Shipping
-|--------------------------------------------------------------------------
-|
-| Under $150:
-| Standard $7.95
-| Expedited $14.95
-|
-| $150+:
-| Free Standard
-| Expedited $14.95
-|--------------------------------------------------------------------------
-*/
-if ($merchandiseSubtotal > 0) {
-
-if (
-    $merchandiseSubtotal >= 15000
-) {
-
-    /*
-    |--------------------------------------------------------------------------
-    | FREE STANDARD SHIPPING
-    |--------------------------------------------------------------------------
-    */
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][type]'
-    ] = 'fixed_amount';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][fixed_amount][amount]'
-    ] = 0;
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][fixed_amount][currency]'
-    ] = 'usd';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][display_name]'
-    ] = 'Free Standard Shipping';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]'
-    ] = 'business_day';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]'
-    ] = 3;
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]'
-    ] = 'business_day';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]'
-    ] = 7;
-
-} else {
-
-    /*
-    |--------------------------------------------------------------------------
-    | STANDARD SHIPPING — $7.95
-    |--------------------------------------------------------------------------
-    */
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][type]'
-    ] = 'fixed_amount';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][fixed_amount][amount]'
-    ] = 795;
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][fixed_amount][currency]'
-    ] = 'usd';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][display_name]'
-    ] = 'Standard Shipping';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]'
-    ] = 'business_day';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]'
-    ] = 3;
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]'
-    ] = 'business_day';
-
-    $stripeFields[
-        'shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]'
-    ] = 7;
-}
-
-/*
-|--------------------------------------------------------------------------
-| EXPEDITED SHIPPING — $14.95
-|--------------------------------------------------------------------------
-*/
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][type]'
-] = 'fixed_amount';
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][fixed_amount][amount]'
-] = 1495;
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][fixed_amount][currency]'
-] = 'usd';
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][display_name]'
-] = 'Expedited Shipping';
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][delivery_estimate][minimum][unit]'
-] = 'business_day';
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][delivery_estimate][minimum][value]'
-] = 1;
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][delivery_estimate][maximum][unit]'
-] = 'business_day';
-
-$stripeFields[
-    'shipping_options[1][shipping_rate_data][delivery_estimate][maximum][value]'
-] = 3;
-}
-
-/*
-|--------------------------------------------------------------------------
-| RESERVE BEAUTY ACADEMY SEAT BEFORE STRIPE CHECKOUT
-|--------------------------------------------------------------------------
-*/
-
-if ($academySessionId !== '') {
-
-    $academySeatFile =
-        dirname(__DIR__, 2) .
-        '/academy-private/academy-seats.json';
-
-    $academyReservationFile =
-        dirname(__DIR__, 2) .
-        '/academy-private/academy-reservations.json';
-
-    $academyLockFile =
-        dirname(__DIR__, 2) .
-        '/academy-private/academy-seat-inventory.lock';
-
-    $academyLockHandle =
-        fopen(
-            $academyLockFile,
-            'c'
-        );
-
-    if ($academyLockHandle === false) {
-        http_response_code(500);
-        echo json_encode([
-            'error' =>
-                'Unable to access Academy seat inventory.'
-        ]);
-        exit;
-    }
-
-    if (!flock($academyLockHandle, LOCK_EX)) {
-        fclose($academyLockHandle);
-
-        http_response_code(500);
-        echo json_encode([
-            'error' =>
-                'Unable to lock Academy seat inventory.'
-        ]);
-        exit;
-    }
-
-    $academySeatContents =
-        file_get_contents(
-            $academySeatFile
-        );
-
-    $academyReservationContents =
-        file_get_contents(
-            $academyReservationFile
-        );
-
-    $academySeats =
-        json_decode(
-            $academySeatContents,
-            true
-        );
-
-    $academyReservations =
-        json_decode(
-            $academyReservationContents,
-            true
-        );
-
-    if (
-        !is_array($academySeats) ||
-        !is_array($academyReservations) ||
-        !array_key_exists(
-            $academySessionId,
-            $academySeats
-        )
-    ) {
-        flock(
-            $academyLockHandle,
-            LOCK_UN
-        );
-
-        fclose(
-            $academyLockHandle
-        );
-
-        http_response_code(500);
-
-        echo json_encode([
-            'error' =>
-                'Academy seat inventory could not be verified.'
-        ]);
-
-        exit;
-    }
-
-    $currentAcademySeats =
-        intval(
-            $academySeats[
-                $academySessionId
-            ]
-        );
-
-    if ($currentAcademySeats <= 0) {
-
-        flock(
-            $academyLockHandle,
-            LOCK_UN
-        );
-
-        fclose(
-            $academyLockHandle
-        );
-
-        http_response_code(409);
-
-        echo json_encode([
-            'error' =>
-                'This Beauty Academy class is sold out. Please join the waiting list.'
-        ]);
-
-        exit;
-    }
-
-    try {
-
-        $academyReservationToken =
-            bin2hex(
-                random_bytes(16)
-            );
-
-    } catch (Throwable $e) {
-
-        flock(
-            $academyLockHandle,
-            LOCK_UN
-        );
-
-        fclose(
-            $academyLockHandle
-        );
-
-        http_response_code(500);
-
-        echo json_encode([
-            'error' =>
-                'Unable to create Academy reservation.'
-        ]);
-
-        exit;
-    }
-
-    $academySeats[
-        $academySessionId
-    ] =
-        $currentAcademySeats - 1;
-
-    $academyReservations[
-        $academyReservationToken
-    ] = [
-        'academy_session_id' =>
-            $academySessionId,
-
-        'status' =>
-            'reserved',
-
-        'created_at' =>
-            gmdate('c'),
-
-        'stripe_session_id' =>
-            ''
-    ];
-
-   $academyReservationsSaved =
-    file_put_contents(
-        $academyReservationFile,
-        json_encode(
-            $academyReservations,
-            JSON_PRETTY_PRINT |
-            JSON_UNESCAPED_SLASHES
+    .hero {
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(0, 166, 214, .18),
+          transparent 34%
         ),
-        LOCK_EX
-    );
+        var(--black);
 
-if ($academyReservationsSaved === false) {
+      color: var(--white);
+      padding: 82px 5%;
+    }
 
-    flock(
-        $academyLockHandle,
-        LOCK_UN
-    );
+    .hero-grid {
+      width: min(1200px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
 
-    fclose(
-        $academyLockHandle
-    );
+    .eyebrow {
+      display: block;
+      color: var(--teal);
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
 
-    http_response_code(500);
+    .hero h1 {
+      margin-top: 8px;
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.2rem, 7vw, 6.2rem);
+      line-height: .95;
+      text-transform: uppercase;
+    }
 
-    echo json_encode([
-        'error' =>
-            'Academy reservation could not be saved.'
-    ]);
+    .hero p {
+      max-width: 650px;
+      margin-top: 20px;
+      color: #c8c8c8;
+      font-size: 1.03rem;
+    }
 
-    exit;
-}
+    .hero-image {
+      min-height: 500px;
+      border: 2px solid var(--gold);
+      border-radius: 24px;
+      padding: 28px;
+      background: #ffffff;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-$academySeatsSaved =
-    file_put_contents(
-        $academySeatFile,
-        json_encode(
-            $academySeats,
-            JSON_PRETTY_PRINT |
-            JSON_UNESCAPED_SLASHES
-        ),
-        LOCK_EX
-    );
+    .hero-placeholder strong {
+      display: block;
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
 
-if ($academySeatsSaved === false) {
+    .hero-placeholder span {
+      display: block;
+      margin-top: 10px;
+      color: #555555;
+      font-weight: 700;
+    }
 
-    unset(
-        $academyReservations[
-            $academyReservationToken
-        ]
-    );
+    .section {
+      padding: 76px 5%;
+    }
 
-    file_put_contents(
-        $academyReservationFile,
-        json_encode(
-            $academyReservations,
-            JSON_PRETTY_PRINT |
-            JSON_UNESCAPED_SLASHES
-        ),
-        LOCK_EX
-    );
+    .heading {
+      width: min(850px, 100%);
+      margin: 0 auto 42px;
+      text-align: center;
+    }
 
-    flock(
-        $academyLockHandle,
-        LOCK_UN
-    );
+    .heading h2 {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1;
+      margin-top: 8px;
+    }
 
-    fclose(
-        $academyLockHandle
-    );
+    .heading p {
+      max-width: 720px;
+      margin: 16px auto 0;
+      color: var(--gray);
+    }
 
-    http_response_code(500);
+    .shop-layout {
+      width: min(1160px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr .92fr;
+      gap: 36px;
+      align-items: start;
+    }
 
-    echo json_encode([
-        'error' =>
-            'Academy seat reservation could not be completed.'
-    ]);
+    .product-photo {
+      background: #ffffff;
+      border: 1px solid #e6e6e6;
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, .10);
+    }
 
-    exit;
-}
+    .texture-display {
+      min-height: 560px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fafafa, #eeeeee);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
 
+    .texture-display strong {
+      display: block;
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.1rem;
+      text-transform: uppercase;
+    }
 
-    flock(
-        $academyLockHandle,
-        LOCK_UN
-    );
+    .texture-display span {
+      display: block;
+      margin-top: 12px;
+      color: #666666;
+      font-weight: 700;
+    }
 
-    fclose(
-        $academyLockHandle
-    );
+    .builder {
+      background: var(--black);
+      color: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: 24px;
+      padding: 32px;
+    }
 
-    $stripeFields[
-        'metadata[academy_reservation_id]'
-    ] =
-        $academyReservationToken;
-}
-/*
-|--------------------------------------------------------------------------
-| Create Stripe Checkout Session
-|--------------------------------------------------------------------------
-*/
+    .builder h2 {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.3rem;
+      text-transform: uppercase;
+    }
 
-$ch =
-    curl_init(
-        'https://api.stripe.com/v1/checkout/sessions'
-    );
+    .builder > p {
+      margin-top: 10px;
+      color: #bcbcbc;
+    }
 
-curl_setopt_array(
-    $ch,
-    [
+    label {
+      display: block;
+      margin-top: 16px;
+      color: var(--white);
+      font-size: .77rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
 
-        CURLOPT_RETURNTRANSFER => true,
+    select,
+    input {
+      width: 100%;
+      margin-top: 6px;
+      padding: 12px;
+      border: 1px solid #cccccc;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #000000;
+    }
 
-        CURLOPT_POST => true,
+    .price-box {
+      margin-top: 24px;
+      padding: 20px;
+      background: var(--soft);
+      border: 1px solid rgba(212, 166, 34, .65);
+      border-radius: 16px;
+    }
 
-        CURLOPT_POSTFIELDS =>
-            http_build_query(
-                $stripeFields
-            ),
+    .price-box small {
+      display: block;
+      color: #aaaaaa;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
-        CURLOPT_HTTPHEADER => [
+    .price {
+      margin-top: 4px;
+      color: var(--gold);
+      font-size: 2.2rem;
+      font-weight: 900;
+    }
 
-            'Authorization: Bearer ' .
-            $stripeSecretKey,
+    .price-note {
+      margin-top: 5px;
+      color: var(--teal);
+      font-size: .88rem;
+      font-weight: 800;
+    }
 
-            'Content-Type: application/x-www-form-urlencoded'
+    .add-to-cart {
+      width: 100%;
+      min-height: 54px;
+      margin-top: 20px;
+      border: 2px solid var(--teal);
+      border-radius: 999px;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
 
-        ]
+    .add-to-cart:hover {
+      opacity: .9;
+    }
 
-    ]
-);
+    .add-to-cart:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
 
-$response =
-    curl_exec(
-        $ch
-    );
+    .texture-strip {
+      width: min(1160px, 100%);
+      margin: 38px auto 0;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
 
-$httpCode =
-    curl_getinfo(
-        $ch,
-        CURLINFO_HTTP_CODE
-    );
+    .texture-chip {
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: #0a0a0a;
+      color: #ffffff;
+      padding: 14px 10px;
+      font-size: .76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
 
-$curlError =
-    curl_error(
-        $ch
-    );
+    .texture-chip.active,
+    .texture-chip:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
 
-curl_close(
-    $ch
-);
+    .info-strip {
+      background: var(--black);
+      color: var(--white);
+    }
 
-/*
-|--------------------------------------------------------------------------
-| Connection error
-|--------------------------------------------------------------------------
-*/
+    .info-grid {
+      width: min(1100px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
 
-if (
-    $response === false ||
-    $curlError
-) {
+    .info-card {
+      padding: 26px 20px;
+      background: var(--soft);
+      border: 1px solid rgba(212, 166, 34, .7);
+      border-radius: 18px;
+      text-align: center;
+    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | RETURN RESERVED ACADEMY SEAT
-    |--------------------------------------------------------------------------
-    */
+    .info-card strong {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
 
-    if ($academyReservationToken !== '') {
+    .info-card p {
+      margin-top: 8px;
+      color: #aaaaaa;
+      font-size: .88rem;
+    }
 
-        $academyLockHandle =
-            fopen(
-                $academyLockFile,
-                'c'
+    footer {
+      background: #050505;
+      color: #ffffff;
+      border-top: 2px solid var(--gold);
+      padding: 50px 5% 24px;
+    }
+
+    .footer-grid {
+      width: min(1180px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 36px;
+    }
+
+    footer h3,
+    footer h4 {
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    footer p,
+    footer a {
+      display: block;
+      color: #aaaaaa;
+      margin: 7px 0;
+      font-size: .9rem;
+    }
+
+    .copy {
+      width: min(1180px, 100%);
+      margin: 32px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid #222222;
+      text-align: center;
+      color: #666666;
+      font-size: .78rem;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      display: none;
+      padding: 14px 18px;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      background: #050505;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero-grid,
+      .shop-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .texture-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        position: static;
+      }
+
+      .info-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        min-height: 420px;
+      }
+
+      .texture-display {
+        min-height: 430px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    Vietnamese Raw Collection • Six Signature Textures • Boss Beauty
+  </div>
+
+  <header>
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        BIG BOSS BUNDLES
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#collections">Collections</a>
+        <a href="bundles.html">Bundles</a>
+        <a href="wigs.html">Wigs</a>
+        <a href="closures.html">Closures &amp; Frontals</a>
+        <a href="mens-hair-pieces.html">Men's Hair</a>
+        <a href="bulk-hair.html">Bulk Hair</a>
+        <a href="hair-care.html">Hair Care</a>
+        <a href="classes.html">Beauty Academy</a>
+        <a href="contact.html">Contact</a>
+
+        <a class="cart-pill" href="cart.html">
+          Bag (<span data-cart-count>0</span>)
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-grid">
+
+        <div>
+          <span class="eyebrow">Big Boss Bundles</span>
+
+          <h1>Vietnamese Raw Collection</h1>
+
+          <p>
+            Luxury raw Vietnamese human hair selected for smoothness,
+            strength and beautiful movement. Choose your texture,
+            length and quantity below.
+          </p>
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-placeholder">
+
+            <strong>Vietnamese Raw Hair</strong>
+
+            <span>
+              Premium luxury bundles in six signature textures
+            </span>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+
+      <div class="heading">
+        <span class="eyebrow">Build Your Look</span>
+
+        <h2>Vietnamese Raw Bundles</h2>
+
+        <p>
+          Choose your texture, length and quantity.
+          Your price changes automatically.
+        </p>
+      </div>
+
+      <div class="shop-layout">
+
+        <div class="product-photo">
+          <div class="texture-display">
+
+            <div>
+              <strong id="display-texture">
+                Body Wave
+              </strong>
+
+              <span>
+                Vietnamese Raw Bundle
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="builder">
+
+          <span class="eyebrow">Customize</span>
+
+          <h2 id="product-title">
+            Vietnamese Raw Body Wave
+          </h2>
+
+          <p>
+            100% raw Vietnamese human hair.
+          </p>
+
+          <label>
+            Texture
+
+            <select id="texture">
+              <option value="Straight">
+                Straight
+              </option>
+
+              <option value="Kinky Straight">
+                Kinky Straight
+              </option>
+
+              <option value="Body Wave" selected>
+                Body Wave
+              </option>
+
+              <option value="Deep Wave">
+                Deep Wave
+              </option>
+
+              <option value="Curly">
+                Curly
+              </option>
+
+              <option value="Kinky Curly">
+                Kinky Curly
+              </option>
+            </select>
+          </label>
+
+          <label>
+            Length
+
+            <select id="length">
+              <option value="10">10 inches</option>
+              <option value="12">12 inches</option>
+              <option value="14">14 inches</option>
+              <option value="16">16 inches</option>
+              <option value="18">18 inches</option>
+              <option value="20">20 inches</option>
+              <option value="22">22 inches</option>
+              <option value="24">24 inches</option>
+              <option value="26">26 inches</option>
+            </select>
+          </label>
+
+          <label>
+            Quantity
+
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              max="20"
+              value="1"
+            >
+          </label>
+
+          <div class="price-box">
+
+            <small>Your Price</small>
+
+            <div class="price" id="price">
+              $72.00
+            </div>
+
+            <div class="price-note" id="price-note">
+              Body Wave • 10 inches • 1 bundle
+            </div>
+
+          </div>
+
+          <button
+            class="add-to-cart"
+            id="add-to-cart"
+            type="button"
+          >
+            Add To Bag
+          </button>
+
+        </div>
+      </div>
+
+      <div class="texture-strip">
+
+        <button
+          class="texture-chip"
+          data-texture="Straight"
+          type="button"
+        >
+          Straight
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Kinky Straight"
+          type="button"
+        >
+          Kinky Straight
+        </button>
+
+        <button
+          class="texture-chip active"
+          data-texture="Body Wave"
+          type="button"
+        >
+          Body Wave
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Deep Wave"
+          type="button"
+        >
+          Deep Wave
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Curly"
+          type="button"
+        >
+          Curly
+        </button>
+
+        <button
+          class="texture-chip"
+          data-texture="Kinky Curly"
+          type="button"
+        >
+          Kinky Curly
+        </button>
+
+      </div>
+
+    </section>
+
+    <section class="section info-strip">
+
+      <div class="heading">
+        <span class="eyebrow">Vietnamese Luxury</span>
+
+        <h2>Luxury You Can Feel</h2>
+      </div>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <strong>100% Raw Hair</strong>
+
+          <p>
+            Premium Vietnamese human hair with beautiful
+            natural movement.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <strong>Full Healthy Ends</strong>
+
+          <p>
+            Selected for a polished, luxurious finish
+            from root to tip.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <strong>Color Friendly</strong>
+
+          <p>
+            Can be bleached up to 613 and styled with
+            proper care.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <strong>Six Textures</strong>
+
+          <p>
+            Straight, Kinky Straight, Body Wave,
+            Deep Wave, Curly and Kinky Curly.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>Big Boss Bundles</h3>
+
+        <p>
+          Luxury hair, HD lace wigs, closures, frontals,
+          men's hair pieces, bulk braiding hair and
+          Boss Beauty essentials.
+        </p>
+      </div>
+
+      <div>
+        <h4>Customer Care</h4>
+
+        <a href="contact.html">Contact Us</a>
+        <a href="shipping-policy.html">Shipping Policy</a>
+        <a href="return-policy.html">Return &amp; Exchange Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+      </div>
+
+      <div>
+        <h4>Visit or Contact</h4>
+
+        <p>301 W Pecan Street</p>
+        <p>Pflugerville, TX 78660</p>
+
+        <a href="tel:+15122762366">
+          (512) 276-2366
+        </a>
+
+        <a href="mailto:support@bigbossbundles.com">
+          support@bigbossbundles.com
+        </a>
+      </div>
+
+    </div>
+
+    <div class="copy">
+      © 2026 Big Boss Bundles. All rights reserved.
+    </div>
+
+  </footer>
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+  <script src="cart.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      /* =====================================================
+         VIETNAMESE RAW PRICING
+      ===================================================== */
+
+      const BASE_PRICES = {
+        10: 72,
+        12: 93,
+        14: 111,
+        16: 141,
+        18: 165,
+        20: 192,
+        22: 216,
+        24: 276,
+        26: 333
+      };
+
+      const PREMIUM_TEXTURES = new Set([
+        "Curly",
+        "Deep Wave",
+        "Kinky Curly",
+        "Kinky Straight"
+      ]);
+
+      const PREMIUM_UPCHARGE = 5;
+
+      /* =====================================================
+         ELEMENTS
+      ===================================================== */
+
+      const texture =
+        document.getElementById("texture");
+
+      const length =
+        document.getElementById("length");
+
+      const quantity =
+        document.getElementById("quantity");
+
+      const price =
+        document.getElementById("price");
+
+      const priceNote =
+        document.getElementById("price-note");
+
+      const productTitle =
+        document.getElementById("product-title");
+
+      const displayTexture =
+        document.getElementById("display-texture");
+
+      const addButton =
+        document.getElementById("add-to-cart");
+
+      const toast =
+        document.getElementById("toast");
+
+      /* =====================================================
+         HELPERS
+      ===================================================== */
+
+      function money(value) {
+        return new Intl.NumberFormat(
+          "en-US",
+          {
+            style: "currency",
+            currency: "USD"
+          }
+        ).format(value);
+      }
+
+      function getQuantity() {
+        return Math.max(
+          1,
+          Math.min(
+            20,
+            Number(quantity.value) || 1
+          )
+        );
+      }
+
+      function unitPrice() {
+
+        const base =
+          BASE_PRICES[
+            Number(length.value)
+          ];
+
+        if (typeof base !== "number") {
+          return null;
+        }
+
+        return (
+          base +
+          (
+            PREMIUM_TEXTURES.has(texture.value)
+              ? PREMIUM_UPCHARGE
+              : 0
+          )
+        );
+      }
+
+      function showToast(message) {
+
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        setTimeout(
+          () => {
+            toast.classList.remove("show");
+          },
+          1800
+        );
+      }
+
+      /* =====================================================
+         UPDATE PRODUCT
+      ===================================================== */
+
+      function updateProduct() {
+
+        const selectedTexture =
+          texture.value;
+
+        const selectedLength =
+          Number(length.value);
+
+        const selectedQuantity =
+          getQuantity();
+
+        quantity.value =
+          selectedQuantity;
+
+        const currentUnitPrice =
+          unitPrice();
+
+        productTitle.textContent =
+          `Vietnamese Raw ${selectedTexture}`;
+
+        displayTexture.textContent =
+          selectedTexture;
+
+        document
+          .querySelectorAll(".texture-chip")
+          .forEach(button => {
+
+            button.classList.toggle(
+              "active",
+              button.dataset.texture === selectedTexture
             );
 
-        if (
-            $academyLockHandle !== false &&
-            flock(
-                $academyLockHandle,
-                LOCK_EX
-            )
-        ) {
+          });
 
-            $academySeats =
-                json_decode(
-                    file_get_contents(
-                        $academySeatFile
-                    ),
-                    true
-                );
+        if (currentUnitPrice === null) {
 
-            $academyReservations =
-                json_decode(
-                    file_get_contents(
-                        $academyReservationFile
-                    ),
-                    true
-                );
+          price.textContent =
+            "Unavailable";
 
-            if (
-                is_array($academySeats) &&
-                is_array($academyReservations) &&
-                isset(
-                    $academyReservations[
-                        $academyReservationToken
-                    ]
-                ) &&
-                $academyReservations[
-                    $academyReservationToken
-                ]['status'] === 'reserved' &&
-                array_key_exists(
-                    $academySessionId,
-                    $academySeats
-                )
-            ) {
+          priceNote.textContent =
+            "This option is not currently available.";
 
-                $academySeats[
-                    $academySessionId
-                ] =
-                    min(
-                        7,
-                        intval(
-                            $academySeats[
-                                $academySessionId
-                            ]
-                        ) + 1
-                    );
+          addButton.disabled =
+            true;
 
-                $academyReservations[
-                    $academyReservationToken
-                ]['status'] =
-                    'released';
+          return;
+        }
 
-                $academyReservations[
-                    $academyReservationToken
-                ]['released_at'] =
-                    gmdate('c');
+        const total =
+          currentUnitPrice *
+          selectedQuantity;
 
-                file_put_contents(
-                    $academySeatFile,
-                    json_encode(
-                        $academySeats,
-                        JSON_PRETTY_PRINT |
-                        JSON_UNESCAPED_SLASHES
-                    ),
-                    LOCK_EX
-                );
+        price.textContent =
+          money(total);
 
-                file_put_contents(
-                    $academyReservationFile,
-                    json_encode(
-                        $academyReservations,
-                        JSON_PRETTY_PRINT |
-                        JSON_UNESCAPED_SLASHES
-                    ),
-                    LOCK_EX
-                );
+        priceNote.textContent =
+          `${selectedTexture} • ` +
+          `${selectedLength} inches • ` +
+          `${selectedQuantity} ` +
+          (
+            selectedQuantity === 1
+              ? "bundle"
+              : "bundles"
+          );
+
+        addButton.disabled =
+          false;
+      }
+
+      /* =====================================================
+         CHANGE EVENTS
+      ===================================================== */
+
+      texture.addEventListener(
+        "change",
+        updateProduct
+      );
+
+      length.addEventListener(
+        "change",
+        updateProduct
+      );
+
+      quantity.addEventListener(
+        "input",
+        updateProduct
+      );
+
+      document
+        .querySelectorAll(".texture-chip")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              texture.value =
+                button.dataset.texture;
+
+              updateProduct();
+
+              document
+                .getElementById("shop")
+                .scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+                });
             }
+          );
 
-            flock(
-                $academyLockHandle,
-                LOCK_UN
+        });
+
+      /* =====================================================
+         ADD TO BAG
+      ===================================================== */
+
+      addButton.addEventListener(
+        "click",
+        () => {
+
+          const selectedTexture =
+            texture.value;
+
+          const selectedLength =
+            Number(length.value);
+
+          const selectedQuantity =
+            getQuantity();
+
+          const currentUnitPrice =
+            unitPrice();
+
+          if (
+            typeof currentUnitPrice !== "number" ||
+            currentUnitPrice <= 0
+          ) {
+
+            alert(
+              "This Vietnamese Raw bundle option is not currently available."
             );
 
-            fclose(
-                $academyLockHandle
+            return;
+          }
+
+          if (
+            !window.BBBCart ||
+            typeof window.BBBCart.add !== "function"
+          ) {
+
+            alert(
+              "The shopping bag could not be loaded. Please refresh the page and try again."
             );
+
+            return;
+          }
+
+          const item = {
+            productId: "vietnamese-bundle",
+            name: "Vietnamese Raw Bundle",
+            price: currentUnitPrice,
+            quantity: selectedQuantity,
+            image: "",
+            brand: "Vietnamese Raw",
+            texture: selectedTexture,
+            length: `${selectedLength} inches`,
+            density: "",
+            laceSize: "",
+            color: "",
+            capSize: "",
+            baseSize: "",
+            itemType: "product"
+          };
+
+          window.BBBCart.add(item);
+
+          window.BBBCart.updateCount();
+
+          sessionStorage.setItem(
+            "bbbLastShoppingPage",
+            window.location.href
+          );
+
+          showToast(
+            `${selectedTexture} Vietnamese Raw Bundle added to your bag.`
+          );
+
+          setTimeout(
+            () => {
+              window.location.href =
+                "cart.html";
+            },
+            250
+          );
         }
-    }
+      );
 
-    http_response_code(500);
+      /* =====================================================
+         INITIAL DISPLAY
+      ===================================================== */
 
-    echo json_encode([
-        'error' =>
-            'Stripe connection error: ' .
-            $curlError
-    ]);
+      updateProduct();
 
-    exit;
-}
+      if (
+        window.BBBCart &&
+        typeof window.BBBCart.updateCount === "function"
+      ) {
+        window.BBBCart.updateCount();
+      }
 
-$stripeResponse =
-    json_decode(
-        $response,
-        true
-    );
+    });
+  </script>
 
-/*
-|--------------------------------------------------------------------------
-| Stripe error
-|--------------------------------------------------------------------------
-*/
-
-if (
-    $httpCode < 200 ||
-    $httpCode >= 300 ||
-    empty($stripeResponse['url']) ||
-    empty($stripeResponse['id'])
-) {
-
-    /*
-    |--------------------------------------------------------------------------
-    | RETURN RESERVED ACADEMY SEAT
-    |--------------------------------------------------------------------------
-    */
-
-    if ($academyReservationToken !== '') {
-
-        $academyLockHandle =
-            fopen(
-                $academyLockFile,
-                'c'
-            );
-
-        if (
-            $academyLockHandle !== false &&
-            flock(
-                $academyLockHandle,
-                LOCK_EX
-            )
-        ) {
-
-            $academySeats =
-                json_decode(
-                    file_get_contents(
-                        $academySeatFile
-                    ),
-                    true
-                );
-
-            $academyReservations =
-                json_decode(
-                    file_get_contents(
-                        $academyReservationFile
-                    ),
-                    true
-                );
-
-            if (
-                is_array($academySeats) &&
-                is_array($academyReservations) &&
-                isset(
-                    $academyReservations[
-                        $academyReservationToken
-                    ]
-                ) &&
-                $academyReservations[
-                    $academyReservationToken
-                ]['status'] === 'reserved' &&
-                array_key_exists(
-                    $academySessionId,
-                    $academySeats
-                )
-            ) {
-
-                $academySeats[
-                    $academySessionId
-                ] =
-                    min(
-                        7,
-                        intval(
-                            $academySeats[
-                                $academySessionId
-                            ]
-                        ) + 1
-                    );
-
-                $academyReservations[
-                    $academyReservationToken
-                ]['status'] =
-                    'released';
-
-                $academyReservations[
-                    $academyReservationToken
-                ]['released_at'] =
-                    gmdate('c');
-
-                file_put_contents(
-                    $academySeatFile,
-                    json_encode(
-                        $academySeats,
-                        JSON_PRETTY_PRINT |
-                        JSON_UNESCAPED_SLASHES
-                    ),
-                    LOCK_EX
-                );
-
-                file_put_contents(
-                    $academyReservationFile,
-                    json_encode(
-                        $academyReservations,
-                        JSON_PRETTY_PRINT |
-                        JSON_UNESCAPED_SLASHES
-                    ),
-                    LOCK_EX
-                );
-            }
-
-            flock(
-                $academyLockHandle,
-                LOCK_UN
-            );
-
-            fclose(
-                $academyLockHandle
-            );
-        }
-    }
-
-    $stripeMessage =
-        'Stripe could not create the checkout session.';
-
-    if (
-        !empty(
-            $stripeResponse[
-                'error'
-            ][
-                'message'
-            ]
-        )
-    ) {
-
-        $stripeMessage .=
-            ' ' .
-            $stripeResponse[
-                'error'
-            ][
-                'message'
-            ];
-    }
-
-    http_response_code(500);
-
-    echo json_encode([
-        'error' =>
-            $stripeMessage
-    ]);
-
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| SAVE STRIPE SESSION ID TO ACADEMY RESERVATION
-|--------------------------------------------------------------------------
-*/
-
-if (
-    $academyReservationToken !== '' &&
-    !empty($stripeResponse['id'])
-) {
-
-    $academyLockHandle =
-        fopen(
-            $academyLockFile,
-            'c'
-        );
-
-    if (
-        $academyLockHandle !== false &&
-        flock(
-            $academyLockHandle,
-            LOCK_EX
-        )
-    ) {
-
-        $academyReservations =
-            json_decode(
-                file_get_contents(
-                    $academyReservationFile
-                ),
-                true
-            );
-
-        if (
-            is_array($academyReservations) &&
-            isset(
-                $academyReservations[
-                    $academyReservationToken
-                ]
-            ) &&
-            $academyReservations[
-                $academyReservationToken
-            ]['status'] === 'reserved'
-        ) {
-
-            $academyReservations[
-                $academyReservationToken
-            ]['stripe_session_id'] =
-                $stripeResponse['id'];
-
-            $academyReservations[
-                $academyReservationToken
-            ]['stripe_session_created_at'] =
-                gmdate('c');
-
-            file_put_contents(
-                $academyReservationFile,
-                json_encode(
-                    $academyReservations,
-                    JSON_PRETTY_PRINT |
-                    JSON_UNESCAPED_SLASHES
-                ),
-                LOCK_EX
-            );
-        }
-
-        flock(
-            $academyLockHandle,
-            LOCK_UN
-        );
-
-        fclose(
-            $academyLockHandle
-        );
-    }
-}
-
-/*
-|--------------------------------------------------------------------------
-| Return Stripe Checkout URL
-|--------------------------------------------------------------------------
-*/
-
-echo json_encode([
-    'url' =>
-        $stripeResponse['url']
-]);
+</body>
+</html>
