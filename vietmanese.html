@@ -9,802 +9,1723 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Vietnamese Raw Collection | Big Boss Bundles</title>
+  <title>
+    Vietnamese Raw Collection | Big Boss Bundles
+  </title>
 
   <meta
     name="description"
-    content="Shop Big Boss Bundles Vietnamese Raw hair bundles in six signature textures with live length and quantity pricing."
+    content="Shop premium Vietnamese Raw hair bundles from Big Boss Bundles in Straight, Body Wave, Deep Wave, Curly, Kinky Straight and Kinky Curly."
   >
 
   <style>
+
     :root {
-      --black: #0a0a0a;
-      --soft: #151515;
-      --gold: #d4a622;
-      --teal: #00a6d6;
-      --white: #ffffff;
-      --gray: #777777;
+      --black:#0A0A0A;
+      --soft:#131313;
+      --soft2:#191919;
+      --gold:#D4A622;
+      --teal:#00A6D6;
+      --white:#FFFFFF;
+      --gray:#BDBDBD;
     }
 
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior:smooth;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.5;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--black);
+      color:var(--white);
+    }
+
+    img {
+      display:block;
+      max-width:100%;
     }
 
     a {
-      color: inherit;
-      text-decoration: none;
+      color:inherit;
+      text-decoration:none;
     }
 
     button,
     select,
     input {
-      font: inherit;
+      font:inherit;
     }
+
+
+    /* =====================================================
+       ANNOUNCEMENT
+    ===================================================== */
 
     .announcement {
-      background: var(--teal);
-      color: var(--white);
-      text-align: center;
-      padding: 10px 16px;
-      font-size: .75rem;
-      font-weight: 900;
-      letter-spacing: .09em;
-      text-transform: uppercase;
+      background:#050505;
+      color:var(--gold);
+      text-align:center;
+
+      padding:10px 16px;
+
+      border-bottom:1px solid var(--gold);
+
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
     }
 
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
     header {
-      position: sticky;
-      top: 0;
-      z-index: 99;
-      background: rgba(10, 10, 10, .97);
-      border-bottom: 2px solid var(--gold);
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      background:rgba(5,5,5,.98);
+
+      border-bottom:2px solid var(--gold);
     }
 
     .header-inner {
-      width: min(1360px, 94%);
-      margin: auto;
-      min-height: 86px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 26px;
+      width:min(1380px,94%);
+      margin:auto;
+
+      min-height:92px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:30px;
     }
 
-    .brand {
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: .05em;
-      white-space: nowrap;
+    .logo {
+      width:115px;
+      height:82px;
+
+      object-fit:contain;
     }
 
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 18px;
-      flex-wrap: wrap;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+
+      flex-wrap:wrap;
+
+      gap:28px;
+
+      font-size:.82rem;
+      font-weight:900;
+
+      letter-spacing:.07em;
+      text-transform:uppercase;
     }
 
     nav a {
-      color: var(--white);
-      font-size: .76rem;
-      font-weight: 900;
-      letter-spacing: .05em;
-      text-transform: uppercase;
+      transition:.2s ease;
     }
 
     nav a:hover {
-      color: var(--teal);
+      color:var(--gold);
     }
 
     .cart-pill {
-      border: 1px solid var(--gold);
-      border-radius: 999px;
-      padding: 8px 13px;
-      color: var(--gold) !important;
+      border:2px solid var(--gold);
+
+      border-radius:999px;
+
+      padding:11px 18px;
+
+      color:var(--gold);
     }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .hero {
+      text-align:center;
+
+      padding:55px 5% 38px;
+
       background:
         radial-gradient(
-          circle at 80% 20%,
-          rgba(0, 166, 214, .18),
-          transparent 34%
+          circle at 50% 0%,
+          rgba(0,166,214,.14),
+          transparent 32%
         ),
-        var(--black);
-
-      color: var(--white);
-      padding: 82px 5%;
-    }
-
-    .hero-grid {
-      width: min(1200px, 100%);
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
+        #080808;
     }
 
     .eyebrow {
-      display: block;
-      color: var(--teal);
-      font-size: .75rem;
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      display:block;
+
+      color:var(--teal);
+
+      font-size:.82rem;
+      font-weight:900;
+
+      letter-spacing:.25em;
+      text-transform:uppercase;
     }
 
     .hero h1 {
-      margin-top: 8px;
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3.2rem, 7vw, 6.2rem);
-      line-height: .95;
-      text-transform: uppercase;
+      margin-top:9px;
+
+      font-family:Georgia, "Times New Roman", serif;
+
+      color:var(--gold);
+
+      font-size:clamp(3rem,6vw,5.5rem);
+
+      letter-spacing:.08em;
+
+      text-transform:uppercase;
     }
 
     .hero p {
-      max-width: 650px;
-      margin-top: 20px;
-      color: #c8c8c8;
-      font-size: 1.03rem;
+      width:min(840px,100%);
+
+      margin:16px auto 0;
+
+      color:#E4E4E4;
+
+      font-size:1.05rem;
+
+      line-height:1.6;
     }
 
-    .hero-image {
-      min-height: 500px;
-      border: 2px solid var(--gold);
-      border-radius: 24px;
-      padding: 28px;
-      background: #ffffff;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    .hero strong {
+      color:var(--gold);
     }
 
-    .hero-placeholder strong {
-      display: block;
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 2rem;
-      text-transform: uppercase;
-    }
 
-    .hero-placeholder span {
-      display: block;
-      margin-top: 10px;
-      color: #555555;
-      font-weight: 700;
-    }
+    /* =====================================================
+       MAIN PRODUCT BUILDER
+    ===================================================== */
 
-    .section {
-      padding: 76px 5%;
-    }
-
-    .heading {
-      width: min(850px, 100%);
-      margin: 0 auto 42px;
-      text-align: center;
-    }
-
-    .heading h2 {
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      line-height: 1;
-      margin-top: 8px;
-    }
-
-    .heading p {
-      max-width: 720px;
-      margin: 16px auto 0;
-      color: var(--gray);
-    }
-
-    .shop-layout {
-      width: min(1160px, 100%);
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr .92fr;
-      gap: 36px;
-      align-items: start;
-    }
-
-    .product-photo {
-      background: #ffffff;
-      border: 1px solid #e6e6e6;
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, .10);
-    }
-
-    .texture-display {
-      min-height: 560px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #fafafa, #eeeeee);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px;
-    }
-
-    .texture-display strong {
-      display: block;
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 2.1rem;
-      text-transform: uppercase;
-    }
-
-    .texture-display span {
-      display: block;
-      margin-top: 12px;
-      color: #666666;
-      font-weight: 700;
+    .builder-section {
+      padding:20px 5% 70px;
     }
 
     .builder {
-      background: var(--black);
-      color: var(--white);
-      border: 2px solid var(--gold);
-      border-radius: 24px;
-      padding: 32px;
+      width:min(1380px,100%);
+      margin:auto;
+
+      display:grid;
+
+      grid-template-columns:
+        minmax(360px,.9fr)
+        minmax(520px,1.4fr);
+
+      overflow:hidden;
+
+      border:2px solid var(--gold);
+
+      border-radius:26px;
+
+      background:linear-gradient(
+        145deg,
+        #111,
+        #080808
+      );
+
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.4);
     }
 
-    .builder h2 {
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 2.3rem;
-      text-transform: uppercase;
+
+    /* =====================================================
+       IMAGE
+    ===================================================== */
+
+    .product-image-area {
+      position:relative;
+
+      background:#111;
+
+      min-height:760px;
     }
 
-    .builder > p {
-      margin-top: 10px;
-      color: #bcbcbc;
+    .main-image {
+      width:100%;
+      height:100%;
+
+      min-height:760px;
+
+      object-fit:cover;
+      object-position:top center;
     }
 
-    label {
-      display: block;
-      margin-top: 16px;
-      color: var(--white);
-      font-size: .77rem;
-      font-weight: 900;
-      text-transform: uppercase;
+    .image-actions {
+      position:absolute;
+
+      right:20px;
+      bottom:20px;
+
+      display:flex;
+      gap:10px;
     }
 
-    select,
-    input {
-      width: 100%;
-      margin-top: 6px;
-      padding: 12px;
-      border: 1px solid #cccccc;
-      border-radius: 10px;
-      background: #ffffff;
-      color: #000000;
+    .image-btn {
+      border:1px solid var(--gold);
+
+      background:rgba(0,0,0,.9);
+
+      color:#FFF;
+
+      border-radius:999px;
+
+      padding:11px 18px;
+
+      font-weight:900;
+
+      cursor:pointer;
     }
 
-    .price-box {
-      margin-top: 24px;
-      padding: 20px;
-      background: var(--soft);
-      border: 1px solid rgba(212, 166, 34, .65);
-      border-radius: 16px;
+
+    /* =====================================================
+       PRODUCT CONFIGURATION
+    ===================================================== */
+
+    .config {
+      padding:38px 38px 34px;
     }
 
-    .price-box small {
-      display: block;
-      color: #aaaaaa;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+    .collection-label {
+      color:var(--teal);
+
+      font-size:.8rem;
+      font-weight:900;
+
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .product-title {
+      margin-top:6px;
+
+      color:var(--gold);
+
+      font-family:Georgia, "Times New Roman", serif;
+
+      font-size:clamp(2rem,3.4vw,3rem);
+
+      text-transform:uppercase;
+    }
+
+    .product-description {
+      margin-top:10px;
+
+      color:#D0D0D0;
+
+      line-height:1.6;
+
+      font-size:1rem;
+    }
+
+    .divider {
+      margin:26px 0;
+
+      height:1px;
+
+      background:#353535;
+    }
+
+
+    /* =====================================================
+       OPTION GROUPS
+    ===================================================== */
+
+    .option-group {
+      margin-top:24px;
+    }
+
+    .option-heading {
+      margin-bottom:11px;
+
+      display:flex;
+      align-items:center;
+
+      gap:9px;
+
+      color:#FFF;
+
+      font-size:.85rem;
+      font-weight:900;
+
+      text-transform:uppercase;
+    }
+
+    .step-number {
+      width:25px;
+      height:25px;
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      background:var(--gold);
+      color:#000;
+
+      border-radius:50%;
+
+      font-size:.75rem;
+    }
+
+
+    /* =====================================================
+       TEXTURE BUTTONS
+    ===================================================== */
+
+    .texture-grid {
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+      gap:10px;
+    }
+
+    .texture-btn {
+      min-height:54px;
+
+      border:1px solid #6B5413;
+
+      border-radius:10px;
+
+      background:#0B0B0B;
+
+      color:#FFF;
+
+      padding:10px;
+
+      font-size:.83rem;
+      font-weight:900;
+
+      cursor:pointer;
+
+      text-transform:uppercase;
+
+      transition:.2s ease;
+    }
+
+    .texture-btn:hover {
+      border-color:var(--gold);
+
+      transform:translateY(-1px);
+    }
+
+    .texture-btn.active {
+      background:var(--gold);
+      color:#000;
+
+      border-color:var(--gold);
+    }
+
+
+    /* =====================================================
+       LENGTH BUTTONS
+    ===================================================== */
+
+    .length-grid {
+      display:grid;
+
+      grid-template-columns:
+        repeat(6,minmax(0,1fr));
+
+      gap:10px;
+    }
+
+    .length-btn {
+      min-height:50px;
+
+      border:1px solid #555;
+
+      border-radius:9px;
+
+      background:#090909;
+
+      color:#FFF;
+
+      font-size:.95rem;
+      font-weight:900;
+
+      cursor:pointer;
+
+      transition:.2s ease;
+    }
+
+    .length-btn:hover {
+      border-color:var(--gold);
+    }
+
+    .length-btn.active {
+      background:var(--gold);
+
+      border-color:var(--gold);
+
+      color:#000;
+    }
+
+
+    /* =====================================================
+       COLOR
+    ===================================================== */
+
+    .color-select {
+      width:100%;
+
+      padding:15px 16px;
+
+      border:1px solid #555;
+
+      border-radius:10px;
+
+      background:#090909;
+
+      color:#FFF;
+    }
+
+
+    /* =====================================================
+       QUANTITY
+    ===================================================== */
+
+    .quantity-control {
+      width:190px;
+
+      display:grid;
+
+      grid-template-columns:
+        52px 1fr 52px;
+
+      border:1px solid #555;
+
+      border-radius:10px;
+
+      overflow:hidden;
+    }
+
+    .qty-btn {
+      border:0;
+
+      background:#111;
+
+      color:var(--gold);
+
+      font-size:1.7rem;
+
+      font-weight:900;
+
+      cursor:pointer;
+    }
+
+    .qty-value {
+      border:0;
+
+      border-left:1px solid #333;
+      border-right:1px solid #333;
+
+      background:#090909;
+
+      color:#FFF;
+
+      text-align:center;
+
+      font-size:1.15rem;
+
+      font-weight:900;
+
+      width:100%;
+    }
+
+
+    /* =====================================================
+       PRICE AND BAG
+    ===================================================== */
+
+    .purchase-row {
+      margin-top:34px;
+
+      display:grid;
+
+      grid-template-columns:
+        190px 1fr;
+
+      align-items:center;
+
+      gap:20px;
     }
 
     .price {
-      margin-top: 4px;
-      color: var(--gold);
-      font-size: 2.2rem;
-      font-weight: 900;
+      color:var(--gold);
+
+      font-size:2.4rem;
+
+      font-weight:900;
     }
 
-    .price-note {
-      margin-top: 5px;
-      color: var(--teal);
-      font-size: .88rem;
-      font-weight: 800;
+    .per-bundle {
+      color:#AFAFAF;
+
+      font-size:.8rem;
+      margin-top:3px;
     }
 
-    .add-to-cart {
-      width: 100%;
-      min-height: 54px;
-      margin-top: 20px;
-      border: 2px solid var(--teal);
-      border-radius: 999px;
-      background: var(--teal);
-      color: var(--white);
-      font-weight: 900;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      cursor: pointer;
+    .add-cart {
+      min-height:62px;
+
+      border:0;
+
+      border-radius:11px;
+
+      background:var(--teal);
+
+      color:#FFF;
+
+      font-size:1rem;
+      font-weight:900;
+
+      text-transform:uppercase;
+
+      cursor:pointer;
+
+      transition:.2s ease;
     }
 
-    .add-to-cart:hover {
-      opacity: .9;
+    .add-cart:hover {
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 12px 30px rgba(0,166,214,.25);
     }
 
-    .add-to-cart:disabled {
-      opacity: .5;
-      cursor: not-allowed;
+    .pricing-note {
+      margin-top:18px;
+
+      padding-top:15px;
+
+      border-top:1px solid #303030;
+
+      color:#C5C5C5;
+
+      text-align:center;
+
+      font-size:.82rem;
     }
 
-    .texture-strip {
-      width: min(1160px, 100%);
-      margin: 38px auto 0;
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 12px;
+
+    /* =====================================================
+       TEXTURE COLLECTION
+    ===================================================== */
+
+    .texture-section {
+      padding:70px 5%;
+
+      background:#050505;
     }
 
-    .texture-chip {
-      border: 1px solid var(--gold);
-      border-radius: 999px;
-      background: #0a0a0a;
-      color: #ffffff;
-      padding: 14px 10px;
-      font-size: .76rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      cursor: pointer;
+    .section-heading {
+      width:min(820px,100%);
+      margin:0 auto 35px;
+
+      text-align:center;
     }
 
-    .texture-chip.active,
-    .texture-chip:hover {
-      background: var(--teal);
-      border-color: var(--teal);
+    .section-heading h2 {
+      margin-top:8px;
+
+      color:var(--gold);
+
+      font-family:Georgia, "Times New Roman", serif;
+
+      font-size:clamp(2.3rem,5vw,4rem);
+
+      text-transform:uppercase;
     }
 
-    .info-strip {
-      background: var(--black);
-      color: var(--white);
+    .texture-showcase {
+      width:min(1380px,100%);
+
+      margin:auto;
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+      gap:24px;
     }
 
-    .info-grid {
-      width: min(1100px, 100%);
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
+    .texture-card {
+      overflow:hidden;
+
+      border:1px solid rgba(212,166,34,.75);
+
+      border-radius:20px;
+
+      background:#111;
+
+      cursor:pointer;
+
+      transition:.25s ease;
     }
 
-    .info-card {
-      padding: 26px 20px;
-      background: var(--soft);
-      border: 1px solid rgba(212, 166, 34, .7);
-      border-radius: 18px;
-      text-align: center;
+    .texture-card:hover {
+      transform:translateY(-5px);
+
+      border-color:var(--teal);
     }
 
-    .info-card strong {
-      display: block;
-      color: var(--gold);
-      text-transform: uppercase;
+    .texture-card img {
+      width:100%;
+      height:330px;
+
+      object-fit:cover;
+      object-position:top center;
     }
 
-    .info-card p {
-      margin-top: 8px;
-      color: #aaaaaa;
-      font-size: .88rem;
+    .texture-card-copy {
+      padding:22px;
     }
+
+    .texture-card h3 {
+      color:var(--gold);
+
+      font-size:1.25rem;
+
+      text-transform:uppercase;
+    }
+
+    .texture-card p {
+      margin-top:7px;
+
+      color:#BDBDBD;
+
+      line-height:1.5;
+    }
+
+    .select-texture {
+      display:inline-block;
+
+      margin-top:14px;
+
+      color:var(--teal);
+
+      font-size:.82rem;
+
+      font-weight:900;
+
+      text-transform:uppercase;
+    }
+
+
+    /* =====================================================
+       BENEFITS
+    ===================================================== */
+
+    .benefits {
+      padding:65px 5%;
+
+      background:#FFF;
+
+      color:#000;
+    }
+
+    .benefit-grid {
+      width:min(1100px,100%);
+
+      margin:auto;
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:24px;
+    }
+
+    .benefit-card {
+      padding:30px;
+
+      border:1px solid #E3E3E3;
+
+      border-radius:18px;
+
+      text-align:center;
+    }
+
+    .benefit-card h3 {
+      color:#9B7415;
+
+      text-transform:uppercase;
+    }
+
+    .benefit-card p {
+      margin-top:10px;
+
+      color:#444;
+
+      line-height:1.6;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
 
     footer {
-      background: #050505;
-      color: #ffffff;
-      border-top: 2px solid var(--gold);
-      padding: 50px 5% 24px;
+      padding:45px 5%;
+
+      background:#050505;
+
+      border-top:1px solid rgba(212,166,34,.4);
+
+      text-align:center;
     }
 
-    .footer-grid {
-      width: min(1180px, 100%);
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 36px;
+    footer strong {
+      color:var(--gold);
+
+      font-size:1.1rem;
     }
 
-    footer h3,
-    footer h4 {
-      color: var(--gold);
-      margin-bottom: 12px;
+    footer p {
+      margin-top:10px;
+
+      color:#999;
+
+      line-height:1.7;
     }
 
-    footer p,
-    footer a {
-      display: block;
-      color: #aaaaaa;
-      margin: 7px 0;
-      font-size: .9rem;
-    }
 
-    .copy {
-      width: min(1180px, 100%);
-      margin: 32px auto 0;
-      padding-top: 18px;
-      border-top: 1px solid #222222;
-      text-align: center;
-      color: #666666;
-      font-size: .78rem;
-    }
+    /* =====================================================
+       TOAST
+    ===================================================== */
 
     .toast {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 999;
-      display: none;
-      padding: 14px 18px;
-      border: 2px solid var(--gold);
-      border-radius: 12px;
-      background: #050505;
-      color: #ffffff;
-      font-weight: 800;
+      position:fixed;
+
+      right:22px;
+      bottom:22px;
+
+      z-index:3000;
+
+      display:none;
+
+      max-width:360px;
+
+      padding:17px 21px;
+
+      border:2px solid var(--gold);
+
+      border-radius:12px;
+
+      background:#050505;
+
+      color:#FFF;
+
+      font-weight:900;
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.45);
     }
 
     .toast.show {
-      display: block;
+      display:block;
     }
 
-    @media (max-width: 900px) {
+
+    .color-model-preview {
+      margin-top:16px;
+      padding:16px;
+      border:1px solid #3a3a3a;
+      border-radius:12px;
+      background:#0b0b0b;
+    }
+    .color-preview-heading { color:var(--gold); font-weight:900; text-transform:uppercase; font-size:.78rem; margin-bottom:12px; }
+    .color-model-images { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .color-model-images img { width:100%; height:260px; object-fit:cover; object-position:top center; border-radius:10px; border:1px solid #333; background:#fff; }
+    .color-model-label { margin-top:10px; color:var(--teal); font-weight:900; text-align:center; }
+    .custom-color-message { margin-top:12px; color:#ddd; line-height:1.5; text-align:center; }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media(max-width:1050px) {
+
       .header-inner {
-        flex-direction: column;
-        padding: 14px 0;
+        flex-direction:column;
+
+        padding:15px 0;
       }
 
       nav {
-        justify-content: center;
+        justify-content:center;
       }
 
-      .hero-grid,
-      .shop-layout {
-        grid-template-columns: 1fr;
+      .builder {
+        grid-template-columns:1fr;
       }
 
-      .texture-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .product-image-area,
+      .main-image {
+        min-height:580px;
       }
 
-      .info-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .texture-showcase {
+        grid-template-columns:
+          repeat(2,1fr);
       }
+
     }
 
-    @media (max-width: 650px) {
+
+    @media(max-width:700px) {
+
       header {
-        position: static;
+        position:static;
       }
 
-      .info-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
+      nav {
+        gap:14px;
       }
 
-      .hero-image {
-        min-height: 420px;
+      .config {
+        padding:28px 20px;
       }
 
-      .texture-display {
-        min-height: 430px;
+      .texture-grid {
+        grid-template-columns:
+          repeat(2,1fr);
       }
+
+      .length-grid {
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+
+      .purchase-row {
+        grid-template-columns:1fr;
+      }
+
+      .quantity-control {
+        width:100%;
+      }
+
+      .texture-showcase,
+      .benefit-grid {
+        grid-template-columns:1fr;
+      }
+
+      .texture-card img {
+        height:380px;
+      }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
+  <!-- =====================================================
+       ANNOUNCEMENT
+  ====================================================== -->
+
   <div class="announcement">
-    Vietnamese Raw Collection • Six Signature Textures • Boss Beauty
+
+    Vietnamese Raw Hair • Six Signature Textures • Boss Beauty
+
   </div>
 
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
   <header>
+
     <div class="header-inner">
 
-      <a class="brand" href="index.html">
-        BIG BOSS BUNDLES
+      <a
+        href="index.html"
+        aria-label="Big Boss Bundles Home"
+      >
+
+        <img
+          class="logo"
+          src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Homepage%20Images/Owner%20Images/Lifestyle%20Images/Store%20Images/Branding/BigBossBundles-logo.jpg"
+          alt="Big Boss Bundles BB Logo"
+        >
+
       </a>
 
-      <nav aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="index.html#collections">Collections</a>
-        <a href="bundles.html">Bundles</a>
-        <a href="wigs.html">Wigs</a>
-        <a href="closures.html">Closures &amp; Frontals</a>
-        <a href="mens-hair-pieces.html">Men's Hair</a>
-        <a href="bulk-hair.html">Bulk Hair</a>
-        <a href="hair-care.html">Hair Care</a>
-        <a href="classes.html">Beauty Academy</a>
-        <a href="contact.html">Contact</a>
 
-        <a class="cart-pill" href="cart.html">
-          Bag (<span data-cart-count>0</span>)
-        </a>
-      </nav>
+   <nav>
 
+  <a href="index.html">
+    Home
+  </a>
+
+  <a href="bundles.html">
+    Bundles
+  </a>
+
+  <a href="wigs.html">
+    Wigs
+  </a>
+
+  <a href="closures.html">
+    Closures &amp; Frontals
+  </a>
+
+  <a href="mens-hair-pieces.html">
+    Men's Hair
+  </a>
+
+  <a href="bulk-hair.html">
+    Bulk Hair
+  </a>
+
+  <a href="hair-care.html">
+    Hair Care
+  </a>
+
+  <a href="classes.html">
+    Beauty Academy
+  </a>
+
+  <a
+    href="cart.html"
+    class="cart-pill"
+  >
+    Bag (
+    <span
+      id="cart-count"
+      data-cart-count
+    >
+      0
+    </span>
+    )
+  </a>
+
+</nav>
     </div>
+
   </header>
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <section class="hero">
+
+    <span class="eyebrow">
+
+      Luxury Vietnamese Raw Hair
+
+    </span>
+
+    <h1>
+
+      Vietnamese Raw Bundles
+
+    </h1>
+
+    <p>
+
+      Shop our premium Vietnamese Raw bundle collection.
+      Choose your texture, length, color and quantity.
+
+      <br>
+
+      Premium raw Vietnamese human hair selected for smoothness, strength and beautiful movement.
+
+    </p>
+
+  </section>
+
+
+  <!-- =====================================================
+       PRODUCT BUILDER
+  ====================================================== -->
 
   <main>
 
-    <section class="hero">
-      <div class="hero-grid">
+    <section class="builder-section">
 
-        <div>
-          <span class="eyebrow">Big Boss Bundles</span>
+      <div class="builder">
 
-          <h1>Vietnamese Raw Collection</h1>
 
-          <p>
-            Luxury raw Vietnamese human hair selected for smoothness,
-            strength and beautiful movement. Choose your texture,
-            length and quantity below.
-          </p>
+        <!-- IMAGE -->
+
+        <div class="product-image-area">
+
+          <img
+            id="main-product-image"
+            class="main-image"
+           src="images/vietnamese-body-wave-model.png"
+            alt="Vietnamese Raw Body Wave Hair"
+          >
+
+          <div class="image-actions">
+
+            <button
+              class="image-btn"
+              id="view-toggle"
+              type="button"
+            >
+
+              View Product
+
+            </button>
+
+          </div>
+
         </div>
 
-        <div class="hero-image">
-          <div class="hero-placeholder">
 
-            <strong>Vietnamese Raw Hair</strong>
+        <!-- CONFIGURATION -->
 
-            <span>
-              Premium luxury bundles in six signature textures
+        <div class="config">
+
+          <p class="collection-label">
+
+            Big Boss Bundles Vietnamese Raw Collection
+
+          </p>
+
+          <h2
+            class="product-title"
+            id="product-title"
+          >
+
+            Vietnamese Raw Body Wave
+
+          </h2>
+
+          <p
+            class="product-description"
+            id="product-description"
+          >
+
+            Soft, flowing waves with natural volume,
+            bounce and effortless versatility.
+
+          </p>
+
+
+          <div class="divider"></div>
+
+
+          <!-- TEXTURE -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                1
+              </span>
+
+              Choose Texture
+
+            </div>
+
+            <div
+              class="texture-grid"
+              id="texture-grid"
+            >
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Straight"
+              >
+                Straight
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn active"
+                data-texture="Body Wave"
+              >
+                Body Wave
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Deep Wave"
+              >
+                Deep Wave
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Curly"
+              >
+                Curly
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Kinky Straight"
+              >
+                Kinky Straight
+              </button>
+
+              <button
+                type="button"
+                class="texture-btn"
+                data-texture="Kinky Curly"
+              >
+                Kinky Curly
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- LENGTH -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                2
+              </span>
+
+              Choose Length
+
+            </div>
+
+            <div
+              class="length-grid"
+              id="length-grid"
+            >
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="10"
+              >
+                10"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn active"
+                data-length="12"
+              >
+                12"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="14"
+              >
+                14"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="16"
+              >
+                16"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="18"
+              >
+                18"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="20"
+              >
+                20"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="22"
+              >
+                22"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="24"
+              >
+                24"
+              </button>
+
+              <button
+                type="button"
+                class="length-btn"
+                data-length="26"
+              >
+                26"
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- COLOR -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                3
+              </span>
+
+              Choose Color
+
+            </div>
+
+            <select
+              id="color-select"
+              class="color-select"
+            >
+              <option value="1 Jet Black">1 Jet Black</option>
+              <option value="1B Natural Black" selected>1B Natural Black</option>
+              <option value="2 Dark Brown">2 Dark Brown</option>
+              <option value="4 Medium Brown">4 Medium Brown</option>
+              <option value="27 Honey Blonde">27 Honey Blonde</option>
+              <option value="30 Auburn">30 Auburn</option>
+              <option value="33 Dark Auburn">33 Dark Auburn</option>
+              <option value="99J Burgundy">99J Burgundy</option>
+              <option value="613 Blonde">613 Blonde</option>
+              <option value="Platinum Blonde">Platinum Blonde</option>
+              <option value="P4/27 Highlight">P4/27 Highlight</option>
+              <option value="P1B/27 Highlight">P1B/27 Highlight</option>
+              <option value="P1B/30 Highlight">P1B/30 Highlight</option>
+              <option value="P1B/99J Highlight">P1B/99J Highlight</option>
+              <option value="Honey Caramel Balayage">Honey Caramel Balayage</option>
+              <option value="Custom Color Consultation">Custom Color Consultation</option>
+            </select>
+
+            <div class="color-model-preview">
+              <div class="color-preview-heading">Hair Color Preview</div>
+              <div id="color-model-images" class="color-model-images"></div>
+              <div id="color-model-label" class="color-model-label">1B Natural Black</div>
+              <div id="custom-color-message" class="custom-color-message" style="display:none;">
+                <strong>Custom Color Consultation</strong>
+           <p>Text a photo of your desired hair color to Big Boss Bundles at (512) 276-2366.</p>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- QUANTITY -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+
+              <span class="step-number">
+                4
+              </span>
+
+              Quantity
+
+            </div>
+
+            <div class="quantity-control">
+
+              <button
+                type="button"
+                class="qty-btn"
+                id="qty-minus"
+              >
+                −
+              </button>
+
+              <input
+                id="quantity"
+                class="qty-value"
+                type="number"
+                value="1"
+                min="1"
+                max="20"
+                readonly
+              >
+
+              <button
+                type="button"
+                class="qty-btn"
+                id="qty-plus"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- PRICE AND CART -->
+
+          <div class="purchase-row">
+
+            <div>
+
+              <div
+                class="price"
+                id="price"
+              >
+                 $93.00
+              </div>
+
+              <div class="per-bundle">
+
+                per bundle
+
+              </div>
+
+            </div>
+
+
+            <button
+              id="add-to-bag"
+              class="add-cart"
+              type="button"
+            >
+
+              Add to Bag
+
+            </button>
+
+          </div>
+
+
+          <div
+            class="pricing-note"
+            id="pricing-note"
+          >
+
+             $93.00 per bundle
+            • Vietnamese Raw Hair
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ALL SIX TEXTURES
+    ====================================================== -->
+
+    <section class="texture-section">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+
+          Shop Your Texture
+
+        </span>
+
+        <h2>
+
+          Available Textures
+
+        </h2>
+
+      </div>
+
+
+      <div class="texture-showcase">
+
+
+        <!-- STRAIGHT -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Straight"
+        >
+
+          <img
+      src="images/vietnamese.straight-model.png"
+            alt="Vietnamese Raw Straight"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Straight
+            </h3>
+
+            <p>
+              Naturally sleek strands with soft movement,
+              body and a polished luxury finish.
+            </p>
+
+            <span class="select-texture">
+              Select Straight
             </span>
 
           </div>
-        </div>
 
-      </div>
-    </section>
+        </article>
 
-    <section class="section" id="shop">
 
-      <div class="heading">
-        <span class="eyebrow">Build Your Look</span>
+        <!-- BODY WAVE -->
 
-        <h2>Vietnamese Raw Bundles</h2>
+        <article
+          class="texture-card"
+          data-select-texture="Body Wave"
+        >
 
-        <p>
-          Choose your texture, length and quantity.
-          Your price changes automatically.
-        </p>
-      </div>
-
-      <div class="shop-layout">
-
-        <div class="product-photo">
-          <div class="texture-display">
-
-            <div>
-              <strong id="display-texture">
-                Body Wave
-              </strong>
-
-              <span>
-                Vietnamese Raw Bundle
-              </span>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="builder">
-
-          <span class="eyebrow">Customize</span>
-
-          <h2 id="product-title">
-            Vietnamese Raw Body Wave
-          </h2>
-
-          <p>
-            100% raw Vietnamese human hair.
-          </p>
-
-          <label>
-            Texture
-
-            <select id="texture">
-              <option value="Straight">
-                Straight
-              </option>
-
-              <option value="Kinky Straight">
-                Kinky Straight
-              </option>
-
-              <option value="Body Wave" selected>
-                Body Wave
-              </option>
-
-              <option value="Deep Wave">
-                Deep Wave
-              </option>
-
-              <option value="Curly">
-                Curly
-              </option>
-
-              <option value="Kinky Curly">
-                Kinky Curly
-              </option>
-            </select>
-          </label>
-
-          <label>
-            Length
-
-            <select id="length">
-              <option value="10">10 inches</option>
-              <option value="12">12 inches</option>
-              <option value="14">14 inches</option>
-              <option value="16">16 inches</option>
-              <option value="18">18 inches</option>
-              <option value="20">20 inches</option>
-              <option value="22">22 inches</option>
-              <option value="24">24 inches</option>
-              <option value="26">26 inches</option>
-            </select>
-          </label>
-
-          <label>
-            Quantity
-
-            <input
-              id="quantity"
-              type="number"
-              min="1"
-              max="20"
-              value="1"
-            >
-          </label>
-
-          <div class="price-box">
-
-            <small>Your Price</small>
-
-            <div class="price" id="price">
-              $72.00
-            </div>
-
-            <div class="price-note" id="price-note">
-              Body Wave • 10 inches • 1 bundle
-            </div>
-
-          </div>
-
-          <button
-            class="add-to-cart"
-            id="add-to-cart"
-            type="button"
+          <img
+ src="images/vietnamese-body-wave-model.png"
+            alt="Vietnamese Raw Body Wave"
           >
-            Add To Bag
-          </button>
 
-        </div>
-      </div>
+          <div class="texture-card-copy">
 
-      <div class="texture-strip">
+            <h3>
+              Body Wave
+            </h3>
 
-        <button
-          class="texture-chip"
-          data-texture="Straight"
-          type="button"
+            <p>
+              Soft flowing waves with natural volume,
+              bounce and effortless versatility.
+            </p>
+
+            <span class="select-texture">
+              Select Body Wave
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- DEEP WAVE -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Deep Wave"
         >
-          Straight
-        </button>
 
-        <button
-          class="texture-chip"
-          data-texture="Kinky Straight"
-          type="button"
-        >
-          Kinky Straight
-        </button>
+          <img
+          src="images/vietnamese-deep-wave-model.png"
+            alt="Vietnamese Raw Deep Wave"
+          >
 
-        <button
-          class="texture-chip active"
-          data-texture="Body Wave"
-          type="button"
-        >
-          Body Wave
-        </button>
+          <div class="texture-card-copy">
 
-        <button
-          class="texture-chip"
-          data-texture="Deep Wave"
-          type="button"
-        >
-          Deep Wave
-        </button>
+            <h3>
+              Deep Wave
+            </h3>
 
-        <button
-          class="texture-chip"
-          data-texture="Curly"
-          type="button"
-        >
-          Curly
-        </button>
+            <p>
+              Defined waves with rich texture,
+              glamorous volume and long lasting movement.
+            </p>
 
-        <button
-          class="texture-chip"
-          data-texture="Kinky Curly"
-          type="button"
+            <span class="select-texture">
+              Select Deep Wave
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- CURLY -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Curly"
         >
-          Kinky Curly
-        </button>
+
+          <img
+          src="images/vietnamese-curly-model.png"
+            alt="Vietnamese Raw Curly"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Curly
+            </h3>
+
+            <p>
+              Soft defined curls with beautiful bounce,
+              fullness and natural movement.
+            </p>
+
+            <span class="select-texture">
+              Select Curly
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- KINKY STRAIGHT -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Kinky Straight"
+        >
+
+          <img
+         src="images/vietnamese-kinky-straight-model.png"
+            alt="Vietnamese Raw Kinky Straight"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Kinky Straight
+            </h3>
+
+            <p>
+              A full natural blown out texture
+              with softness, body and realistic movement.
+            </p>
+
+            <span class="select-texture">
+              Select Kinky Straight
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- KINKY CURLY -->
+
+        <article
+          class="texture-card"
+          data-select-texture="Kinky Curly"
+        >
+
+          <img
+          src="images/vietnamese-kinky-curly-model.png"
+            alt="Vietnamese Raw Kinky Curly"
+          >
+
+          <div class="texture-card-copy">
+
+            <h3>
+              Kinky Curly
+            </h3>
+
+            <p>
+              Bold naturally textured curls
+              with rich fullness and a soft luxury feel.
+            </p>
+
+            <span class="select-texture">
+              Select Kinky Curly
+            </span>
+
+          </div>
+
+        </article>
+
 
       </div>
 
     </section>
 
-    <section class="section info-strip">
 
-      <div class="heading">
-        <span class="eyebrow">Vietnamese Luxury</span>
+    <!-- =====================================================
+         BENEFITS
+    ====================================================== -->
 
-        <h2>Luxury You Can Feel</h2>
-      </div>
+    <section class="benefits">
 
-      <div class="info-grid">
+      <div class="benefit-grid">
 
-        <div class="info-card">
-          <strong>100% Raw Hair</strong>
 
-          <p>
-            Premium Vietnamese human hair with beautiful
-            natural movement.
-          </p>
-        </div>
+        <div class="benefit-card">
 
-        <div class="info-card">
-          <strong>Full Healthy Ends</strong>
+          <h3>
+            100% Raw Hair
+          </h3>
 
           <p>
-            Selected for a polished, luxurious finish
-            from root to tip.
+            Premium Vietnamese human hair with smooth movement, strength and a luxury finish.
           </p>
+
         </div>
 
-        <div class="info-card">
-          <strong>Color Friendly</strong>
+
+        <div class="benefit-card">
+
+          <h3>
+            Six Textures
+          </h3>
 
           <p>
-            Can be bleached up to 613 and styled with
-            proper care.
+            Choose Straight, Body Wave, Deep Wave,
+            Curly, Kinky Straight or Kinky Curly.
           </p>
+
         </div>
 
-        <div class="info-card">
-          <strong>Six Textures</strong>
+
+        <div class="benefit-card">
+
+          <h3>
+            10" to 26"
+          </h3>
 
           <p>
-            Straight, Kinky Straight, Body Wave,
-            Deep Wave, Curly and Kinky Curly.
+            Select your preferred Vietnamese Raw bundle length
+            from 10 inches through 26 inches.
           </p>
+
         </div>
+
 
       </div>
 
@@ -812,394 +1733,210 @@
 
   </main>
 
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
   <footer>
 
-    <div class="footer-grid">
+    <strong>
+      BIG BOSS BUNDLES
+    </strong>
 
-      <div>
-        <h3>Big Boss Bundles</h3>
-
-        <p>
-          Luxury hair, HD lace wigs, closures, frontals,
-          men's hair pieces, bulk braiding hair and
-          Boss Beauty essentials.
-        </p>
-      </div>
-
-      <div>
-        <h4>Customer Care</h4>
-
-        <a href="contact.html">Contact Us</a>
-        <a href="shipping-policy.html">Shipping Policy</a>
-        <a href="return-policy.html">Return &amp; Exchange Policy</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-      </div>
-
-      <div>
-        <h4>Visit or Contact</h4>
-
-        <p>301 W Pecan Street</p>
-        <p>Pflugerville, TX 78660</p>
-
-        <a href="tel:+15122762366">
-          (512) 276-2366
-        </a>
-
-        <a href="mailto:support@bigbossbundles.com">
-          support@bigbossbundles.com
-        </a>
-      </div>
-
-    </div>
-
-    <div class="copy">
-      © 2026 Big Boss Bundles. All rights reserved.
-    </div>
+    <p>
+      Pflugerville, Texas
+      <br>
+      Luxury Hair • Boss Beauty
+    </p>
 
   </footer>
+
 
   <div
     class="toast"
     id="toast"
-    role="status"
-    aria-live="polite"
   ></div>
+
+
+  <!-- =====================================================
+       UNIVERSAL CART
+  ====================================================== -->
 
   <script src="cart.js"></script>
 
+
+  <!-- =====================================================
+       VIETNAMESE RAW PRODUCT LOGIC
+  ====================================================== -->
+
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function () {
+    const basePrices = {10:72,12:93,14:111,16:141,18:165,20:192,22:216,24:276,26:333};
+    const specialtyTextures = new Set(["Curly","Deep Wave","Kinky Curly","Kinky Straight"]);
+    const premiumUpcharge = 5;
 
-      /* =====================================================
-         VIETNAMESE RAW PRICING
-      ===================================================== */
+          const textures = {
 
-      const BASE_PRICES = {
-        10: 72,
-        12: 93,
-        14: 111,
-        16: 141,
-        18: 165,
-        20: 192,
-        22: 216,
-        24: 276,
-        26: 333
-      };
+      "Straight": {
+        description: "Naturally sleek strands with soft movement, body and a polished luxury finish.",
+        model: "images/vietnamese.straight-model.png",
+        product: "images/vietnamese-straight-product.png"
+      },
 
-      const PREMIUM_TEXTURES = new Set([
-        "Curly",
-        "Deep Wave",
-        "Kinky Curly",
-        "Kinky Straight"
-      ]);
+      "Body Wave": {
+        description: "Soft, flowing waves with natural volume, bounce and effortless versatility.",
+        model: "images/vietnamese-body-wave-model.png",
+        product: "images/vietnamese-body-wave-product.png"
+      },
 
-      const PREMIUM_UPCHARGE = 5;
+      "Deep Wave": {
+        description: "Defined waves with rich texture, glamorous volume and long-lasting movement.",
+        model: "images/vietnamese-deep-wave-model.png",
+        product: "images/vietnamese-deep-wave-image.png"
+      },
 
-      /* =====================================================
-         ELEMENTS
-      ===================================================== */
+      "Curly": {
+        description: "Soft, defined curls with beautiful bounce, fullness and natural-looking movement.",
+        model: "images/vietnamese-curly-model.png",
+        product: "images/vietnamese-curly-product.png"
+      },
 
-      const texture =
-        document.getElementById("texture");
+      "Kinky Straight": {
+        description: "A full, natural blown-out texture with softness, body and realistic movement.",
+        model: "images/vietnamese-kinky-straight-model.png",
+        product: "images/vietnamese-kinky-straight-model.png"
+      },
 
-      const length =
-        document.getElementById("length");
-
-      const quantity =
-        document.getElementById("quantity");
-
-      const price =
-        document.getElementById("price");
-
-      const priceNote =
-        document.getElementById("price-note");
-
-      const productTitle =
-        document.getElementById("product-title");
-
-      const displayTexture =
-        document.getElementById("display-texture");
-
-      const addButton =
-        document.getElementById("add-to-cart");
-
-      const toast =
-        document.getElementById("toast");
-
-      /* =====================================================
-         HELPERS
-      ===================================================== */
-
-      function money(value) {
-        return new Intl.NumberFormat(
-          "en-US",
-          {
-            style: "currency",
-            currency: "USD"
-          }
-        ).format(value);
+      "Kinky Curly": {
+        description: "Bold, naturally textured curls with rich fullness and a soft luxury feel.",
+        model: "images/vietnamese-kinky-curly-model.png",
+        product: "images/vietnamese-kinky-curly-product.png"
       }
 
-      function getQuantity() {
-        return Math.max(
-          1,
-          Math.min(
-            20,
-            Number(quantity.value) || 1
-          )
-        );
-      }
+    };
 
-      function unitPrice() {
+    const colorModelImages = {
+      "1 Jet Black":["images/Hair Color Models/color-1-jet-black.png","images/Hair Color Models/color-1-jet-black-white-model.png"],
+      "1B Natural Black":["images/Hair Color Models/color-1b-natural-black.png","images/Hair Color Models/color-1b-natural-black-white-model.png"],
+      "2 Dark Brown":["images/Hair Color Models/color-2-dark-brown.png","images/Hair Color Models/color-2-dark-brown-white-model.png"],
+      "4 Medium Brown":["images/Hair Color Models/color-4-medium-brown-black-model.png","images/Hair Color Models/color-4-medium-brown-white-model.png"],
+      "27 Honey Blonde":["images/Hair Color Models/color-27-honey-blonde-black-model.png","images/Hair Color Models/color-27-honey-blonde-white-model.png"],
+      "30 Auburn":["images/Hair Color Models/color-30-auburn-black-model.png","images/Hair Color Models/color-30-auburn-white-model.png"],
+      "33 Dark Auburn":["images/Hair Color Models/color-33-dark-auburn-black-white-models.png"],
+      "99J Burgundy":["images/Hair Color Models/color-99j-burgundy-black-model.png","images/Hair Color Models/color-99j-burgundy-white-model.png"],
+      "613 Blonde":["images/Hair Color Models/color-613-blonde-black-model.png","images/Hair Color Models/color-613-blonde-white-model.png"],
+      "Platinum Blonde":["images/Hair Color Models/color-platinum-blonde-black-white-models.png"],
+      "P4/27 Highlight":["images/Hair Color Models/color-p4-27-highlight-black-model.png","images/Hair Color Models/color-p4-27-highlight-white-model.png"],
+      "P1B/27 Highlight":["images/Hair Color Models/color-p1b-27-highlight-black-model.png","images/Hair Color Models/color-p1b-27-highlight-white-model.png"],
+      "P1B/30 Highlight":["images/Hair Color Models/color-p1b-30-highlight-black-white-models.png"],
+      "P1B/99J Highlight":["images/Hair Color Models/color-p1b-99j-highlight-black-white-models.png"],
+      "Honey Caramel Balayage":["images/Hair Color Models/honey-caramel-balayage-black-model.png","images/Hair Color Models/honey-caramel-balayage-white-model.png"]
+    };
 
-        const base =
-          BASE_PRICES[
-            Number(length.value)
-          ];
+       const textureButtons =
+      document.querySelectorAll(".texture-btn");
 
-        if (typeof base !== "number") {
-          return null;
-        }
+    const lengthButtons =
+      document.querySelectorAll(".length-btn");
 
-        return (
-          base +
-          (
-            PREMIUM_TEXTURES.has(texture.value)
-              ? PREMIUM_UPCHARGE
-              : 0
-          )
-        );
-      }
+    const textureCards =
+      document.querySelectorAll("[data-select-texture]");
 
-      function showToast(message) {
+    const mainImage =
+      document.getElementById("main-product-image");
 
-        toast.textContent = message;
-        toast.classList.add("show");
+    const productTitle =
+      document.getElementById("product-title");
 
-        setTimeout(
-          () => {
-            toast.classList.remove("show");
-          },
-          1800
-        );
-      }
+    const productDescription =
+      document.getElementById("product-description");
 
-      /* =====================================================
-         UPDATE PRODUCT
-      ===================================================== */
+    const colorSelect =
+      document.getElementById("color-select");
 
-      function updateProduct() {
+    const quantityInput =
+      document.getElementById("quantity");
 
-        const selectedTexture =
-          texture.value;
+    const priceElement =
+      document.getElementById("price");
 
-        const selectedLength =
-          Number(length.value);
+    const pricingNote =
+      document.getElementById("pricing-note");
 
-        const selectedQuantity =
-          getQuantity();
+    const viewToggle =
+      document.getElementById("view-toggle");
 
-        quantity.value =
-          selectedQuantity;
+    const addToBag =
+      document.getElementById("add-to-bag");
 
-        const currentUnitPrice =
-          unitPrice();
+    const toast =
+      document.getElementById("toast");
 
-        productTitle.textContent =
-          `Vietnamese Raw ${selectedTexture}`;
+    const colorModelImagesContainer =
+      document.getElementById("color-model-images");
 
-        displayTexture.textContent =
-          selectedTexture;
+    const colorModelLabel =
+      document.getElementById("color-model-label");
 
-        document
-          .querySelectorAll(".texture-chip")
-          .forEach(button => {
+    const customColorMessage =
+      document.getElementById("custom-color-message");
 
-            button.classList.toggle(
-              "active",
-              button.dataset.texture === selectedTexture
-            );
+    let selectedTexture = "Body Wave";
+    let selectedLength = 12;
+    let imageView = "model";
 
-          });
+    function money(amount){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(amount);}
+    function getPrice(){return basePrices[selectedLength]+(specialtyTextures.has(selectedTexture)?premiumUpcharge:0);}
+    function showToast(message){toast.textContent=message;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),1800);}
 
-        if (currentUnitPrice === null) {
+    function updateColorPreview(){
+      const selectedColor=colorSelect.value;
+      colorModelLabel.textContent=selectedColor;
+      colorModelImagesContainer.innerHTML="";
+      if(selectedColor==="Custom Color Consultation"){customColorMessage.style.display="block";return;}
+      customColorMessage.style.display="none";
+      (colorModelImages[selectedColor]||[]).forEach(src=>{const img=document.createElement("img");img.src=src;img.alt=selectedColor+" Hair Color Model";colorModelImagesContainer.appendChild(img);});
+    }
 
-          price.textContent =
-            "Unavailable";
+    function updateDisplay(){
+      const t=textures[selectedTexture];
+      productTitle.textContent="Vietnamese Raw "+selectedTexture;
+      productDescription.textContent=t.description;
+      mainImage.src=imageView==="model"?t.model:t.product;
+      mainImage.alt="Vietnamese Raw "+selectedTexture;
+      viewToggle.textContent=imageView==="model"?"View Product":"View Model";
+      const price=getPrice();
+      priceElement.textContent=money(price);
+      pricingNote.textContent=money(price)+" per bundle • Vietnamese Raw Hair";
+      textureButtons.forEach(b=>b.classList.toggle("active",b.dataset.texture===selectedTexture));
+      lengthButtons.forEach(b=>b.classList.toggle("active",Number(b.dataset.length)===selectedLength));
+    }
 
-          priceNote.textContent =
-            "This option is not currently available.";
+    textureButtons.forEach(b=>b.addEventListener("click",()=>{selectedTexture=b.dataset.texture;imageView="model";updateDisplay();}));
+    textureCards.forEach(c=>c.addEventListener("click",()=>{selectedTexture=c.dataset.selectTexture;imageView="model";updateDisplay();document.querySelector(".builder-section").scrollIntoView({behavior:"smooth"});}));
+    lengthButtons.forEach(b=>b.addEventListener("click",()=>{selectedLength=Number(b.dataset.length);updateDisplay();}));
+    viewToggle.addEventListener("click",()=>{imageView=imageView==="model"?"product":"model";updateDisplay();});
+    colorSelect.addEventListener("change",updateColorPreview);
+    document.getElementById("qty-minus").addEventListener("click",()=>{quantityInput.value=Math.max(1,(Number(quantityInput.value)||1)-1);});
+    document.getElementById("qty-plus").addEventListener("click",()=>{quantityInput.value=Math.min(20,(Number(quantityInput.value)||1)+1);});
 
-          addButton.disabled =
-            true;
-
-          return;
-        }
-
-        const total =
-          currentUnitPrice *
-          selectedQuantity;
-
-        price.textContent =
-          money(total);
-
-        priceNote.textContent =
-          `${selectedTexture} • ` +
-          `${selectedLength} inches • ` +
-          `${selectedQuantity} ` +
-          (
-            selectedQuantity === 1
-              ? "bundle"
-              : "bundles"
-          );
-
-        addButton.disabled =
-          false;
-      }
-
-      /* =====================================================
-         CHANGE EVENTS
-      ===================================================== */
-
-      texture.addEventListener(
-        "change",
-        updateProduct
-      );
-
-      length.addEventListener(
-        "change",
-        updateProduct
-      );
-
-      quantity.addEventListener(
-        "input",
-        updateProduct
-      );
-
-      document
-        .querySelectorAll(".texture-chip")
-        .forEach(button => {
-
-          button.addEventListener(
-            "click",
-            () => {
-
-              texture.value =
-                button.dataset.texture;
-
-              updateProduct();
-
-              document
-                .getElementById("shop")
-                .scrollIntoView({
-                  behavior: "smooth",
-                  block: "start"
-                });
-            }
-          );
-
-        });
-
-      /* =====================================================
-         ADD TO BAG
-      ===================================================== */
-
-      addButton.addEventListener(
-        "click",
-        () => {
-
-          const selectedTexture =
-            texture.value;
-
-          const selectedLength =
-            Number(length.value);
-
-          const selectedQuantity =
-            getQuantity();
-
-          const currentUnitPrice =
-            unitPrice();
-
-          if (
-            typeof currentUnitPrice !== "number" ||
-            currentUnitPrice <= 0
-          ) {
-
-            alert(
-              "This Vietnamese Raw bundle option is not currently available."
-            );
-
-            return;
-          }
-
-          if (
-            !window.BBBCart ||
-            typeof window.BBBCart.add !== "function"
-          ) {
-
-            alert(
-              "The shopping bag could not be loaded. Please refresh the page and try again."
-            );
-
-            return;
-          }
-
-          const item = {
-            productId: "vietnamese-bundle",
-            name: "Vietnamese Raw Bundle",
-            price: currentUnitPrice,
-            quantity: selectedQuantity,
-            image: "",
-            brand: "Vietnamese Raw",
-            texture: selectedTexture,
-            length: `${selectedLength} inches`,
-            density: "",
-            laceSize: "",
-            color: "",
-            capSize: "",
-            baseSize: "",
-            itemType: "product"
-          };
-
-          window.BBBCart.add(item);
-
-          window.BBBCart.updateCount();
-
-          sessionStorage.setItem(
-            "bbbLastShoppingPage",
-            window.location.href
-          );
-
-          showToast(
-            `${selectedTexture} Vietnamese Raw Bundle added to your bag.`
-          );
-
-          setTimeout(
-            () => {
-              window.location.href =
-                "cart.html";
-            },
-            250
-          );
-        }
-      );
-
-      /* =====================================================
-         INITIAL DISPLAY
-      ===================================================== */
-
-      updateProduct();
-
-      if (
-        window.BBBCart &&
-        typeof window.BBBCart.updateCount === "function"
-      ) {
-        window.BBBCart.updateCount();
-      }
-
+    addToBag.addEventListener("click",()=>{
+      if(!window.BBBCart||typeof window.BBBCart.add!=="function"){showToast("Shopping bag is temporarily unavailable.");return;}
+      const quantity=Math.max(1,Math.min(20,Number(quantityInput.value)||1));
+      const t=textures[selectedTexture];
+      window.BBBCart.add({productId:"vietnamese-bundle",name:"Vietnamese Raw Bundle",price:getPrice(),quantity:quantity,image:t.product,brand:"Vietnamese Raw",texture:selectedTexture,length:selectedLength+" inches",density:"",laceSize:"",color:colorSelect.value,capSize:"",baseSize:"",itemType:"product"});
+      window.BBBCart.updateCount?.();
+      sessionStorage.setItem("bbbLastShoppingPage",window.location.href);
+      window.location.assign("cart.html");
     });
+
+    updateDisplay();
+    updateColorPreview();
+    window.BBBCart?.updateCount?.();
+  });
   </script>
 
 </body>
+
 </html>
