@@ -998,6 +998,211 @@ foreach ($input['items'] as $item) {
 
     /*
     |--------------------------------------------------------------------------
+    | LAOS PREMIUM LUXURY BUNDLES
+    |--------------------------------------------------------------------------
+    | Supplier base cost × 3 + $25 LAOS premium.
+    | Body Wave, Deep Wave, Kinky Straight and Kinky Curly
+    | receive a $4 supplier texture charge before the × 3 markup.
+    | Standard specialty colors add $18 retail.
+    | Custom Color Consultation remains base price until consultation.
+    |--------------------------------------------------------------------------
+    */
+
+    elseif ($productId === 'laos-bundle') {
+
+        $texture =
+            trim(
+                $item['texture'] ?? ''
+            );
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+        $LAOS_ALLOWED_TEXTURES = [
+            'Straight',
+            'Body Wave',
+            'Deep Wave',
+            'Curly',
+            'Kinky Straight',
+            'Kinky Curly'
+        ];
+
+        if (
+            !in_array(
+                $texture,
+                $LAOS_ALLOWED_TEXTURES,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid LAOS bundle texture.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | LAOS SUPPLIER BASE COST
+        |--------------------------------------------------------------------------
+        */
+
+        $LAOS_SUPPLIER_BASE = [
+            10 => 34,
+            12 => 38,
+            14 => 44,
+            16 => 51,
+            18 => 60,
+            20 => 70,
+            22 => 81,
+            24 => 90,
+            26 => 99,
+            28 => 109,
+            30 => 117,
+            32 => 125
+        ];
+
+        if (
+            !isset(
+                $LAOS_SUPPLIER_BASE[$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That LAOS bundle length is not available.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | SPECIALTY TEXTURES
+        |--------------------------------------------------------------------------
+        */
+
+        $LAOS_SPECIALTY_TEXTURES = [
+            'Body Wave',
+            'Deep Wave',
+            'Kinky Straight',
+            'Kinky Curly'
+        ];
+
+        $supplierCost =
+            $LAOS_SUPPLIER_BASE[$length];
+
+        if (
+            in_array(
+                $texture,
+                $LAOS_SPECIALTY_TEXTURES,
+                true
+            )
+        ) {
+
+            $supplierCost += 4;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY COLOR
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== 'Custom Color Consultation' &&
+            !in_array(
+                $color,
+                $CAMBODIAN_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid LAOS bundle color.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORITATIVE LAOS PRICE
+        |--------------------------------------------------------------------------
+        | (supplier cost × 3) + $25
+        |--------------------------------------------------------------------------
+        */
+
+        $unitAmount =
+            intval(
+                (
+                    ($supplierCost * 3)
+                    + 25
+                ) * 100
+            );
+
+        /*
+        |--------------------------------------------------------------------------
+        | STANDARD COLOR UPGRADE — $18
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== '1B Natural Black' &&
+            $color !== 'Custom Color Consultation'
+        ) {
+
+            $unitAmount += 1800;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | STRIPE PRODUCT INFORMATION
+        |--------------------------------------------------------------------------
+        */
+
+        $productName =
+            'LAOS Premium Luxury Bundle';
+
+        $descriptionParts = [
+            $texture,
+            $length . '"',
+            $color,
+            'Premium Luxury LAOS Hair'
+        ];
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | HAIR CARE PRODUCTS
     |--------------------------------------------------------------------------
     */
