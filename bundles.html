@@ -65,13 +65,16 @@
       gap: 30px;
     }
 
-    .brand {
-      color: var(--gold);
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
+    .logo{
+  width:150px;
+  flex:0 0 150px;
+}
 
+.logo img{
+  width:100%;
+  height:64px;
+  object-fit:contain;
+}
     nav {
       display: flex;
       gap: 20px;
@@ -344,37 +347,50 @@
     Double Drawn • Extra Full • Luxury Hair
   </div>
 
-  <header>
-    <div class="header-inner">
+ <header>
 
-      <a href="index.html" class="brand">
-        BIG BOSS BUNDLES
-      </a>
+  <div class="header-inner">
 
-    <nav>
+    <a
+      class="logo"
+      href="index.html"
+      aria-label="Big Boss Bundles Home"
+    >
+
+      <img
+        src="images/Homepage Images/Owner Images/Lifestyle Images/Store Images/Branding/BigBossBundles-logo.jpg"
+        alt="Big Boss Bundles"
+      >
+
+    </a>
+
+   <nav>
 
   <a href="index.html">Home</a>
 
-  <a class="active" href="bundles.html">Bundles</a>
+  <a href="bundles.html" class="active">Bundles</a>
 
   <a href="wigs.html">Wigs</a>
 
-  <a href="closures.html">Closures & Frontals</a>
+  <a href="closures.html">Closures &amp; Frontals</a>
 
   <a href="mens-hair-pieces.html">Men's Hair</a>
+
+  <a href="bulk-hair.html">Bulk Hair</a>
 
   <a href="hair-care.html">Hair Care</a>
 
   <a href="classes.html">Beauty Academy</a>
 
-  <a href="cart.html" class="bag">
+  <a class="bag" href="cart.html">
     Bag (<span data-cart-count>0</span>)
   </a>
 
 </nav>
 
-    </div>
-  </header>
+  </div>
+
+</header>
 
 
   <main>
