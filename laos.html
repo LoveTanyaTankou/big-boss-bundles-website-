@@ -294,8 +294,8 @@
 
       <article class="product-card" data-product="LAOS Curly">
         <div class="image-wrap">
-          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/laos-curly-model.png" alt="LAOS Curly model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
-          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/laos-curly-product.png" alt="LAOS Curly bundle">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/Laos-curly-model.png" alt="LAOS Curly model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/Laos-curly-product.png" alt="LAOS Curly bundle">
           <button class="image-toggle" type="button" aria-label="Switch LAOS Curly image">View Product</button>
         </div>
         <div class="product-copy">
@@ -402,7 +402,7 @@
 
       <article class="product-card" data-product="LAOS Kinky Curly">
         <div class="image-wrap">
-          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/laos-kinky-curly-model.png" alt="LAOS Kinky Curly model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
+          <img class="product-image active" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/laos-kinky-curlly-model.png" alt="LAOS Kinky Curly model" onerror="this.style.display='none'; this.nextElementSibling.classList.add('active')">
           <img class="product-image" src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/LAOS%20Hair%20Images/laos-kinky-curly-product.png" alt="LAOS Kinky Curly bundle">
           <button class="image-toggle" type="button" aria-label="Switch LAOS Kinky Curly image">View Product</button>
         </div>
@@ -494,56 +494,246 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script>
-    const cartKey = "bbbCart";
-    const cart = JSON.parse(localStorage.getItem(cartKey) || "[]");
-    const countEl = document.getElementById("cart-count");
-    const toast = document.getElementById("toast");
+ <!-- UNIVERSAL CART -->
+<script src="cart.js"></script>
 
-    function updateCartCount() {
-      countEl.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-    }
+<script>
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2400);
-    }
+  const toast =
+    document.getElementById("toast");
 
-    document.querySelectorAll(".product-card").forEach(card => {
-      const images = card.querySelectorAll(".product-image");
-      const toggle = card.querySelector(".image-toggle");
-      const type = card.querySelector(".type-select");
-      const density = card.querySelector(".density-field");
+  function showToast(message) {
 
-      toggle.addEventListener("click", () => {
-        images.forEach(img => img.classList.toggle("active"));
-        toggle.textContent = images[0].classList.contains("active") ? "View Product" : "View Model";
-      });
+    toast.textContent =
+      message;
+
+    toast.classList.add("show");
+
+    setTimeout(
+      () => toast.classList.remove("show"),
+      2200
+    );
+
+  }
+
+
+  document
+    .querySelectorAll(".product-card")
+    .forEach(card => {
+
+      const images =
+        card.querySelectorAll(".product-image");
+
+      const toggle =
+        card.querySelector(".image-toggle");
+
+      const type =
+        card.querySelector(".type-select");
+
+      const densityField =
+        card.querySelector(".density-field");
+
+      const densitySelect =
+        card.querySelector(".density-select");
+
+      const lengthSelect =
+        card.querySelector(".length-select");
+
+      const colorSelect =
+        card.querySelector(".color-select");
+
+      const quantityInput =
+        card.querySelector(".quantity");
+
+      const addButton =
+        card.querySelector(".add-cart");
+
+
+      /* =========================================
+         MODEL / PRODUCT IMAGE TOGGLE
+      ========================================= */
+
+      toggle.addEventListener(
+        "click",
+        () => {
+
+          images.forEach(
+            image =>
+              image.classList.toggle("active")
+          );
+
+          toggle.textContent =
+            images[0].classList.contains("active")
+              ? "View Product"
+              : "View Model";
+
+        }
+      );
+
+
+      /* =========================================
+         SHOW WIG DENSITY ONLY FOR WIGS
+      ========================================= */
 
       function updateDensity() {
-        density.classList.toggle("hidden", type.value !== "Wig");
+
+        densityField.classList.toggle(
+          "hidden",
+          type.value !== "Wig"
+        );
+
       }
-      type.addEventListener("change", updateDensity);
+
+      type.addEventListener(
+        "change",
+        updateDensity
+      );
+
       updateDensity();
 
-      card.querySelector(".add-cart").addEventListener("click", () => {
-        const item = {
-          name: card.dataset.product,
-          type: type.value,
-          length: card.querySelector(".length-select").value,
-          density: type.value === "Wig" ? card.querySelector(".density-select").value : null,
-          color: card.querySelector(".color-select").value,
-          quantity: Number(card.querySelector(".quantity").value) || 1
-        };
-        cart.push(item);
-        localStorage.setItem(cartKey, JSON.stringify(cart));
-        updateCartCount();
-        showToast(item.name + " added to your bag.");
-      });
+
+      /* =========================================
+         ADD LAOS PRODUCT TO UNIVERSAL CART
+      ========================================= */
+
+      addButton.addEventListener(
+        "click",
+        () => {
+
+          const productName =
+            card.dataset.product;
+
+          const productType =
+            type.value;
+
+          const length =
+            lengthSelect.value;
+
+          const density =
+            productType === "Wig"
+              ? densitySelect.value
+              : "";
+
+          const color =
+            colorSelect.value;
+
+          const quantity =
+            Math.max(
+              1,
+              Number(quantityInput.value) || 1
+            );
+
+
+          /*
+             IMPORTANT:
+             This LAOS page currently does not contain
+             product prices.
+
+             We are therefore NOT going to invent a
+             price here.
+
+             The item must have a valid price before
+             checkout can be considered complete.
+          */
+
+          const item = {
+
+            productId:
+              "laos-" +
+              productName
+                .replace(/^LAOS\s+/i, "")
+                .toLowerCase()
+                .replace(/\s+/g, "-") +
+              "-" +
+              productType.toLowerCase() +
+              "-" +
+              length
+                .toLowerCase()
+                .replace(/\s+/g, "-"),
+
+            name:
+              productName +
+              " " +
+              productType,
+
+            texture:
+              productName.replace(
+                /^LAOS\s+/i,
+                ""
+              ),
+
+            length:
+              length,
+
+            density:
+              density,
+
+            color:
+              color,
+
+            quantity:
+              quantity,
+
+            image:
+              images.length
+                ? images[
+                    images.length > 1
+                      ? 1
+                      : 0
+                  ].src
+                : ""
+
+          };
+
+
+          /*
+             Do not add a zero-dollar product to
+             checkout. We will connect the approved
+             LAOS pricing table next.
+          */
+
+          if(
+            typeof item.price !== "number" ||
+            item.price <= 0
+          ){
+
+            alert(
+              "LAOS pricing must be connected before this item can be added to checkout."
+            );
+
+            return;
+
+          }
+
+
+          window.BBBCart.add(item);
+
+          window.BBBCart.updateCount();
+
+
+          showToast(
+            item.name +
+            " added to your bag."
+          );
+
+
+          sessionStorage.setItem(
+            "bbbLastShoppingPage",
+            window.location.href
+          );
+
+
+          window.location.href =
+            "cart.html";
+
+        }
+      );
+
     });
 
-    updateCartCount();
-  </script>
+
+  window.BBBCart.updateCount();
+
+</script>
 </body>
 </html>
