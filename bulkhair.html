@@ -1,1 +1,2038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Bulk Braiding Hair | Big Boss Bundles</title>
+
+  <meta
+    name="description"
+    content="Shop premium Big Boss Bundles bulk braiding hair in luxury colors and lengths from 10 to 32 inches."
+  >
+
+  <style>
+    :root {
+      --black:#0A0A0A;
+      --soft:#151515;
+      --soft2:#202020;
+      --gold:#D4A622;
+      --teal:#00A6D6;
+      --white:#FFFFFF;
+      --gray:#777777;
+      --light:#F7F7F7;
+    }
+
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html {
+      scroll-behavior:smooth;
+    }
+
+    body {
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--black);
+      color:var(--white);
+      line-height:1.5;
+    }
+
+    img {
+      max-width:100%;
+      display:block;
+    }
+
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    select,
+    input {
+      font:inherit;
+    }
+
+    /* =========================================================
+       ANNOUNCEMENT
+    ========================================================= */
+
+    .announcement {
+      background:var(--black);
+      color:var(--gold);
+      text-align:center;
+      padding:10px 16px;
+      border-bottom:1px solid #222;
+      font-size:.76rem;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    header {
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(10,10,10,.98);
+      border-bottom:2px solid var(--gold);
+    }
+
+    .header-inner {
+      width:min(1360px,95%);
+      margin:auto;
+      min-height:88px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand-logo {
+      width:115px;
+      height:82px;
+      object-fit:contain;
+    }
+
+    nav {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+      gap:17px;
+    }
+
+    nav a {
+      color:var(--white);
+      font-weight:800;
+      font-size:.77rem;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      transition:.2s ease;
+    }
+
+    nav a:hover {
+      color:var(--teal);
+    }
+
+    .cart-pill {
+      border:1px solid var(--gold);
+      border-radius:999px;
+      padding:8px 13px;
+      color:var(--gold)!important;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(0,166,214,.18),
+          transparent 35%
+        ),
+        var(--black);
+
+      padding:70px 5%;
+    }
+
+      .hero-image {
+      width:min(430px,100%);
+      justify-self:center;
+      background:#FFFFFF;
+      border:2px solid var(--gold);
+      border-radius:20px;
+      padding:10px;
+      box-shadow:0 20px 55px rgba(0,0,0,.35);
+    }
+
+    .hero-image img {
+      display:block;
+      width:100%;
+      height:500px;
+      object-fit:contain;
+      object-position:center;
+    }
+
+    .hero h1 {
+      color:var(--gold);
+      font-family:Georgia, "Times New Roman", serif;
+      text-transform:uppercase;
+      font-size:clamp(2.7rem,6vw,5.5rem);
+      line-height:.92;
+      margin-bottom:22px;
+    }
+
+    .hero p {
+      color:#D8D8D8;
+      max-width:620px;
+      font-size:1.05rem;
+      line-height:1.8;
+    }
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .section {
+      padding:70px 5%;
+    }
+
+    .section-heading {
+      width:min(1180px,100%);
+      margin:0 auto 35px;
+      text-align:center;
+    }
+
+    .section-heading h2 {
+      color:var(--gold);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(2rem,4vw,3.3rem);
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .section-heading p {
+      color:#BBBBBB;
+      max-width:800px;
+      margin:auto;
+    }
+
+    /* =========================================================
+       PRODUCT BUILDER
+    ========================================================= */
+
+    .builder-shell {
+      width:min(1200px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:35px;
+      align-items:start;
+    }
+
+        .product-panel {
+      width:min(470px,100%);
+      justify-self:center;
+      background:#FFFFFF;
+      border:2px solid var(--gold);
+      border-radius:20px;
+      padding:12px;
+      position:sticky;
+      top:120px;
+    }
+
+    .product-panel img {
+      display:block;
+      width:100%;
+      height:520px;
+      object-fit:contain;
+      object-position:center;
+      background:#FFFFFF;
+      border-radius:14px;
+    }
+
+    .view-toggle {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .view-btn {
+      min-height:44px;
+      border:1px solid var(--gold);
+      border-radius:999px;
+      background:transparent;
+      color:var(--black);
+      font-weight:900;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+
+    .view-btn.active {
+      background:var(--gold);
+      color:var(--black);
+    }
+
+    .image-caption {
+      color:#555;
+      text-align:center;
+      margin-top:12px;
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .builder {
+      background:var(--black);
+      border:2px solid var(--gold);
+      border-radius:24px;
+      padding:32px;
+    }
+
+    .builder h2 {
+      color:var(--gold);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.4rem;
+      text-transform:uppercase;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .builder-intro {
+      color:#BBBBBB;
+      margin-bottom:28px;
+    }
+
+    .option-group {
+      padding:22px 0;
+      border-top:1px solid #292929;
+    }
+
+    .option-group:first-of-type {
+      border-top:0;
+    }
+
+    .option-heading {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+      color:var(--white);
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .number {
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--gold);
+      color:var(--black);
+      font-weight:900;
+    }
+
+    /* =========================================================
+       LENGTH BUTTONS
+    ========================================================= */
+
+    .length-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:9px;
+    }
+
+    .length-btn {
+      border:1px solid #444;
+      background:var(--soft);
+      color:#FFFFFF;
+      border-radius:10px;
+      min-height:48px;
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    .length-btn:hover {
+      border-color:var(--teal);
+    }
+
+    .length-btn.active {
+      background:var(--teal);
+      border-color:var(--teal);
+      color:#FFFFFF;
+    }
+
+    /* =========================================================
+       COLORS
+    ========================================================= */
+
+    .color-grid {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:9px;
+    }
+
+    .color-btn {
+      min-height:52px;
+      padding:9px 10px;
+      border:1px solid #444;
+      border-radius:10px;
+      background:var(--soft);
+      color:#FFFFFF;
+      cursor:pointer;
+      font-size:.78rem;
+      font-weight:800;
+      text-align:center;
+    }
+
+    .color-btn:hover {
+      border-color:var(--gold);
+    }
+
+    .color-btn.active {
+      background:var(--gold);
+      border-color:var(--gold);
+      color:var(--black);
+    }
+
+    /* =========================================================
+       COLOR MODEL PREVIEW
+    ========================================================= */
+
+    .color-preview {
+      margin-top:18px;
+      padding:16px;
+      border:1px solid #333;
+      border-radius:14px;
+      background:#0D0D0D;
+    }
+
+    .color-preview-title {
+      color:var(--gold);
+      font-size:.76rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .color-preview p {
+      color:#BBBBBB;
+      font-size:.85rem;
+    }
+
+    .color-preview-images {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .color-preview-images img {
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      object-position:top center;
+      background:#FFFFFF;
+      border-radius:10px;
+    }
+
+    .color-preview-images img:only-child {
+      grid-column:1 / -1;
+      height:430px;
+      object-fit:contain;
+    }
+
+    /* =========================================================
+       QUANTITY
+    ========================================================= */
+
+    .quantity-row {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .quantity-row input {
+      width:110px;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #CCC;
+      background:#FFFFFF;
+      color:#000000;
+      text-align:center;
+      font-weight:900;
+    }
+
+    /* =========================================================
+       PRICE
+    ========================================================= */
+
+    .price-box {
+      margin-top:20px;
+      padding:20px;
+      background:var(--soft);
+      border:1px solid rgba(212,166,34,.65);
+      border-radius:16px;
+    }
+
+    .price-label {
+      display:block;
+      color:#AAAAAA;
+      font-size:.76rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .price {
+      color:var(--gold);
+      font-size:2.5rem;
+      font-weight:900;
+      margin-top:3px;
+    }
+
+    .price-note {
+      color:var(--teal);
+      font-size:.85rem;
+      font-weight:800;
+      margin-top:5px;
+    }
+
+    .add {
+      width:100%;
+      min-height:56px;
+      margin-top:18px;
+      border:2px solid var(--teal);
+      border-radius:999px;
+      background:var(--teal);
+      color:#FFFFFF;
+      cursor:pointer;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .add:hover {
+      background:#FFFFFF;
+      color:var(--black);
+    }
+
+    /* =========================================================
+       CUSTOM COLOR
+    ========================================================= */
+
+    .custom-color-box {
+      display:none;
+      margin-top:14px;
+      padding:16px;
+      border:1px solid var(--teal);
+      border-radius:12px;
+      background:#101010;
+      color:#DDDDDD;
+      text-align:center;
+    }
+
+    .custom-color-box strong {
+      color:var(--teal);
+      display:block;
+      margin-bottom:6px;
+    }
+
+    /* =========================================================
+       BENEFITS
+    ========================================================= */
+
+    .benefits {
+      background:#FFFFFF;
+      color:var(--black);
+    }
+
+    .benefits .section-heading h2 {
+      color:var(--black);
+    }
+
+    .benefits .section-heading p {
+      color:#555555;
+    }
+
+    .benefit-grid {
+      width:min(1100px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .benefit-card {
+      padding:28px 22px;
+      border:1px solid #E2E2E2;
+      border-radius:18px;
+      text-align:center;
+      background:#FAFAFA;
+    }
+
+    .benefit-card strong {
+      display:block;
+      color:var(--gold);
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .benefit-card p {
+      color:#555555;
+      font-size:.9rem;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background:#050505;
+      border-top:2px solid var(--gold);
+      padding:48px 5% 24px;
+    }
+
+    .footer-grid {
+      width:min(1180px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.3fr 1fr 1fr;
+      gap:35px;
+    }
+
+    footer h3,
+    footer h4 {
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+
+    footer p,
+    footer a {
+      color:#AAAAAA;
+      font-size:.9rem;
+    }
+
+    footer a {
+      display:block;
+      margin:7px 0;
+    }
+
+    .copyright {
+      width:min(1180px,100%);
+      margin:30px auto 0;
+      padding-top:18px;
+      border-top:1px solid #222;
+      color:#666666;
+      font-size:.78rem;
+      text-align:center;
+    }
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    .toast {
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:999;
+      padding:14px 18px;
+      border:2px solid var(--gold);
+      border-radius:12px;
+      background:#050505;
+      color:#FFFFFF;
+      font-weight:800;
+      box-shadow:0 15px 40px rgba(0,0,0,.4);
+      display:none;
+    }
+
+    .toast.show {
+      display:block;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media(max-width:950px) {
+      .header-inner {
+        flex-direction:column;
+        padding:10px 0 16px;
+      }
+
+      nav {
+        justify-content:center;
+      }
+
+      .hero-grid,
+      .builder-shell {
+        grid-template-columns:1fr;
+      }
+
+      .product-panel {
+        position:relative;
+        top:auto;
+      }
+
+      .benefit-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:650px) {
+      .hero {
+        padding:45px 5%;
+      }
+
+      .hero-image img {
+        height:470px;
+      }
+
+      .product-panel img {
+        height:500px;
+      }
+
+      .length-grid {
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .color-grid {
+        grid-template-columns:1fr;
+      }
+
+      .builder {
+        padding:22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       ANNOUNCEMENT
+  ======================================================== -->
+
+  <div class="announcement">
+    Premium Bulk Braiding Hair • Luxury Colors • Boss Beauty
+  </div>
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header>
+    <div class="header-inner">
+
+      <a href="index.html">
+        <img
+          class="brand-logo"
+          src="https://raw.githubusercontent.com/LoveTanyaTankou/big-boss-bundles-website-/main/images/Homepage%20Images/Owner%20Images/Lifestyle%20Images/Store%20Images/Branding/BigBossBundles-logo.jpg"
+          alt="Big Boss Bundles"
+        >
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="bundles.html">Bundles</a>
+        <a href="wigs.html">Wigs</a>
+        <a href="closures.html">Closures &amp; Frontals</a>
+        <a href="mens-hair-pieces.html">Men's Hair</a>
+        <a href="bulk-hair.html">Bulk Hair</a>
+        <a href="hair-care.html">Hair Care</a>
+        <a href="classes.html">Beauty Academy</a>
+
+        <a
+          class="cart-pill"
+          href="cart.html"
+        >
+          Bag (<span data-cart-count>0</span>)
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-grid">
+
+        <div>
+
+          <span class="eyebrow">
+            Big Boss Bundles
+          </span>
+
+          <h1>
+            Premium<br>
+            Bulk Hair
+          </h1>
+
+          <p>
+            Create luxurious boho braids, knotless styles and
+            custom protective looks with premium bulk braiding
+            hair. Choose your length and color to build your
+            perfect Boss Beauty look.
+          </p>
+
+        </div>
+
+        <div class="hero-image">
+
+          <img
+            src="images/Bulk Braiding Hair/bulk-hair-balayage-product.png"
+            alt="Honey Caramel Balayage Bulk Braiding Hair"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRODUCT BUILDER
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          Build Your Order
+        </span>
+
+        <h2>
+          Bulk Braiding Hair
+        </h2>
+
+        <p>
+          Select your length, hair color and quantity.
+          Hair color does not change the base price.
+        </p>
+
+      </div>
+
+
+      <div class="builder-shell">
+
+        <!-- =================================================
+             PRODUCT IMAGE
+        ================================================== -->
+
+             <div class="product-panel">
+
+          <img
+            id="main-product-image"
+            src="images/Bulk Braiding Hair/bulk-hair-balayage-product.png"
+            alt="Bulk Braiding Hair"
+          >
+
+          <div class="view-toggle">
+
+            <button
+              class="view-btn"
+              id="model-view"
+              type="button"
+            >
+              View Model
+            </button>
+
+            <button
+              class="view-btn active"
+              id="product-view"
+              type="button"
+            >
+              View Product
+            </button>
+
+          </div>
+
+          <div class="image-caption" id="image-caption">
+            Honey Caramel Balayage • Product View
+          </div>
+
+        </div>
+        <!-- =================================================
+             BUILDER
+        ================================================== -->
+
+        <div class="builder">
+
+          <span class="eyebrow">
+            Boss Beauty
+          </span>
+
+          <h2>
+            Build Your Hair
+          </h2>
+
+          <p class="builder-intro">
+            Premium bulk hair for beautiful, full protective styles.
+          </p>
+
+
+          <!-- ===============================================
+               LENGTH
+          ================================================ -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+              <span class="number">1</span>
+              Choose Your Length
+            </div>
+
+            <div
+              class="length-grid"
+              id="length-grid"
+            >
+
+              <button class="length-btn active" data-length="10" type="button">10"</button>
+              <button class="length-btn" data-length="12" type="button">12"</button>
+              <button class="length-btn" data-length="14" type="button">14"</button>
+              <button class="length-btn" data-length="16" type="button">16"</button>
+              <button class="length-btn" data-length="18" type="button">18"</button>
+              <button class="length-btn" data-length="20" type="button">20"</button>
+              <button class="length-btn" data-length="22" type="button">22"</button>
+              <button class="length-btn" data-length="24" type="button">24"</button>
+              <button class="length-btn" data-length="26" type="button">26"</button>
+              <button class="length-btn" data-length="28" type="button">28"</button>
+              <button class="length-btn" data-length="30" type="button">30"</button>
+              <button class="length-btn" data-length="32" type="button">32"</button>
+
+            </div>
+
+          </div>
+
+
+          <!-- ===============================================
+               COLOR
+          ================================================ -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+              <span class="number">2</span>
+              Choose Your Hair Color
+            </div>
+
+            <div
+              class="color-grid"
+              id="color-grid"
+            >
+
+              <button class="color-btn" data-color="1 Jet Black" type="button">
+                1 Jet Black
+              </button>
+
+              <button class="color-btn" data-color="1B Natural Black" type="button">
+                1B Natural Black
+              </button>
+
+              <button class="color-btn" data-color="2 Dark Brown" type="button">
+                2 Dark Brown
+              </button>
+
+              <button class="color-btn" data-color="4 Medium Brown" type="button">
+                4 Medium Brown
+              </button>
+
+              <button class="color-btn" data-color="27 Honey Blonde" type="button">
+                27 Honey Blonde
+              </button>
+
+              <button class="color-btn" data-color="30 Auburn" type="button">
+                30 Auburn
+              </button>
+
+              <button class="color-btn" data-color="33 Dark Auburn" type="button">
+                33 Dark Auburn
+              </button>
+
+              <button class="color-btn" data-color="99J Burgundy" type="button">
+                99J Burgundy
+              </button>
+
+              <button class="color-btn" data-color="613 Blonde" type="button">
+                613 Blonde
+              </button>
+
+              <button class="color-btn" data-color="Platinum Blonde" type="button">
+                Platinum Blonde
+              </button>
+
+              <button class="color-btn" data-color="P4/27 Highlight" type="button">
+                P4/27 Highlight
+              </button>
+
+              <button class="color-btn" data-color="P1B/27 Highlight" type="button">
+                P1B/27 Highlight
+              </button>
+
+              <button class="color-btn" data-color="P1B/30 Highlight" type="button">
+                P1B/30 Highlight
+              </button>
+
+              <button class="color-btn" data-color="P1B/99J Highlight" type="button">
+                P1B/99J Highlight
+              </button>
+
+                           <button
+                class="color-btn active"
+                data-color="Honey Caramel Balayage"
+                type="button"
+              >
+                Honey Caramel Balayage
+              </button>
+
+              <button
+                class="color-btn"
+                data-color="Custom Color Consultation"
+                type="button"
+              >
+                Custom Color Consultation
+              </button>
+             
+
+            </div>
+
+
+            <!-- =============================================
+                 FUTURE COLOR MODEL AREA
+            ============================================== -->
+
+            <div class="color-preview">
+
+              <div class="color-preview-title">
+                Color Preview
+              </div>
+
+              <p id="color-preview-message">
+                Bulk Hair color models are being added to the collection.
+                Select Honey Caramel Balayage to view the completed
+                product and model images.
+              </p>
+
+              <div
+                class="color-preview-images"
+                id="color-preview-images"
+              ></div>
+
+            </div>
+
+
+            <div
+              class="custom-color-box"
+              id="custom-color-box"
+            >
+
+              <strong>
+                Custom Color Consultation
+              </strong>
+
+              Text a photo of your desired hair color to
+              Big Boss Bundles at
+              <strong>(512) 937-5119</strong>.
+
+            </div>
+
+          </div>
+
+
+          <!-- ===============================================
+               QUANTITY
+          ================================================ -->
+
+          <div class="option-group">
+
+            <div class="option-heading">
+              <span class="number">3</span>
+              Quantity
+            </div>
+
+            <div class="quantity-row">
+
+              <input
+                id="quantity"
+                type="number"
+                min="1"
+                max="20"
+                value="1"
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- ===============================================
+               PRICE
+          ================================================ -->
+
+          <div class="price-box">
+
+            <span class="price-label">
+              Your Price
+            </span>
+
+            <div
+              class="price"
+              id="price"
+            >
+              $45.00
+            </div>
+
+            <div
+              class="price-note"
+              id="price-note"
+            >
+            10 inches • Honey Caramel Balayage • Quantity 1
+            </div>
+
+          </div>
+
+
+          <button
+            class="add"
+            id="add-to-bag"
+            type="button"
+          >
+            Add to Bag
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BENEFITS
+    ====================================================== -->
+
+    <section class="section benefits">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          Big Boss Quality
+        </span>
+
+        <h2>
+          Made For Beautiful Styles
+        </h2>
+
+        <p>
+          Premium bulk hair designed for luxurious protective
+          styling and beautiful Boss Beauty looks.
+        </p>
+
+      </div>
+
+
+      <div class="benefit-grid">
+
+        <div class="benefit-card">
+          <strong>Premium Quality</strong>
+          <p>
+            Full, beautiful bulk hair selected for polished
+            protective styles.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <strong>Luxury Colors</strong>
+          <p>
+            Choose from natural shades, blondes, auburns,
+            highlights and balayage.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <strong>Versatile Styling</strong>
+          <p>
+            Perfect for boho braids, knotless braids and
+            other creative protective styles.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+
+        <h3>
+          Big Boss Bundles
+        </h3>
+
+        <p>
+          Luxury hair, HD lace wigs, closures, frontals,
+          men's hair pieces, bulk braiding hair and
+          Boss Beauty essentials.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Customer Care
+        </h4>
+
+        <a href="contact.html">Contact Us</a>
+        <a href="shipping-policy.html">Shipping Policy</a>
+        <a href="return-policy.html">Return &amp; Exchange Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Visit or Contact
+        </h4>
+
+        <p>
+          301 W Pecan Street<br>
+          Pflugerville, TX 78660
+        </p>
+
+        <p>
+          (512) 276-2366
+        </p>
+
+        <p>
+          support@bigbossbundles.com
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Big Boss Bundles. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+  <!-- =======================================================
+       UNIVERSAL CART
+  ======================================================== -->
+
+  <script src="cart.js"></script>
+
+
+  <script>
+
+    /*
+    ============================================================
+    BULK HAIR PRICING
+
+    Supplier price × 3
+    ============================================================
+    */
+
+    const BULK_PRICES = {
+      10: 45,
+      12: 57,
+      14: 69,
+      16: 84,
+      18: 99,
+      20: 114,
+      22: 129,
+      24: 144,
+      26: 168,
+      28: 186,
+      30: 219,
+      32: 231
+    };
+
+      /*
+    ============================================================
+    BULK HAIR IMAGES
+    ============================================================
+    */
+
+    const BALAYAGE_PRODUCT_IMAGE =
+      "images/Bulk Braiding Hair/bulk-hair-balayage-product.png";
+
+    const DEFAULT_PRODUCT_IMAGE =
+      BALAYAGE_PRODUCT_IMAGE;
+
+
+    /*
+    ============================================================
+    BULK HAIR COLOR MODELS
+    ============================================================
+    */
+
+    const BULK_COLOR_MODELS = {
+
+      "1 Jet Black":
+        "images/Bulk Braiding Hair/bulk-model-1-jet-black.png",
+
+      "1B Natural Black":
+        "images/Bulk Braiding Hair/bulk-model-1b-natural-black.png",
+
+      "2 Dark Brown":
+        "images/Bulk Braiding Hair/bulk-model-2-dark-brown.png",
+
+      "4 Medium Brown":
+        "images/Bulk Braiding Hair/bulk-model-4-medium-brown.png",
+
+      "27 Honey Blonde":
+        "images/Bulk Braiding Hair/bulk-model-27-honey-blonde.png",
+
+      "30 Auburn":
+        "images/Bulk Braiding Hair/bulk-model-30-auburn.png",
+
+      "33 Dark Auburn":
+        "images/Bulk Braiding Hair/bulk-model-33-dark-auburn.png",
+
+      "99J Burgundy":
+        "images/Bulk Braiding Hair/bulk-model-99j-burgundy.png",
+
+      "613 Blonde":
+        "images/Bulk Braiding Hair/bulk-model-613-blonde.png",
+
+      "Platinum Blonde":
+        "images/Bulk Braiding Hair/bulk-model-platinum-blonde.png",
+
+      "P4/27 Highlight":
+        "images/Bulk Braiding Hair/bulk-model-p4-27-highlight.png",
+
+      "P1B/27 Highlight":
+        "images/Bulk Braiding Hair/bulk-model-p1b-27-highlight.png",
+
+      "P1B/30 Highlight":
+        "images/Bulk Braiding Hair/bulk-model-p1b-30-highlight.png",
+
+      "P1B/99J Highlight":
+        "images/Bulk Braiding Hair/bulk-model-p1b-99j-highlight.png",
+
+      "Honey Caramel Balayage":
+        "images/Bulk Braiding Hair/bulk-model-honey-caramel-balayage.png",
+
+      "Custom Color Consultation":
+        null
+
+    };
+
+
+    /*
+    ============================================================
+    PRODUCT IMAGE MAP
+    ============================================================
+    */
+
+    const BULK_COLOR_PRODUCTS = {
+
+      "Honey Caramel Balayage":
+        BALAYAGE_PRODUCT_IMAGE
+
+    };
+    /*
+    ============================================================
+    PAGE ELEMENTS
+    ============================================================
+    */
+
+    const mainImage =
+      document.getElementById("main-product-image");
+
+    const productViewButton =
+      document.getElementById("product-view");
+
+    const modelViewButton =
+      document.getElementById("model-view");
+
+    const imageCaption =
+      document.getElementById("image-caption");
+
+    const lengthButtons =
+      document.querySelectorAll(".length-btn");
+
+    const colorButtons =
+      document.querySelectorAll(".color-btn");
+
+    const quantityInput =
+      document.getElementById("quantity");
+
+    const priceElement =
+      document.getElementById("price");
+
+    const priceNote =
+      document.getElementById("price-note");
+
+    const addToBagButton =
+      document.getElementById("add-to-bag");
+
+    const toast =
+      document.getElementById("toast");
+
+    const colorPreviewImages =
+      document.getElementById("color-preview-images");
+
+    const colorPreviewMessage =
+      document.getElementById("color-preview-message");
+
+    const customColorBox =
+      document.getElementById("custom-color-box");
+
+
+    /*
+    ============================================================
+    CURRENT SELECTIONS
+    ============================================================
+    */
+
+    let selectedLength = 10;
+
+       let selectedColor =
+      "Honey Caramel Balayage";
+
+    let currentView =
+      "product";
+
+
+    /*
+    ============================================================
+    MONEY FORMAT
+    ============================================================
+    */
+
+    function money(value) {
+
+      return new Intl.NumberFormat(
+        "en-US",
+        {
+          style:"currency",
+          currency:"USD"
+        }
+      ).format(value);
+
+    }
+
+
+    /*
+    ============================================================
+    QUANTITY
+    ============================================================
+    */
+
+    function getQuantity() {
+
+      const quantity =
+        Number(quantityInput.value);
+
+      if (
+        !Number.isFinite(quantity) ||
+        quantity < 1
+      ) {
+
+        quantityInput.value = 1;
+
+        return 1;
+      }
+
+      if (quantity > 20) {
+
+        quantityInput.value = 20;
+
+        return 20;
+      }
+
+      return Math.floor(quantity);
+
+    }
+
+
+    /*
+    ============================================================
+    UPDATE PRICE
+    ============================================================
+    */
+
+    function updatePrice() {
+
+      const quantity =
+        getQuantity();
+
+      const unitPrice =
+        BULK_PRICES[selectedLength];
+
+      const total =
+        unitPrice * quantity;
+
+      priceElement.textContent =
+        money(total);
+
+      priceNote.textContent =
+        selectedLength +
+        " inches • " +
+        selectedColor +
+        " • Quantity " +
+        quantity;
+
+    }
+
+
+    /*
+    ============================================================
+    GET CURRENT PRODUCT IMAGE
+    ============================================================
+    */
+
+    function getProductImage() {
+
+      if (
+        BULK_COLOR_PRODUCTS[selectedColor]
+      ) {
+
+        return BULK_COLOR_PRODUCTS[selectedColor];
+
+      }
+
+      return DEFAULT_PRODUCT_IMAGE;
+
+    }
+
+
+    /*
+    ============================================================
+    GET CURRENT MODEL IMAGE
+    ============================================================
+    */
+
+    function getModelImage() {
+
+      return (
+        BULK_COLOR_MODELS[selectedColor] ||
+        null
+      );
+
+    }
+
+
+    /*
+    ============================================================
+    UPDATE MAIN IMAGE
+    ============================================================
+    */
+
+    function updateMainImage() {
+
+      const productImage =
+        getProductImage();
+
+      const modelImage =
+        getModelImage();
+
+
+      /*
+      ----------------------------------------------------------
+      MODEL VIEW
+      ----------------------------------------------------------
+      */
+
+      if (
+        currentView === "model" &&
+        modelImage
+      ) {
+
+        mainImage.src =
+          modelImage;
+
+        mainImage.alt =
+          selectedColor +
+          " Bulk Hair Model";
+
+        imageCaption.textContent =
+          selectedColor +
+          " • Model View";
+
+        productViewButton
+          .classList
+          .remove("active");
+
+        modelViewButton
+          .classList
+          .add("active");
+
+        return;
+      }
+
+
+      /*
+      ----------------------------------------------------------
+      PRODUCT VIEW
+      ----------------------------------------------------------
+      */
+
+      currentView =
+        "product";
+
+      mainImage.src =
+        productImage;
+
+      mainImage.alt =
+        selectedColor +
+        " Bulk Braiding Hair";
+
+      imageCaption.textContent =
+        selectedColor +
+        " • Product View";
+
+      modelViewButton
+        .classList
+        .remove("active");
+
+      productViewButton
+        .classList
+        .add("active");
+
+    }
+
+
+    /*
+    
+    ============================================================
+    UPDATE COLOR PREVIEW
+    ============================================================
+    */
+
+    function updateColorPreview() {
+
+      colorPreviewImages.innerHTML = "";
+
+      customColorBox.style.display =
+        "none";
+
+
+      /*
+      ----------------------------------------------------------
+      CUSTOM COLOR
+      ----------------------------------------------------------
+      */
+
+      if (
+        selectedColor ===
+        "Custom Color Consultation"
+      ) {
+
+        colorPreviewMessage.textContent =
+          "Send us a photo of the custom color you would like.";
+
+        customColorBox.style.display =
+          "block";
+
+        return;
+
+      }
+
+
+      /*
+      ----------------------------------------------------------
+      COLOR MODEL PREVIEW
+      ----------------------------------------------------------
+      */
+
+      const modelImage =
+        BULK_COLOR_MODELS[selectedColor];
+
+      const productImage =
+        BULK_COLOR_PRODUCTS[selectedColor];
+
+
+      if (productImage) {
+
+        const productPreview =
+          document.createElement("img");
+
+        productPreview.src =
+          productImage;
+
+        productPreview.alt =
+          selectedColor +
+          " Bulk Braiding Hair";
+
+        colorPreviewImages.appendChild(
+          productPreview
+        );
+
+      }
+
+
+      if (modelImage) {
+
+        colorPreviewMessage.textContent =
+          selectedColor +
+          (productImage
+            ? " • Product and Boho Braid Model"
+            : " • Boho Braid Model");
+
+
+        const modelPreview =
+          document.createElement("img");
+
+        modelPreview.src =
+          modelImage;
+
+        modelPreview.alt =
+          selectedColor +
+          " Boho Braid Model";
+
+        colorPreviewImages.appendChild(
+          modelPreview
+        );
+
+        return;
+
+      }
+
+
+      colorPreviewMessage.textContent =
+        selectedColor +
+        " model preview unavailable.";
+
+    }
+
+
+    /*
+    ============================================================
+    LENGTH SELECTION
+    ============================================================
+    */
+
+    lengthButtons.forEach(
+      function(button) {
+
+        button.addEventListener(
+          "click",
+          function() {
+
+            lengthButtons.forEach(
+              function(item) {
+
+                item.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+            button.classList.add(
+              "active"
+            );
+
+            selectedLength =
+              Number(
+                button.dataset.length
+              );
+
+            updatePrice();
+
+          }
+        );
+
+      }
+    );
+
+    /*
+    ============================================================
+    COLOR SELECTION
+    ============================================================
+    */
+
+    colorButtons.forEach(
+      function(button) {
+
+        button.addEventListener(
+          "click",
+          function() {
+
+            colorButtons.forEach(
+              function(item) {
+                item.classList.remove("active");
+              }
+            );
+
+            button.classList.add("active");
+
+            selectedColor =
+              button.dataset.color;
+
+            /*
+            Reset to product view whenever color changes.
+            */
+
+            currentView =
+              "product";
+
+            updateMainImage();
+
+            updateColorPreview();
+
+            updatePrice();
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+    ============================================================
+    PRODUCT VIEW
+    ============================================================
+    */
+
+    productViewButton.addEventListener(
+      "click",
+      function() {
+
+        currentView =
+          "product";
+
+        updateMainImage();
+
+      }
+    );
+
+
+    /*
+    ============================================================
+    MODEL VIEW
+    ============================================================
+    */
+
+    modelViewButton.addEventListener(
+      "click",
+      function() {
+
+        const modelImage =
+          getModelImage();
+
+
+        if (!modelImage) {
+
+          showToast(
+            selectedColor +
+            " model image is coming soon."
+          );
+
+          return;
+        }
+
+
+        currentView =
+          "model";
+
+        updateMainImage();
+
+      }
+    );
+
+
+    /*
+    ============================================================
+    QUANTITY CHANGE
+    ============================================================
+    */
+
+    quantityInput.addEventListener(
+      "input",
+      updatePrice
+    );
+
+    quantityInput.addEventListener(
+      "change",
+      updatePrice
+    );
+
+
+    /*
+    ============================================================
+    TOAST
+    ============================================================
+    */
+
+    function showToast(message) {
+
+      toast.textContent =
+        message;
+
+      toast.classList.add("show");
+
+      clearTimeout(
+        window.bulkHairToastTimer
+      );
+
+      window.bulkHairToastTimer =
+        setTimeout(
+          function() {
+            toast.classList.remove("show");
+          },
+          2400
+        );
+
+    }
+
+
+    /*
+    ============================================================
+    ADD TO BAG
+    ============================================================
+    */
+
+    addToBagButton.addEventListener(
+      "click",
+      function() {
+
+        const quantity =
+          getQuantity();
+
+        const unitPrice =
+          BULK_PRICES[selectedLength];
+
+        const productImage =
+          getProductImage();
+
+
+        /*
+        --------------------------------------------------------
+        USE UNIVERSAL BIG BOSS BUNDLES CART
+        --------------------------------------------------------
+        */
+
+        if (
+          window.BBBCart &&
+          typeof window.BBBCart.add === "function"
+        ) {
+
+          window.BBBCart.add({
+
+            productId:
+              "bulk-hair",
+
+            name:
+              "Bulk Braiding Hair",
+
+            brand:
+              "Big Boss Bundles",
+
+            itemType:
+              "Bulk Braiding Hair",
+
+            length:
+              selectedLength +
+              " inches",
+
+            color:
+              selectedColor,
+
+            quantity:
+              quantity,
+
+            price:
+              unitPrice,
+
+            image:
+              productImage
+
+          });
+
+
+          showToast(
+            selectedColor +
+            " Bulk Hair added to your bag."
+          );
+
+
+          setTimeout(
+            function() {
+
+              window.location.href =
+                "cart.html";
+
+            },
+            450
+          );
+
+
+          return;
+        }
+
+
+        /*
+        --------------------------------------------------------
+        CART.JS SAFETY MESSAGE
+        --------------------------------------------------------
+        */
+
+        console.error(
+          "BBBCart is unavailable. Check cart.js."
+        );
+
+        showToast(
+          "We could not open the shopping bag. Please try again."
+        );
+
+      }
+    );
+
+
+    /*
+    ============================================================
+    INITIAL PAGE STATE
+    ============================================================
+    */
+
+    updateMainImage();
+
+    updateColorPreview();
+
+    updatePrice();
+
+  </script>
+
+</body>
+</html>
