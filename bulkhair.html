@@ -136,7 +136,7 @@
        HERO
     ========================================================= */
 
-    .hero {
+          .hero {
       background:
         radial-gradient(
           circle at 80% 20%,
@@ -144,26 +144,43 @@
           transparent 35%
         ),
         var(--black);
-
-      padding:70px 5%;
+      padding:45px 5%;
     }
 
-      .hero-image {
-      width:min(430px,100%);
-      justify-self:center;
+    .hero-grid {
+      width:min(1180px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(320px,400px);
+      align-items:center;
+      gap:50px;
+    }
+
+    .hero-grid > div:first-child {
+      align-self:center;
+    }
+
+    .hero-image {
+      width:100%;
+      max-width:400px;
+      justify-self:end;
       background:#FFFFFF;
       border:2px solid var(--gold);
-      border-radius:20px;
-      padding:10px;
-      box-shadow:0 20px 55px rgba(0,0,0,.35);
+      border-radius:18px;
+      padding:6px;
+      overflow:hidden;
+      box-shadow:0 18px 45px rgba(0,0,0,.30);
     }
 
     .hero-image img {
       display:block;
       width:100%;
-      height:500px;
+      height:auto;
+      max-height:400px;
       object-fit:contain;
       object-position:center;
+      background:#FFFFFF;
+      border-radius:12px;
     }
 
     .hero h1 {
@@ -215,40 +232,46 @@
     ========================================================= */
 
     .builder-shell {
-      width:min(1200px,100%);
+      width:min(1120px,100%);
       margin:auto;
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:minmax(320px,440px) minmax(0,1fr);
       gap:35px;
       align-items:start;
+      justify-content:center;
     }
 
-        .product-panel {
-      width:min(470px,100%);
+    .product-panel {
+      width:100%;
+      max-width:440px;
       justify-self:center;
       background:#FFFFFF;
       border:2px solid var(--gold);
-      border-radius:20px;
-      padding:12px;
+      border-radius:18px;
+      padding:7px;
       position:sticky;
       top:120px;
+      box-shadow:0 18px 45px rgba(0,0,0,.25);
+      overflow:hidden;
     }
 
     .product-panel img {
       display:block;
       width:100%;
-      height:520px;
+      height:auto;
+      max-height:500px;
       object-fit:contain;
-      object-position:center;
+      object-position:top center;
       background:#FFFFFF;
-      border-radius:14px;
+      border-radius:12px;
+      margin:0 auto;
     }
 
     .view-toggle {
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
-      margin-top:12px;
+      margin-top:10px;
     }
 
     .view-btn {
@@ -263,7 +286,6 @@
       letter-spacing:.05em;
     }
 
-
     .view-btn.active {
       background:var(--gold);
       color:var(--black);
@@ -272,7 +294,7 @@
     .image-caption {
       color:#555;
       text-align:center;
-      margin-top:12px;
+      margin-top:10px;
       font-size:.82rem;
       font-weight:700;
     }
@@ -399,7 +421,7 @@
 
     .color-preview {
       margin-top:18px;
-      padding:16px;
+      padding:12px;
       border:1px solid #333;
       border-radius:14px;
       background:#0D0D0D;
@@ -411,7 +433,7 @@
       font-weight:900;
       letter-spacing:.08em;
       text-transform:uppercase;
-      margin-bottom:10px;
+      margin-bottom:8px;
     }
 
     .color-preview p {
@@ -420,25 +442,33 @@
     }
 
     .color-preview-images {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:flex-start;
       gap:10px;
-      margin-top:12px;
+      margin-top:10px;
     }
 
     .color-preview-images img {
-      width:100%;
-      height:280px;
-      object-fit:cover;
+      display:block;
+      width:auto;
+      max-width:100%;
+      height:auto;
+      max-height:420px;
+      object-fit:contain;
       object-position:top center;
       background:#FFFFFF;
       border-radius:10px;
     }
 
     .color-preview-images img:only-child {
-      grid-column:1 / -1;
-      height:430px;
+      width:auto;
+      max-width:100%;
+      height:auto;
+      max-height:440px;
       object-fit:contain;
+      margin:0 auto;
     }
 
     /* =========================================================
@@ -669,6 +699,10 @@
         grid-template-columns:1fr;
       }
 
+      .hero-image {
+        justify-self:center;
+      }
+
       .product-panel {
         position:relative;
         top:auto;
@@ -685,15 +719,48 @@
 
     @media(max-width:650px) {
       .hero {
-        padding:45px 5%;
+        padding:35px 5%;
+      }
+
+      .hero-grid {
+        gap:30px;
+      }
+
+      .hero-image {
+        width:min(100%,360px);
+        max-width:360px;
+        justify-self:center;
       }
 
       .hero-image img {
-        height:470px;
+        width:100%;
+        height:auto;
+        max-height:370px;
+      }
+
+      .product-panel {
+        width:min(100%,400px);
+        max-width:400px;
       }
 
       .product-panel img {
-        height:500px;
+        width:100%;
+        height:auto;
+        max-height:450px;
+      }
+
+      .color-preview-images {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+
+      .color-preview-images img,
+      .color-preview-images img:only-child {
+        width:auto;
+        max-width:100%;
+        height:auto;
+        max-height:420px;
       }
 
       .length-grid {
@@ -708,7 +775,7 @@
         padding:22px;
       }
     }
-  </style>
+      </style>
 </head>
 
 <body>
@@ -1021,10 +1088,8 @@
                 Color Preview
               </div>
 
-              <p id="color-preview-message">
-                Bulk Hair color models are being added to the collection.
-                Select Honey Caramel Balayage to view the completed
-                product and model images.
+                           <p id="color-preview-message">
+                Select a color to preview the matching Boss Beauty hair model.
               </p>
 
               <div
@@ -1631,8 +1696,7 @@
     }
 
 
-    /*
-    
+       /*
     ============================================================
     UPDATE COLOR PREVIEW
     ============================================================
@@ -1642,9 +1706,7 @@
 
       colorPreviewImages.innerHTML = "";
 
-      customColorBox.style.display =
-        "none";
-
+      customColorBox.style.display = "none";
 
       /*
       ----------------------------------------------------------
@@ -1664,9 +1726,7 @@
           "block";
 
         return;
-
       }
-
 
       /*
       ----------------------------------------------------------
@@ -1675,30 +1735,10 @@
       */
 
       const modelImage =
-        BULK_COLOR_MODELS[selectedColor];
+        BULK_COLOR_MODELS[selectedColor] || null;
 
       const productImage =
-        BULK_COLOR_PRODUCTS[selectedColor];
-
-
-      if (productImage) {
-
-        const productPreview =
-          document.createElement("img");
-
-        productPreview.src =
-          productImage;
-
-        productPreview.alt =
-          selectedColor +
-          " Bulk Braiding Hair";
-
-        colorPreviewImages.appendChild(
-          productPreview
-        );
-
-      }
-
+        BULK_COLOR_PRODUCTS[selectedColor] || null;
 
       if (modelImage) {
 
@@ -1708,6 +1748,31 @@
             ? " • Product and Boho Braid Model"
             : " • Boho Braid Model");
 
+        /*
+        Only Honey Caramel has its own matching
+        product image. Show it beside the model.
+        */
+
+        if (productImage) {
+
+          const productPreview =
+            document.createElement("img");
+
+          productPreview.src =
+            productImage;
+
+          productPreview.alt =
+            selectedColor +
+            " Bulk Braiding Hair";
+
+          colorPreviewImages.appendChild(
+            productPreview
+          );
+        }
+
+        /*
+        Add the selected color model.
+        */
 
         const modelPreview =
           document.createElement("img");
@@ -1724,18 +1789,13 @@
         );
 
         return;
-
       }
-
 
       colorPreviewMessage.textContent =
         selectedColor +
         " model preview unavailable.";
-
     }
-
-
-    /*
+      /*
     ============================================================
     LENGTH SELECTION
     ============================================================
@@ -1776,6 +1836,7 @@
     );
 
     /*
+    
     ============================================================
     COLOR SELECTION
     ============================================================
@@ -1790,21 +1851,37 @@
 
             colorButtons.forEach(
               function(item) {
-                item.classList.remove("active");
+
+                item.classList.remove(
+                  "active"
+                );
+
               }
             );
 
-            button.classList.add("active");
+            button.classList.add(
+              "active"
+            );
 
             selectedColor =
               button.dataset.color;
 
             /*
-            Reset to product view whenever color changes.
+            Automatically show the matching color model
+            in the large product/model image box.
             */
 
-            currentView =
-              "product";
+            if (getModelImage()) {
+
+              currentView =
+                "model";
+
+            } else {
+
+              currentView =
+                "product";
+
+            }
 
             updateMainImage();
 
@@ -1816,6 +1893,7 @@
         );
 
       }
+
     );
 
 
