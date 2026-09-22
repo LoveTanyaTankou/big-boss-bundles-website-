@@ -207,7 +207,7 @@ $CAMBODIAN_STANDARD_COLORS = [
 |--------------------------------------------------------------------------
 */
 
-$WIG_MARKUP = 2.5;
+$WIG_MARKUP = 3;
 
 $WIG_COSTS_180 = [
 
@@ -665,6 +665,7 @@ $merchandiseSubtotal = 0;
 
 $academySessionId = '';
 $academyReservationToken = '';
+$academyRegistrationCount = 0;
 
 /*
 |--------------------------------------------------------------------------
@@ -844,7 +845,7 @@ foreach ($input['items'] as $item) {
     |--------------------------------------------------------------------------
     */
 
-    elseif ($productId === 'cambodian-bundle') {
+          elseif ($productId === 'cambodian-bundle') {
 
         $texture =
             trim(
@@ -853,6 +854,11 @@ foreach ($input['items'] as $item) {
 
         $lengthRaw =
             $item['length'] ?? '';
+
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
 
         $length =
             intval(
@@ -863,10 +869,12 @@ foreach ($input['items'] as $item) {
                 )
             );
 
-        $color =
-            trim(
-                $item['color'] ?? ''
-            );
+     
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY TEXTURE
+        |--------------------------------------------------------------------------
+        */
 
         $allowedTextures = [
             'Straight',
@@ -895,6 +903,12 @@ foreach ($input['items'] as $item) {
             exit;
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | SELECT SECURE PRICE TABLE
+        |--------------------------------------------------------------------------
+        */
+
         if (
             in_array(
                 $texture,
@@ -911,7 +925,6 @@ foreach ($input['items'] as $item) {
             $priceTable =
                 $CAMBODIAN_BASE;
         }
-
         if (
             !isset(
                 $priceTable[$length]
@@ -1200,6 +1213,413 @@ foreach ($input['items'] as $item) {
                 $descriptionParts
             );
     }
+    /*
+    |--------------------------------------------------------------------------
+    | VIETNAMESE RAW BUNDLES
+    |--------------------------------------------------------------------------
+    | Server-authoritative Vietnamese Raw bundle pricing.
+    | Prices below match the Vietnamese product page.
+    | Curly, Deep Wave, Kinky Curly and Kinky Straight add $5 retail.
+    |--------------------------------------------------------------------------
+    */
+
+       elseif ($productId === 'vietnamese-bundle') {
+
+        $texture =
+            trim(
+                $item['texture'] ?? ''
+            );
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY TEXTURE
+        |--------------------------------------------------------------------------
+        */
+
+        $VIETNAMESE_ALLOWED_TEXTURES = [
+            'Straight',
+            'Kinky Straight',
+            'Body Wave',
+            'Deep Wave',
+            'Curly',
+            'Kinky Curly'
+        ];
+
+        if (
+            !in_array(
+                $texture,
+                $VIETNAMESE_ALLOWED_TEXTURES,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Vietnamese Raw bundle texture.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | VIETNAMESE RAW BASE PRICES
+        |--------------------------------------------------------------------------
+        | Retail prices in cents.
+        |--------------------------------------------------------------------------
+        */
+
+        $VIETNAMESE_BASE = [
+            10 => 7200,
+            12 => 9300,
+            14 => 11100,
+            16 => 14100,
+            18 => 16500,
+            20 => 19200,
+            22 => 21600,
+            24 => 27600,
+            26 => 33300
+        ];
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY LENGTH
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            !isset(
+                $VIETNAMESE_BASE[$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That Vietnamese Raw bundle length is not available.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY COLOR
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== 'Custom Color Consultation' &&
+            !in_array(
+                $color,
+                $CAMBODIAN_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Vietnamese Raw bundle color.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORITATIVE SERVER PRICE
+        |--------------------------------------------------------------------------
+        */
+
+        $unitAmount =
+            $VIETNAMESE_BASE[$length];
+
+        /*
+        |--------------------------------------------------------------------------
+        | PREMIUM TEXTURE UPGRADE — $5
+        |--------------------------------------------------------------------------
+        */
+
+        $VIETNAMESE_PREMIUM_TEXTURES = [
+            'Curly',
+            'Deep Wave',
+            'Kinky Curly',
+            'Kinky Straight'
+        ];
+
+        if (
+            in_array(
+                $texture,
+                $VIETNAMESE_PREMIUM_TEXTURES,
+                true
+            )
+        ) {
+
+            $unitAmount += 500;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | STRIPE PRODUCT INFORMATION
+        |--------------------------------------------------------------------------
+        */
+
+        $productName =
+            'Vietnamese Raw Bundle';
+
+        $descriptionParts = [
+            $texture,
+            $length . '"',
+            $color,
+            'Vietnamese Raw Hair'
+        ];
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
+    }
+    /*
+    |--------------------------------------------------------------------------
+    | INDIAN RAW BUNDLES
+    |--------------------------------------------------------------------------
+    | Server-authoritative Indian Raw bundle pricing.
+    | Base prices match indian-raw.html.
+    | Kinky Straight, Deep Wave, Curly and Kinky Curly add $6 retail.
+    |--------------------------------------------------------------------------
+    */
+
+    elseif ($productId === 'indian-bundle') {
+
+        $texture =
+            trim(
+                $item['texture'] ?? ''
+            );
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY TEXTURE
+        |--------------------------------------------------------------------------
+        */
+
+        $INDIAN_RAW_ALLOWED_TEXTURES = [
+
+            'Straight',
+            'Kinky Straight',
+            'Body Wave',
+            'Deep Wave',
+            'Curly',
+            'Kinky Curly'
+
+        ];
+
+        if (
+            !in_array(
+                $texture,
+                $INDIAN_RAW_ALLOWED_TEXTURES,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Indian Raw bundle texture.'
+            ]);
+
+            exit;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | INDIAN RAW BASE PRICES
+        |--------------------------------------------------------------------------
+        | Retail prices in cents.
+        |--------------------------------------------------------------------------
+        */
+
+        $INDIAN_RAW_BASE = [
+
+            10 => 4600,
+            12 => 5800,
+            14 => 7600,
+            16 => 9700,
+            18 => 12400,
+            20 => 15400,
+            22 => 18700,
+            24 => 21400,
+            26 => 24100,
+            28 => 27100,
+            30 => 29500
+
+        ];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY LENGTH
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            !isset(
+                $INDIAN_RAW_BASE[$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That Indian Raw bundle length is not available.'
+            ]);
+
+            exit;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY COLOR
+        |--------------------------------------------------------------------------
+        | Indian Raw currently offers Natural Black, Natural Brown,
+        | or Custom Color Consultation.
+        |--------------------------------------------------------------------------
+        */
+
+        $INDIAN_RAW_COLORS = [
+
+            'Natural Black',
+            'Natural Brown',
+            'Custom Color Consultation'
+
+        ];
+
+        if (
+            !in_array(
+                $color,
+                $INDIAN_RAW_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Indian Raw bundle color.'
+            ]);
+
+            exit;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORITATIVE SERVER PRICE
+        |--------------------------------------------------------------------------
+        */
+
+        $unitAmount =
+            $INDIAN_RAW_BASE[$length];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | PREMIUM TEXTURE UPGRADE — $6
+        |--------------------------------------------------------------------------
+        */
+
+        $INDIAN_RAW_PREMIUM_TEXTURES = [
+
+            'Kinky Straight',
+            'Deep Wave',
+            'Curly',
+            'Kinky Curly'
+
+        ];
+
+        if (
+            in_array(
+                $texture,
+                $INDIAN_RAW_PREMIUM_TEXTURES,
+                true
+            )
+        ) {
+
+            $unitAmount += 600;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STRIPE PRODUCT INFORMATION
+        |--------------------------------------------------------------------------
+        */
+
+        $productName =
+            'Indian Raw Bundle';
+
+        $descriptionParts = [
+
+            $texture,
+            $length . '"',
+            $color,
+            'Indian Raw Hair'
+
+        ];
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
+
+    }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -1211,7 +1631,7 @@ foreach ($input['items'] as $item) {
     |--------------------------------------------------------------------------
     */
 
-    elseif ($productId === 'bulk-hair') {
+       elseif ($productId === 'bulk-hair') {
 
         $lengthRaw =
             $item['length'] ?? '';
@@ -1232,7 +1652,10 @@ foreach ($input['items'] as $item) {
 
         /*
         |--------------------------------------------------------------------------
-        | BULK HAIR SUPPLIER COST
+        | BULK HAIR SUPPLIER PRICING
+        |--------------------------------------------------------------------------
+        | Supplier cost in dollars.
+        | Retail price = supplier cost × 3.
         |--------------------------------------------------------------------------
         */
 
@@ -1277,8 +1700,6 @@ foreach ($input['items'] as $item) {
         |--------------------------------------------------------------------------
         | VERIFY COLOR
         |--------------------------------------------------------------------------
-        | Bulk Hair uses the same standard color selections.
-        |--------------------------------------------------------------------------
         */
 
         if (
@@ -1305,134 +1726,29 @@ foreach ($input['items'] as $item) {
         | AUTHORITATIVE SERVER PRICE
         |--------------------------------------------------------------------------
         | Supplier cost × 3.
-        | Bulk Hair colors are included at the same price.
         |--------------------------------------------------------------------------
         */
 
         $unitAmount =
             intval(
-                (
-                    $BULK_HAIR_SUPPLIER[$length] * 3
-                ) * 100
+                $BULK_HAIR_SUPPLIER[$length] *
+                3 *
+                100
             );
 
-        /*
-        |--------------------------------------------------------------------------
-        | STRIPE PRODUCT INFORMATION
-        |--------------------------------------------------------------------------
-        */
-
         $productName =
-            'Premium Bulk Braiding Hair';
+            'Bulk Braiding Hair';
 
         $descriptionParts = [
             $length . '"',
-            $color,
-            'Bulk Braiding Hair'
+            $color
         ];
-
-        if (
-            !empty(
-                $item['texture']
-            )
-        ) {
-
-            array_unshift(
-                $descriptionParts,
-                trim(
-                    $item['texture']
-                )
-            );
-        }
 
         $description =
             implode(
                 ' • ',
                 $descriptionParts
             );
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | HAIR CARE PRODUCTS
-    |--------------------------------------------------------------------------
-    */
-
-    elseif (
-        isset(
-            $PRODUCTS[$productId]
-        )
-    ) {
-
-        $product =
-            $PRODUCTS[$productId];
-
-        $unitAmount =
-            intval(
-                $product['price']
-            );
-
-        $productName =
-            $product['name'];
-
-        $variationParts = [];
-
-        if (
-            !empty(
-                $item['texture']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['texture'];
-        }
-
-        if (
-            !empty(
-                $item['length']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['length'];
-        }
-
-        if (
-            !empty(
-                $item['density']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['density'];
-        }
-
-        if (
-            !empty(
-                $item['laceSize']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['laceSize'];
-        }
-
-        if (
-            !empty(
-                $item['color']
-            )
-        ) {
-
-            $variationParts[] =
-                $item['color'];
-        }
-
-        $description =
-            implode(
-                ' • ',
-                $variationParts
-            );
-
     }
 
     /*
@@ -1448,7 +1764,7 @@ foreach ($input['items'] as $item) {
                 $item['texture'] ?? ''
             );
 
-           $laceSize =
+        $laceSize =
             str_replace(
                 '×',
                 'x',
@@ -1470,10 +1786,12 @@ foreach ($input['items'] as $item) {
                     (string)$lengthRaw
                 )
             );
+
         $color =
             trim(
                 $item['color'] ?? ''
             );
+
         if (
             !in_array(
                 $texture,
@@ -1523,11 +1841,6 @@ foreach ($input['items'] as $item) {
 
             exit;
         }
-        /*
-        |--------------------------------------------------------------------------
-        | VERIFY CLOSURE COLOR
-        |--------------------------------------------------------------------------
-        */
 
         if (
             $color !== 'Custom Color Consultation' &&
@@ -1547,18 +1860,13 @@ foreach ($input['items'] as $item) {
 
             exit;
         }
+
         $unitAmount =
             $HD_CLOSURE_PRICES[
                 $laceSize
             ][
                 $length
-            ];        /*
-        |--------------------------------------------------------------------------
-        | STANDARD COLOR UPGRADE — $18
-        |--------------------------------------------------------------------------
-        | 1B Natural Black remains base price.
-        | Custom Color Consultation remains base price until consultation.
-        */
+            ];
 
         if (
             $color !== '1B Natural Black' &&
@@ -1575,20 +1883,9 @@ foreach ($input['items'] as $item) {
         $descriptionParts = [
             $texture,
             $length . '"',
-            strtoupper($laceSize)
+            strtoupper($laceSize),
+            $color
         ];
-
-        if (
-            !empty(
-                $item['color']
-            )
-        ) {
-
-            $descriptionParts[] =
-                trim(
-                    $item['color']
-                );
-        }
 
         $description =
             implode(
@@ -1596,7 +1893,6 @@ foreach ($input['items'] as $item) {
                 $descriptionParts
             );
     }
-
 
     /*
     |--------------------------------------------------------------------------
@@ -1606,7 +1902,7 @@ foreach ($input['items'] as $item) {
 
     elseif ($productId === 'hd-lace-frontal') {
 
-              $texture =
+        $texture =
             trim(
                 $item['texture'] ?? ''
             );
@@ -1634,6 +1930,17 @@ foreach ($input['items'] as $item) {
                 )
             );
 
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
+
+            /*
+        |--------------------------------------------------------------------------
+        | VERIFY TEXTURE
+        |--------------------------------------------------------------------------
+        */
+
         if (
             !in_array(
                 $texture,
@@ -1652,6 +1959,11 @@ foreach ($input['items'] as $item) {
             exit;
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY LACE SIZE
+        |--------------------------------------------------------------------------
+        */
         if (
             !isset(
                 $HD_FRONTAL_PRICES[$laceSize]
@@ -1667,6 +1979,12 @@ foreach ($input['items'] as $item) {
 
             exit;
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY LENGTH
+        |--------------------------------------------------------------------------
+        */
 
         if (
             !isset(
@@ -1684,12 +2002,66 @@ foreach ($input['items'] as $item) {
             exit;
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY COLOR
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== 'Custom Color Consultation' &&
+            !in_array(
+                $color,
+                $CAMBODIAN_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid HD lace frontal color.'
+            ]);
+
+            exit;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORITATIVE PRICE
+        |--------------------------------------------------------------------------
+        */
+
         $unitAmount =
             $HD_FRONTAL_PRICES[
                 $laceSize
             ][
                 $length
             ];
+
+        /*
+        |--------------------------------------------------------------------------
+        | STANDARD COLOR UPGRADE — $18
+        |--------------------------------------------------------------------------
+        | 1B Natural Black remains base price.
+        | Custom Color Consultation remains base price until consultation.
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== '1B Natural Black' &&
+            $color !== 'Custom Color Consultation'
+        ) {
+
+            $unitAmount += 1800;
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | STRIPE PRODUCT INFORMATION
+        |--------------------------------------------------------------------------
+        */
 
         $productName =
             strtoupper($laceSize) .
@@ -1698,20 +2070,9 @@ foreach ($input['items'] as $item) {
         $descriptionParts = [
             $texture,
             $length . '"',
-            strtoupper($laceSize)
+            strtoupper($laceSize),
+            $color
         ];
-
-        if (
-            !empty(
-                $item['color']
-            )
-        ) {
-
-            $descriptionParts[] =
-                trim(
-                    $item['color']
-                );
-        }
 
         $description =
             implode(
@@ -1719,6 +2080,7 @@ foreach ($input['items'] as $item) {
                 $descriptionParts
             );
     }
+
        
 /*
 |--------------------------------------------------------------------------
@@ -1988,40 +2350,40 @@ $wigPrice =
     ) * 5;
 
 
-    /*
+      /*
     |--------------------------------------------------------------------------
     | COLOR
     |--------------------------------------------------------------------------
     */
 
     if (
-    $color !== '' &&
-    $color !== 'Custom Color' &&
-    !in_array(
-        $color,
-        $WIG_STANDARD_COLORS,
-        true
-    )
-) {
+        $color !== '' &&
+        $color !== 'Custom Color Consultation' &&
+        !in_array(
+            $color,
+            $WIG_STANDARD_COLORS,
+            true
+        )
+    ) {
 
-    http_response_code(400);
+        http_response_code(400);
 
-    echo json_encode([
-        'error' =>
-            'Invalid wig color.'
-    ]);
+        echo json_encode([
+            'error' =>
+                'Invalid wig color.'
+        ]);
 
-    exit;
-}
+        exit;
+    }
 
-if (
-    $color !== '' &&
-    $color !== '1B Natural Black' &&
-    $color !== 'Custom Color'
-) {
+    if (
+        $color !== '' &&
+        $color !== '1B Natural Black' &&
+        $color !== 'Custom Color Consultation'
+    ) {
 
-    $wigPrice += 18;
-}
+        $wigPrice += 18;
+    }
 
 
     /*
@@ -2228,11 +2590,36 @@ elseif (
         exit;
     }
 
-
     $class =
         $ACADEMY_CLASSES[$classSessionId];
-        $academySessionId =
-    $classSessionId;
+
+    /*
+    |--------------------------------------------------------------------------
+    | ALLOW ONLY ONE ACADEMY REGISTRATION PER CHECKOUT
+    |--------------------------------------------------------------------------
+    | Merchandise may be purchased with one Academy registration.
+    | Multiple Academy classes must be checked out separately so each
+    | seat receives its own reservation and Stripe session.
+    |--------------------------------------------------------------------------
+    */
+
+    $academyRegistrationCount++;
+
+    if ($academyRegistrationCount > 1) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'error' =>
+                'Please register for one Beauty Academy class at a time. Complete checkout for this class before registering for another class.'
+        ]);
+
+        exit;
+    }
+
+    $academySessionId =
+        $classSessionId;
+  
     /*
 |--------------------------------------------------------------------------
 | VERIFY CLASS HAS AVAILABLE SEATS
