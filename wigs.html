@@ -2476,9 +2476,9 @@ const wigTextures = {
       description: "Soft flowing waves with natural volume, movement and effortless versatility."
     },
 
-    "Deep Wave": {
+       "Deep Wave": {
       model: "images/Burmese Hair Images/burmese-deep-wave-model.png",
-      product: "images/Burmese Hair Images/burmese-deep-wave-product.png",
+      product: "images/Burmese Hair Images/burmese-deep-wave-wig-product.png",
       description: "Defined deep waves with rich texture, fullness and luxurious movement."
     },
 
@@ -2539,9 +2539,9 @@ const wigTextures = {
       description: "Natural Cambodian kinky straight texture with the appearance of a soft luxury blowout."
     },
 
-    "Kinky Curly": {
+        "Kinky Curly": {
       model: "images/Cambodian Hair Images/cambodian-kinky-curly-wig-model.png",
-      product: "images/Cambodian Hair Images/cambodian-kinky-curly-product.jpg",
+      product: "images/Cambodian Hair Images/cambodian-kinky-curly-wig-product.png",
       description: "Defined Cambodian kinky curls with rich volume, texture and natural movement."
     }
 
@@ -2566,9 +2566,9 @@ const wigTextures = {
       description: "Raw Indian body wave hair with flowing movement, natural volume and luxurious softness."
     },
 
-    "Deep Wave": {
+        "Deep Wave": {
       model: "images/Indian Raw Hair Images/indian-raw-deep-wave-model.png",
-      product: "images/Indian Raw Hair Images/indian-raw-deep-wave-product.png",
+      product: "images/Indian Raw Hair Images/indian-raw-deep-wave-wig-product.png",
       description: "Raw Indian deep wave hair with rich definition, fullness and beautiful movement."
     },
 
@@ -2926,109 +2926,189 @@ function updateProduct(){
   const collectionBrandLabel =
     document.getElementById("collection-brand-label");
 
+
+  /* =========================================================
+     BRAND / ORIGIN LABELS
+  ========================================================= */
+
   if(pageBrandLabel){
+
     pageBrandLabel.textContent =
       "Luxury " + selectedBrand + " Hair";
+
   }
 
   if(collectionBrandLabel){
+
     collectionBrandLabel.textContent =
       "Luxury " + selectedBrand + " Hair";
+
   }
 
-  mainImage.src =
-    imageView === "model"
-      ? texture.model
-      : texture.product;
 
- mainImage.alt =
-  selectedBrand +
-  " " +
-  selectedTexture +
-  " Wig";
+  /* =========================================================
+     HAIR COLOR PREVIEW
 
- productTitle.textContent =
-  selectedBrand +
-  " " +
-  selectedTexture +
-  " Wig";
-  productDescription.textContent =
-    texture.description;
+     Hair color models ONLY display inside the separate
+     Hair Color Preview box.
 
-  if(imageView === "model"){
+     They NEVER replace the main wig model/product image.
+  ========================================================= */
 
-    imageSwitch.textContent = "→";
+  let previewImages = [];
 
-    imageHint.textContent =
-      "See Product";
+  if(selectedColor === "Custom Color"){
+
+    colorModelImagesContainer.style.display =
+      "none";
+
+    colorModelLabel.style.display =
+      "none";
+
+    customColorMessage.style.display =
+      "block";
 
   }else{
 
-    imageSwitch.textContent = "←";
+    customColorMessage.style.display =
+      "none";
 
-    imageHint.textContent =
-      "See Model";
+    colorModelImagesContainer.style.display =
+      "grid";
+
+    colorModelLabel.style.display =
+      "block";
+
+    colorModelImagesContainer.innerHTML =
+      "";
+
+    previewImages =
+      colorModelImages[selectedColor] || [];
+
+    previewImages.forEach(function(imagePath){
+
+      const img =
+        document.createElement("img");
+
+      img.src =
+        imagePath;
+
+      img.alt =
+        selectedColor +
+        " Hair Color Preview";
+
+      colorModelImagesContainer.appendChild(
+        img
+      );
+
+    });
+
+    colorModelLabel.textContent =
+      selectedColor;
 
   }
-    
-/* Update Hair Color Model Preview */
 
-if(selectedColor === "Custom Color"){
 
-  colorModelImagesContainer.style.display = "none";
-  colorModelLabel.style.display = "none";
-  customColorMessage.style.display = "block";
+  /* =========================================================
+     MAIN WIG IMAGE
 
-}else{
+     MODEL VIEW:
+     Uses ONLY the wig-specific model image belonging to
+     the selected origin + texture.
 
-  customColorMessage.style.display = "none";
-  colorModelImagesContainer.style.display = "grid";
-  colorModelLabel.style.display = "block";
+     PRODUCT VIEW:
+     Uses ONLY the wig-specific product image belonging to
+     the selected origin + texture.
 
-  colorModelImagesContainer.innerHTML = "";
+     Hair color models NEVER enter this box.
+  ========================================================= */
 
-  const previewImages =
-    colorModelImages[selectedColor] || [];
+  if(imageView === "model"){
 
-  previewImages.forEach(function(imagePath){
+    mainImage.src =
+      texture.model;
 
-    const img =
-      document.createElement("img");
+    mainImage.alt =
+      selectedBrand +
+      " " +
+      selectedTexture +
+      " Wig Model";
 
-    img.src = imagePath;
+    imageSwitch.textContent =
+      "View Product";
 
-    img.alt =
-      selectedColor +
-      " Hair Color Preview";
+    imageHint.textContent =
+      selectedBrand +
+      " " +
+      selectedTexture +
+      " • Model View";
 
-    colorModelImagesContainer.appendChild(img);
+  }else{
 
-  });
+    mainImage.src =
+      texture.product;
 
-  colorModelLabel.textContent =
+    mainImage.alt =
+      selectedBrand +
+      " " +
+      selectedTexture +
+      " Wig Product";
+
+    imageSwitch.textContent =
+      "View Model";
+
+    imageHint.textContent =
+      selectedBrand +
+      " " +
+      selectedTexture +
+      " • Product View";
+
+  }
+
+
+  /* =========================================================
+     PRODUCT INFORMATION
+  ========================================================= */
+
+  productTitle.textContent =
+    selectedBrand +
+    " " +
+    selectedTexture +
+    " Wig";
+
+  productDescription.textContent =
+    texture.description;
+
+
+  /* =========================================================
+     SELECTION SUMMARY
+  ========================================================= */
+
+  selectionText.textContent =
+    selectedBrand +
+    " • " +
+    selectedTexture +
+    " • " +
+    selectedLength +
+    "\" • " +
+    selectedDensity +
+    " Density • " +
+    selectedLace.replace("x", "×") +
+    " Lace Size • " +
+    capSize.value +
+    " Cap • " +
     selectedColor;
 
-}
-selectionText.textContent =
-  selectedBrand +
-  " • " +
-  selectedTexture +
-  " • " +
-  selectedLength +
-  "\" • " +
-  selectedDensity +
-  " Density • " +
-  selectedLace.replace("x", "×") +
-  " Lace Size • " +
-  capSize.value +
-  " Cap • " +
-  selectedColor;
+
+  /* =========================================================
+     PRICE
+  ========================================================= */
+
   const unitPrice =
     calculateWigPrice();
 
   const totalPrice =
     unitPrice * quantity;
-
 
   priceDisplay.textContent =
     "$" +
@@ -3040,8 +3120,8 @@ selectionText.textContent =
       }
     );
 
-
-  addButton.disabled = false;
+  addButton.disabled =
+    false;
 
   addButton.textContent =
     "Add to Bag";
@@ -3050,21 +3130,36 @@ selectionText.textContent =
 
 
 /* =========================================================
-   MODEL / PRODUCT IMAGE
+   WIG MODEL / WIG PRODUCT SWITCH
+
+   Large image box ONLY switches between:
+
+   1. Wig-specific model
+   2. Wig-specific product
+
+   Hair color models remain in Hair Color Preview.
 ========================================================= */
 
 imageSwitch.addEventListener(
-"click",
-function(){
+  "click",
+  function(){
 
-  imageView =
-    imageView === "model"
-      ? "product"
-      : "model";
+    if(imageView === "model"){
 
-  updateProduct();
+      imageView =
+        "product";
 
-});
+    }else{
+
+      imageView =
+        "model";
+
+    }
+
+    updateProduct();
+
+  }
+);
 
 /* =========================================================
    BRAND / ORIGIN BUTTONS
@@ -3356,85 +3451,7 @@ document
    LACE IMAGE LIGHTBOX
 ========================================================= */
 
-document
-.querySelectorAll("[data-enlarge]")
-.forEach(function(button){
 
-  button.addEventListener(
-    "click",
-    function(event){
-
-      event.preventDefault();
-
-      event.stopPropagation();
-
-
-      lightboxImage.src =
-        button.dataset.enlarge;
-
-
-      lightbox.classList.add(
-        "open"
-      );
-
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-  );
-
-});
-
-
-lightboxClose.addEventListener(
-"click",
-function(){
-
-  lightbox.classList.remove(
-    "open"
-  );
-
-  document.body.style.overflow =
-    "";
-
-});
-
-
-lightbox.addEventListener(
-"click",
-function(event){
-
-  if(event.target === lightbox){
-
-    lightbox.classList.remove(
-      "open"
-    );
-
-    document.body.style.overflow =
-      "";
-
-  }
-
-});
-
-
-document.addEventListener(
-"keydown",
-function(event){
-
-  if(event.key === "Escape"){
-
-    lightbox.classList.remove(
-      "open"
-    );
-
-    document.body.style.overflow =
-      "";
-
-  }
-
-});
 
 /* =========================================================
    CAP SIZE + HAIR COLOR
@@ -5016,489 +5033,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
   }
 
-
-  /* =========================================================
-     DISPLAY MODE
-
-     "color-model"
-     = selected hair color model
-
-     "product"
-     = actual wig product for selected origin + texture
-  ========================================================= */
-
-  let displayMode =
-    "color-model";
-
-
-  /* =========================================================
-     GET CURRENT COLOR
-  ========================================================= */
-
-  function getSelectedColor(){
-
-    const activeColor =
-      document.querySelector(
-        ".hair-color-btn.active"
-      );
-
-
-    if(!activeColor){
-
-      return null;
-
-    }
-
-
-    return activeColor.dataset.color || null;
-
-  }
-
-
-  /* =========================================================
-     GET CURRENT COLOR MODEL
-
-     Uses the SAME model already loaded into the
-     Hair Color Preview section.
-
-     This prevents duplicate or mismatched filenames.
-  ========================================================= */
-
-  function getCurrentColorModel(){
-
-    if(!colorPreviewContainer){
-
-      return null;
-
-    }
-
-
-    return colorPreviewContainer.querySelector("img");
-
-  }
-
-
-  /* =========================================================
-     SHOW SELECTED COLOR MODEL
-  ========================================================= */
-
-  function showColorModel(){
-
-    if(!mainWigImage){
-
-      return;
-
-    }
-
-
-    const colorName =
-      getSelectedColor();
-
-
-    if(
-      !colorName ||
-      colorName === "Custom Color"
-    ){
-
-      showWigProduct();
-
-      return;
-
-    }
-
-
-    const colorModel =
-      getCurrentColorModel();
-
-
-    if(!colorModel){
-
-      /*
-        Preview may have just been rebuilt by the
-        original wig script.
-
-        Do not replace the main image with a blank image.
-      */
-
-      return;
-
-    }
-
-
-    displayMode =
-      "color-model";
-
-
-    mainWigImage.src =
-      colorModel.src;
-
-
-    mainWigImage.alt =
-      colorName +
-      " Hair Color Model";
-
-
-    if(imageSwitchButton){
-
-      imageSwitchButton.textContent =
-        "View Product";
-
-    }
-
-
-    if(imageHintText){
-
-      imageHintText.textContent =
-        colorName +
-        " • Model View";
-
-    }
-
-  }
-
-
-  /* =========================================================
-     SHOW ACTUAL WIG PRODUCT
-
-     Uses corrected wigTextures mapping from the
-     main wig script.
-  ========================================================= */
-
-  function showWigProduct(){
-
-    if(
-      !mainWigImage ||
-      typeof wigTextures === "undefined" ||
-      typeof selectedBrand === "undefined" ||
-      typeof selectedTexture === "undefined"
-    ){
-
-      return;
-
-    }
-
-
-    const brandTextures =
-      wigTextures[selectedBrand];
-
-
-    if(!brandTextures){
-
-      return;
-
-    }
-
-
-    const texture =
-      brandTextures[selectedTexture];
-
-
-    if(
-      !texture ||
-      !texture.product
-    ){
-
-      return;
-
-    }
-
-
-    displayMode =
-      "product";
-
-
-    mainWigImage.src =
-      texture.product;
-
-
-    mainWigImage.alt =
-      selectedBrand +
-      " " +
-      selectedTexture +
-      " Wig Product";
-
-
-    if(imageSwitchButton){
-
-      imageSwitchButton.textContent =
-        "View Model";
-
-    }
-
-
-    if(imageHintText){
-
-      imageHintText.textContent =
-        selectedBrand +
-        " " +
-        selectedTexture +
-        " • Product View";
-
-    }
-
-  }
-
-
-  /* =========================================================
-     REAPPLY CURRENT LARGE IMAGE
-
-     Original updateProduct() controls pricing,
-     descriptions, summary and color preview.
-
-     This function restores whichever large-image
-     view the customer chose AFTER updateProduct runs.
-  ========================================================= */
-
-  function refreshLargeImage(){
-
-    if(displayMode === "product"){
-
-      showWigProduct();
-
-    }else{
-
-      showColorModel();
-
-    }
-
-  }
-
-
-  /* =========================================================
-     COLOR BUTTONS
-
-     Selecting a color ALWAYS opens that color's
-     matching model in the large image.
-  ========================================================= */
-
-  document
-    .querySelectorAll(".hair-color-btn")
-    .forEach(function(button){
-
-      button.addEventListener(
-        "click",
-        function(){
-
-          const colorName =
-            button.dataset.color;
-
-
-          if(colorName === "Custom Color"){
-
-            displayMode =
-              "product";
-
-
-            setTimeout(
-              showWigProduct,
-              0
-            );
-
-
-            return;
-
-          }
-
-
-          displayMode =
-            "color-model";
-
-
-          /*
-            Original color handler runs first and
-            rebuilds #color-model-images.
-
-            Run immediately afterward.
-          */
-
-          setTimeout(
-            showColorModel,
-            0
-          );
-
-        }
-      );
-
-    });
-
-
-  /* =========================================================
-     PRODUCT / MODEL BUTTON
-
-     This listener runs after the original listener.
-
-     We deliberately set the final image ourselves,
-     preventing the old arrow logic from leaving the
-     wrong origin / texture / color on screen.
-  ========================================================= */
-
-  if(imageSwitchButton){
-
-    imageSwitchButton.addEventListener(
-      "click",
-      function(){
-
-        if(displayMode === "color-model"){
-
-          setTimeout(
-            showWigProduct,
-            0
-          );
-
-        }else{
-
-          displayMode =
-            "color-model";
-
-
-          setTimeout(
-            showColorModel,
-            0
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     ORIGIN CHANGE
-
-     Customer selected a different hair origin.
-
-     Keep model mode active and refresh the selected
-     color model after the original product update.
-  ========================================================= */
-
-  document
-    .querySelectorAll(".brand-btn")
-    .forEach(function(button){
-
-      button.addEventListener(
-        "click",
-        function(){
-
-          displayMode =
-            "color-model";
-
-
-          setTimeout(
-            showColorModel,
-            0
-          );
-
-        }
-      );
-
-    });
-
-
-  /* =========================================================
-     TEXTURE CHANGE
-
-     Keep selected color model in large display.
-  ========================================================= */
-
-  document
-    .querySelectorAll(".texture-btn")
-    .forEach(function(button){
-
-      button.addEventListener(
-        "click",
-        function(){
-
-          displayMode =
-            "color-model";
-
-
-          setTimeout(
-            showColorModel,
-            0
-          );
-
-        }
-      );
-
-    });
-
-
-  /* =========================================================
-     OPTIONS THAT SHOULD NOT CHANGE THE LARGE IMAGE
-
-     Length
-     Density
-     Lace
-     Cap
-     Quantity
-
-     Original code updates pricing and selection summary.
-     Then we restore the customer's current image view.
-  ========================================================= */
-
-  document
-    .querySelectorAll(
-      ".length-btn, .density-btn, [data-select-lace], .qty-btn"
-    )
-    .forEach(function(button){
-
-      button.addEventListener(
-        "click",
-        function(){
-
-          setTimeout(
-            refreshLargeImage,
-            0
-          );
-
-        }
-      );
-
-    });
-
-
-  if(capSelect){
-
-    capSelect.addEventListener(
-      "change",
-      function(){
-
-        setTimeout(
-          refreshLargeImage,
-          0
-        );
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     INITIAL DISPLAY
-
-     Page opens with selected 1B Natural Black model
-     in the large image.
-
-     Wait until original updateProduct() has populated
-     the Hair Color Preview.
-  ========================================================= */
-
-  setTimeout(
-    function(){
-
-      displayMode =
-        "color-model";
-
-      showColorModel();
-
-    },
-    0
-  );
-
-});
 
 </script>
 </body>
