@@ -2882,8 +2882,95 @@ if ($seatsRemaining <= 0) {
         );
 
 }
-    else {
+ /*
+|--------------------------------------------------------------------------
+| HAIR CARE & ACCESSORIES
+|--------------------------------------------------------------------------
+| Uses the server-authoritative $PRODUCTS catalog defined above.
+|--------------------------------------------------------------------------
+*/
 
+elseif (isset($PRODUCTS[$productId])) {
+
+    $product =
+        $PRODUCTS[$productId];
+
+    /*
+    |--------------------------------------------------------------------------
+    | SERVER-AUTHORITATIVE PRODUCT INFORMATION
+    |--------------------------------------------------------------------------
+    */
+
+    $unitAmount =
+        $product['price'];
+
+    $productName =
+        $product['name'];
+
+    $descriptionParts = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | LACE TINT MOUSSE SHADE
+    |--------------------------------------------------------------------------
+    */
+
+    if ($productId === 'lace-tint-mousse') {
+
+        $shade =
+            trim(
+                $item['color'] ?? ''
+            );
+
+        $allowedShades = [
+            'Light Brown',
+            'Medium Brown',
+            'Dark Brown'
+        ];
+
+        if (
+            !in_array(
+                $shade,
+                $allowedShades,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Please select a valid lace tint shade.'
+            ]);
+
+            exit;
+        }
+
+        $descriptionParts[] =
+            'Shade: ' . $shade;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PRODUCT DESCRIPTION
+    |--------------------------------------------------------------------------
+    */
+
+    if (!empty($descriptionParts)) {
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
+
+    } else {
+
+        $description =
+            'Big Boss Beauty Hair Care & Accessories';
+    }
+}
+else {
         http_response_code(400);
 
         echo json_encode([
