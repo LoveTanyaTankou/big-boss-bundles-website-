@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Order confirmation pages should not appear in search results -->
+  <meta name="robots" content="noindex, nofollow">
+
   <title>Order Confirmed | Big Boss Bundles</title>
 
   <style>
@@ -49,12 +52,11 @@
       align-items: center;
       justify-content: center;
       padding: 60px 20px;
-      background:
-        linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #fafafa 100%
-        );
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fafafa 100%
+      );
     }
 
     .success-card {
@@ -118,6 +120,21 @@
 
     .confirmation-box p {
       font-size: 15px;
+      line-height: 1.7;
+      color: #444444;
+    }
+
+    .pickup-note {
+      background: #f8f7f3;
+      border-left: 4px solid #D4A622;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin: 25px 0;
+      text-align: left;
+    }
+
+    .pickup-note p {
+      font-size: 14px;
       line-height: 1.7;
       color: #444444;
     }
@@ -234,14 +251,25 @@
           Your payment was securely processed through Stripe.
           Please keep your payment confirmation for your records.
           <br><br>
-          We will begin preparing your order for shipment.
+          We will begin preparing your order. Most orders require
+          approximately 7–10 business days for processing before
+          shipment or local pickup.
         </p>
       </div>
 
       <p class="thank-you">
-        Once your order ships, please watch for your shipping
-        and tracking information.
+        For shipped orders, watch for your shipping and tracking
+        information once your order is on the way.
       </p>
+
+      <div class="pickup-note">
+        <p>
+          <strong>Local Pickup:</strong>
+          If you selected local pickup, please wait until you receive
+          confirmation that your order is ready before coming to the store.
+          An order confirmation does not mean your order is ready for pickup.
+        </p>
+      </div>
 
       <div class="button-row">
 
@@ -270,7 +298,13 @@
   <footer>
     <span class="gold">BIG BOSS BUNDLES</span>
     <br>
-    Pflugerville, Texas
+    301 W Pecan Street
+    <br>
+    Pflugerville, TX 78660
+    <br><br>
+    Monday–Saturday: 9:00 AM–9:00 PM
+    <br>
+    Sunday: Closed
     <br><br>
     Boss Beauty.
   </footer>
