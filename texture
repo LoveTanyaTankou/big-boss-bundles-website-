@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shop By Texture | Big Boss Bundles</title>
+
+<meta
+  name="description"
+  content="Shop Big Boss Bundles luxury raw hair by texture. Explore bundles, wigs, HD lace closures and frontals in Straight, Kinky Straight, Body Wave, Deep Wave, Curly and Kinky Curly."
+>
+
+<style>
+
+:root {
+  --black:#0a0a0a;
+  --soft-black:#141414;
+  --gold:#d4a622;
+  --teal:#00a6d6;
+  --white:#ffffff;
+  --cream:#f8f7f3;
+  --gray:#777777;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--white);
+  color:var(--black);
+  line-height:1.5;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+/* =========================
+   ANNOUNCEMENT
+========================= */
+
+.announcement {
+  background:var(--teal);
+  color:var(--white);
+  text-align:center;
+  padding:10px 18px;
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(10,10,10,.97);
+  border-bottom:2px solid var(--gold);
+}
+
+.header-inner {
+  width:min(1380px,94%);
+  margin:auto;
+  min-height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.logo {
+  width:190px;
+  flex-shrink:0;
+}
+
+.logo img {
+  display:block;
+  width:100%;
+  max-height:74px;
+  object-fit:contain;
+}
+
+.nav {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.nav a {
+  color:var(--white);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.nav a:hover {
+  color:var(--teal);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.texture-hero {
+  padding:90px 5% 80px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0,166,214,.22),
+      transparent 42%
+    ),
+    var(--black);
+
+  color:var(--white);
+  text-align:center;
+}
+
+.eyebrow {
+  display:block;
+  color:var(--teal);
+  font-size:.76rem;
+  font-weight:900;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+}
+
+.texture-hero h1 {
+  max-width:1100px;
+  margin:12px auto 0;
+
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:clamp(3rem,7vw,6rem);
+  line-height:.98;
+
+  text-transform:uppercase;
+}
+
+.texture-hero p {
+  max-width:760px;
+  margin:22px auto 0;
+
+  color:rgba(255,255,255,.78);
+  font-size:1.05rem;
+}
+
+.selected-texture {
+  display:inline-block;
+
+  margin-top:28px;
+  padding:11px 22px;
+
+  border:2px solid var(--teal);
+  border-radius:999px;
+
+  color:var(--white);
+
+  font-size:.78rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* =========================
+   SHOP SECTION
+========================= */
+
+.shop-section {
+  padding:80px 5% 95px;
+  background:var(--cream);
+}
+
+.heading {
+  width:min(850px,100%);
+  margin:0 auto 45px;
+  text-align:center;
+}
+
+.heading h2 {
+  margin-top:8px;
+
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:clamp(2.2rem,5vw,4.2rem);
+  line-height:1;
+
+  text-transform:uppercase;
+}
+
+.heading p {
+  max-width:720px;
+  margin:17px auto 0;
+
+  color:var(--gray);
+}
+
+/* =========================
+   PRODUCT CATEGORY CARDS
+========================= */
+
+.texture-category-grid {
+  width:min(1180px,100%);
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+
+  gap:25px;
+}
+
+.texture-category-card {
+  min-height:360px;
+
+  padding:36px;
+
+  border:2px solid var(--gold);
+  border-radius:24px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0,166,214,.19),
+      transparent 43%
+    ),
+    var(--black);
+
+  color:var(--white);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  box-shadow:0 14px 38px rgba(0,0,0,.13);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+.texture-category-card:hover {
+  transform:translateY(-5px);
+  border-color:var(--teal);
+}
+
+.category-number {
+  color:var(--teal);
+
+  font-size:.75rem;
+  font-weight:900;
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
+}
+
+.texture-category-card h3 {
+  margin-top:14px;
+
+  color:var(--gold);
+
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1;
+
+  text-transform:uppercase;
+}
+
+.texture-category-card p {
+  margin-top:18px;
+
+  max-width:470px;
+
+  color:rgba(255,255,255,.72);
+
+  font-size:.95rem;
+  line-height:1.65;
+}
+
+.origin-list {
+  margin-top:20px;
+
+  color:var(--white);
+
+  font-size:.78rem;
+  font-weight:900;
+  line-height:1.7;
+
+  text-transform:uppercase;
+}
+
+.shop-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  align-self:flex-start;
+
+  min-height:50px;
+
+  margin-top:30px;
+  padding:12px 22px;
+
+  border-radius:999px;
+
+  background:var(--teal);
+  border:2px solid var(--teal);
+
+  color:var(--white);
+
+  font-size:.78rem;
+  font-weight:900;
+  letter-spacing:.07em;
+
+  text-transform:uppercase;
+}
+
+.texture-category-card:hover .shop-button {
+  background:var(--gold);
+  border-color:var(--gold);
+  color:var(--black);
+}
+
+/* =========================
+   OTHER TEXTURES
+========================= */
+
+.other-textures {
+  padding:80px 5%;
+  background:var(--white);
+}
+
+.texture-buttons {
+  width:min(1000px,100%);
+  margin:35px auto 0;
+
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+
+  gap:15px;
+}
+
+.texture-choice {
+  min-height:60px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px;
+
+  border:2px solid var(--gold);
+  border-radius:14px;
+
+  background:var(--black);
+  color:var(--white);
+
+  font-weight:900;
+
+  text-align:center;
+  text-transform:uppercase;
+
+  transition:.2s ease;
+}
+
+.texture-choice:hover {
+  background:var(--gold);
+  color:var(--black);
+}
+
+.texture-choice.active {
+  background:var(--teal);
+  border-color:var(--teal);
+  color:var(--white);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  padding:58px 5% 25px;
+
+  background:#050505;
+  color:var(--white);
+
+  border-top:2px solid var(--gold);
+}
+
+.footer-grid {
+  width:min(1200px,100%);
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr 1fr;
+
+  gap:38px;
+}
+
+.footer h3,
+.footer h4 {
+  margin-bottom:14px;
+  color:var(--gold);
+}
+
+.footer p,
+.footer a {
+  display:block;
+
+  margin:8px 0;
+
+  color:rgba(255,255,255,.69);
+
+  font-size:.9rem;
+}
+
+.footer a:hover {
+  color:var(--teal);
+}
+
+.copyright {
+  width:min(1200px,100%);
+
+  margin:38px auto 0;
+  padding-top:22px;
+
+  border-top:1px solid rgba(255,255,255,.11);
+
+  color:rgba(255,255,255,.48);
+
+  text-align:center;
+
+  font-size:.78rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px) {
+
+  .header-inner {
+    flex-direction:column;
+    padding:15px 0;
+  }
+
+  .nav {
+    justify-content:center;
+  }
+
+  .texture-category-grid {
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+}
+
+@media(max-width:650px) {
+
+  .site-header {
+    position:static;
+  }
+
+  .logo {
+    width:160px;
+  }
+
+  .texture-hero {
+    padding:65px 5%;
+  }
+
+  .shop-section,
+  .other-textures {
+    padding:60px 5%;
+  }
+
+  .texture-category-card {
+    min-height:330px;
+    padding:28px 24px;
+  }
+
+  .texture-buttons {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     ANNOUNCEMENT
+========================= -->
+
+<div class="announcement">
+  Luxury Raw Hair • HD Lace Wigs • Closures • Frontals • Boss Beauty
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="logo" href="index.html" aria-label="Big Boss Bundles Home">
+
+      <img
+        src="https://bigbossbundles.com/images/Homepage Images/Owner Images/Lifestyle Images/Store Images/Branding/BigBossBundles-logo.jpg"
+        alt="Big Boss Bundles"
+      >
+
+    </a>
+
+    <nav class="nav">
+
+      <a href="index.html">Home</a>
+
+      <a href="bundles.html">Bundles</a>
+
+      <a href="wigs.html">Wigs</a>
+
+      <a href="closures.html">
+        Closures &amp; Frontals
+      </a>
+
+      <a href="mens-hair-pieces.html">
+        Men's Hair
+      </a>
+
+      <a href="bulk-hair.html">
+        Bulk Hair
+      </a>
+
+      <a href="hair-care.html">
+        Hair Care
+      </a>
+
+      <a href="classes.html">
+        Beauty Academy
+      </a>
+
+      <a href="cart.html">
+        Bag
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     TEXTURE HERO
+========================= -->
+
+<section class="texture-hero">
+
+  <span class="eyebrow">
+    Find Your Texture
+  </span>
+
+  <h1 id="textureTitle">
+    Shop Body Wave
+  </h1>
+
+  <p id="textureDescription">
+    Explore Body Wave across Big Boss Bundles luxury hair collections.
+    Shop bundles, wigs, HD lace closures and frontals in your selected texture.
+  </p>
+
+  <div
+    class="selected-texture"
+    id="selectedTexture"
+  >
+    Selected Texture: Body Wave
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SHOP TEXTURE
+========================= -->
+
+<section class="shop-section">
+
+  <div class="heading">
+
+    <span class="eyebrow">
+      Shop Your Look
+    </span>
+
+    <h2 id="shopHeading">
+      Body Wave Collection
+    </h2>
+
+    <p>
+      Choose the product type you want.
+      Your selected texture will follow you into the next shopping page.
+    </p>
+
+  </div>
+
+
+  <div class="texture-category-grid">
+
+
+    <!-- BUNDLES -->
+
+    <a
+      id="bundlesLink"
+      href="bundles.html?texture=Body%20Wave"
+      class="texture-category-card"
+    >
+
+      <div>
+
+        <span class="category-number">
+          01 • Luxury Hair
+        </span>
+
+        <h3>Bundles</h3>
+
+        <p id="bundlesDescription">
+          Shop Body Wave luxury bundles in multiple origins,
+          lengths and color options.
+        </p>
+
+        <div class="origin-list">
+          LAOS • Cambodian • Indian Raw • Vietnamese • Burmese
+        </div>
+
+      </div>
+
+      <span class="shop-button" id="bundlesButton">
+        Shop Body Wave Bundles →
+      </span>
+
+    </a>
+
+
+    <!-- WIGS -->
+
+    <a
+      id="wigsLink"
+      href="wigs.html?texture=Body%20Wave"
+      class="texture-category-card"
+    >
+
+      <div>
+
+        <span class="category-number">
+          02 • HD Lace
+        </span>
+
+        <h3>Wigs</h3>
+
+        <p id="wigsDescription">
+          Shop Body Wave luxury HD lace wigs with multiple
+          origins, lengths, densities, lace sizes and colors.
+        </p>
+
+        <div class="origin-list">
+          LAOS • Cambodian • Indian Raw • Vietnamese • Burmese
+        </div>
+
+      </div>
+
+      <span class="shop-button" id="wigsButton">
+        Shop Body Wave Wigs →
+      </span>
+
+    </a>
+
+
+    <!-- CLOSURES -->
+
+    <a
+      id="closuresLink"
+      href="closures.html?texture=Body%20Wave#closures"
+      class="texture-category-card"
+    >
+
+      <div>
+
+        <span class="category-number">
+          03 • HD Lace
+        </span>
+
+        <h3>Closures</h3>
+
+        <p id="closuresDescription">
+          Shop Body Wave HD lace closures for seamless,
+          natural-looking installs.
+        </p>
+
+        <div class="origin-list">
+          2×6 • 4×4 • 5×5 • 6×6
+        </div>
+
+      </div>
+
+      <span class="shop-button" id="closuresButton">
+        Shop Body Wave Closures →
+      </span>
+
+    </a>
+
+
+    <!-- FRONTALS -->
+
+    <a
+      id="frontalsLink"
+      href="closures.html?texture=Body%20Wave#frontals"
+      class="texture-category-card"
+    >
+
+      <div>
+
+        <span class="category-number">
+          04 • HD Lace
+        </span>
+
+        <h3>Frontals</h3>
+
+        <p id="frontalsDescription">
+          Shop Body Wave HD lace frontals for versatile,
+          seamless installs and beautiful styling.
+        </p>
+
+        <div class="origin-list">
+          13×4 • 13×6
+        </div>
+
+      </div>
+
+      <span class="shop-button" id="frontalsButton">
+        Shop Body Wave Frontals →
+      </span>
+
+    </a>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     OTHER TEXTURES
+========================= -->
+
+<section class="other-textures">
+
+  <div class="heading">
+
+    <span class="eyebrow">
+      Explore More
+    </span>
+
+    <h2>
+      Six Signature Textures
+    </h2>
+
+    <p>
+      Change your texture at any time and shop the complete
+      Big Boss Bundles collection.
+    </p>
+
+  </div>
+
+
+  <div class="texture-buttons">
+
+    <a
+      href="texture.html?texture=Straight"
+      class="texture-choice"
+      data-texture="Straight"
+    >
+      Straight
+    </a>
+
+    <a
+      href="texture.html?texture=Kinky%20Straight"
+      class="texture-choice"
+      data-texture="Kinky Straight"
+    >
+      Kinky Straight
+    </a>
+
+    <a
+      href="texture.html?texture=Body%20Wave"
+      class="texture-choice"
+      data-texture="Body Wave"
+    >
+      Body Wave
+    </a>
+
+    <a
+      href="texture.html?texture=Deep%20Wave"
+      class="texture-choice"
+      data-texture="Deep Wave"
+    >
+      Deep Wave
+    </a>
+
+    <a
+      href="texture.html?texture=Curly"
+      class="texture-choice"
+      data-texture="Curly"
+    >
+      Curly
+    </a>
+
+    <a
+      href="texture.html?texture=Kinky%20Curly"
+      class="texture-choice"
+      data-texture="Kinky Curly"
+    >
+      Kinky Curly
+    </a>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+  <div class="footer-grid">
+
+
+    <div>
+
+      <h3>
+        Big Boss Bundles
+      </h3>
+
+      <p>
+        Luxury bundles, wigs, closures, frontals,
+        men's hair pieces and professional hair care.
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        Collections
+      </h4>
+
+      <a href="laos.html">
+        LAOS
+      </a>
+
+      <a href="cambodian.html">
+        Cambodian
+      </a>
+
+      <a href="indian%20Raw.html">
+        Indian Raw
+      </a>
+
+      <a href="vietnamese.html">
+        Vietnamese
+      </a>
+
+      <a href="burmese.html">
+        Burmese
+      </a>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        Shop
+      </h4>
+
+      <a href="bundles.html">
+        Bundles
+      </a>
+
+      <a href="wigs.html">
+        Wigs
+      </a>
+
+      <a href="closures.html">
+        Closures &amp; Frontals
+      </a>
+
+      <a href="hair-care.html">
+        Hair Care
+      </a>
+
+    </div>
+
+
+    <div>
+
+      <h4>
+        Customer Care
+      </h4>
+
+      <a href="contact.html">
+        Contact Us
+      </a>
+
+      <a href="shipping-policy.html">
+        Shipping Policy
+      </a>
+
+      <a href="return-policy.html">
+        Return &amp; Exchange Policy
+      </a>
+
+      <a href="privacy-policy.html">
+        Privacy Policy
+      </a>
+
+      <a href="terms-and-conditions.html">
+        Terms &amp; Conditions
+      </a>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 Big Boss Bundles. All rights reserved.
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   BIG BOSS BUNDLES
+   SHOP BY TEXTURE
+========================================================= */
+
+
+/* Allowed textures */
+
+const allowedTextures = [
+  "Straight",
+  "Kinky Straight",
+  "Body Wave",
+  "Deep Wave",
+  "Curly",
+  "Kinky Curly"
+];
+
+
+/* Read texture from URL */
+
+const params =
+  new URLSearchParams(window.location.search);
+
+let texture =
+  params.get("texture") || "Body Wave";
+
+
+/* Validate texture */
+
+const matchedTexture =
+  allowedTextures.find(
+    item =>
+      item.toLowerCase() ===
+      texture.toLowerCase()
+  );
+
+texture =
+  matchedTexture || "Body Wave";
+
+
+/* URL-safe version */
+
+const encodedTexture =
+  encodeURIComponent(texture);
+
+
+/* =========================
+   UPDATE PAGE TITLE
+========================= */
+
+document.title =
+  `Shop ${texture} Hair | Big Boss Bundles`;
+
+
+document.getElementById(
+  "textureTitle"
+).textContent =
+  `Shop ${texture}`;
+
+
+document.getElementById(
+  "textureDescription"
+).textContent =
+  `Explore ${texture} across Big Boss Bundles luxury hair collections. Shop bundles, wigs, HD lace closures and frontals in your selected texture.`;
+
+
+document.getElementById(
+  "selectedTexture"
+).textContent =
+  `Selected Texture: ${texture}`;
+
+
+document.getElementById(
+  "shopHeading"
+).textContent =
+  `${texture} Collection`;
+
+
+/* =========================
+   UPDATE CATEGORY TEXT
+========================= */
+
+document.getElementById(
+  "bundlesDescription"
+).textContent =
+  `Shop ${texture} luxury bundles in multiple origins, lengths and color options.`;
+
+
+document.getElementById(
+  "wigsDescription"
+).textContent =
+  `Shop ${texture} luxury HD lace wigs with multiple origins, lengths, densities, lace sizes and colors.`;
+
+
+document.getElementById(
+  "closuresDescription"
+).textContent =
+  `Shop ${texture} HD lace closures for seamless, natural-looking installs.`;
+
+
+document.getElementById(
+  "frontalsDescription"
+).textContent =
+  `Shop ${texture} HD lace frontals for versatile, seamless installs and beautiful styling.`;
+
+
+/* =========================
+   UPDATE BUTTON TEXT
+========================= */
+
+document.getElementById(
+  "bundlesButton"
+).textContent =
+  `Shop ${texture} Bundles →`;
+
+
+document.getElementById(
+  "wigsButton"
+).textContent =
+  `Shop ${texture} Wigs →`;
+
+
+document.getElementById(
+  "closuresButton"
+).textContent =
+  `Shop ${texture} Closures →`;
+
+
+document.getElementById(
+  "frontalsButton"
+).textContent =
+  `Shop ${texture} Frontals →`;
+
+
+/* =========================
+   UPDATE LINKS
+========================= */
+
+document.getElementById(
+  "bundlesLink"
+).href =
+  `bundles.html?texture=${encodedTexture}`;
+
+
+document.getElementById(
+  "wigsLink"
+).href =
+  `wigs.html?texture=${encodedTexture}`;
+
+
+document.getElementById(
+  "closuresLink"
+).href =
+  `closures.html?texture=${encodedTexture}#closures`;
+
+
+document.getElementById(
+  "frontalsLink"
+).href =
+  `closures.html?texture=${encodedTexture}#frontals`;
+
+
+/* =========================
+   HIGHLIGHT CURRENT TEXTURE
+========================= */
+
+document
+  .querySelectorAll(".texture-choice")
+  .forEach(button => {
+
+    if (
+      button.dataset.texture === texture
+    ) {
+
+      button.classList.add("active");
+
+    }
+
+  });
+
+</script>
+
+
+</body>
+</html>
