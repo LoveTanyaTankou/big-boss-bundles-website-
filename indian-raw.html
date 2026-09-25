@@ -543,18 +543,64 @@
        COLOR
     ===================================================== */
 
-    .color-select {
-      width:100%;
+   /* COLOR MODEL PREVIEW */
 
-      padding:15px 16px;
+.color-model-preview {
+  margin-top:16px;
+  padding:16px;
+  border:1px solid #3a3a3a;
+  border-radius:12px;
+  background:#0b0b0b;
+}
 
-      border:1px solid #555;
+.color-preview-heading {
+  color:var(--gold);
+  font-weight:900;
+  text-transform:uppercase;
+  font-size:.78rem;
+  margin-bottom:12px;
+}
 
-      border-radius:10px;
+.color-model-images {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  width:100%;
+}
 
-      background:#090909;
+.color-model-images img {
+  display:block;
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  object-position:top center;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#fff;
+}
 
-      color:#FFF;
+.color-model-images img:only-child {
+  grid-column:1 / -1;
+  width:100%;
+  height:520px;
+  object-fit:contain;
+  object-position:center;
+  background:#fff;
+}
+
+.color-model-label {
+  margin-top:10px;
+  color:var(--teal);
+  font-weight:900;
+  text-align:center;
+}
+
+.custom-color-message {
+  margin-top:12px;
+  color:#ddd;
+  line-height:1.5;
+  text-align:center;
+}
     }
 
 
@@ -1360,40 +1406,129 @@
           </div>
 
 
-          <!-- COLOR -->
+       <!-- COLOR -->
 
-          <div class="option-group">
+<div class="option-group">
 
-            <div class="option-heading">
+  <div class="option-heading">
 
-              <span class="step-number">
-                3
-              </span>
+    <span class="step-number">
+      3
+    </span>
 
-              Choose Color
+    Choose Color
 
-            </div>
+  </div>
 
-            <select
-              id="color-select"
-              class="color-select"
-            >
+  <select
+    id="color-select"
+    class="color-select"
+  >
 
-              <option>
-                Natural Black
-              </option>
+    <option value="1 Jet Black">
+      1 Jet Black
+    </option>
 
-              <option>
-                Natural Brown
-              </option>
+    <option value="1B Natural Black" selected>
+      1B Natural Black
+    </option>
 
-              <option>
-                Custom Color Consultation
-              </option>
+    <option value="2 Dark Brown">
+      2 Dark Brown
+    </option>
 
-            </select>
+    <option value="4 Medium Brown">
+      4 Medium Brown
+    </option>
 
-          </div>
+    <option value="27 Honey Blonde">
+      27 Honey Blonde
+    </option>
+
+    <option value="30 Auburn">
+      30 Auburn
+    </option>
+
+    <option value="33 Dark Auburn">
+      33 Dark Auburn
+    </option>
+
+    <option value="99J Burgundy">
+      99J Burgundy
+    </option>
+
+    <option value="613 Blonde">
+      613 Blonde
+    </option>
+
+    <option value="Platinum Blonde">
+      Platinum Blonde
+    </option>
+
+    <option value="P4/27 Highlight">
+      P4/27 Highlight
+    </option>
+
+    <option value="P1B/27 Highlight">
+      P1B/27 Highlight
+    </option>
+
+    <option value="P1B/30 Highlight">
+      P1B/30 Highlight
+    </option>
+
+    <option value="P1B/99J Highlight">
+      P1B/99J Highlight
+    </option>
+
+    <option value="Honey Caramel Balayage">
+      Honey Caramel Balayage
+    </option>
+
+    <option value="Custom Color Consultation">
+      Custom Color Consultation
+    </option>
+
+  </select>
+
+  <div class="color-model-preview">
+
+    <div class="color-preview-heading">
+      Hair Color Preview
+    </div>
+
+    <div
+      id="color-model-images"
+      class="color-model-images"
+    ></div>
+
+    <div
+      id="color-model-label"
+      class="color-model-label"
+    >
+      1B Natural Black
+    </div>
+
+    <div
+      id="custom-color-message"
+      class="custom-color-message"
+      style="display:none;"
+    >
+
+      <strong>
+        Custom Color Consultation
+      </strong>
+
+      <p>
+        Text a photo of your desired hair color to
+        Big Boss Bundles at (512) 937-5119.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
 
 
           <!-- QUANTITY -->
