@@ -556,7 +556,127 @@
 
       color:#FFF;
     }
+/* =====================================================
+   COLOR SWATCHES + COLOR MODEL PREVIEW
+===================================================== */
 
+.color-swatches {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+
+.color-swatch {
+  width:38px;
+  height:38px;
+  padding:0;
+  border:2px solid #555;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.2s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,.35);
+}
+
+.color-swatch:hover {
+  transform:scale(1.08);
+  border-color:var(--teal);
+}
+
+.color-swatch.active {
+  border:3px solid var(--gold);
+  box-shadow:
+    0 0 0 2px #000,
+    0 0 0 4px var(--gold);
+}
+
+.split-swatch,
+.balayage-swatch {
+  overflow:hidden;
+}
+
+.color-model-preview {
+  margin-top:20px;
+  padding:18px;
+  border:1px solid #3a3a3a;
+  border-radius:14px;
+  background:#0b0b0b;
+}
+
+.color-preview-heading {
+  margin-bottom:14px;
+  color:var(--gold);
+  font-size:.8rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.color-model-images {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  width:100%;
+}
+
+.color-model-images img {
+  display:block;
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  object-position:top center;
+  border:1px solid #333;
+  border-radius:10px;
+  background:#fff;
+}
+
+.color-model-images img:only-child {
+  grid-column:1 / -1;
+  width:100%;
+  height:500px;
+  object-fit:contain;
+  object-position:center;
+  background:#fff;
+}
+
+.color-model-label {
+  margin-top:12px;
+  color:var(--teal);
+  font-size:.9rem;
+  font-weight:900;
+  text-align:center;
+  text-transform:uppercase;
+}
+
+.custom-color-message {
+  margin-top:14px;
+  padding:14px;
+  border:1px solid rgba(212,166,34,.5);
+  border-radius:10px;
+  color:#ddd;
+  line-height:1.5;
+  text-align:center;
+}
+
+.custom-color-message strong {
+  display:block;
+  margin-bottom:6px;
+  color:var(--gold);
+}
+
+@media(max-width:700px) {
+
+  .color-model-images {
+    grid-template-columns:1fr;
+  }
+
+  .color-model-images img {
+    height:auto;
+    max-height:500px;
+    object-fit:contain;
+  }
+
+}
 
     /* =====================================================
        QUANTITY
@@ -1361,40 +1481,216 @@
           </div>
 
 
-          <!-- COLOR -->
+        <!-- COLOR -->
 
-          <div class="option-group">
+<div class="option-group">
 
-            <div class="option-heading">
+  <div class="option-heading">
+    <span class="step-number">3</span>
+    Choose Color
+  </div>
 
-              <span class="step-number">
-                3
-              </span>
+  <select
+    id="color-select"
+    class="color-select"
+  >
+    <option value="1 Jet Black">1 Jet Black</option>
+    <option value="1B Natural Black" selected>1B Natural Black</option>
+    <option value="2 Dark Brown">2 Dark Brown</option>
+    <option value="4 Medium Brown">4 Medium Brown</option>
+    <option value="27 Honey Blonde">27 Honey Blonde</option>
+    <option value="30 Auburn">30 Auburn</option>
+    <option value="33 Dark Auburn">33 Dark Auburn</option>
+    <option value="99J Burgundy">99J Burgundy</option>
+    <option value="613 Blonde">613 Blonde</option>
+    <option value="Platinum Blonde">Platinum Blonde</option>
+    <option value="P4/27 Highlight">P4/27 Highlight</option>
+    <option value="P1B/27 Highlight">P1B/27 Highlight</option>
+    <option value="P1B/30 Highlight">P1B/30 Highlight</option>
+    <option value="P1B/99J Highlight">P1B/99J Highlight</option>
+    <option value="Honey Caramel Balayage">Honey Caramel Balayage</option>
+    <option value="Custom Color Consultation">Custom Color Consultation</option>
+  </select>
 
-              Choose Color
 
-            </div>
+  <!-- COLOR SWATCHES -->
 
-            <select
-              id="color-select"
-              class="color-select"
-            >
+  <div class="color-swatches">
 
-              <option>
-                Natural Black
-              </option>
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="1 Jet Black"
+      aria-label="1 Jet Black"
+      title="1 Jet Black"
+      style="background:#050505;"
+    ></button>
 
-              <option>
-                Natural Brown
-              </option>
+    <button
+      type="button"
+      class="color-swatch active"
+      data-color="1B Natural Black"
+      aria-label="1B Natural Black"
+      title="1B Natural Black"
+      style="background:#16110f;"
+    ></button>
 
-              <option>
-                Custom Color Consultation
-              </option>
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="2 Dark Brown"
+      aria-label="2 Dark Brown"
+      title="2 Dark Brown"
+      style="background:#3b2418;"
+    ></button>
 
-            </select>
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="4 Medium Brown"
+      aria-label="4 Medium Brown"
+      title="4 Medium Brown"
+      style="background:#6b4226;"
+    ></button>
 
-          </div>
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="27 Honey Blonde"
+      aria-label="27 Honey Blonde"
+      title="27 Honey Blonde"
+      style="background:#c98b42;"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="30 Auburn"
+      aria-label="30 Auburn"
+      title="30 Auburn"
+      style="background:#8b452d;"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="33 Dark Auburn"
+      aria-label="33 Dark Auburn"
+      title="33 Dark Auburn"
+      style="background:#633126;"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="99J Burgundy"
+      aria-label="99J Burgundy"
+      title="99J Burgundy"
+      style="background:#59172c;"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="613 Blonde"
+      aria-label="613 Blonde"
+      title="613 Blonde"
+      style="background:#e8cf91;"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch"
+      data-color="Platinum Blonde"
+      aria-label="Platinum Blonde"
+      title="Platinum Blonde"
+      style="background:#eee5d2;"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch split-swatch"
+      data-color="P4/27 Highlight"
+      aria-label="P4/27 Highlight"
+      title="P4/27 Highlight"
+      style="background:linear-gradient(90deg,#6b4226 50%,#c98b42 50%);"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch split-swatch"
+      data-color="P1B/27 Highlight"
+      aria-label="P1B/27 Highlight"
+      title="P1B/27 Highlight"
+      style="background:linear-gradient(90deg,#16110f 50%,#c98b42 50%);"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch split-swatch"
+      data-color="P1B/30 Highlight"
+      aria-label="P1B/30 Highlight"
+      title="P1B/30 Highlight"
+      style="background:linear-gradient(90deg,#16110f 50%,#8b452d 50%);"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch split-swatch"
+      data-color="P1B/99J Highlight"
+      aria-label="P1B/99J Highlight"
+      title="P1B/99J Highlight"
+      style="background:linear-gradient(90deg,#16110f 50%,#59172c 50%);"
+    ></button>
+
+    <button
+      type="button"
+      class="color-swatch balayage-swatch"
+      data-color="Honey Caramel Balayage"
+      aria-label="Honey Caramel Balayage"
+      title="Honey Caramel Balayage"
+      style="background:linear-gradient(90deg,#2a1a14 0%,#6b4226 35%,#b97b3e 70%,#d9aa68 100%);"
+    ></button>
+
+  </div>
+
+
+  <!-- COLOR MODEL PREVIEW -->
+
+  <div class="color-model-preview">
+
+    <div class="color-preview-heading">
+      Hair Color Preview
+    </div>
+
+    <div
+      id="color-model-images"
+      class="color-model-images"
+    ></div>
+
+    <div
+      id="color-model-label"
+      class="color-model-label"
+    >
+      1B Natural Black
+    </div>
+
+    <div
+      id="custom-color-message"
+      class="custom-color-message"
+      style="display:none;"
+    >
+      <strong>Custom Color Consultation</strong>
+
+      <p>
+        Text a photo of your desired hair color to
+        Big Boss Bundles at (512) 937-5119.
+      </p>
+    </div>
+
+  </div>
+
+</div>
 
 
           <!-- QUANTITY -->
