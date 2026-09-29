@@ -2374,119 +2374,117 @@ updateColorPreview();
         );
 
 
-        /* ============================
-           ADD TO BAG
-        ============================ */
+      /* ============================
+   ADD TO BAG
+============================ */
 
-        addToBagButton.addEventListener(
-          "click",
-          function () {
+addToBagButton.addEventListener(
+  "click",
+  function () {
 
-            const selectedColor =
-              colorSelect.value;
+    const selectedColor =
+      colorSelect.value;
 
-            if (
-              selectedColor ===
-              "Custom Color Consultation"
-            ) {
-
-              alert(
-                "Please contact Big Boss Bundles for your custom color consultation before ordering."
-              );
-
-              return;
-
-            }
+    const quantity =
+      Number(quantityInput.value);
 
 
-            const product = {
+    if (
+      selectedColor ===
+      "Custom Color Consultation"
+    ) {
 
-              name:
-                "Feathered Crochet Hair",
+      alert(
+        "Please contact Big Boss Bundles for your custom color consultation before ordering."
+      );
 
-              texture:
-                selectedTexture,
-
-              length:
-                selectedLength + '"',
-
-              color:
-                selectedColor,
-
-              price:
-                getPrice(),
-
-              quantity:
-                Number(
-                  quantityInput.value
-                )
-
-            };
+      return;
+    }
 
 
-            /*
-              Uses your existing universal cart
-              if its add function is available.
-            */
+    /*
+    ------------------------------------------------------------
+    USE UNIVERSAL BIG BOSS BUNDLES CART
+    ------------------------------------------------------------
+    */
 
-            if (
-              typeof window.addToCart ===
-              "function"
-            ) {
+    if (
+      window.BBBCart &&
+      typeof window.BBBCart.add === "function"
+    ) {
 
-              window.addToCart(
-                product
-              );
+      window.BBBCart.add({
 
-            } else {
+        productId:
+          "feathered-crochet-hair",
 
-              /*
-                Fallback localStorage cart
-              */
+        name:
+          "Feathered Crochet Hair",
 
-              const cart =
-                JSON.parse(
-                  localStorage.getItem(
-                    "cart"
-                  ) || "[]"
-                );
+        brand:
+          "Big Boss Bundles",
 
-              cart.push(
-                product
-              );
+        itemType:
+          "Feathered Crochet Hair",
 
-              localStorage.setItem(
-                "cart",
-                JSON.stringify(cart)
-              );
+        texture:
+          selectedTexture,
 
-            }
+        length:
+          selectedLength + " inches",
+
+        color:
+          selectedColor,
+
+        quantity:
+          quantity,
+
+        price:
+          getPrice(),
+
+        image:
+          mainProductImage
+            ? mainProductImage.src
+            : "/images/Feathered%20Crochet%20Hair/feathered-crochet-body-wave.jpg"
+
+      });
 
 
-            toast.textContent =
-              selectedLength +
-              '" ' +
-              selectedTexture +
-              " Feathered Crochet Hair added to your bag.";
+      /*
+      ----------------------------------------------------------
+      REMEMBER SHOPPING PAGE
+      ----------------------------------------------------------
+      */
 
-            toast.classList.add(
-              "show"
-            );
+      sessionStorage.setItem(
+        "bbbLastShoppingPage",
+        window.location.href
+      );
 
-            setTimeout(
-              function () {
 
-                toast.classList.remove(
-                  "show"
-                );
+      /*
+      ----------------------------------------------------------
+      GO DIRECTLY TO CART
+      ----------------------------------------------------------
+      */
 
-              },
-              2800
-            );
+      window.location.href =
+        "cart.html";
 
-          }
-        );
+      return;
+    }
 
+
+    console.error(
+      "BBBCart is unavailable. Check cart.js."
+    );
+
+    alert(
+      "We could not add this item to your bag. Please try again."
+    );
+
+  }
+);
 /* ============================
    PRODUCT GALLERY + IMAGE ZOOM
 ============================ */
