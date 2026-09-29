@@ -139,7 +139,29 @@
       color:var(--gold);
     }
 
+/* FEATHERED CROCHET TUTORIAL BANNER */
 
+.crochet-tutorial-banner {
+  width:100%;
+  margin:0;
+  padding:0;
+  background:#050505;
+  overflow:hidden;
+}
+
+.crochet-tutorial-banner img {
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0 auto;
+}
+
+@media(max-width:700px) {
+  .crochet-tutorial-banner img {
+    width:100%;
+    height:auto;
+  }
+}
     /* HERO */
 
     .hero {
@@ -226,8 +248,180 @@
       min-height:720px;
       object-fit:cover;
       object-position:top center;
-    }
+    }/* PRODUCT MEDIA GALLERY */
 
+#product-media-display {
+  width:100%;
+  background:#111;
+}
+
+.product-gallery {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  padding:16px;
+  background:#080808;
+  border-top:1px solid #2c2c2c;
+}
+
+.gallery-thumb {
+  position:relative;
+  height:150px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid #444;
+  border-radius:12px;
+  background:#111;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.gallery-thumb:hover {
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
+
+.gallery-thumb.active {
+  border:2px solid var(--gold);
+}
+
+.gallery-thumb img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.gallery-label {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:8px;
+  background:rgba(0,0,0,.78);
+  color:#fff;
+  font-size:.72rem;
+  font-weight:900;
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.video-preview {
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,166,214,.18),
+      transparent 60%
+    ),
+    #0b0b0b;
+}
+
+.play-icon {
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-left:4px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  color:var(--gold);
+  font-size:22px;
+}
+
+.video-text {
+  color:#fff;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+#main-product-video {
+  display:none;
+  width:100%;
+  min-height:720px;
+  background:#000;
+  object-fit:contain;
+}
+
+@media(max-width:700px) {
+
+  .product-gallery {
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+    padding:10px;
+  }
+
+  .gallery-thumb {
+    height:115px;
+  }
+
+  #main-product-video {
+    min-height:500px;
+  }
+
+}
+/* IMAGE ZOOM */
+
+.image-zoom-modal {
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  background:rgba(0,0,0,.94);
+  cursor:zoom-out;
+}
+
+.image-zoom-modal.show {
+  display:flex;
+}
+
+.image-zoom-image {
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:94vw;
+  max-height:92vh;
+  object-fit:contain;
+  border-radius:12px;
+  box-shadow:0 20px 70px rgba(0,0,0,.65);
+  cursor:default;
+}
+
+.image-zoom-close {
+  position:absolute;
+  top:20px;
+  right:28px;
+  z-index:5001;
+  width:50px;
+  height:50px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  background:#050505;
+  color:var(--gold);
+  font-size:32px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.image-zoom-close:hover {
+  background:var(--gold);
+  color:#000;
+}
+
+.gallery-thumb[data-media="image"] {
+  cursor:zoom-in;
+}
     .image-placeholder {
       width:100%;
       min-height:720px;
@@ -726,7 +920,19 @@
   </header>
 
 
-  <section class="hero">
+<!-- FEATHERED CROCHET STEP BY STEP TUTORIAL -->
+
+<section class="crochet-tutorial-banner">
+
+  <img
+    src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-step-by-step-tutorial.jpg"
+    alt="Feathered Crochet Hair Step by Step Installation Tutorial"
+  >
+
+</section>
+
+
+<section class="hero">
 
     <span class="eyebrow">
       Big Boss Bundles
@@ -753,29 +959,99 @@
       <div class="builder">
 
 
-        <!-- PRODUCT IMAGE AREA -->
+   <!-- PRODUCT IMAGE AREA -->
 
-        <div class="product-image-area">
+<div class="product-image-area">
 
-          <div class="image-placeholder">
+  <div id="product-media-display">
 
-            <div class="image-placeholder-inner">
+    <img
+      id="main-product-image"
+      class="main-image"
+      src="/images/Feathered%20Crochet%20Hair/feathered-crochet-body-wave.jpg"
+      alt="Big Boss Bundles Feathered Crochet Hair Body Wave"
+    >
 
-              <h2>
-                Feathered Crochet Hair
-              </h2>
+    <video
+      id="main-product-video"
+      class="main-image"
+      controls
+      playsinline
+      preload="metadata"
+      style="display:none;"
+    >
+      <source
+        src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-video.mp4"
+        type="video/mp4"
+      >
+      Your browser does not support video.
+    </video>
 
-              <p>
-                Product photography coming soon.
-                Choose your texture, length and color
-                to build your Feathered Crochet Hair order.
-              </p>
+  </div>
 
-            </div>
 
-          </div>
+ <div class="product-gallery">
 
-        </div>
+  <button
+    type="button"
+    class="gallery-thumb"
+    data-media="image"
+    data-src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-textures.jpg"
+    aria-label="View all Feathered Crochet Hair textures"
+  >
+    <img
+      src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-textures.jpg"
+      alt="Big Boss Bundles Feathered Crochet Hair Texture Collection"
+    >
+    <span class="gallery-label">All Textures</span>
+  </button>
+
+
+  <button
+    type="button"
+    class="gallery-thumb"
+    data-media="image"
+    data-src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-detail.png"
+    aria-label="View Feathered Crochet Hair texture detail"
+  >
+    <img
+      src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-detail.png"
+      alt="Big Boss Bundles Feathered Crochet Hair Texture Detail"
+    >
+    <span class="gallery-label">Texture Detail</span>
+  </button>
+
+
+  <button
+    type="button"
+    class="gallery-thumb"
+    data-media="image"
+    data-src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-ring-detail.png"
+    aria-label="View Feathered Crochet Hair ring detail"
+  >
+    <img
+      src="/images/Feathered%20Crochet%20Hair/feathered-crochet-hair-ring-detail.png"
+      alt="Big Boss Bundles Feathered Crochet Hair Ring Detail"
+    >
+    <span class="gallery-label">Hair Detail</span>
+  </button>
+
+
+  <button
+    type="button"
+    class="gallery-thumb video-thumb"
+    data-media="video"
+    aria-label="Play Feathered Crochet Hair video"
+  >
+    <div class="video-preview">
+      <span class="play-icon">▶</span>
+      <span class="video-text">WATCH VIDEO</span>
+    </div>
+  </button>
+
+</div>
+
+</div>
 
 
         <!-- PRODUCT CONFIGURATION -->
@@ -793,11 +1069,13 @@
             Feathered Crochet Hair
           </h2>
 
-          <p class="product-description">
-            Select from six textures, lengths from
-            12 to 32 inches and our full collection
-            of hair colors.
-          </p>
+        <p class="product-description">
+  Select from 10 beautiful textures, lengths from 12 to 32 inches,
+  and our full collection of hair colors. Treat your Feathered Crochet
+  Hair just like your own natural hair. With proper care and maintenance,
+  this hair can be reused for multiple installations and can last for
+  several years, making it a long-lasting addition to your hair collection.
+</p>
 
 
           <div class="divider"></div>
@@ -817,57 +1095,99 @@
 
             </div>
 
-            <div class="texture-grid">
+           <div class="texture-grid">
 
-              <button
-                type="button"
-                class="texture-btn"
-                data-texture="Straight"
-              >
-                Straight
-              </button>
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="French Curly"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-french-curly.jpg"
+  >
+    French Curly
+  </button>
 
-              <button
-                type="button"
-                class="texture-btn active"
-                data-texture="Body Wave"
-              >
-                Body Wave
-              </button>
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Straight"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-straight.jpg"
+  >
+    Straight
+  </button>
 
-              <button
-                type="button"
-                class="texture-btn"
-                data-texture="Deep Wave"
-              >
-                Deep Wave
-              </button>
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Ocean Wave"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-ocean-wave.jpg"
+  >
+    Ocean Wave
+  </button>
 
-              <button
-                type="button"
-                class="texture-btn"
-                data-texture="Curly"
-              >
-                Curly
-              </button>
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Deep Wave"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-deep-wave.jpg"
+  >
+    Deep Wave
+  </button>
 
-              <button
-                type="button"
-                class="texture-btn"
-                data-texture="Kinky Straight"
-              >
-                Kinky Straight
-              </button>
+  <button
+    type="button"
+    class="texture-btn active"
+    data-texture="Body Wave"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-body-wave.jpg"
+  >
+    Body Wave
+  </button>
 
-              <button
-                type="button"
-                class="texture-btn"
-                data-texture="Kinky Curly"
-              >
-                Kinky Curly
-              </button>
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Kinky Curly"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-kinky-curly.jpg"
+  >
+    Kinky Curly
+  </button>
 
-            </div>
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Water Wave"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-water-wave.jpg"
+  >
+    Water Wave
+  </button>
+
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Jerry Curly"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-jerry-curly.jpg"
+  >
+    Jerry Curly
+  </button>
+
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Kinky Straight"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-kinky-straight.jpg"
+  >
+    Kinky Straight
+  </button>
+
+  <button
+    type="button"
+    class="texture-btn"
+    data-texture="Spiral Curly"
+    data-image="/images/Feathered%20Crochet%20Hair/feathered-crochet-spiral-curly.jpg"
+  >
+    Spiral Curly
+  </button>
+
+</div>
 
           </div>
 
@@ -1233,7 +1553,55 @@
             </div>
 
           </div>
+<!-- HAIR COLOR MODEL PREVIEW -->
 
+<div
+  id="color-preview"
+  style="
+    margin-top:22px;
+    padding:20px;
+    border:1px solid #333;
+    border-radius:14px;
+    background:#0b0b0b;
+  "
+>
+
+  <div
+    id="color-preview-label"
+    style="
+      color:#D4A622;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:14px;
+      text-align:center;
+    "
+  >
+    1B Natural Black
+  </div>
+
+  <div
+    id="color-model-images"
+    style="
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    "
+  ></div>
+
+  <div
+    id="custom-color-message"
+    style="
+      display:none;
+      color:#ddd;
+      line-height:1.6;
+      text-align:center;
+    "
+  >
+    Contact Big Boss Bundles with a photo of your
+    desired hair color for a custom color consultation.
+  </div>
+
+</div>
 
           <!-- QUANTITY -->
 
@@ -1333,18 +1701,19 @@
 
       <div class="info-grid">
 
-        <div class="info-card">
+       <div class="info-card">
 
-          <h3>
-            Six Textures
-          </h3>
+  <h3>
+    10 Textures
+  </h3>
 
-          <p>
-            Straight, Body Wave, Deep Wave,
-            Curly, Kinky Straight and Kinky Curly.
-          </p>
+  <p>
+    French Curly, Straight, Ocean Wave, Deep Wave,
+    Body Wave, Kinky Curly, Water Wave, Jerry Curly,
+    Kinky Straight and Spiral Curly.
+  </p>
 
-        </div>
+</div>
 
 
         <div class="info-card">
@@ -1404,7 +1773,27 @@
     id="toast"
   ></div>
 
+<!-- IMAGE ZOOM MODAL -->
 
+<div id="image-zoom-modal" class="image-zoom-modal">
+
+  <button
+    type="button"
+    id="image-zoom-close"
+    class="image-zoom-close"
+    aria-label="Close enlarged image"
+  >
+    &times;
+  </button>
+
+  <img
+    id="image-zoom-image"
+    class="image-zoom-image"
+    src=""
+    alt="Enlarged Feathered Crochet Hair"
+  >
+
+</div>
   <script src="cart.js"></script>
 
 
@@ -1562,41 +1951,69 @@
         }
 
 
-        /* ============================
-           TEXTURE BUTTONS
-        ============================ */
+      /* ============================
+   TEXTURE BUTTONS
+============================ */
+
+const mainProductImage =
+  document.getElementById(
+    "main-product-image"
+  );
+
+textureButtons.forEach(
+  function (button) {
+
+    button.addEventListener(
+      "click",
+      function () {
+
+        selectedTexture =
+          button.dataset.texture;
 
         textureButtons.forEach(
-          function (button) {
+          function (item) {
 
-            button.addEventListener(
-              "click",
-              function () {
-
-                selectedTexture =
-                  button.dataset.texture;
-
-                textureButtons.forEach(
-                  function (item) {
-
-                    item.classList.remove(
-                      "active"
-                    );
-
-                  }
-                );
-
-                button.classList.add(
-                  "active"
-                );
-
-                updateDisplay();
-
-              }
+            item.classList.remove(
+              "active"
             );
 
           }
         );
+
+        button.classList.add(
+          "active"
+        );
+
+
+        /* CHANGE PRODUCT IMAGE */
+
+        const newImage =
+          button.dataset.image;
+
+        if (
+          mainProductImage &&
+          newImage
+        ) {
+
+          mainProductImage.src =
+            newImage;
+
+          mainProductImage.alt =
+            "Big Boss Bundles Feathered Crochet Hair " +
+            selectedTexture;
+
+        }
+
+
+        /* UPDATE PRICE / DESCRIPTION */
+
+        updateDisplay();
+
+      }
+    );
+
+  }
+);
 
 
         /* ============================
@@ -1641,27 +2058,195 @@
         /* ============================
            COLOR DROPDOWN
         ============================ */
+/* ============================
+   HAIR COLOR MODEL PREVIEW
+============================ */
 
-        colorSelect.addEventListener(
-          "change",
-          function () {
+const colorPreview =
+  document.getElementById("color-preview");
 
-            colorSwatches.forEach(
-              function (swatch) {
+const colorPreviewLabel =
+  document.getElementById("color-preview-label");
 
-                swatch.classList.toggle(
-                  "active",
-                  swatch.dataset.color ===
-                    colorSelect.value
-                );
+const colorModelImages =
+  document.getElementById("color-model-images");
 
-              }
-            );
+const customColorMessage =
+  document.getElementById("custom-color-message");
 
-            updateDisplay();
 
-          }
-        );
+const colorModels = {
+
+  "1 Jet Black": [
+    "/images/Hair%20Color%20Models/color-1-jet-black-white-model.png",
+    "/images/Hair%20Color%20Models/color-1-jet-black.png"
+  ],
+
+  "1B Natural Black": [
+    "/images/Hair%20Color%20Models/color-1b-natural-black-white-model.png",
+    "/images/Hair%20Color%20Models/color-1b-natural-black.png"
+  ],
+
+  "2 Dark Brown": [
+    "/images/Hair%20Color%20Models/color-2-dark-brown-white-model.png",
+    "/images/Hair%20Color%20Models/color-2-dark-brown.png"
+  ],
+
+  "4 Medium Brown": [
+    "/images/Hair%20Color%20Models/color-4-medium-brown-white-model.png",
+    "/images/Hair%20Color%20Models/color-4-medium-brown-black-model.png"
+  ],
+
+  "27 Honey Blonde": [
+    "/images/Hair%20Color%20Models/color-27-honey-blonde-white-model.png",
+    "/images/Hair%20Color%20Models/color-27-honey-blonde-black-model.png"
+  ],
+
+  "30 Auburn": [
+    "/images/Hair%20Color%20Models/color-30-auburn-white-model.png",
+    "/images/Hair%20Color%20Models/color-30-auburn-black-model.png"
+  ],
+
+  "33 Dark Auburn": [
+    "/images/Hair%20Color%20Models/color-33-dark-auburn-black-white-models.png"
+  ],
+
+  "99J Burgundy": [
+    "/images/Hair%20Color%20Models/color-99j-burgundy-white-model.png",
+    "/images/Hair%20Color%20Models/color-99j-burgundy-black-model.png"
+  ],
+
+  "613 Blonde": [
+    "/images/Hair%20Color%20Models/color-613-blonde-white-model.png",
+    "/images/Hair%20Color%20Models/color-613-blonde-black-model.png"
+  ],
+
+  "Platinum Blonde": [
+    "/images/Hair%20Color%20Models/color-platinum-blonde-black-white-models.png"
+  ],
+
+  "P4/27 Highlight": [
+    "/images/Hair%20Color%20Models/color-p4-27-highlight-white-model.png",
+    "/images/Hair%20Color%20Models/color-p4-27-highlight-black-model.png"
+  ],
+
+  "P1B/27 Highlight": [
+    "/images/Hair%20Color%20Models/color-p1b-27-highlight-white-model.png",
+    "/images/Hair%20Color%20Models/color-p1b-27-highlight-black-model.png"
+  ],
+
+  "P1B/30 Highlight": [
+    "/images/Hair%20Color%20Models/color-p1b-30-highlight-black-white-models.png"
+  ],
+
+  "P1B/99J Highlight": [
+    "/images/Hair%20Color%20Models/color-p1b-99j-highlight-black-white-models.png"
+  ],
+
+  "Honey Caramel Balayage": [
+    "/images/Hair%20Color%20Models/honey-caramel-balayage-white-model.png",
+    "/images/Hair%20Color%20Models/honey-caramel-balayage-black-model.png"
+  ]
+
+};
+
+
+function updateColorPreview() {
+
+  const selectedColor =
+    colorSelect.value;
+
+  colorPreviewLabel.textContent =
+    selectedColor;
+
+
+  colorModelImages.innerHTML = "";
+
+
+  /* CUSTOM COLOR */
+
+  if (
+    selectedColor ===
+    "Custom Color Consultation"
+  ) {
+
+    colorModelImages.style.display =
+      "none";
+
+    customColorMessage.style.display =
+      "block";
+
+    return;
+
+  }
+
+
+  customColorMessage.style.display =
+    "none";
+
+  colorModelImages.style.display =
+    "grid";
+
+
+  const images =
+    colorModels[selectedColor];
+
+
+  if (!images) {
+
+    colorModelImages.innerHTML =
+      "<p style='color:#aaa;text-align:center;grid-column:1/-1;'>Color preview coming soon.</p>";
+
+    return;
+
+  }
+
+
+  images.forEach(
+    function(imagePath) {
+
+      const img =
+        document.createElement("img");
+
+      img.src =
+        imagePath;
+
+      img.alt =
+        selectedColor +
+        " Feathered Crochet Hair Color";
+
+      img.loading =
+        "lazy";
+
+      img.style.width =
+        "100%";
+
+      img.style.height =
+        "auto";
+
+      img.style.borderRadius =
+        "12px";
+
+      img.style.display =
+        "block";
+
+      colorModelImages.appendChild(
+        img
+      );
+
+    }
+  );
+
+}
+       colorSelect.addEventListener(
+  "change",
+  function () {
+
+    updateDisplay();
+    updateColorPreview();
+
+  }
+);
 
 
         /* ============================
@@ -1692,8 +2277,8 @@
                   "active"
                 );
 
-                updateDisplay();
-
+               updateDisplay();
+updateColorPreview();
               }
             );
 
@@ -1858,8 +2443,162 @@
           }
         );
 
+/* ============================
+   PRODUCT GALLERY + IMAGE ZOOM
+============================ */
 
-        updateDisplay();
+const galleryThumbs =
+  document.querySelectorAll(".gallery-thumb");
+
+const mainProductVideo =
+  document.getElementById("main-product-video");
+
+const zoomModal =
+  document.getElementById("image-zoom-modal");
+
+const zoomImage =
+  document.getElementById("image-zoom-image");
+
+const zoomClose =
+  document.getElementById("image-zoom-close");
+
+
+galleryThumbs.forEach(function (thumb) {
+
+  thumb.addEventListener("click", function () {
+
+    const mediaType = thumb.dataset.media;
+
+
+    /* ENLARGE GALLERY IMAGES */
+
+    if (mediaType === "image") {
+
+      const imageSrc = thumb.dataset.src;
+
+      if (!imageSrc) return;
+
+      if (mainProductVideo) {
+        mainProductVideo.pause();
+      }
+
+      zoomImage.src = imageSrc;
+
+      zoomImage.alt =
+        thumb.getAttribute("aria-label") ||
+        "Feathered Crochet Hair";
+
+      zoomModal.classList.add("show");
+
+      document.body.style.overflow = "hidden";
+
+      return;
+    }
+
+
+    /* PLAY PRODUCT VIDEO */
+
+    if (mediaType === "video") {
+
+      if (mainProductImage) {
+        mainProductImage.style.display = "none";
+      }
+
+      if (mainProductVideo) {
+
+        mainProductVideo.style.display = "block";
+
+        mainProductVideo.load();
+
+        mainProductVideo.play().catch(function () {
+          /* Video controls remain available */
+        });
+
+      }
+
+    }
+
+  });
+
+});
+
+
+/* ============================
+   CLOSE IMAGE ZOOM
+============================ */
+
+function closeImageZoom() {
+
+  zoomModal.classList.remove("show");
+
+  document.body.style.overflow = "";
+
+}
+
+
+zoomClose.addEventListener(
+  "click",
+  closeImageZoom
+);
+
+
+zoomModal.addEventListener(
+  "click",
+  function (event) {
+
+    if (event.target === zoomModal) {
+      closeImageZoom();
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  function (event) {
+
+    if (
+      event.key === "Escape" &&
+      zoomModal.classList.contains("show")
+    ) {
+
+      closeImageZoom();
+
+    }
+
+  }
+);
+
+
+/* ============================
+   RETURN TO TEXTURE IMAGE
+============================ */
+
+textureButtons.forEach(function (button) {
+
+  button.addEventListener("click", function () {
+
+    if (mainProductVideo) {
+
+      mainProductVideo.pause();
+
+      mainProductVideo.style.display = "none";
+
+    }
+
+    if (mainProductImage) {
+
+      mainProductImage.style.display = "block";
+
+    }
+
+  });
+
+});
+
+updateDisplay();
+updateColorPreview();
 
       }
     );
