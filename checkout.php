@@ -1750,7 +1750,207 @@ foreach ($input['items'] as $item) {
                 $descriptionParts
             );
     }
+    /*
+    |--------------------------------------------------------------------------
+    | FEATHERED CROCHET HAIR
+    |--------------------------------------------------------------------------
+    | Server-authoritative Feathered Crochet Hair pricing.
+    | Available lengths: 12" through 32".
+    | Standard specialty colors add $18.
+    |--------------------------------------------------------------------------
+    */
 
+    elseif ($productId === 'feathered-crochet-hair') {
+
+        $texture =
+            trim(
+                $item['texture'] ?? ''
+            );
+
+        $lengthRaw =
+            $item['length'] ?? '';
+
+        $length =
+            intval(
+                preg_replace(
+                    '/[^0-9]/',
+                    '',
+                    (string)$lengthRaw
+                )
+            );
+
+        $color =
+            trim(
+                $item['color'] ?? ''
+            );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | ALLOWED TEXTURES
+        |--------------------------------------------------------------------------
+        */
+
+        $CROCHET_TEXTURES = [
+
+            'French Curly',
+            'Straight',
+            'Ocean Wave',
+            'Deep Wave',
+            'Body Wave',
+            'Kinky Curly',
+            'Water Wave',
+            'Jerry Curly',
+            'Kinky Straight',
+            'Spiral Curly'
+
+        ];
+
+
+        if (
+            !in_array(
+                $texture,
+                $CROCHET_TEXTURES,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Feathered Crochet Hair texture.'
+            ]);
+
+            exit;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | FEATHERED CROCHET HAIR PRICES
+        |--------------------------------------------------------------------------
+        | Prices are in cents.
+        |--------------------------------------------------------------------------
+        */
+
+        $CROCHET_PRICES = [
+
+            12 => 10500,
+            14 => 11700,
+            16 => 13200,
+            18 => 14700,
+            20 => 16200,
+            22 => 17700,
+            24 => 19200,
+            26 => 21600,
+            28 => 23400,
+            30 => 26700,
+            32 => 27900
+
+        ];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY LENGTH
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            !isset(
+                $CROCHET_PRICES[$length]
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'That Feathered Crochet Hair length is not available.'
+            ]);
+
+            exit;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | VERIFY COLOR
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            !in_array(
+                $color,
+                $CAMBODIAN_STANDARD_COLORS,
+                true
+            )
+        ) {
+
+            http_response_code(400);
+
+            echo json_encode([
+                'error' =>
+                    'Invalid Feathered Crochet Hair color.'
+            ]);
+
+            exit;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | AUTHORITATIVE SERVER PRICE
+        |--------------------------------------------------------------------------
+        */
+
+        $unitAmount =
+            $CROCHET_PRICES[$length];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | COLOR UPGRADE — $18
+        |--------------------------------------------------------------------------
+        | 1B Natural Black remains the base price.
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            $color !== '1B Natural Black'
+        ) {
+
+            $unitAmount += 1800;
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | STRIPE PRODUCT INFORMATION
+        |--------------------------------------------------------------------------
+        */
+
+        $productName =
+            'Feathered Crochet Hair';
+
+
+        $descriptionParts = [
+
+            $texture,
+            $length . '"',
+            $color
+
+        ];
+
+
+        $description =
+            implode(
+                ' • ',
+                $descriptionParts
+            );
+
+    }
     /*
     |--------------------------------------------------------------------------
     | HD LACE CLOSURES
